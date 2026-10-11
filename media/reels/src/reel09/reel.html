@@ -1,0 +1,243 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/os.css">
+<style>
+:root{--pinho:#376259;--salvia:#97B9A8;--nevoa:#BDCBCB;--areia:#EEDECE;--dark:#1F3B35;--white:#fff}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',sans-serif;background:var(--pinho)}
+#stage{position:absolute;inset:0;overflow:hidden}
+.scene{position:absolute;inset:0;display:none}
+.abs{position:absolute}
+.center{left:0;right:0;text-align:center}
+.logo{position:absolute;top:120px;left:80px;font-weight:800;font-size:40px;letter-spacing:-.5px;z-index:50}
+.it{font-style:italic;font-weight:300}
+.xb{font-weight:800;letter-spacing:-2px}
+.card{position:absolute;background:#fff;border-radius:28px;box-shadow:0 18px 50px rgba(31,59,53,.18)}
+.pill{display:inline-block;border-radius:999px;padding:22px 56px;font-weight:800}
+.line{height:14px;border-radius:7px;background:#dfe6e4;margin:14px 0}
+.chk{width:92px;height:92px;border-radius:50%;background:var(--pinho);display:flex;align-items:center;justify-content:center;flex:none}
+.row{display:flex;align-items:center;gap:36px;position:absolute;left:110px;right:90px}
+.notif{position:absolute;left:120px;right:120px;height:150px;background:#fff;border-radius:30px;display:flex;align-items:center;gap:30px;padding:0 36px;box-shadow:0 14px 40px rgba(0,0,0,.18)}
+.dot{width:78px;height:78px;border-radius:22px;background:var(--salvia);display:flex;align-items:center;justify-content:center;color:var(--dark);font-weight:800;font-size:30px;flex:none}
+</style></head>
+<body><div id="stage">
+
+<!-- wipe layer used for transitions -->
+<div id="wipe" class="abs" style="left:0;right:0;z-index:40"></div>
+
+<div id="logo" class="logo">traduzme</div>
+
+<!-- S1 hook -->
+<div class="scene" id="s1">
+  <div id="s1a" class="abs center it" style="top:640px;font-size:110px;color:var(--areia)">Procura-se</div>
+  <div id="s1b" class="abs center xb" style="top:790px;font-size:128px;line-height:1.02;color:#fff"></div>
+  <div id="s1c" class="abs center" style="top:1120px;font-size:44px;font-weight:600;color:var(--salvia)"></div>
+  <div id="s1card" class="card" style="left:70px;right:70px;height:1500px;top:1920px;background:var(--areia)"></div>
+</div>
+
+<!-- S2 vaga page -->
+<div class="scene" id="s2" style="background:var(--areia)">
+  <div id="s2tag" class="abs" style="left:110px;top:430px;font-size:30px;font-weight:700;letter-spacing:6px;color:var(--pinho)">VAGA ABERTA · FREELANCER</div>
+  <div id="s2h" class="abs" style="left:110px;right:80px;top:500px;font-size:104px;font-weight:800;line-height:1.04;letter-spacing:-2px;color:var(--dark)"></div>
+  <div id="s2cols" class="abs" style="left:110px;right:110px;top:900px;display:flex;gap:40px"></div>
+  <div id="s2stamp" class="abs" style="right:120px;top:1290px;width:250px;height:250px;border:10px solid var(--pinho);border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--pinho);font-weight:800;font-size:34px;line-height:1.1">TRADUÇÃO<br>JURAMENTADA</div>
+</div>
+
+<!-- S3 language morph collage -->
+<div class="scene" id="s3" style="background:var(--nevoa)">
+  <div id="s3docs"></div>
+  <div id="s3top" class="abs center" style="top:700px;font-size:50px;font-weight:600;color:var(--dark)">Tradutor juramentado</div>
+  <div id="s3top2" class="abs center it" style="top:770px;font-size:50px;color:var(--pinho)">em qualquer idioma:</div>
+  <div id="s3word" class="abs center xb" style="top:880px;font-size:150px;color:#fff;text-shadow:0 6px 30px rgba(31,59,53,.25)"></div>
+  <div id="s3lang" class="abs center" style="top:1080px"><span class="pill" style="background:var(--pinho);color:#fff;font-size:34px;padding:14px 40px" id="s3langp"></span></div>
+  <svg id="cursor" class="abs" width="90" height="110" viewBox="0 0 24 30" style="z-index:30"><path d="M2 2 L2 24 L8 18 L12 28 L16 26 L12 17 L20 17 Z" fill="#1F3B35" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg>
+  <div id="ripple" class="abs" style="width:60px;height:60px;border-radius:50%;border:5px solid #fff;z-index:29;opacity:0"></div>
+</div>
+
+<!-- S4 demand -->
+<div class="scene" id="s4" style="background:var(--pinho)">
+  <div id="s4a" class="abs center it" style="top:330px;font-size:70px;color:var(--areia)">Por que agora?</div>
+  <div id="s4b" class="abs center xb" style="top:430px;font-size:96px;line-height:1.05;color:#fff">Os pedidos<br>não param.</div>
+  <div id="s4n"></div>
+  <div id="s4c" class="abs center" style="top:1500px;font-size:58px;font-weight:700;line-height:1.2;color:var(--areia)">Precisamos de mais<br>tradutores juramentados.</div>
+</div>
+
+<!-- S5 checklist -->
+<div class="scene" id="s5" style="background:var(--salvia)">
+  <div id="s5h" class="abs" style="left:110px;top:400px;font-size:96px;font-weight:800;letter-spacing:-2px;color:var(--dark)">Quem buscamos</div>
+  <div id="s5rows"></div>
+</div>
+
+<!-- S6 multilingual sentence -->
+<div class="scene" id="s6" style="background:var(--dark)">
+  <div id="s6t" class="abs center" style="top:780px;font-size:96px;font-weight:700;line-height:1.12;color:#fff;padding:0 70px"></div>
+  <div id="s6l" class="abs center" style="top:1130px;font-size:34px;font-weight:700;letter-spacing:6px;color:var(--salvia)"></div>
+</div>
+
+<!-- S7 endcard -->
+<div class="scene" id="s7" style="background:var(--pinho)">
+  <div id="e1" class="abs center" style="top:430px;font-size:54px;font-weight:400;color:var(--areia)">Faça parte do nosso time</div>
+  <div id="e2" class="abs center" style="top:510px;font-size:62px;font-weight:800;color:#fff;letter-spacing:-1px">de tradutores juramentados</div>
+  <div id="e3" class="abs center" style="top:690px"><span class="pill" style="background:var(--areia);color:var(--pinho);font-size:58px">Envie seu currículo</span></div>
+  <div id="e4" class="abs center" style="top:900px;font-size:76px;font-weight:800;color:#fff">WhatsApp</div>
+  <div id="e5" class="abs center" style="top:990px;font-size:118px;font-weight:800;color:#fff;letter-spacing:-1px">(61) 99803-8363</div>
+  <div id="e6" class="abs center" style="top:1160px;font-size:64px;font-weight:700;color:var(--areia)">oi@traduzme.com.br</div>
+  <div id="e7" class="abs center" style="top:1250px;font-size:52px;font-weight:600;color:var(--salvia)">traduzme.com.br</div>
+  <div id="e8" class="abs center" style="top:1350px;font-size:64px;font-weight:800;color:var(--salvia)">traduzme</div>
+</div>
+
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const lin=(t,a,b)=>cl((t-a)/(b-a));
+const eo=x=>1-Math.pow(1-x,3);
+const eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const back=x=>{const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+function rnd(n){const x=Math.sin(n*12.9898)*43758.5453;return x-Math.floor(x)}
+const POOL='ABCDEFGHJKLMNPRSTUVWXYZçãéñßüøλжяשعب字語한ü§¶#';
+function scramble(str,p,t,seed=0){ // p 0..1 reveal
+  let o='';const n=str.length;
+  for(let i=0;i<n;i++){const c=str[i];
+    if(c===' '||c==='\n'||c==='<'){o+=c;continue}
+    const th=(i/n)*0.75;
+    if(p>=th+0.25)o+=c;
+    else if(p>th)o+=POOL[Math.floor(rnd(i*7+seed+Math.floor(t*24))*POOL.length)];
+    else o+=' ';
+  }
+  return o;
+}
+const T={s1:0,s2:4.0,s3:10.0,s4:16.5,s5:21.5,s6:28.5,s7:32.0,end:39.5};
+const scenes=['s1','s2','s3','s4','s5','s6','s7'];
+const bgOf={s1:'#376259',s2:'#EEDECE',s3:'#BDCBCB',s4:'#376259',s5:'#97B9A8',s6:'#1F3B35',s7:'#376259'};
+const logoCol={s1:'#EEDECE',s2:'#376259',s3:'#1F3B35',s4:'#EEDECE',s5:'#1F3B35',s6:'#97B9A8',s7:'#EEDECE'};
+
+// S3 data
+const WORDS=[['juramentado','PORTUGUÊS'],['sworn','ENGLISH'],['assermenté','FRANÇAIS'],['beeidigt','DEUTSCH'],['jurado','ESPAÑOL'],['giurato','ITALIANO'],['宣誓','中文'],['juramentado','PORTUGUÊS']];
+const W0=11.3, WD=0.65; // words start, per word duration
+// S6 data
+const SENT=[['Trabalhe com<br>a traduzme','PORTUGUÊS'],['Work with<br>traduzme','ENGLISH'],['Arbeite mit<br>traduzme','DEUTSCH'],['Travaillez avec<br>traduzme','FRANÇAIS'],['Trabaja con<br>traduzme','ESPAÑOL'],['和 traduzme<br>一起工作','中文'],['Trabalhe com<br>a traduzme','PORTUGUÊS']];
+const S0=28.75, SD=0.5;
+
+// build static stuff
+(function(){
+  const cols=[['IDIOMAS','Todos os idiomas'],['ONDE','Todo o Brasil'],['COMO','Remoto, por demanda']];
+  $('s2cols').innerHTML=cols.map((c,i)=>`<div style="flex:1" id="col${i}"><div style="font-size:26px;font-weight:700;letter-spacing:4px;color:var(--pinho);margin-bottom:18px">${c[0]}</div><div class="cv" style="font-size:44px;font-weight:700;line-height:1.15;color:var(--dark)">${c[1]}</div><div class="line" style="width:100%"></div><div class="line" style="width:85%"></div><div class="line" style="width:92%"></div><div class="line" style="width:60%"></div></div>`).join('');
+  // docs collage for S3
+  const docs=[[90,260,250,330,-8,'CERTIDÃO'],[740,180,260,340,7,'DIPLOMA'],[60,1330,270,350,6,'PASSAPORTE'],[730,1290,280,360,-6,'CONTRATO'],[420,1500,240,300,3,'HISTÓRICO']];
+  $('s3docs').innerHTML=docs.map((d,i)=>`<div class="card" id="doc${i}" style="left:${d[0]}px;top:${d[1]}px;width:${d[2]}px;height:${d[3]}px;padding:28px"><div style="font-size:22px;font-weight:800;letter-spacing:3px;color:var(--pinho)">${d[5]}</div><div class="line" style="width:90%"></div><div class="line" style="width:70%"></div><div class="line" style="width:85%"></div><div class="line" style="width:50%"></div><div style="position:absolute;right:24px;bottom:24px;width:80px;height:80px;border:6px solid var(--salvia);border-radius:50%"></div></div>`).join('');
+  const nt=[['Certidão de nascimento · Italiano','IT'],['Diploma · Inglês','EN'],['Contrato social · Espanhol','ES'],['Histórico escolar · Francês','FR'],['Certidão de casamento · Alemão','DE']];
+  $('s4n').innerHTML=nt.map((n,i)=>`<div class="notif" id="n${i}"><div class="dot">${n[1]}</div><div><div style="font-size:26px;font-weight:700;letter-spacing:3px;color:var(--pinho)">NOVO PEDIDO</div><div style="font-size:38px;font-weight:600;color:var(--dark)">${n[0]}</div></div></div>`).join('');
+  const rows=['Tradutor(a) público(a) com matrícula na Junta Comercial','Prazos cumpridos, sempre','Trabalho cuidadoso e confiável','Qualquer idioma, de qualquer estado'];
+  $('s5rows').innerHTML=rows.map((r,i)=>`<div class="row" id="r${i}" style="top:${640+i*230}px"><div class="chk" id="c${i}"><svg width="54" height="54" viewBox="0 0 24 24"><path id="cp${i}" d="M4 12.5 L10 18 L20 6" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="30" stroke-dashoffset="30"/></svg></div><div style="font-size:52px;font-weight:700;line-height:1.15;color:var(--dark)">${r}</div></div>`).join('');
+})();
+
+function show(id){scenes.forEach(s=>$(s).style.display=(s===id?'block':'none'))}
+function cur(t){let c='s1';for(const s of scenes)if(t>=T[s])c=s;return c}
+
+function render(t){
+  const s=cur(t); show(s);
+  document.body.style.background=bgOf[s];
+  $('logo').style.color=logoCol[s];
+  $('logo').style.opacity=s==='s7'?0:1;
+  // wipe: colored bar sweeping up at boundaries (except s1->s2 which uses the card)
+  const w=$('wipe'); w.style.display='none';
+  for(const [a,b] of [['s2','s3'],['s3','s4'],['s4','s5'],['s5','s6'],['s6','s7']]){
+    const tb=T[b]; const d=t-tb;
+    if(d>-0.35&&d<0.35){ // bar covers then reveals
+      const p=(d+0.35)/0.7; w.style.display='block';
+      w.style.background=bgOf[b];
+      if(p<0.5){const q=eio(p*2); w.style.top=(1920*(1-q))+'px'; w.style.height=(1920*q)+'px';}
+      else {w.style.display='none';}
+      if(p<0.5){ // keep previous scene visible under the incoming bar
+        show(a); document.body.style.background=bgOf[a]; $('logo').style.color=logoCol[a];
+        renderScene(a,t);
+        return;
+      }
+    }
+  }
+  renderScene(s,t);
+}
+
+function renderScene(s,t){
+  if(s==='s1'){
+    const a=lin(t,0.15,0.7); $('s1a').style.opacity=a; $('s1a').style.transform=`translateY(${(1-eo(a))*40}px)`;
+    const p=lin(t,0.5,1.9); $('s1b').innerHTML=scramble('tradutor\njuramentado',p,t,3).replace('\n','<br>');
+    const c=lin(t,2.0,2.5); $('s1c').innerHTML=c>0?scramble('para todo o Brasil',c,t,9):'';
+    const k=lin(t,3.3,4.0); $('s1card').style.top=(1920-eio(k)*1920)+'px';
+    $('s1card').style.left=(70*(1-eio(k)))+'px';$('s1card').style.right=(70*(1-eio(k)))+'px';
+    $('s1card').style.borderRadius=(28*(1-k))+'px';
+    const up=eio(k)*500; ['s1a','s1b','s1c'].forEach(i=>$(i).style.marginTop=(-up)+'px');
+  }
+  if(s==='s2'){
+    const lt=t-T.s2;
+    $('s2tag').style.opacity=lin(lt,0.1,0.5);
+    $('s2h').innerHTML=scramble('Tradutor(a)\nJuramentado(a)',lin(lt,0.2,1.3),t,5).replace('\n','<br>');
+    for(let i=0;i<3;i++){const e=$('col'+i);const p=eo(lin(lt,1.4+i*0.45,2.0+i*0.45));e.style.opacity=p;e.style.transform=`translateY(${(1-p)*60}px)`;}
+    const sp=lin(lt,3.6,3.9); const st=$('s2stamp');
+    st.style.opacity=sp>0?1:0; st.style.transform=`rotate(-14deg) scale(${sp<1?2.4-1.4*eo(sp):1})`;
+    // gentle push in
+    $('s2').style.transform=`scale(${1+lt*0.006})`;
+  }
+  if(s==='s3'){
+    const lt=t-T.s3;
+    for(let i=0;i<5;i++){const d=$('doc'+i);const p=eo(lin(lt,0.1+i*0.12,0.7+i*0.12));
+      d.style.opacity=p; d.style.transform=`translateY(${(1-p)*120+Math.sin(t*1.3+i)*12}px) rotate(${[-8,7,6,-6,3][i]+Math.sin(t+i)*1.5}deg)`;}
+    const tp=lin(lt,0.3,0.8); $('s3top').style.opacity=tp; $('s3top2').style.opacity=lin(lt,0.6,1.1);
+    // words
+    let wi=Math.floor((t-W0)/WD); if(t<W0) wi=-1; if(wi>=WORDS.length) wi=WORDS.length-1;
+    const lastHold = t>=W0+WD*WORDS.length;
+    if(wi<0){ $('s3word').innerHTML=scramble('juramentado',lin(lt,0.6,1.3),t,1); $('s3langp').textContent='PORTUGUÊS'; $('s3lang').style.opacity=lin(lt,1.0,1.3);}
+    else{
+      const wt=t-(W0+wi*WD); const w=WORDS[wi][0];
+      $('s3word').innerHTML= lastHold? w : scramble(w,lin(wt,0,0.28),t,wi*13);
+      $('s3langp').textContent=WORDS[wi][1]; $('s3lang').style.opacity=1;
+      $('s3word').style.transform=`scale(${1+0.06*Math.max(0,1-wt/0.2)})`;
+    }
+    // cursor: moves to pill and clicks at each word change
+    const cx=660+Math.sin(t*2.1)*10, cy=1100;
+    const enter=eo(lin(lt,0.8,1.3));
+    const c=$('cursor'); c.style.left=(cx+ (1-enter)*500)+'px'; c.style.top=(cy+(1-enter)*500)+'px';
+    let clickp=1; if(t>=W0 && !lastHold){clickp=((t-W0)%WD)/WD;}
+    const press = clickp<0.12 ? 0.85 : 1;
+    c.style.transform=`scale(${press})`;
+    const r=$('ripple'); if(t>=W0 && !lastHold && clickp<0.4){const q=clickp/0.4; r.style.opacity=1-q; r.style.left=(cx-30*(1+q*2)+6)+'px'; r.style.top=(cy-30*(1+q*2)+6)+'px'; r.style.width=r.style.height=(60*(1+q*2))+'px';} else r.style.opacity=0;
+    $('s3').style.transform='none';
+  }
+  if(s==='s4'){
+    const lt=t-T.s4;
+    const a=eo(lin(lt,0.1,0.5)); $('s4a').style.opacity=a; $('s4a').style.transform=`translateY(${(1-a)*30}px)`;
+    const b=back(lin(lt,0.5,1.0)); $('s4b').style.opacity=lin(lt,0.5,0.7); $('s4b').style.transform=`scale(${0.6+0.4*b})`;
+    for(let i=0;i<5;i++){const n=$('n'+i); const st=1.2+i*0.5; const p=lin(lt,st,st+0.3);
+      // stack: newest at top position 740, older pushed down
+      const k=Math.max(0,Math.floor((lt-1.2)/0.5)-i); const y=760+ Math.min(k,4)*140 - 0;
+      n.style.opacity=p>0?(1-Math.min(k,4)*0.12):0;
+      n.style.transform=`translateY(${(1-back(p))*-80 + (y-760)}px) scale(${1-Math.min(k,4)*0.04})`;
+      n.style.top='760px'; n.style.zIndex=10+i;}
+    const c=eo(lin(lt,3.7,4.2)); $('s4c').style.opacity=c; $('s4c').style.transform=`translateY(${(1-c)*40}px)`;
+  }
+  if(s==='s5'){
+    const lt=t-T.s5;
+    $('s5h').innerHTML=scramble('Quem buscamos',lin(lt,0.1,0.8),t,21);
+    for(let i=0;i<4;i++){const st=1.0+i*1.25; const p=eo(lin(lt,st,st+0.4));
+      $('r'+i).style.opacity=p; $('r'+i).style.transform=`translateX(${(1-p)*-120}px)`;
+      const cp=lin(lt,st+0.25,st+0.55); $('cp'+i).setAttribute('stroke-dashoffset',30*(1-cp));
+      $('c'+i).style.transform=`scale(${cp>0&&cp<1?1+0.25*Math.sin(cp*Math.PI):1})`;}
+  }
+  if(s==='s6'){
+    let si=Math.floor((t-S0)/SD); if(t<S0) si=0; if(si>=SENT.length) si=SENT.length-1;
+    const st=t-(S0+si*SD); const fin = si===SENT.length-1;
+    $('s6t').innerHTML=SENT[si][0]; $('s6l').textContent=SENT[si][1];
+    const p=eo(lin(st,0,0.12)); $('s6t').style.opacity=t<S0?lin(t,T.s6,S0):p;
+    $('s6t').style.transform=`translateY(${(1-p)*30}px)`;
+    if(fin){ $('s6t').style.transform=`scale(${1+0.04*eo(lin(st,0,0.4))})`; }
+  }
+  if(s==='s7'){
+    const lt=t-T.s7;
+    const items=['e1','e2','e3','e4','e5','e6','e7','e8'];
+    items.forEach((id,i)=>{const p=eo(lin(lt,0.03+i*0.025,0.4+i*0.025)); const e=$(id); e.style.opacity=p; e.style.transform=`translateY(${(1-p)*40}px)`;});
+  }
+}
+window.render=render; window.T=T; window.W0=W0;window.WD=WD;window.S0=S0;window.SD=SD;
+render(0);
+</script></body></html>

@@ -1,0 +1,436 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/os.css">
+<style>
+:root{--pinho:#376259;--salvia:#97B9A8;--nevoa:#BDCBCB;--areia:#EEDECE;--dark:#1F3B35}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',sans-serif;background:var(--pinho)}
+#stage{position:absolute;inset:0;overflow:hidden}
+.scene{position:absolute;inset:0;display:none;overflow:hidden}
+.abs{position:absolute}
+.hl{position:absolute;left:90px;width:840px;font-size:88px;font-weight:800;line-height:1.08;letter-spacing:-1px}
+.sl{position:absolute;left:90px;width:840px;font-size:56px;font-weight:600;line-height:1.2}
+.card{position:absolute;background:#fff;border-radius:28px;box-shadow:0 14px 0 rgba(31,59,53,.15)}
+.shape{position:absolute;border-radius:50%}
+.badge{position:absolute;left:90px;top:225px;width:110px;height:110px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:64px;font-weight:800}
+.dots{position:absolute;top:269px;right:150px;display:flex;gap:18px}
+.dots i{display:block;width:22px;height:22px;border-radius:50%}
+.lucas .ol{stroke:var(--lo,#1F3B35);stroke-width:6;stroke-linejoin:round;stroke-linecap:round}
+.bar{height:22px;border-radius:11px;background:#e2e8e6;margin:22px 0}
+.chip{display:inline-flex;align-items:center;gap:14px;background:#fff;border-radius:999px;padding:10px 26px;font-size:40px;font-weight:700;color:var(--dark);box-shadow:0 8px 0 rgba(31,59,53,.15)}
+</style></head>
+<body><div id="stage"></div><div id="wplane" style="position:absolute;left:0;top:0;width:360px;height:140px;z-index:50;display:none"></div>
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const lin=(t,a,b)=>cl((t-a)/(b-a));
+const eo=x=>1-Math.pow(1-x,3);
+const eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const back=x=>{const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const C={pinho:'#376259',salvia:'#97B9A8',nevoa:'#BDCBCB',areia:'#EEDECE',dark:'#1F3B35',w:'#fff'};
+
+// ---------- scene timing ----------
+const S=[['s1',0],['s2',6.2],['s3',12.8],['s4',22.0],['s5',32.7],['s6',44.3],['s7',53.7],['s8',65.1],['s9',80.1]];
+const END=87.1;
+const BG={s1:C.pinho,s2:C.areia,s3:C.dark,s4:C.nevoa,s5:C.areia,s6:C.nevoa,s7:C.pinho,s8:C.areia,s9:C.pinho};
+// transitions into scene: type + origin
+const TR={s2:{k:'circle',x:660,y:1010},s3:{k:'top'},s4:{k:'circle',x:700,y:1060},s5:{k:'flip'},s6:{k:'circle',x:540,y:1500},s7:{k:'circle',x:330,y:1050},s8:{k:'circle',x:650,y:1150},s9:{k:'left'}};
+const TD=0.5;
+
+// ---------- Lucas ----------
+let LID=0;
+function lucasSVG(o={}){
+  const id='L'+(LID++); const hood=o.hood||C.salvia, skin=C.areia, hair=C.pinho, pants=C.dark;
+  return {id,html:`<svg class="lucas" id="${id}" viewBox="-20 -20 340 840" width="${o.w||300}" style="overflow:visible;--lo:${o.lo||C.dark}">
+  <g id="${id}legs"><rect class="ol" x="88" y="470" width="62" height="280" rx="26" fill="${pants}"/><rect class="ol" x="150" y="470" width="62" height="280" rx="26" fill="${pants}"/>
+  <ellipse class="ol" cx="115" cy="772" rx="42" ry="22" fill="${C.w}"/><ellipse class="ol" cx="186" cy="772" rx="42" ry="22" fill="${C.w}"/></g>
+  <g id="${id}armL" style="transform-origin:78px 235px"><rect class="ol" x="52" y="225" width="46" height="215" rx="23" fill="${hood}"/><circle class="ol" cx="75" cy="450" r="26" fill="${skin}"/></g>
+  <path class="ol" d="M70 250 Q70 200 150 196 Q230 200 230 250 L236 480 Q150 496 64 480 Z" fill="${hood}"/>
+  <path class="ol" d="M112 330 H188 V392 Q150 404 112 392 Z" fill="${hood}"/>
+  <path class="ol" d="M118 200 Q150 236 182 200" fill="none"/>
+  <g id="${id}armR" style="transform-origin:222px 235px"><rect class="ol" x="202" y="225" width="46" height="215" rx="23" fill="${hood}"/><circle class="ol" cx="225" cy="450" r="26" fill="${skin}"/></g>
+  <g id="${id}head" style="transform-origin:150px 190px">
+   <rect class="ol" x="132" y="170" width="36" height="34" fill="${skin}"/>
+   <circle class="ol" cx="150" cy="105" r="88" fill="${skin}"/>
+   <path class="ol" d="M64 100 Q60 20 150 16 Q246 18 238 104 Q214 70 182 66 Q170 92 120 70 Q92 74 64 100 Z" fill="${hair}"/>
+   <circle class="ol" cx="62" cy="112" r="14" fill="${skin}"/><circle class="ol" cx="238" cy="112" r="14" fill="${skin}"/>
+   <path id="${id}brL" d="M100 84 Q118 76 134 84" stroke="${C.dark}" stroke-width="7" fill="none" stroke-linecap="round"/>
+   <path id="${id}brR" d="M166 84 Q182 76 200 84" stroke="${C.dark}" stroke-width="7" fill="none" stroke-linecap="round"/>
+   <g id="${id}eyes" style="transform-origin:150px 108px"><ellipse cx="118" cy="108" rx="10" ry="13" fill="${C.dark}"/><ellipse cx="182" cy="108" rx="10" ry="13" fill="${C.dark}"/></g>
+   <path id="${id}m_smile" d="M118 142 Q150 168 182 142" stroke="${C.dark}" stroke-width="7" fill="none" stroke-linecap="round"/>
+   <path id="${id}m_grin" d="M112 136 Q150 136 188 136 Q184 178 150 180 Q116 178 112 136 Z" fill="${C.dark}" style="display:none"/>
+   <ellipse id="${id}m_o" cx="150" cy="150" rx="14" ry="18" fill="${C.dark}" style="display:none"/>
+   <path id="${id}m_flat" d="M126 150 Q150 142 174 150" stroke="${C.dark}" stroke-width="7" fill="none" stroke-linecap="round" style="display:none"/>
+   <path id="${id}sweat" d="M222 60 Q236 84 228 96 Q216 104 210 90 Q210 78 222 60 Z" fill="${C.nevoa}" stroke="${C.dark}" stroke-width="4" style="display:none"/>
+  </g></svg>`};
+}
+function mouth(id,m){['smile','grin','o','flat'].forEach(k=>{const e=$(id+'m_'+k);if(e)e.style.display=(k===m?'block':'none')})}
+function blink(id,t,seed=0){const p=((t+seed)%3.1);const s=p<.12?1-Math.sin(p/.12*Math.PI)*.92:1;$(id+'eyes').style.transform=`scaleY(${s})`}
+function breathe(el,t){el.style.transform=(el.dataset.base||'')+` scale(${1+.012*Math.sin(t*Math.PI)})`}
+
+// ---------- helpers ----------
+function txtIn(el,t,a,dur=.4){const p=eo(lin(t,a,a+dur));el.style.opacity=p;el.style.transform=`translateY(${(1-p)*24}px)`}
+function txtOut(el,t,a,dur=.3){const p=lin(t,a,a+dur);el.style.opacity=Math.min(+el.style.opacity||1,1-p)}
+function swap(elA,elB,t,a,b){ // A in at a; A out at b (0,25 s), B in at b+0,35
+  if(t<b){txtIn(elA,t,a);elB.style.opacity=0}else{elA.style.opacity=1-lin(t,b,b+.25);elA.style.transform='translateY(0)';if(t<b+.35)elB.style.opacity=0;else txtIn(elB,t,b+.35,.3)}}
+function popIn(el,t,a,dur=.35,base=''){const p=lin(t,a,a+dur);el.style.opacity=p>0?1:0;const s=p<=0?0:back(p);el.style.transform=base+` scale(${s})`}
+function drift(el,t,ax,ay,ph){el.style.transform=`translate(${Math.sin(t/6*2*Math.PI+ph)*ax}px,${Math.cos(t/6*2*Math.PI+ph)*ay}px)`}
+const MAPLE='M50 2 L58 22 L72 14 L68 34 L88 30 L78 48 L96 56 L72 62 L76 76 L56 68 L54 98 L46 98 L44 68 L24 76 L28 62 L4 56 L22 48 L12 30 L32 34 L28 14 L42 22 Z';
+function maple(col,size){return `<div style="width:${size*.5}px;height:${size*.28}px;border-radius:4px;background:${col}"></div>`}
+function shapes(col,arr){return arr.map((s,i)=>`<div class="shape sh" data-ph="${i*1.7}" style="left:${s[0]}px;top:${s[1]}px;width:${s[2]}px;height:${s[2]}px;background:${col}"></div>`).join('')}
+function header(n,bg,fg,dotOn,dotOff){let d='';for(let i=1;i<=4;i++)d+=`<i style="background:${i===n?dotOn:dotOff}"></i>`;
+  return `<div class="badge bd" style="background:${bg};color:${fg}">${n}</div><div class="dots dt">${d}</div>`}
+function check(col,size,stroke='#fff'){return `<svg width="${size}" height="${size}" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="${col}"/><path class="ckp" d="M6.5 12.5 L10.5 16.5 L17.5 8" stroke="${stroke}" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`}
+
+// ---------- build scenes ----------
+const L1=lucasSVG({w:286}), L2=lucasSVG({w:383}), L3=lucasSVG({w:383,hood:C.nevoa,lo:C.areia}), L4=lucasSVG({w:383}), L5=lucasSVG({w:383}),
+      L6=lucasSVG({w:400}), L7=lucasSVG({w:360}), L8=lucasSVG({w:345}), L9=lucasSVG({w:227});
+const stage=$('stage');
+stage.innerHTML=`
+<div class="scene" id="s1" style="background:${C.pinho}">
+  ${shapes('rgba(31,59,53,.28)',[[-120,180,420],[700,1250,520],[760,420,260]])}
+  <div class="abs" id="s1disc" style="left:30px;top:880px;width:700px;height:700px;border-radius:50%;background:${C.areia}"></div>
+  <div class="abs" id="s1leaves">${[0,1,2].map(i=>`<div class="abs lf" style="opacity:.9">${maple(C.salvia,70+i*14)}</div>`).join('')}</div>
+  <div class="abs" id="s1L" style="left:150px;top:720px;width:286px;height:760px">${L1.html}</div>
+  <div class="card" id="letter" style="left:480px;top:900px;width:380px;height:260px;padding:30px 34px;transform-origin:20% 80%">
+    <div style="display:flex;align-items:center;justify-content:space-between"><div style="font-size:30px;font-weight:700;letter-spacing:4px;color:${C.salvia}">MESTRADO</div>${maple(C.pinho,64)}</div>
+    <div style="font-size:52px;font-weight:800;color:${C.dark};margin-top:28px;letter-spacing:1px">APROVADO</div>
+    <div class="bar" style="width:80%;margin:20px 0 0"></div>
+  </div>
+  <div class="abs" id="s1k" style="left:90px;top:300px;font-size:64px;font-weight:300;font-style:italic;color:${C.areia}">Vai estudar fora?</div>
+  <div class="hl" id="s1h" style="top:400px;font-size:80px;color:#fff">4 coisas antes de traduzir diploma e histórico</div>
+</div>
+
+<div class="scene" id="s2" style="background:${C.areia}">
+  ${shapes('rgba(255,255,255,.45)',[[-160,260,460],[640,1180,560]])}
+  <div class="abs" id="lap" style="left:90px;top:640px;width:840px;height:544px">
+    <div class="abs" style="left:40px;top:0;width:760px;height:500px;border-radius:26px;background:${C.dark};padding:18px">
+      <div style="width:100%;height:100%;border-radius:12px;background:#fff;padding:30px 34px;position:relative;overflow:hidden">
+        <div style="font-size:26px;font-weight:700;letter-spacing:4px;color:${C.salvia}">CAIXA DE ENTRADA</div>
+        <div id="mail" style="margin-top:22px">
+          <div style="display:flex;align-items:center;gap:18px"><div style="width:76px;height:76px;border-radius:50%;background:${C.pinho};color:#fff;font-weight:800;font-size:24px;display:flex;align-items:center;justify-content:center">WES</div>
+          <div style="font-size:30px;font-weight:700;color:${C.pinho}">WES · Avaliação</div></div>
+          <div style="font-size:44px;font-weight:800;color:${C.dark};line-height:1.15;margin-top:20px">Envie as traduções: diploma e histórico.</div>
+          <div style="margin-top:22px;display:flex;gap:16px"><span class="chip" style="background:${C.areia};box-shadow:none">diploma</span><span class="chip" style="background:${C.areia};box-shadow:none">histórico</span></div>
+        </div>
+      </div></div>
+    <div class="abs" style="left:0;top:500px;width:840px;height:44px;border-radius:0 0 30px 30px;background:${C.pinho}"></div>
+  </div>
+  <div class="abs" id="s2L" style="left:40px;top:880px;width:383px;height:600px;clip-path:inset(-600px -600px 0 -600px)">${L2.html}</div>
+  <div class="abs" id="bub2" style="left:90px;top:640px;width:600px;padding:34px 44px;background:#fff;border-radius:40px;font-size:58px;font-weight:800;color:${C.dark};line-height:1.15;box-shadow:0 14px 0 rgba(31,59,53,.15)">Fácil! Eu mesmo traduzo.
+    <svg class="abs" style="left:150px;bottom:-56px" width="80" height="60" viewBox="0 0 80 60"><path d="M0 0 L80 0 L30 60 Z" fill="#fff"/></svg></div>
+</div>
+
+<div class="scene" id="s3" style="background:${C.dark}">
+  ${shapes('rgba(55,98,89,.35)',[[700,200,360],[-200,1200,520]])}
+  <div class="abs" style="left:-10px;top:950px;width:700px;height:700px;border-radius:50%;background:${C.pinho}"></div>
+  <div class="abs" id="s3L" style="left:60px;top:880px;width:383px;height:600px;clip-path:inset(-600px -600px 0 -600px)">${L3.html}</div>
+  <div class="card" id="mytr" style="left:470px;top:860px;width:420px;height:540px;padding:40px;transform:rotate(6deg)">
+    <div style="font-size:28px;font-weight:700;letter-spacing:4px;color:${C.salvia}">MINHA TRADUÇÃO</div>
+    <svg width="340" height="360" viewBox="0 0 340 360" style="margin-top:20px"><path d="M10 30 q20 -14 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 M10 90 q20 -14 40 0 t40 0 t40 0 t40 0 t40 0 M10 150 q20 -14 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 M10 210 q20 -14 40 0 t40 0 t40 0 t40 0 M10 270 q20 -14 40 0 t40 0 t40 0 t40 0 t40 0" stroke="${C.nevoa}" stroke-width="8" fill="none" stroke-linecap="round"/></svg>
+  </div>
+  <svg class="abs" id="bigx" style="left:490px;top:900px" width="400" height="460" viewBox="0 0 400 460"><path id="bx1" d="M40 40 L360 420" stroke="${C.areia}" stroke-width="34" stroke-linecap="round" fill="none"/><path id="bx2" d="M360 40 L40 420" stroke="${C.areia}" stroke-width="34" stroke-linecap="round" fill="none"/></svg>
+  <div class="abs" id="bub3" style="left:90px;top:400px;width:600px;padding:34px 44px;background:${C.nevoa};border-radius:40px;font-size:58px;font-weight:800;color:${C.dark};transform-origin:20% 100%">Fácil! Eu mesmo traduzo.</div>
+  <div class="hl" id="s3h" style="top:340px;color:${C.areia}">Para a WES, não.</div>
+  <div class="sl" id="s3s" style="top:471px;color:#fff">A WES recusa tradução feita pelo próprio candidato.</div>
+  <div class="sl" id="s3z" style="top:627px;font-size:50px;color:${C.areia};font-weight:800;white-space:nowrap">A saída: tradução juramentada.</div>
+</div>
+
+<div class="scene" id="s4" style="background:${C.nevoa}">
+  ${shapes('rgba(255,255,255,.35)',[[640,160,420],[-180,1000,440]])}
+  ${header(1,C.pinho,'#fff',C.pinho,'rgba(31,59,53,.25)')}
+  <div class="hl" id="s4h" style="top:340px;color:${C.dark}">Leia o que o destino exige.</div>
+  <div class="sl" id="s4a" style="top:566px;color:${C.dark}">A WES pede tradução completa, palavra por palavra.</div>
+  <div class="sl" id="s4b" style="top:566px;color:${C.dark};font-weight:800">Incompleta é recusada.</div>
+  <div class="card" id="req" style="left:290px;top:800px;width:640px;height:640px;padding:44px">
+    <div style="font-size:30px;font-weight:700;letter-spacing:4px;color:${C.salvia}">REQUISITOS WES</div>
+    <div class="bar" style="width:90%"></div><div class="bar" style="width:70%"></div>
+    <div style="position:relative;margin:34px 0;height:64px"><div id="hlbar" class="abs" style="left:-12px;top:2px;height:60px;width:0;border-radius:10px;background:${C.salvia}"></div>
+      <div id="hltx" class="abs" style="left:0;top:4px;font-size:38px;font-weight:700;color:${C.dark};white-space:nowrap">tradução literal e completa</div></div>
+    <div class="bar" style="width:85%"></div><div class="bar" style="width:60%"></div><div class="bar" style="width:75%"></div>
+  </div>
+  <div class="abs" id="s4L" style="left:20px;top:1060px;width:383px;height:420px;clip-path:inset(-600px -600px 0 -600px)">${L4.html}</div>
+  <div class="abs" id="lupe" style="left:0;top:0;width:260px;height:340px">
+    <svg width="260" height="340" viewBox="0 0 260 340" style="overflow:visible"><rect x="112" y="230" width="36" height="110" rx="18" fill="${C.dark}" transform="rotate(-30 130 240)"/>
+    <circle cx="130" cy="130" r="118" fill="rgba(255,255,255,.25)" stroke="${C.dark}" stroke-width="22"/>
+    <g id="bigeye" style="display:none"><circle cx="130" cy="130" r="96" fill="${C.areia}"/><ellipse cx="130" cy="136" rx="46" ry="58" fill="${C.dark}"/><circle cx="146" cy="112" r="14" fill="#fff"/></g></svg></div>
+</div>
+
+<div class="scene" id="s5" style="background:${C.areia}">
+  <div class="abs" style="left:0;right:0;top:1300px;height:700px;background:${C.salvia}"></div>
+  ${shapes('rgba(255,255,255,.45)',[[700,150,380]])}
+  ${header(2,C.pinho,'#fff',C.pinho,'rgba(31,59,53,.25)')}
+  <div class="hl" id="s5h" style="top:340px;color:${C.dark}">Conte todas as páginas.</div>
+  <div class="sl" id="s5a" style="top:566px;color:${C.dark}">Verso com texto e página só com carimbo contam.</div>
+  <div class="sl" id="s5b" style="top:566px;color:${C.pinho};font-weight:800">Pulou uma? Tradução incompleta.</div>
+  <div class="abs" id="sheets" style="left:0;top:0;width:1080px;height:1920px;transform-origin:510px 780px">
+  ${[0,1,2,3,4].map(i=>{const v=i===1||i===3, st=i===4;return `<div class="abs shw" id="sh${i}" style="left:${90+i*140}px;top:1000px;width:280px;height:400px">
+     <div class="abs" id="num${i}" style="left:0;width:140px;top:-122px;text-align:center;font-size:96px;font-weight:800;color:${C.pinho}">${i+1}</div>
+     <div class="card shc" style="inset:0;border-radius:18px;padding:24px;${v?`background:${C.nevoa}`:''}">
+       <div style="font-size:26px;font-weight:800;letter-spacing:1px;color:${v?C.dark:C.pinho}">${v?'VERSO':st?'':'FRENTE'}</div>
+       ${st?`<div style="margin:70px 0 0 0;transform:rotate(-14deg);border:7px solid ${C.pinho};border-radius:12px;padding:8px 6px;text-align:center;font-size:28px;font-weight:800;letter-spacing:2px;color:${C.pinho}">CARIMBO</div>`:
+       `<div class="bar" style="background:${v?'rgba(255,255,255,.7)':'#e2e8e6'};height:16px;margin:18px 0;width:90%"></div><div class="bar" style="background:${v?'rgba(255,255,255,.7)':'#e2e8e6'};height:16px;margin:18px 0;width:70%"></div><div class="bar" style="background:${v?'rgba(255,255,255,.7)':'#e2e8e6'};height:16px;margin:18px 0;width:85%"></div><div class="bar" style="background:${v?'rgba(255,255,255,.7)':'#e2e8e6'};height:16px;margin:18px 0;width:60%"></div>`}
+     </div><div class="abs glow" style="inset:-12px;border:8px solid ${C.pinho};border-radius:24px;opacity:0"></div></div>`}).join('')}
+  </div>
+  <div class="abs" id="s5L" style="left:330px;top:1960px;width:383px;height:600px;clip-path:inset(-600px -600px 0 -600px)">${L5.html}</div>
+  <div class="abs" id="hands" style="left:0;top:0;opacity:0">
+    ${[0,1].map(h=>`<svg class="abs" id="hand${h}" style="left:${h?640:180}px;top:1010px" width="240" height="300" viewBox="0 0 240 300">
+      <rect x="40" y="130" width="160" height="150" rx="60" fill="${C.areia}" stroke="${C.dark}" stroke-width="7"/>
+      ${[0,1,2,3,4].map(f=>`<rect class="fg" data-f="${h*5+f}" x="${f===4?(h?10:192):46+f*38}" y="${f===4?150:30}" width="34" height="${f===4?40:120}" rx="17" fill="${C.areia}" stroke="${C.dark}" stroke-width="7" style="transform-box:fill-box;transform-origin:50% 100%"/>`).join('')}
+    </svg>`).join('')}
+  </div>
+</div>
+
+<div class="scene" id="s6" style="background:${C.nevoa}">
+  ${shapes('rgba(255,255,255,.35)',[[-160,180,420],[700,1240,440]])}
+  ${header(3,C.pinho,'#fff',C.pinho,'rgba(31,59,53,.25)')}
+  <div class="hl" id="s6h" style="top:340px;color:${C.dark}">Diploma digital? Mande o PDF.</div>
+  <div class="sl" id="s6a" style="top:566px;color:${C.dark}">Impresso perde a validade.</div>
+  <div class="sl" id="s6b" style="top:566px;color:${C.dark}">A tradução leva o código de validação.</div>
+  <div class="abs" id="s6L" style="left:110px;top:800px;width:400px;height:420px;clip-path:inset(-600px -600px 0 -600px)">${L6.html}</div>
+  <div class="abs" id="lap6" style="left:70px;top:1000px;width:520px;height:360px">
+    <div class="abs" style="left:20px;top:0;width:480px;height:320px;border-radius:20px;background:${C.dark};padding:12px">
+      <div style="width:100%;height:100%;border-radius:10px;background:#fff;padding:22px;position:relative">
+        <div style="font-size:24px;font-weight:800;letter-spacing:3px;color:${C.pinho}">DIPLOMA · PDF</div>
+        <div class="bar" style="height:14px;margin:16px 0;width:60%"></div><div class="bar" style="height:14px;margin:12px 0;width:45%"></div>
+        <svg class="abs" style="right:22px;bottom:22px" width="130" height="130" viewBox="0 0 7 7">${(()=>{let r='';const q=[[0,0],[0,4],[4,0]];q.forEach(([x,y])=>{r+=`<rect x="${x}" y="${y}" width="3" height="3" fill="${C.dark}"/><rect x="${x+.6}" y="${y+.6}" width="1.8" height="1.8" fill="#fff"/><rect x="${x+1.1}" y="${y+1.1}" width=".8" height=".8" fill="${C.dark}"/>`});[[4,4],[5,5],[6,4],[4,6],[6,6],[3.5,5],[5,3.5]].forEach(([x,y])=>r+=`<rect x="${x}" y="${y}" width=".7" height=".7" fill="${C.dark}"/>`);return r})()}</svg>
+        <div id="codeSrc" class="abs" style="left:22px;bottom:26px;font-size:30px;font-weight:700;color:${C.pinho}">código: ••••-••••</div>
+      </div></div>
+    <div class="abs" style="left:0;top:320px;width:520px;height:34px;border-radius:0 0 20px 20px;background:${C.pinho}"></div>
+  </div>
+  <div class="abs" id="printer" style="left:680px;top:1020px;width:220px;height:220px">
+    <svg width="220" height="220" viewBox="0 0 180 180"><rect x="45" y="12" width="90" height="50" fill="#fff" stroke="${C.dark}" stroke-width="7"/><rect x="12" y="58" width="156" height="72" rx="14" fill="${C.pinho}" stroke="${C.dark}" stroke-width="7"/><rect x="45" y="110" width="90" height="62" fill="#fff" stroke="${C.dark}" stroke-width="7"/><path d="M60 136 H120 M60 154 H104" stroke="${C.nevoa}" stroke-width="7"/>
+    <path id="strike" d="M10 170 L170 10" stroke="${C.dark}" stroke-width="14" stroke-linecap="round" stroke-dasharray="230" stroke-dashoffset="230"/></svg></div>
+  <div class="card" id="trad" style="left:610px;top:960px;width:320px;height:440px;padding:28px;opacity:0">
+    <div style="font-size:26px;font-weight:800;letter-spacing:3px;color:${C.pinho}">TRADUÇÃO</div>
+    <div class="bar" style="height:14px;margin:16px 0;width:85%"></div><div class="bar" style="height:14px;margin:14px 0;width:70%"></div><div class="bar" style="height:14px;margin:14px 0;width:80%"></div>
+  </div>
+  <div class="abs" id="codechip" style="left:0;top:0;opacity:0"><span class="chip" style="font-size:44px;background:${C.areia};box-shadow:none;white-space:nowrap">${check(C.pinho,44)} Código de validação</span></div>
+</div>
+
+<div class="scene" id="s7" style="background:${C.pinho}">
+  ${shapes('rgba(31,59,53,.28)',[[-200,1000,520],[760,200,300]])}
+  ${header(4,C.areia,C.dark,C.areia,'rgba(255,255,255,.3)')}
+  <div class="hl" id="s7h" style="top:340px;color:#fff">Peça os dois juntos.</div>
+  <div class="sl" id="s7a" style="top:466px;color:${C.areia}">O nome do curso fica<br>igual nos dois.</div>
+  <div class="sl" id="s7b" style="top:466px;color:${C.areia}">Preço na hora, Pix e PDF assinado por e-mail.</div>
+  <div class="abs" style="left:-60px;top:1000px;width:560px;height:560px;border-radius:50%;background:${C.areia}"></div>
+  <div class="abs" id="s7L" style="left:20px;top:1020px;width:360px;height:460px;clip-path:inset(-600px -600px 0 -600px)">${L7.html}</div>
+  <div class="abs" id="phone" style="left:400px;top:740px;width:500px;height:740px;border-radius:60px;background:${C.dark};padding:20px">
+    <div style="width:100%;height:100%;border-radius:42px;background:${C.areia};position:relative;overflow:hidden">
+      <div style="position:absolute;top:34px;left:0;right:0;text-align:center;font-weight:800;font-size:34px;color:${C.pinho}">traduzme</div>
+      <div id="ph1" class="abs" style="left:30px;right:30px;top:100px">
+        <div class="pf" style="display:flex;align-items:center;justify-content:space-between;background:#fff;border-radius:18px;padding:16px 20px;font-size:40px;font-weight:700;color:${C.dark};margin-bottom:14px">diploma.pdf <span class="pk">${check(C.pinho,40)}</span></div>
+        <div class="pf" style="display:flex;align-items:center;justify-content:space-between;background:#fff;border-radius:18px;padding:16px 20px;font-size:40px;font-weight:700;color:${C.dark}">historico.pdf <span class="pk">${check(C.pinho,40)}</span></div>
+        <div id="disc" style="margin-top:18px;display:flex;gap:10px"><div class="dz" style="flex:1;height:56px;border-radius:10px;background:#fff;font-size:30px;font-weight:700;color:${C.pinho};display:flex;align-items:center;justify-content:center">Engenharia</div><div class="dz" style="flex:1;height:56px;border-radius:10px;background:#fff;font-size:30px;font-weight:700;color:${C.pinho};display:flex;align-items:center;justify-content:center">Engenharia</div></div>
+      </div>
+      <div id="price" class="abs" style="left:30px;right:30px;top:420px;height:150px;border-radius:24px;background:#fff;padding:22px 26px;opacity:0">
+        <div style="font-size:30px;font-weight:700;letter-spacing:3px;color:${C.pinho}">PREÇO</div>
+        <div style="font-size:72px;font-weight:800;color:${C.dark};letter-spacing:6px;line-height:1">●●●</div></div>
+      <div id="pix" class="abs" style="left:30px;right:30px;top:590px;height:96px;border-radius:48px;background:${C.pinho};color:#fff;font-size:44px;font-weight:800;display:flex;align-items:center;justify-content:center;opacity:0">Pagar com Pix</div>
+      <div id="pago" class="abs" style="left:130px;top:250px;width:200px;height:200px;opacity:0">${check(C.pinho,200)}</div>
+      <div id="pagoT" class="abs" style="left:0;right:0;top:470px;text-align:center;font-size:52px;font-weight:800;color:${C.dark};opacity:0">Pago</div>
+      <div id="mailI" class="abs" style="left:110px;top:540px;width:240px;height:150px;opacity:0">
+        <svg width="240" height="150" viewBox="0 0 240 150"><rect x="6" y="6" width="228" height="138" rx="16" fill="#fff" stroke="${C.dark}" stroke-width="7"/><path d="M10 14 L120 86 L230 14" stroke="${C.dark}" stroke-width="7" fill="none"/>
+        <rect x="150" y="80" width="70" height="56" rx="8" fill="${C.pinho}"/><text x="185" y="117" font-family="Open Sans" font-weight="800" font-size="24" fill="#fff" text-anchor="middle">PDF</text></svg></div>
+    </div></div>
+  <div class="abs" id="flyA" style="left:0;top:0"><span class="chip">diploma.pdf</span></div>
+  <div class="abs" id="flyB" style="left:0;top:0"><span class="chip">historico.pdf</span></div>
+</div>
+
+<div class="scene" id="s8" style="background:${C.areia}">
+  ${shapes('rgba(189,203,203,.55)',[[620,140,300],[-120,700,260],[760,700,200]])}
+  <div class="hl" id="s8h" style="top:340px;color:${C.dark}">Checklist do Lucas</div>
+  <div class="hl" id="s8f" style="top:340px;color:${C.dark};font-size:88px">Lucas embarcou. Agora é você.</div>
+  <div class="abs" id="list" style="left:90px;top:480px;width:720px;white-space:nowrap">
+    <div class="li" style="display:flex;align-items:center;gap:20px;height:72px;margin-bottom:14px;background:${C.pinho};border-radius:16px;padding:0 20px;color:${C.areia};font-size:48px;font-weight:800">${check(C.areia,52,C.pinho)} Tradutor juramentado</div>
+    ${['Exigência do destino','Todas as páginas','PDF da faculdade','Os dois juntos'].map((x,i)=>`<div class="li" style="display:flex;align-items:center;gap:20px;height:72px;margin-bottom:14px;padding:0 20px;color:${C.dark};font-size:48px;font-weight:700">${check(C.pinho,52)}<span style="font-size:34px;font-weight:800;color:${C.pinho};width:30px">${i+1}</span>${x}</div>`).join('')}
+  </div>
+  <div class="abs" id="s8L" style="left:60px;top:940px;width:345px;height:540px;clip-path:inset(-600px -600px 0 -600px)">${L8.html}</div>
+  <div class="abs" id="suit" style="left:460px;top:1180px;width:420px;height:300px">
+    <div class="abs" id="lid" style="left:0;top:-200px;width:420px;height:200px;border-radius:24px 24px 0 0;background:${C.pinho};border:7px solid ${C.dark};transform-origin:50% 100%"></div>
+    <div class="abs" style="left:0;top:0;width:420px;height:270px;border-radius:0 0 24px 24px;background:${C.salvia};border:7px solid ${C.dark}"></div>
+    <div class="abs" style="left:90px;top:0;width:34px;height:270px;background:${C.pinho};border-left:6px solid ${C.dark};border-right:6px solid ${C.dark}"></div>
+    <div class="abs" style="left:296px;top:0;width:34px;height:270px;background:${C.pinho};border-left:6px solid ${C.dark};border-right:6px solid ${C.dark}"></div>
+    <div class="abs" style="left:150px;top:100px;width:120px;height:50px;border:10px solid ${C.dark};border-top:none;border-radius:0 0 20px 20px" id="handle"></div>
+    <div class="abs" style="left:40px;top:262px;width:44px;height:44px;border-radius:50%;background:${C.dark}"></div><div class="abs" style="left:336px;top:262px;width:44px;height:44px;border-radius:50%;background:${C.dark}"></div>
+  </div>
+  ${[0,1,2,3,4].map(i=>`<div class="abs mdoc" id="md${i}" style="left:0;top:0;width:88px;height:112px;border-radius:10px;background:#fff;border:5px solid ${C.dark};opacity:0"></div>`).join('')}
+  <div class="abs" id="plane" style="left:0;top:700px;width:360px;height:140px">
+    <svg width="360" height="140" viewBox="0 0 360 140"><path d="M20 70 Q180 54 330 64 Q352 70 330 78 Q180 88 20 72 Z" fill="#fff" stroke="${C.dark}" stroke-width="7"/><path d="M150 66 L110 12 L140 12 L200 64 Z M150 78 L110 132 L140 132 L200 80 Z" fill="${C.pinho}" stroke="${C.dark}" stroke-width="7"/><path d="M30 68 L10 36 L34 36 L60 66 Z" fill="${C.pinho}" stroke="${C.dark}" stroke-width="6"/></svg></div>
+  <div class="abs" id="trail" style="left:0;top:764px;height:12px;width:0;border-radius:6px;background:repeating-linear-gradient(90deg,${C.salvia} 0 40px,transparent 40px 70px)"></div>
+  <div class="card" id="pass" style="left:90px;top:1000px;width:840px;height:400px;padding:44px 50px;opacity:0;display:flex;gap:40px;align-items:center">
+    <div style="flex:1"><div style="font-size:30px;font-weight:700;letter-spacing:4px;color:${C.salvia}">CARTÃO DE EMBARQUE</div>
+      <div style="font-size:72px;font-weight:800;color:${C.dark};margin-top:16px">LUCAS</div>
+      <div style="display:flex;gap:18px;margin-top:22px"><div class="bar" style="width:160px;margin:0"></div><div class="bar" style="width:110px;margin:0"></div></div></div>
+    <div style="width:4px;align-self:stretch;background:repeating-linear-gradient(${C.nevoa} 0 16px,transparent 16px 30px)"></div>
+    ${check(C.pinho,170)}</div>
+  <div class="abs" id="s8leaves">${[0,1,2,3,4,5].map(i=>`<div class="abs lf8" style="opacity:0">${maple(i%2?C.pinho:C.salvia,50+i*8)}</div>`).join('')}</div>
+</div>
+
+<div class="scene" id="s9" style="background:${C.pinho}">
+  ${shapes('rgba(31,59,53,.28)',[[-160,180,400],[760,1300,420]])}
+  <div class="abs e9" style="left:90px;top:400px;font-size:48px;font-weight:700;color:${C.areia};letter-spacing:1px">Tradução juramentada</div>
+  <div class="hl e9" style="top:470px;font-size:80px;color:#fff">Preço na hora<br>no site.</div>
+  <div class="abs e9" style="left:90px;top:700px;width:640px;height:132px;border-radius:66px;background:${C.areia};display:flex;align-items:center;justify-content:center;font-size:66px;font-weight:800;color:${C.dark};letter-spacing:-1px">traduzme.com.br</div>
+  <div class="abs e9" style="left:90px;top:900px"><div style="font-size:32px;font-weight:700;color:${C.salvia};letter-spacing:4px">WHATSAPP</div><div style="font-size:60px;font-weight:700;color:#fff;margin-top:4px">(61) 99803-8363</div></div>
+  <div class="abs" id="s9g" style="left:0;top:0;width:1080px;height:1920px">
+   <div class="abs" style="left:530px;top:960px;width:420px;height:420px;border-radius:50%;background:${C.areia}"></div>
+   <div class="abs" id="s9L" style="left:640px;top:920px;width:227px;height:560px">${L9.html}</div>
+   <div class="card" style="left:520px;top:1250px;width:200px;height:110px;padding:14px 18px;transform:rotate(-8deg)"><div style="font-size:18px;font-weight:800;letter-spacing:2px;color:${C.salvia}">EMBARQUE</div><div style="font-size:34px;font-weight:800;color:${C.dark}">LUCAS</div></div>
+  </div>
+</div>`;
+
+// ---------- per-scene renderers (t = local time) ----------
+function sh(sc,t){document.querySelectorAll('#'+sc+' .sh').forEach(e=>drift(e,t,30,30,+e.dataset.ph))}
+const R={};
+R.s1=t=>{sh('s1',t);
+  const j=lin(t,0,.5);const y=(1-back(j))*500; $('s1L').style.transform=`translateY(${y}px)`;
+  const bob=Math.sin(t*Math.PI*2/1.07)*8; if(j>=1)$('s1L').style.transform=`translateY(${bob}px)`;
+  popIn($('letter'),t,.25,.4,`rotate(${-8+Math.sin(t*4)*3}deg)`);
+  $(L1.id+'armR').style.transform=`rotate(${-150+Math.sin(t*4)*10}deg)`; mouth(L1.id,'grin'); blink(L1.id,t);
+  document.querySelectorAll('#s1 .lf').forEach((e,i)=>{e.style.left=(620+i*120+Math.sin(t+i)*30)+'px';e.style.top=(560+((t*60+i*260)%600))+'px';e.style.transform=`rotate(${t*40+i*90}deg)`});
+  txtIn($('s1k'),t,.4); txtIn($('s1h'),t,2.0);
+};
+R.s2=t=>{sh('s2',t);
+  const cam=eio(lin(t,3.6,4.2));
+  const a=eo(lin(t,.3,.8));
+  $('lap').style.transformOrigin='840px 544px';
+  $('lap').style.transform=`translateY(${(1-a)*80+cam*216}px) scale(${1-cam*.38})`; $('lap').style.opacity=a;
+  txtIn($('mail'),t,.8);
+  $('s2L').style.transform=`translateX(${(1-cam)*-450}px)`;
+  mouth(L2.id,t>4.2?'grin':'smile'); blink(L2.id,t,.7);
+  $(L2.id+'armR').style.transform=`rotate(${t>4.2?-120:0}deg)`;
+  popIn($('bub2'),t,4.0,.4);
+};
+R.s3=t=>{sh('s3',t);
+  // freeze then crumple bubble
+  const c=lin(t,.5,.9); $('bub3').style.opacity=1-c; $('bub3').style.transform=`scale(${1-c*.8}) rotate(${c*-25}deg)`;
+  mouth(L3.id,t>1.0?'o':'grin'); $(L3.id+'sweat').style.display=t>1.2?'block':'none';
+  const sw=$(L3.id+'sweat'); sw.style.transform=`translateY(${((t-1.2)%1.4)*20}px)`;
+  blink(L3.id,t,.3);
+  const d=lin(t,3.1,3.5),d2=lin(t,3.4,3.8);
+  $('bx1').style.strokeDasharray=520;$('bx1').style.strokeDashoffset=520*(1-d);
+  $('bx2').style.strokeDasharray=520;$('bx2').style.strokeDashoffset=520*(1-d2);
+  txtIn($('s3h'),t,.9); txtIn($('s3s'),t,2.9); txtIn($('s3z'),t,6.5);
+  $('s3h').style.opacity=t<.9?0:$('s3h').style.opacity;
+};
+function hdr(sc,t){popIn(document.querySelector('#'+sc+' .bd'),t,.4,.35);const d=document.querySelector('#'+sc+' .dt');d.style.opacity=lin(t,.4,.8)}
+R.s4=t=>{sh('s4',t);hdr('s4',t);
+  txtIn($('s4h'),t,.8); swap($('s4a'),$('s4b'),t,3.6,7.2);
+  const rq=eo(lin(t,.2,.7)); $('req').style.transform=`translateY(${(1-rq)*120}px)`; $('req').style.opacity=rq;
+  $('s4L').style.transform=`translateY(${(1-eo(lin(t,.5,1.0)))*320}px)`; blink(L4.id,t,1.1); mouth(L4.id,'smile');
+  // lupe path
+  let lx=1000,ly=1150;
+  const p1=eio(lin(t,3.6,4.1)); lx=1000+(560-1000)*p1; ly=1150+(940-1150)*p1;
+  const sweep=lin(t,4.1,4.7); lx+=sweep*120;
+  const pk=eio(lin(t,4.8,5.3)); lx=lx+(790-lx)*pk; ly=ly+(1290-ly)*pk;
+  const g=eio(lin(t,9.1,9.5)); lx=lx+(150-lx)*g; ly=ly+(1150-ly)*g;
+  $('lupe').style.transform=`translate(${lx-130}px,${ly-130}px)`; $('lupe').style.opacity=lin(t,3.4,3.8);
+  $('hlbar').style.width=(eo(lin(t,4.1,4.7))*($('hltx').offsetWidth+24))+'px';
+  $('bigeye').style.display=t>9.5?'block':'none'; $('bigeye').setAttribute('transform',`scale(1)`);
+};
+R.s5=t=>{sh('s5',t);hdr('s5',t);
+  txtIn($('s5h'),t,.8); swap($('s5a'),$('s5b'),t,3.2,7.2);
+  for(let i=0;i<5;i++){const a=1.0+i*.5;const p=lin(t,a,a+.4);const e=$('sh'+i);e.style.opacity=p>0?1:0;e.style.transform=`translateY(${(1-back(p))*-80}px) rotate(${(i-2)*2}deg)`;
+    $('num'+i).style.opacity=lin(t,a+.1,a+.4)}
+  const gl=(i,a)=>{const g=document.querySelector('#sh'+i+' .glow');g.style.opacity=t>a?(.6+.4*Math.sin((t-a)*6)):0};
+  gl(1,3.6);gl(3,3.6);gl(4,5.0);
+  // gag
+  const up=eio(lin(t,9.5,10.2)); $('sheets').style.transform=`translateY(${-up*90}px) scale(${1-up*.2})`;
+  $('s5L').style.transform=`translateY(${-up*1080}px)`; mouth(L5.id,'flat'); blink(L5.id,t,.4);
+  $('hands').style.opacity=lin(t,9.9,10.2);
+  const cnt=Math.floor(lin(t,10.2,11.3)*5+.0001);
+  document.querySelectorAll('#hands .fg').forEach(f=>{const k=+f.dataset.f;const idx=(k<5?k:k-5);const on=(k<5?idx<cnt:false)||(k>=5&&idx<0);f.style.transform=`scaleY(${on?1:.35})`});
+  document.querySelectorAll('#hands .fg').forEach(f=>{const k=+f.dataset.f; if(k>=5)f.style.transform='scaleY(.35)'});
+  $('hand0').style.transform=`scale(1.3) rotate(${Math.sin(t*6)*4}deg)`; $('hand1').style.transform=`scale(1.3) rotate(${-Math.sin(t*6)*4}deg)`;
+};
+R.s6=t=>{sh('s6',t);hdr('s6',t);
+  txtIn($('s6h'),t,.8); swap($('s6a'),$('s6b'),t,3.2,5.15);
+  const lp=eo(lin(t,.2,.7)); $('lap6').style.transform=`translateY(${(1-lp)*120}px)`; $('lap6').style.opacity=lp;
+  $('s6L').style.transform=`translateY(${(1-eo(lin(t,.9,1.4)))*200}px)`; $('s6L').style.opacity=lin(t,.9,1.15); blink(L6.id,t,.9); mouth(L6.id,t>6.7?'grin':'smile'); $(L6.id+'armL').style.transform='rotate(-20deg)'; $(L6.id+'armR').style.transform='rotate(20deg)';
+  popIn($('printer'),t,1.2,.35);
+  $('strike').style.strokeDashoffset=230*(1-lin(t,3.6,4.0));
+  if(t>4.4)$('printer').style.opacity=1-lin(t,4.4,4.7);
+  const tr=lin(t,4.6,5.0); $('trad').style.opacity=tr; $('trad').style.transform=`scale(${.8+.2*back(tr)})`;
+  const f=eio(lin(t,5.9,6.7)); const x0=110,y0=1250,x1=630,y1=1110;
+  $('codechip').style.opacity=t>5.9?1:0;
+  $('codechip').style.transform=`translate(${x0+(x1-x0)*f}px,${y0+(y1-y0)*f-Math.sin(f*Math.PI)*160}px) scale(${1-.45*f})`;
+  $('codechip').style.transformOrigin='0 0';
+};
+R.s7=t=>{sh('s7',t);hdr('s7',t);
+  txtIn($('s7h'),t,.8); swap($('s7a'),$('s7b'),t,2.8,6.4);
+  const ph=eo(lin(t,.2,.7)); $('phone').style.transform=`translateY(${(1-ph)*400}px)`;
+  $('s7L').style.transform=`translateY(${(1-eo(lin(t,.3,.8)))*300}px)`; blink(L7.id,t,1.4); mouth(L7.id,t>8.3?'grin':'smile');
+  $(L7.id+'armR').style.transform=`rotate(${t<2.4?-60:0}deg)`;
+  // files fly
+  const fa=eio(lin(t,1.2,1.9)); const fb=eio(lin(t,1.3,2.0));
+  $('flyA').style.opacity=t>1.2&&t<1.9?1:0; $('flyB').style.opacity=t>1.3&&t<2.0?1:0;
+  $('flyA').style.transform=`translate(${120+(470-120)*fa}px,${900+(860-900)*fa}px)`; $('flyB').style.transform=`translate(${120+(470-120)*fb}px,${980+(950-980)*fb}px)`;
+  document.querySelectorAll('#ph1 .pf').forEach((e,i)=>{e.style.opacity=lin(t,1.9+i*.1,2.1+i*.1)});
+  document.querySelectorAll('#ph1 .pk').forEach((e,i)=>{e.style.transform=`scale(${t>2.2+i*.2?back(lin(t,2.2+i*.2,2.5+i*.2)):0})`;e.style.display='inline-block'});
+  document.querySelectorAll('#disc .dz').forEach(e=>{e.style.opacity=lin(t,3.0,3.3);e.style.outline=t>3.2&&t<6.4?`5px solid ${C.pinho}`:'none'});
+  const pr=lin(t,6.7,7.1); $('price').style.opacity=t<8.3?pr:1-lin(t,8.3,8.6); $('price').style.transform=`scale(${.85+.15*back(pr)})`;
+  const px=lin(t,7.5,7.8); $('pix').style.opacity=t<8.3?px:1-lin(t,8.3,8.6); $('pix').style.transform=`scale(${t>7.9&&t<8.15?.92:1})`;
+  $('ph1').style.opacity=t<8.3?1:1-lin(t,8.3,8.6);
+  popIn($('pago'),t,8.3,.4); $('pagoT').style.opacity=lin(t,8.5,8.8);
+  if(t>9.3){$('pago').style.transform=`translateY(${-eo(lin(t,9.3,9.7))*120}px) scale(${1-.4*eo(lin(t,9.3,9.7))})`;$('pagoT').style.opacity=1-lin(t,9.3,9.6)}
+  popIn($('mailI'),t,9.1,.4);
+};
+R.s8=t=>{sh('s8',t);
+  txtIn($('s8h'),t,.6); if(t>10.6){$('s8h').style.opacity=1-lin(t,10.6,10.9)}
+  txtIn($('s8f'),t,11.4); if(t<11.4)$('s8f').style.opacity=0;
+  const items=document.querySelectorAll('#s8 .li'); const at=[2.2,3.8,5.4,7.0,8.6];
+  items.forEach((e,i)=>{txtIn(e,t,at[i]); if(t>10.2)e.style.opacity=Math.min(+e.style.opacity,1-lin(t,10.2,10.6))});
+  // mini docs fly from list row to suitcase
+  for(let i=0;i<5;i++){const a=at[i]+.5;const f=eio(lin(t,a,a+.6));const e=$('md'+i);e.style.opacity=t>a&&t<a+.6?1:0;
+    const x0=640,y0=470+i*86,x1=600+i*30,y1=1150;e.style.transform=`translate(${x0+(x1-x0)*f}px,${y0+(y1-y0)*f-Math.sin(f*Math.PI)*120}px) rotate(${f*200}deg)`}
+  const s8=eo(lin(t,.3,.8)); $('s8L').style.transform=`translateY(${(1-s8)*300}px)`; $('suit').style.transform=`translateY(${(1-s8)*300}px)`;
+  blink(L8.id,t,.2); mouth(L8.id,t>10.2?'grin':'smile');
+  $(L8.id+'armR').style.transform=`rotate(${-40+Math.sin(t*5)*15}deg)`;
+  const lid=eio(lin(t,10.2,10.8)); $('lid').style.transformOrigin='0% 100%'; $('lid').style.transform=`translateY(${lid*0}px) rotate(${10*(1-lid)}deg) scaleY(${1-lid*.82})`;
+  
+  const go=eio(lin(t,10.8,11.8)); if(t>10.8){$('s8L').style.transform=`translateX(${go*1150}px)`;$('suit').style.transform=`translateX(${go*1150}px)`}
+  const pl=lin(t,10.8,12.6); $('plane').style.transform=`translate(${-420+pl*1500}px,${-pl*120}px) rotate(-5deg)`;
+  $('trail').style.transform=`translateY(${-pl*60}px) rotate(-4.5deg)`; $('trail').style.width=Math.max(0,-420+pl*1500)+'px';
+  {const pp=lin(t,13.8,14.2);$('pass').style.opacity=pp;$('pass').style.transform=`translateY(${(1-eo(pp))*60}px) rotate(${-3*eo(pp)}deg)`}
+  document.querySelectorAll('#s8 .lf8').forEach((e,i)=>{const a=11.2+i*.15;e.style.opacity=t>a?1:0;e.style.left=(120+i*140+Math.sin(t*2+i)*30)+'px';e.style.top=(860+(t-a)*180)+'px';e.style.transform=`rotate(${(t-a)*120+i*40}deg)`});
+};
+R.s9=t=>{sh('s9',t);
+  document.querySelectorAll('#s9 .e9').forEach((e,i)=>{const a=.5+i*.2;const p=eo(lin(t,a,a+.4));e.style.opacity=p;e.style.transform=`translateY(${(1-p)*24}px)`});
+  {const p=eo(lin(t,.5,.9));$('s9g').style.opacity=p;$('s9g').style.transform=`translate(-25px,${(1-p)*40}px)`}
+  blink(L9.id,t,.5); mouth(L9.id,'grin');
+  const w=(t%2)<.8?Math.sin((t%2)/.8*Math.PI*2)*25:0; $(L9.id+'armR').style.transform=`rotate(${-150+w}deg)`; $(L9.id+'armL').style.transform='rotate(30deg)';
+};
+
+// ---------- master render ----------
+function sceneAt(t){let c=0;for(let i=0;i<S.length;i++)if(t>=S[i][1])c=i;return c}
+let LAID=false;
+function below(a,b,gap=36){$(b).style.top=($(a).offsetTop+$(a).offsetHeight+gap)+'px'}
+function layout(){LAID=true;
+  [['s3h','s3s'],['s3s','s3z',20],['s4h','s4a'],['s4h','s4b'],['s5h','s5a'],['s5h','s5b'],['s6h','s6a'],['s6h','s6b'],['s7h','s7a'],['s7h','s7b']].forEach(([x,y,g])=>{
+    const sx=$(x).closest('.scene'),dsp=sx.style.display;sx.style.display='block';below(x,y,g);sx.style.display=dsp});
+}
+function render(t){ if(!LAID)layout();
+  const i=sceneAt(t); const [id,st]=S[i];
+  document.querySelectorAll('.scene').forEach(s=>{s.style.display='none';s.style.clipPath='none';s.style.zIndex=1});
+  const cur=$(id); cur.style.display='block'; R[id](t-st);
+  const tr=TR[id]; const d=t-st;
+  if(tr&&d<TD&&i>0){ // show previous scene underneath
+    const [pid,pst]=S[i-1]; const prev=$(pid); prev.style.display='block'; prev.style.zIndex=1; cur.style.zIndex=2; R[pid](t-pst);
+    const p=eio(d/TD);
+    if(tr.k==='circle'){cur.style.clipPath=`circle(${p*2300}px at ${tr.x}px ${tr.y}px)`}
+    if(tr.k==='top'){cur.style.clipPath=`inset(0 0 ${(1-p)*100}% 0)`}
+    if(tr.k==='bottom'){cur.style.clipPath=`inset(${(1-p)*100}% 0 0 0)`}
+    if(tr.k==='left'){cur.style.clipPath=`inset(0 ${(1-p)*100}% 0 0)`}
+    if(tr.k==='flip'){cur.style.clipPath=`inset(0 ${(1-p)*50}% 0 ${(1-p)*50}%)`}
+  }
+  {const wp=$('wplane'); const d9=t-S[8][1]; if(d9>=0&&d9<TD){wp.style.display='block';wp.innerHTML=wp.innerHTML||$('plane').innerHTML;const p=eio(d9/TD);wp.style.transform=`translate(${p*1080-60}px,820px)`}else wp.style.display='none'}
+  // S3 freeze: brief shake at record scratch
+  let sx=0; const ds=t-12.8; if(ds>0&&ds<.35)sx=(1-ds/.35)*14;
+  stage.style.transform=sx?`translate(${Math.sin(t*90)*sx}px,${Math.cos(t*70)*sx}px)`:'none';
+}
+render(0);
+document.fonts.ready.then(()=>{LAID=false});
+</script>
+</body></html>

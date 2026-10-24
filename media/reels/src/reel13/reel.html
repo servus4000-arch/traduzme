@@ -1,0 +1,244 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/os.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',sans-serif;background:#376259}
+#stage{position:absolute;inset:0;overflow:hidden}
+.scene{position:absolute;inset:0;display:none;overflow:hidden}
+.abs{position:absolute}
+.hl{position:absolute;left:90px;width:840px;font-weight:800;line-height:1.08;letter-spacing:-1px}
+.sl{position:absolute;left:90px;width:840px;font-size:54px;font-weight:600;line-height:1.2}
+.shape{position:absolute;border-radius:50%}
+.lucas .ol{stroke:var(--lo,#1F3B35);stroke-width:6;stroke-linejoin:round;stroke-linecap:round}
+.kick{position:absolute;left:90px;top:240px;font-size:44px;font-weight:800;letter-spacing:3px;color:#97B9A8}
+.tafel{position:absolute;left:680px;top:228px;width:250px;height:84px;border-radius:42px;background:#376259;color:#EEDECE;font-size:44px;font-weight:800;display:flex;align-items:center;justify-content:center;white-space:pre}
+.card{position:absolute;left:90px;top:340px;width:840px;height:420px;border-radius:28px;background:#EEDECE;box-shadow:0 14px 0 rgba(0,0,0,.25)}
+.ctext{position:absolute;left:40px;top:200px;width:700px;font-size:52px;font-weight:800;line-height:1.08;color:#1F3B35}
+.row{position:absolute;left:90px;width:840px;height:100px;border-radius:50px;background:#BDCBCB;display:flex;align-items:center;gap:26px;padding-left:22px;font-size:48px;font-weight:800;color:#1F3B35;box-shadow:0 8px 0 rgba(0,0,0,.25)}
+.lt{width:64px;height:64px;border-radius:50%;background:#376259;color:#EEDECE;font-size:36px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none}
+.cd{position:absolute;left:750px;top:340px;width:180px;height:180px;border-radius:50%;background:#376259;color:#EEDECE;font-size:120px;font-weight:800;display:flex;align-items:center;justify-content:center;opacity:0;box-shadow:0 0 0 10px #1F3B35}
+.bub{position:absolute;left:420px;top:1210px;max-width:510px;border-radius:30px;background:#EEDECE;padding:18px 30px;font-size:48px;font-weight:800;color:#1F3B35;opacity:0}
+.lab{position:absolute;left:420px;top:1190px;font-size:40px;font-weight:800;color:#EEDECE;opacity:0}
+.rsn{position:absolute;left:420px;top:1210px;width:510px;font-size:48px;font-weight:700;line-height:1.08;color:#EEDECE;opacity:0}
+.conf{position:absolute;width:16px;height:26px;border-radius:4px;background:#97B9A8;opacity:0}
+</style></head>
+<body><div id="stage"></div>
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const lin=(t,a,b)=>cl((t-a)/(b-a));
+const eo=x=>1-Math.pow(1-x,3);
+const eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const back=x=>{const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const C={pinho:'#376259',salvia:'#97B9A8',nevoa:'#BDCBCB',areia:'#EEDECE',dark:'#1F3B35',w:'#fff'};
+const S=[['s1',0],['f1',5.8],['f2',17.3],['f3',26.4],['f4',36.3],['s6',46.0],['s7',52.3]];
+const END=59.3;
+const TR={f1:{k:'circle',x:540,y:840},f2:{k:'top'},f3:{k:'left'},f4:{k:'flip'},s6:{k:'circle',x:840,y:270},s7:{k:'top'}};
+const TD=0.5;
+const ANS=['JURAMENTADA','SIMPLES','DEPENDE'];
+const Q={
+ 1:{txt:'Contrato em inglês para processo judicial brasileiro.',icon:'law',rafa:1,right:0,pills:[4.1,4.5,4.9],cd:[5.9,6.5,7.1],res:7.7,rs:8.2,rsn:'Na Justiça, a regra é juramentada.',say:'Simples!'},
+ 2:{txt:'Currículo para uma vaga no exterior.',icon:'cv',rafa:0,right:1,pills:null,cd:[3.9,4.5,5.1],res:5.7,rs:6.2,rsn:'Empresas costumam aceitar tradução simples.',say:'Juramentada!'},
+ 3:{txt:'Certidão de casamento do exterior, para registrar aqui.',icon:'rings',rafa:0,right:0,pills:null,cd:[4.7,5.3,5.9],res:6.5,rs:7.0,rsn:'Cartório pede apostila e juramentada.',say:'Juramentada!'},
+ 4:{txt:'Histórico escolar para uma faculdade no exterior.',icon:'grade',rafa:1,right:2,pills:null,cd:[4.3,4.8,5.3],res:5.8,rs:6.4,rsn:'Quem recebe define. Confira a regra.',say:'Simples!'}};
+const SCORE_BEFORE={1:0,2:0,3:0,4:1};
+
+
+// ---------- Figur (Marina = langes Haar) ----------
+let LID=0;
+function figSVG(o={}){
+  const id='L'+(LID++); const hood=o.hood||C.salvia, skin=C.areia, hair=o.hair||C.dark, pants=C.dark;
+  const longHair=o.long?`<path class="ol" d="M58 110 Q40 250 70 300 L230 300 Q262 250 242 110 Z" fill="${hair}"/>`:'';
+  const fringe=o.long?`<path class="ol" d="M62 108 Q56 18 150 14 Q246 16 240 108 Q200 50 150 56 Q100 50 62 108 Z" fill="${hair}"/>`
+                     :`<path class="ol" d="M64 100 Q60 20 150 16 Q246 18 238 104 Q214 70 182 66 Q170 92 120 70 Q92 74 64 100 Z" fill="${hair}"/>`;
+  return {id,html:`<svg class="lucas" id="${id}" viewBox="-20 -20 340 840" width="${o.w||300}" style="overflow:visible;--lo:${o.lo||C.dark}">
+  <g id="${id}hb">${longHair}</g>
+  <g id="${id}legs"><rect class="ol" x="88" y="470" width="62" height="280" rx="26" fill="${pants}"/><rect class="ol" x="150" y="470" width="62" height="280" rx="26" fill="${pants}"/>
+  <ellipse class="ol" cx="115" cy="772" rx="42" ry="22" fill="${C.w}"/><ellipse class="ol" cx="186" cy="772" rx="42" ry="22" fill="${C.w}"/></g>
+  <g id="${id}armL" style="transform-origin:78px 235px"><rect class="ol" x="52" y="225" width="46" height="215" rx="23" fill="${hood}"/><circle class="ol" cx="75" cy="450" r="26" fill="${skin}"/></g>
+  <path class="ol" d="M70 250 Q70 200 150 196 Q230 200 230 250 L236 480 Q150 496 64 480 Z" fill="${hood}"/>
+  <path class="ol" d="M112 330 H188 V392 Q150 404 112 392 Z" fill="${hood}"/>
+  <path class="ol" d="M118 200 Q150 236 182 200" fill="none"/>
+  <g id="${id}head" style="transform-origin:150px 190px">
+   <rect class="ol" x="132" y="170" width="36" height="34" fill="${skin}"/>
+   <circle class="ol" cx="150" cy="105" r="88" fill="${skin}"/>
+   ${fringe}
+   <circle class="ol" cx="62" cy="112" r="14" fill="${skin}"/><circle class="ol" cx="238" cy="112" r="14" fill="${skin}"/>
+   <g id="${id}eyes" style="transform-origin:150px 108px"><ellipse cx="118" cy="108" rx="10" ry="13" fill="${C.dark}"/><ellipse cx="182" cy="108" rx="10" ry="13" fill="${C.dark}"/></g>
+   <path id="${id}m_smile" d="M118 142 Q150 168 182 142" stroke="${C.dark}" stroke-width="7" fill="none" stroke-linecap="round"/>
+   <path id="${id}m_grin" d="M112 136 Q150 136 188 136 Q184 178 150 180 Q116 178 112 136 Z" fill="${C.dark}" style="display:none"/>
+   <ellipse id="${id}m_o" cx="150" cy="150" rx="14" ry="18" fill="${C.dark}" style="display:none"/>
+   <path id="${id}m_flat" d="M126 150 Q150 142 174 150" stroke="${C.dark}" stroke-width="7" fill="none" stroke-linecap="round" style="display:none"/>
+  </g>
+  <g id="${id}armR" style="transform-origin:222px 235px"><rect class="ol" x="202" y="225" width="46" height="215" rx="23" fill="${hood}"/><circle class="ol" cx="225" cy="450" r="26" fill="${skin}"/></g>
+  </svg>`};
+}
+function mouth(id,m){['smile','grin','o','flat'].forEach(k=>{const e=$(id+'m_'+k);if(e)e.style.display=(k===m?'block':'none')})}
+function blink(id,t,seed=0){const p=((t+seed)%3.1);const s=p<.12?1-Math.sin(p/.12*Math.PI)*.92:1;$(id+'eyes').style.transform=`scaleY(${s})`}
+// kleine Avatar-Köpfe der Gruppe
+function avatar(kind,size=110){
+  const hair={pedro:`<path d="M18 46 Q16 8 55 6 Q96 8 92 46 Q80 28 55 30 Q30 28 18 46 Z" fill="${C.dark}"/>`,
+              ana:`<circle cx="55" cy="10" r="15" fill="${C.pinho}" stroke="${C.dark}" stroke-width="4"/><path d="M16 50 Q14 10 55 10 Q96 10 94 50 Q76 26 55 28 Q34 26 16 50 Z" fill="${C.pinho}"/>`,
+              leo:`<g fill="${C.salvia}" stroke="${C.dark}" stroke-width="4">${[[24,30],[40,16],[58,12],[76,18],[88,34],[30,20],[68,10]].map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="13"/>`).join('')}</g>`,
+              marina:`<path d="M14 56 Q10 6 55 6 Q100 6 96 56 Q80 26 55 28 Q30 26 14 56 Z" fill="${C.dark}"/>`}[kind];
+  const bg={pedro:C.salvia,ana:C.areia,leo:C.pinho,marina:C.salvia}[kind];
+  return `<svg width="${size}" height="${size}" viewBox="0 0 110 110"><circle cx="55" cy="55" r="53" fill="${bg}"/>
+   <circle cx="55" cy="60" r="36" fill="${C.areia}" stroke="${C.dark}" stroke-width="4"/>${hair}
+   <circle cx="43" cy="62" r="4" fill="${C.dark}"/><circle cx="67" cy="62" r="4" fill="${C.dark}"/><path d="M45 76 Q55 84 65 76" stroke="${C.dark}" stroke-width="4" fill="none" stroke-linecap="round"/></svg>`;
+}
+// ---------- helpers ----------
+function txtIn(el,t,a,dur=.4){const p=eo(lin(t,a,a+dur));el.style.opacity=p;el.style.transform=`translateY(${(1-p)*24}px)`}
+function popIn(el,t,a,dur=.35,base=''){const p=lin(t,a,a+dur);el.style.opacity=p>0?1:0;const s=p<=0?0:back(p);el.style.transform=base+` scale(${s})`}
+function drift(el,t,ax,ay,ph){el.style.transform=`translate(${Math.sin(t/6*2*Math.PI+ph)*ax}px,${Math.cos(t/6*2*Math.PI+ph)*ay}px)`}
+function shapes(col,arr){return arr.map((s,i)=>`<div class="shape sh" data-ph="${i*1.7}" style="left:${s[0]}px;top:${s[1]}px;width:${s[2]}px;height:${s[2]}px;background:${col}"></div>`).join('')}
+function check(col,size,stroke='#fff'){return `<svg width="${size}" height="${size}" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="${col}"/><path d="M6.5 12.5 L10.5 16.5 L17.5 8" stroke="${stroke}" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`}
+function sh(sc,t){document.querySelectorAll('#'+sc+' .sh').forEach(e=>drift(e,t,30,30,+e.dataset.ph))}
+// ---------- Bausteine ----------
+function icon(kind){
+  const doc=(inner)=>`<svg width="120" height="120" viewBox="0 0 120 120"><circle cx="60" cy="60" r="60" fill="${C.pinho}"/><rect x="32" y="22" width="56" height="76" rx="6" fill="#fff" stroke="${C.dark}" stroke-width="4"/>${inner}</svg>`;
+  return {law:doc(`<path d="M42 40 H78 M42 52 H78 M42 64 H66" stroke="${C.nevoa}" stroke-width="5" stroke-linecap="round"/><g transform="rotate(-35 80 84)"><rect x="66" y="74" width="30" height="16" rx="4" fill="${C.salvia}" stroke="${C.dark}" stroke-width="4"/><rect x="78" y="88" width="6" height="22" fill="${C.dark}"/></g>`),
+   cv:doc(`<circle cx="60" cy="44" r="10" fill="${C.salvia}" stroke="${C.dark}" stroke-width="3"/><path d="M44 66 H76 M44 76 H76 M44 86 H64" stroke="${C.nevoa}" stroke-width="5" stroke-linecap="round"/>`),
+   rings:doc(`<path d="M42 38 H78" stroke="${C.nevoa}" stroke-width="5" stroke-linecap="round"/><circle cx="52" cy="68" r="12" fill="none" stroke="${C.salvia}" stroke-width="6"/><circle cx="68" cy="68" r="12" fill="none" stroke="${C.pinho}" stroke-width="6"/>`),
+   grade:doc(`<g stroke="${C.nevoa}" stroke-width="3"><path d="M40 40 H80 M40 54 H80 M40 68 H80 M40 82 H80 M60 34 V88"/></g><path d="M66 46 L70 50 L76 42" stroke="${C.pinho}" stroke-width="4" fill="none"/>`)}[kind];
+}
+function rafaChip(size=64){return `<svg width="${size}" height="${size}" viewBox="0 0 110 110"><circle cx="55" cy="55" r="53" fill="${C.salvia}" stroke="${C.dark}" stroke-width="4"/><circle cx="55" cy="60" r="36" fill="${C.areia}" stroke="${C.dark}" stroke-width="4"/><g fill="${C.dark}">${[[28,34],[42,24],[58,22],[74,26],[84,38]].map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="11"/>`).join('')}</g><circle cx="43" cy="62" r="4" fill="${C.dark}"/><circle cx="67" cy="62" r="4" fill="${C.dark}"/><path d="M45 76 Q55 84 65 76" stroke="${C.dark}" stroke-width="4" fill="none" stroke-linecap="round"/></svg>`}
+function xMark(size=64){return `<svg width="${size}" height="${size}" viewBox="0 0 64 64"><circle cx="32" cy="32" r="31" fill="${C.dark}" stroke="${C.areia}" stroke-width="3"/><path d="M21 21 L43 43 M43 21 L21 43" stroke="${C.areia}" stroke-width="6" stroke-linecap="round"/></svg>`}
+function checkD(size=72){return `<svg width="${size}" height="${size}" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="${C.dark}"/><path d="M6.5 12.5 L10.5 16.5 L17.5 8" stroke="${C.areia}" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`}
+const FIG={};
+function rafaStage(key,discCol){
+  const F=figSVG({w:260,hood:C.areia,lo:C.nevoa}); FIG[key]=F;
+  // Locken
+  const curls=`<g fill="${C.dark}" stroke="${C.nevoa}" stroke-width="5">${[[74,70],[96,40],[128,24],[162,22],[196,32],[224,58],[238,92],[64,100]].map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="26"/>`).join('')}</g>`;
+  return `<div class="abs" style="left:0;top:1400px;width:1080px;height:520px;background:${C.pinho}"></div>
+  <div class="abs" style="left:10px;top:1150px;width:340px;height:340px;border-radius:50%;background:${discCol}"></div>
+  <div class="abs" id="${key}R" style="left:50px;top:1120px;width:300px;height:360px;overflow:hidden"><div class="abs" id="${key}Rin" style="left:0;top:0">${F.html.replace('<g id="'+F.id+'hb">','<g id="'+F.id+'hb">'+curls)}</div></div>
+  <div class="abs" id="${key}B" style="left:250px;top:1330px;width:140px;height:140px">
+    <div class="abs" id="${key}Bring" style="left:-10px;top:30px;width:160px;height:60px;border-radius:50%;border:6px solid ${C.salvia};opacity:0"></div>
+    <div class="abs" id="${key}Bdome" style="left:10px;top:20px;width:120px;height:70px;border-radius:60px 60px 10px 10px;background:${C.salvia};border:5px solid ${C.dark}"></div>
+    <div class="abs" style="left:0;top:80px;width:140px;height:50px;border-radius:12px;background:${C.pinho};border:5px solid ${C.dark}"></div></div>`;
+}
+function buzz(key,t,times){let d=0;for(const a of times){if(t>=a&&t<a+.25)d=Math.sin((t-a)/.25*Math.PI)}
+  $(key+'Bdome').style.transform=`translateY(${d*12}px)`; $(key+'Bring').style.opacity=d*1; $(key+'Bring').style.transform=`scale(${1+d*.3})`;
+  const F=FIG[key]; $(F.id+'armR').style.transform=`rotate(${-20-d*25}deg)`;}
+function confetti(n){let h='';for(let i=0;i<n;i++)h+=`<div class="conf" data-i="${i}" style="left:${790+(i%5)*6}px;top:260px"></div>`;return h}
+function confAt(sc,t,a){document.querySelectorAll('#'+sc+' .conf').forEach(e=>{const i=+e.dataset.i;const p=t-a;if(p<0||p>1.4){e.style.opacity=0;return}
+  const ang=(-150+i*(120/ (14)))*Math.PI/180, v=520+((i*37)%5)*60; const x=Math.cos(ang)*v*p, y=Math.sin(ang)*v*p+900*p*p;
+  e.style.opacity=1-lin(p,1.0,1.4); e.style.transform=`translate(${x}px,${y}px) rotate(${p*720+i*40}deg)`; e.style.background=i%3?C.salvia:C.areia;})}
+function shapes(col,arr){return arr.map((s,i)=>`<div class="shape sh" data-ph="${i*1.7}" style="left:${s[0]}px;top:${s[1]}px;width:${s[2]}px;height:${s[2]}px;background:${col}"></div>`).join('')}
+function tafel(id,score){return `<div class="tafel" id="${id}">RAFA <span id="${id}n" style="display:inline-block">${score}</span>/4</div>`}
+
+function caseScene(n){const q=Q[n];
+  return `<div class="scene" id="f${n}" style="background:${C.dark}">
+  ${shapes(C.pinho,[[760,560,420],[-240,820,460]])}
+  <div class="kick" id="k${n}">CASO ${n}/4</div>
+  ${confetti(14)}
+  ${tafel('t'+n,SCORE_BEFORE[n])}
+  <div class="card" id="c${n}"><div class="abs" style="left:40px;top:40px">${icon(q.icon)}</div><div class="ctext" id="ct${n}">${q.txt}</div></div>
+  <div class="cd" id="cd${n}"></div>
+  ${ANS.map((a,i)=>`<div class="row" id="r${n}_${i}" style="top:${790+i*125}px"><div class="lt">${'ABC'[i]}</div>${a}
+     <div class="abs" id="ok${n}_${i}" style="left:644px;top:14px;opacity:0">${checkD(72)}</div>
+     <div class="abs" id="ch${n}_${i}" style="left:753px;top:18px;opacity:0">${rafaChip(64)}<div class="abs" id="x${n}_${i}" style="left:0;top:0;opacity:0">${xMark(64)}</div></div></div>`).join('')}
+  ${rafaStage('f'+n,C.pinho)}
+  <div class="bub" id="bb${n}">${q.say}</div>
+  <div class="lab" id="lb${n}">${q.rafa===q.right?'Rafa acertou':'Rafa errou'}</div>
+  <div class="rsn" id="rs${n}">${q.rsn}</div>
+  </div>`;
+}
+
+const stage=$('stage');
+stage.innerHTML=`
+<div class="scene" id="s1" style="background:${C.dark}">
+  ${shapes(C.pinho,[[700,120,420],[-220,700,460]])}
+  ${tafel('t0',0)}
+  <div class="hl" id="s1h" style="top:340px;font-size:96px;color:${C.areia}">Juramentada<br>ou não?</div>
+  <div class="sl" id="s1s" style="top:583px;color:#fff">O Rafa jogou. Você acerta as 4?</div>
+  <div class="abs" id="s1c" style="left:90px;top:700px;width:840px;height:320px;border-radius:28px;background:${C.areia};box-shadow:0 14px 0 rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center;font-size:200px;font-weight:800;color:${C.pinho}">?</div>
+  ${rafaStage('s1',C.pinho)}
+</div>
+${[1,2,3,4].map(caseScene).join('')}
+<div class="scene" id="s6" style="background:${C.pinho}">
+  ${shapes('rgba(31,59,53,.35)',[[720,120,380],[-220,700,460]])}
+  <div class="hl" id="s6h" style="top:340px;font-size:88px;color:${C.areia}">Rafa acertou<br>1 de 4.</div>
+  <div class="sl" id="s6s" style="top:560px;color:#fff">E você, quantas acertou? Comenta aí.</div>
+  <div class="abs" id="s6t" style="left:300px;top:820px;width:480px;height:200px;border-radius:100px;background:${C.dark};color:${C.areia};font-size:140px;font-weight:800;display:flex;align-items:center;justify-content:center">1/4</div>
+  ${rafaStage('s6',C.dark).replace('background:'+C.pinho+'"></div>','background:'+C.dark+'"></div>')}
+</div>
+<div class="scene" id="s7" style="background:${C.pinho}">
+  ${shapes('rgba(31,59,53,.28)',[[-160,180,400],[760,1300,420]])}
+  <div class="abs e7" style="left:90px;top:300px;font-size:48px;font-weight:700;color:${C.areia};letter-spacing:1px">Tradução juramentada</div>
+  <div class="hl e7" style="top:370px;font-size:80px;color:#fff">Preço na hora<br>no site.</div>
+  <div class="abs e7" style="left:90px;top:600px;width:640px;height:132px;border-radius:66px;background:${C.areia};display:flex;align-items:center;justify-content:center;font-size:66px;font-weight:800;color:${C.dark};letter-spacing:-1px">traduzme.com.br</div>
+  <div class="abs e7" style="left:90px;top:800px"><div style="font-size:32px;font-weight:700;color:${C.areia};letter-spacing:4px">WHATSAPP</div><div style="font-size:60px;font-weight:700;color:#fff;margin-top:4px">(61) 99803-8363</div></div>
+  <div class="abs" id="s7g" style="left:0;top:0;width:1080px;height:1920px">
+   <div class="abs" style="left:505px;top:960px;width:420px;height:420px;border-radius:50%;background:${C.salvia}"></div>
+   <div class="abs" id="s7F" style="left:600px;top:930px;width:260px;height:560px;overflow:hidden"><div id="s7Fin"></div></div>
+  </div>
+</div>`;
+// Endcard-Figur
+{const F=figSVG({w:227,hood:C.areia,lo:C.dark});FIG.s7=F;const curls=`<g fill="${C.dark}" stroke="${C.dark}" stroke-width="5">${[[74,70],[96,40],[128,24],[162,22],[196,32],[224,58],[238,92],[64,100]].map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="26"/>`).join('')}</g>`;
+ $('s7Fin').innerHTML=F.html.replace('<g id="'+F.id+'hb">','<g id="'+F.id+'hb">'+curls);}
+
+// ---------- Renderer ----------
+const R={};
+function rafaIdle(key,t){const F=FIG[key]; blink(F.id,t,key.length*.7); $(F.id+'armL').style.transform='rotate(8deg)'; $(key+'Rin').style.transform=`translateY(${Math.sin(t*2.2)*4}px)`}
+R.s1=t=>{sh('s1',t); popIn($('t0'),t,0,.35); txtIn($('s1h'),t,.3); txtIn($('s1s'),t,1.9); if(t<1.9)$('s1s').style.opacity=0;
+  popIn($('s1c'),t,.15,.4); $('s1c').style.transform+=` rotate(${Math.sin(t*3)*.8}deg)`;
+  rafaIdle('s1',t); $('s1R').style.transform=`translateY(${(1-eo(lin(t,0,.5)))*300}px)`; $('s1B').style.transform=$('s1R').style.transform;
+  buzz('s1',t,[.8,3.0]); mouth(FIG.s1.id,(t>.8&&t<1.3)||(t>3&&t<3.5)?'grin':'smile');};
+function caseR(n,t){const q=Q[n],sc='f'+n; sh(sc,t);
+  txtIn($('k'+n),t,.3,.3); $('t'+n).style.opacity=1;
+  const ci=eo(lin(t,.2,.6)); $('c'+n).style.transform=`translateY(${(1-ci)*-60}px) scale(${.9+.1*ci})`; $('c'+n).style.opacity=ci;
+  txtIn($('ct'+n),t,.5,.35);
+  for(let i=0;i<3;i++){const r=$('r'+n+'_'+i); const a=q.pills?q.pills[i]:.35+i*.08;
+    const p=eo(lin(t,a,a+.3)); r.style.opacity=p; r.style.transform=`translateX(${(1-p)*400}px)`;
+    // Rafa-Wahl
+    const ch=$('ch'+n+'_'+i); if(i===q.rafa){popIn(ch,t,q.cd[0]+.3,.3); r.style.boxShadow=t>q.cd[0]+.3?`0 0 0 6px ${C.areia}, 0 8px 0 rgba(0,0,0,.25)`:'0 8px 0 rgba(0,0,0,.25)'} else ch.style.opacity=0;
+    // Auflösung
+    if(t>=q.res){ if(i===q.right){r.style.background=C.salvia; popIn($('ok'+n+'_'+i),t,q.res,.3); const pr=lin(t,q.res,q.res+.3); r.style.boxShadow=`0 0 0 ${6+8*Math.sin(pr*Math.PI)}px ${pr<1?C.salvia:(i===q.rafa?C.areia:'transparent')}, 0 8px 0 rgba(0,0,0,.25)`;}
+      else {r.style.opacity=1-.65*lin(t,q.res,q.res+.3); $('ok'+n+'_'+i).style.opacity=0}
+      if(i===q.rafa&&q.rafa!==q.right)popIn($('x'+n+'_'+i),t,q.res+.1,.3); else $('x'+n+'_'+i).style.opacity=0;
+    } else {r.style.background=C.nevoa; $('ok'+n+'_'+i).style.opacity=0; $('x'+n+'_'+i).style.opacity=0;}
+  }
+  // Countdown
+  const cd=$('cd'+n); let dig=null; q.cd.forEach((a,i)=>{if(t>=a)dig=3-i}); if(t>=q.res)dig=null;
+  if(dig){cd.style.opacity=1; cd.textContent=dig; const a=q.cd[3-dig]; const pp=lin(t,a,a+.25); cd.style.transform=`scale(${1.25-.25*eo(pp)})`} else cd.style.opacity=t>=q.res?1-lin(t,q.res,q.res+.2):0;
+  // Rafa
+  rafaIdle(sc,t); $(sc+'R').style.transform=`translateY(${(1-eo(lin(t,0,.5)))*200}px)`;
+  buzz(sc,t,[q.cd[0]]); const F=FIG[sc];
+  popIn($('bb'+n),t,q.cd[0],.3); if(t>q.res)$('bb'+n).style.opacity=1-lin(t,q.res,q.res+.15);
+   txtIn($('rs'+n),t,q.rs,.4); if(t<q.rs)$('rs'+n).style.opacity=0; $('lb'+n).style.opacity=0;
+  const hit=q.rafa===q.right;
+  if(t<q.cd[0])mouth(F.id,'flat'); else if(t<q.res)mouth(F.id,'smile'); else mouth(F.id,hit?'grin':'o');
+  if(t>=q.res){ if(hit){const u=eo(lin(t,q.res,q.res+.3)); $(F.id+'armR').style.transform=`rotate(${-20-140*u}deg)`; $(F.id+'armL').style.transform=`rotate(${140*u}deg)`}
+    else {const u=eo(lin(t,q.res,q.res+.25)); $(F.id+'armR').style.transform=`rotate(${-20+178*u}deg)`; $(F.id+'head').style.transform=`rotate(${-10*u}deg) translateY(${8*u}px)`}} else $(F.id+'head').style.transform='none';
+  // Tafel
+  const tn=$('t'+n+'n'); if(hit&&t>=q.res+.3){tn.textContent=SCORE_BEFORE[n]+1; const p=lin(t,q.res+.3,q.res+.6); tn.style.transform=`scale(${1.3-.3*eo(p)})`; confAt(sc,t,q.res+.3)} else {tn.textContent=SCORE_BEFORE[n]; tn.style.transform='none'; confAt(sc,t,99)}
+}
+R.f1=t=>caseR(1,t); R.f2=t=>caseR(2,t); R.f3=t=>caseR(3,t); R.f4=t=>caseR(4,t);
+R.s6=t=>{sh('s6',t); txtIn($('s6h'),t,.3); txtIn($('s6s'),t,2.7); if(t<2.7)$('s6s').style.opacity=0;
+  const p=lin(t,.6,1.0); $('s6t').style.opacity=p>0?1:0; $('s6t').style.transform=`scale(${p<=0?0:back(p)})`;
+  rafaIdle('s6',t); const F=FIG.s6; mouth(F.id,'smile'); const sh2=Math.max(0,Math.sin((t-1)*2.4)); $(F.id+'armR').style.transform=`rotate(${-30-sh2*30}deg)`; $(F.id+'armL').style.transform=`rotate(${30+sh2*30}deg)`;
+  $('s6R').style.transform=`translateY(${(1-eo(lin(t,0,.5)))*200}px)`; $('s6B').style.opacity=0;};
+R.s7=t=>{sh('s7',t);
+  document.querySelectorAll('#s7 .e7').forEach((e,i)=>{const a=.5+i*.2;const p=eo(lin(t,a,a+.4));e.style.opacity=p;e.style.transform=`translateY(${(1-p)*24}px)`});
+  {const p=eo(lin(t,.5,.9));$('s7g').style.opacity=p;$('s7g').style.transform=`translate(-25px,${(1-p)*40}px)`}
+  const F=FIG.s7; blink(F.id,t,.5); mouth(F.id,'grin');
+  const w=(t%2)<.8?Math.sin((t%2)/.8*Math.PI*2)*25:0; $(F.id+'armR').style.transform=`rotate(${-150+w}deg)`; $(F.id+'armL').style.transform='rotate(30deg)';};
+
+function sceneAt(t){let c=0;for(let i=0;i<S.length;i++)if(t>=S[i][1])c=i;return c}
+function render(t){const i=sceneAt(t); const [id,st]=S[i];
+  document.querySelectorAll('.scene').forEach(s=>{s.style.display='none';s.style.clipPath='none';s.style.zIndex=1});
+  const cur=$(id); cur.style.display='block'; R[id](t-st);
+  const tr=TR[id]; const d=t-st;
+  if(tr&&d<TD&&i>0){const [pid,pst]=S[i-1]; const prev=$(pid); prev.style.display='block'; prev.style.zIndex=1; cur.style.zIndex=2; R[pid](t-pst);
+    const p=eio(d/TD);
+    if(tr.k==='circle')cur.style.clipPath=`circle(${p*2300}px at ${tr.x}px ${tr.y}px)`;
+    if(tr.k==='top')cur.style.clipPath=`inset(0 0 ${(1-p)*100}% 0)`;
+    if(tr.k==='left')cur.style.clipPath=`inset(0 ${(1-p)*100}% 0 0)`;
+    if(tr.k==='flip')cur.style.clipPath=`inset(0 ${(1-p)*50}% 0 ${(1-p)*50}%)`;}
+  // Shake bei Auflösung
+  let sx=0; [1,2,3,4].forEach(n=>{const ds=t-(S[n][1]+Q[n].res); if(ds>0&&ds<.3)sx=(1-ds/.3)*10});
+  stage.style.transform=sx?`translate(${Math.sin(t*90)*sx}px,${Math.cos(t*70)*sx}px)`:'none';
+}
+</script></body></html>

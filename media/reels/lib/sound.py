@@ -41,7 +41,7 @@ class Song:
             if t+s.B*.5>=a: k=kk
         return k
     def put(s, bus, sig, t, g=1.0, pan=0.0):
-        if bus in ('kick','bass') and any(0<t-h<.25 for h in getattr(s,'hits',())): return
+        if bus in ('kick','bass') and any(-.06<t-h<.25 and abs(t-h)>1e-6 for h in getattr(s,'hits',())): return
         i = int(t*SR)
         if i >= s.N or i < 0: return
         x = sig[:s.N-i]*g
@@ -130,8 +130,8 @@ class Song:
         return x*np.exp(-t*4)*.22
     def bell(s, m, dur=.6):
         n=int(dur*SR); t=np.arange(n)/SR; f=hz(m)
-        x=np.sin(2*np.pi*f*t+2*np.sin(2*np.pi*f*3.5*t)*np.exp(-t*8))
-        return x*np.exp(-t*5)*.16
+        x=np.sin(2*np.pi*f*t+1.3*np.sin(2*np.pi*f*3.5*t)*np.exp(-t*8))
+        return x*np.exp(-t*5)*.10
     def marimba(s, m, dur=.4):
         n=int(dur*SR); t=np.arange(n)/SR; f=hz(m)
         return (np.sin(2*np.pi*f*t)+.3*np.sin(2*np.pi*f*4*t)*np.exp(-t*30))*np.exp(-t*9)*.3
@@ -217,7 +217,7 @@ class Song:
             for i in range(2): s.put('drums', s.hat(), t0+i*B/2+sw(i), .45, .2)
         elif kind=='phonk':
             if beat in (0,2): s.put('kick', s.kick(1.1), t0); s.kicks.append(t0)
-            if beat in (1,3): s.put('drums', s.clap(), t0, .9)
+            if beat in (1,3): s.put('drums', s.clap(), t0, .7)
             for i in range(4): s.put('drums', s.hat(), t0+i*B/4, .4, .25)
             s.put('drums', s.cowbell(560 if beat%2 else 700), t0+B*.5, .8, -.2)
         elif kind=='afro':
@@ -291,7 +291,7 @@ class Song:
         return x*(1-wet)+y*wet*2.2
     def write(s, path, target_db=-11.0, fade=(None,None)):
         N=s.N
-        s.kicks=[k for k in s.kicks if not any(0<k-h<.25 for h in getattr(s,'hits',()))]
+        s.kicks=[k for k in s.kicks if not any(-.06<k-h<.25 and abs(k-h)>1e-6 for h in getattr(s,'hits',()))]
         # sidechain envelope from kicks
         sc=np.ones(N); L=int(s.B*.55*SR); curve=1-.62*np.exp(-np.arange(L)/(SR*.07))
         for k in s.kicks:
@@ -311,9 +311,9 @@ class Song:
         mix=s.hp(mix,28)
         fo=int((fade[0] or s.dur-1.3)*SR); fe=int((fade[1] or s.dur-.25)*SR)
         mix[fo:fe]*=np.linspace(1,0,fe-fo)[:,None]; mix[fe:]=0
-        mix=np.tanh(mix*1.3)/np.tanh(1.3)
+        mix=np.tanh(mix*1.6)/np.tanh(1.6)
         rms=np.sqrt(np.mean(mix[:fo]**2)); g=10**(target_db/20)/max(rms,1e-9)
-        mix*=min(g,.97/np.abs(mix).max()); mix=np.clip(mix,-1,1)
+        mix*=min(g,.89/np.abs(mix).max()); mix=np.clip(mix,-1,1)
         with wave.open(path,'wb') as w:
             w.setnchannels(2); w.setsampwidth(2); w.setframerate(SR); w.writeframes((mix*32767).astype('<i2').tobytes())
         return 20*np.log10(np.sqrt(np.mean(mix[:fo]**2)))

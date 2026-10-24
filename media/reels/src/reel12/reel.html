@@ -1,0 +1,300 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/os.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',sans-serif;background:#376259}
+#stage{position:absolute;inset:0;overflow:hidden}
+.scene{position:absolute;inset:0;display:none;overflow:hidden}
+.abs{position:absolute}
+.hl{position:absolute;left:90px;width:840px;font-size:84px;font-weight:800;line-height:1.08;letter-spacing:-1px}
+.sl{position:absolute;left:90px;width:840px;font-size:54px;font-weight:600;line-height:1.2}
+.kick{position:absolute;left:90px;top:372px;font-size:52px;font-weight:800;letter-spacing:2px}
+.card{position:absolute;background:#fff;border-radius:28px;box-shadow:0 14px 0 rgba(31,59,53,.15)}
+.shape{position:absolute;border-radius:50%}
+.badge{position:absolute;left:90px;top:225px;height:110px;width:150px;border-radius:55px;display:flex;align-items:center;justify-content:center;font-size:56px;font-weight:800}
+.lucas .ol{stroke:var(--lo,#1F3B35);stroke-width:6;stroke-linejoin:round;stroke-linecap:round}
+.bar{height:22px;border-radius:11px;background:#e2e8e6;margin:20px 0}
+.chat{position:absolute;left:170px;top:760px;width:760px;height:720px;border-radius:32px;overflow:hidden;box-shadow:0 14px 0 rgba(31,59,53,.15)}
+.chat .top{height:88px;background:#376259;color:#fff;font-size:34px;font-weight:700;display:flex;align-items:center;padding:0 34px;gap:18px}
+.msg{position:absolute;display:flex;align-items:flex-end;gap:16px}
+.bub{border-radius:28px;padding:18px 26px;font-size:48px;font-weight:600;color:#1F3B35;line-height:1.18;box-shadow:0 6px 0 rgba(31,59,53,.10);position:relative}
+.bub .nm{font-size:32px;font-weight:700;color:#376259;margin-bottom:4px}
+.strike{position:absolute;left:18px;top:50%;height:8px;border-radius:4px;background:#1F3B35;width:0}
+.stamp{position:absolute;width:520px;height:200px;border-radius:24px;border:16px solid;display:flex;align-items:center;justify-content:center;font-size:130px;font-weight:800;letter-spacing:8px;opacity:0}
+.chip{display:inline-flex;align-items:center;gap:14px;background:#fff;border-radius:999px;padding:10px 26px;font-size:38px;font-weight:700;color:#1F3B35;box-shadow:0 8px 0 rgba(31,59,53,.15)}
+.row{display:flex;align-items:center;gap:18px;font-size:44px;font-weight:700;color:#1F3B35;margin-top:18px;opacity:0}
+</style></head>
+<body><div id="stage"></div>
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const lin=(t,a,b)=>cl((t-a)/(b-a));
+const eo=x=>1-Math.pow(1-x,3);
+const eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const back=x=>{const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const C={pinho:'#376259',salvia:'#97B9A8',nevoa:'#BDCBCB',areia:'#EEDECE',dark:'#1F3B35',w:'#fff'};
+
+const S=[['s1',0],['s2',5.4],['s3',17.0],['s4',28.6],['s5',40.2],['s6',47.8],['s7',58.8]];
+const END=65.8;
+const P={1:{kick:.6,stamp:5.0,swap:5.8,h:6.0,s:8.4},2:{kick:.6,stamp:4.6,swap:5.2,h:5.4,s:8.2},3:{kick:.6,stamp:4.4,swap:5.0,h:5.2,s:7.6}};
+const TR={s2:{k:'circle',x:540,y:1100},s3:{k:'top'},s4:{k:'circle',x:700,y:1100},s5:{k:'flip'},s6:{k:'circle',x:540,y:1500},s7:{k:'left'}};
+const TD=0.5;
+
+// ---------- Figur (Marina = langes Haar) ----------
+let LID=0;
+function figSVG(o={}){
+  const id='L'+(LID++); const hood=o.hood||C.salvia, skin=C.areia, hair=o.hair||C.dark, pants=C.dark;
+  const longHair=o.long?`<path class="ol" d="M58 110 Q40 250 70 300 L230 300 Q262 250 242 110 Z" fill="${hair}"/>`:'';
+  const fringe=o.long?`<path class="ol" d="M62 108 Q56 18 150 14 Q246 16 240 108 Q200 50 150 56 Q100 50 62 108 Z" fill="${hair}"/>`
+                     :`<path class="ol" d="M64 100 Q60 20 150 16 Q246 18 238 104 Q214 70 182 66 Q170 92 120 70 Q92 74 64 100 Z" fill="${hair}"/>`;
+  return {id,html:`<svg class="lucas" id="${id}" viewBox="-20 -20 340 840" width="${o.w||300}" style="overflow:visible;--lo:${o.lo||C.dark}">
+  <g id="${id}hb">${longHair}</g>
+  <g id="${id}legs"><rect class="ol" x="88" y="470" width="62" height="280" rx="26" fill="${pants}"/><rect class="ol" x="150" y="470" width="62" height="280" rx="26" fill="${pants}"/>
+  <ellipse class="ol" cx="115" cy="772" rx="42" ry="22" fill="${C.w}"/><ellipse class="ol" cx="186" cy="772" rx="42" ry="22" fill="${C.w}"/></g>
+  <g id="${id}armL" style="transform-origin:78px 235px"><rect class="ol" x="52" y="225" width="46" height="215" rx="23" fill="${hood}"/><circle class="ol" cx="75" cy="450" r="26" fill="${skin}"/></g>
+  <path class="ol" d="M70 250 Q70 200 150 196 Q230 200 230 250 L236 480 Q150 496 64 480 Z" fill="${hood}"/>
+  <path class="ol" d="M112 330 H188 V392 Q150 404 112 392 Z" fill="${hood}"/>
+  <path class="ol" d="M118 200 Q150 236 182 200" fill="none"/>
+  <g id="${id}head" style="transform-origin:150px 190px">
+   <rect class="ol" x="132" y="170" width="36" height="34" fill="${skin}"/>
+   <circle class="ol" cx="150" cy="105" r="88" fill="${skin}"/>
+   ${fringe}
+   <circle class="ol" cx="62" cy="112" r="14" fill="${skin}"/><circle class="ol" cx="238" cy="112" r="14" fill="${skin}"/>
+   <g id="${id}eyes" style="transform-origin:150px 108px"><ellipse cx="118" cy="108" rx="10" ry="13" fill="${C.dark}"/><ellipse cx="182" cy="108" rx="10" ry="13" fill="${C.dark}"/></g>
+   <path id="${id}m_smile" d="M118 142 Q150 168 182 142" stroke="${C.dark}" stroke-width="7" fill="none" stroke-linecap="round"/>
+   <path id="${id}m_grin" d="M112 136 Q150 136 188 136 Q184 178 150 180 Q116 178 112 136 Z" fill="${C.dark}" style="display:none"/>
+   <ellipse id="${id}m_o" cx="150" cy="150" rx="14" ry="18" fill="${C.dark}" style="display:none"/>
+   <path id="${id}m_flat" d="M126 150 Q150 142 174 150" stroke="${C.dark}" stroke-width="7" fill="none" stroke-linecap="round" style="display:none"/>
+  </g>
+  <g id="${id}armR" style="transform-origin:222px 235px"><rect class="ol" x="202" y="225" width="46" height="215" rx="23" fill="${hood}"/><circle class="ol" cx="225" cy="450" r="26" fill="${skin}"/></g>
+  </svg>`};
+}
+function mouth(id,m){['smile','grin','o','flat'].forEach(k=>{const e=$(id+'m_'+k);if(e)e.style.display=(k===m?'block':'none')})}
+function blink(id,t,seed=0){const p=((t+seed)%3.1);const s=p<.12?1-Math.sin(p/.12*Math.PI)*.92:1;$(id+'eyes').style.transform=`scaleY(${s})`}
+// kleine Avatar-Köpfe der Gruppe
+function avatar(kind,size=110){
+  const hair={pedro:`<path d="M18 46 Q16 8 55 6 Q96 8 92 46 Q80 28 55 30 Q30 28 18 46 Z" fill="${C.dark}"/>`,
+              ana:`<circle cx="55" cy="10" r="15" fill="${C.pinho}" stroke="${C.dark}" stroke-width="4"/><path d="M16 50 Q14 10 55 10 Q96 10 94 50 Q76 26 55 28 Q34 26 16 50 Z" fill="${C.pinho}"/>`,
+              leo:`<g fill="${C.salvia}" stroke="${C.dark}" stroke-width="4">${[[24,30],[40,16],[58,12],[76,18],[88,34],[30,20],[68,10]].map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="13"/>`).join('')}</g>`,
+              marina:`<path d="M14 56 Q10 6 55 6 Q100 6 96 56 Q80 26 55 28 Q30 26 14 56 Z" fill="${C.dark}"/>`}[kind];
+  const bg={pedro:C.salvia,ana:C.areia,leo:C.pinho,marina:C.salvia}[kind];
+  return `<svg width="${size}" height="${size}" viewBox="0 0 110 110"><circle cx="55" cy="55" r="53" fill="${bg}"/>
+   <circle cx="55" cy="60" r="36" fill="${C.areia}" stroke="${C.dark}" stroke-width="4"/>${hair}
+   <circle cx="43" cy="62" r="4" fill="${C.dark}"/><circle cx="67" cy="62" r="4" fill="${C.dark}"/><path d="M45 76 Q55 84 65 76" stroke="${C.dark}" stroke-width="4" fill="none" stroke-linecap="round"/></svg>`;
+}
+// ---------- helpers ----------
+function txtIn(el,t,a,dur=.4){const p=eo(lin(t,a,a+dur));el.style.opacity=p;el.style.transform=`translateY(${(1-p)*24}px)`}
+function popIn(el,t,a,dur=.35,base=''){const p=lin(t,a,a+dur);el.style.opacity=p>0?1:0;const s=p<=0?0:back(p);el.style.transform=base+` scale(${s})`}
+function drift(el,t,ax,ay,ph){el.style.transform=`translate(${Math.sin(t/6*2*Math.PI+ph)*ax}px,${Math.cos(t/6*2*Math.PI+ph)*ay}px)`}
+function shapes(col,arr){return arr.map((s,i)=>`<div class="shape sh" data-ph="${i*1.7}" style="left:${s[0]}px;top:${s[1]}px;width:${s[2]}px;height:${s[2]}px;background:${col}"></div>`).join('')}
+function check(col,size,stroke='#fff'){return `<svg width="${size}" height="${size}" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="${col}"/><path d="M6.5 12.5 L10.5 16.5 L17.5 8" stroke="${stroke}" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`}
+function sh(sc,t){document.querySelectorAll('#'+sc+' .sh').forEach(e=>drift(e,t,30,30,+e.dataset.ph))}
+function stamp(id,col,x,y){return `<div class="stamp" id="${id}" style="left:${x}px;top:${y}px;border-color:${col};color:${col}">MITO</div>`}
+function stampIn(el,t,a){const p=lin(t,a,a+.22);el.style.opacity=p>0?1:0;const s=2.2-1.2*eo(p);el.style.transform=`rotate(-12deg) scale(${s})`}
+
+// ---------- Figuren ----------
+const M1=figSVG({w:340,long:true}), M2=figSVG({w:300,long:true}), M3=figSVG({w:300,long:true}), M4=figSVG({w:300,long:true,lo:C.dark}),
+      M5=figSVG({w:340,long:true}), M7=figSVG({w:227,long:true});
+
+// Mythen-Szene (Bühne)
+function mythScene(n,bg,who,txt,H,Sub,obj,stampCol,textCol,kickCol,cardBg,badgeBg,badgeFg,figBg){
+  return `<div class="scene" id="s${n+1}" style="background:${bg}">
+  ${shapes('rgba(255,255,255,.28)',[[700,140,360],[-200,1250,460]])}
+  <div class="badge bd" style="background:${badgeBg};color:${badgeFg}">${n}/3</div>
+  <div class="kick" id="k${n}" style="color:${kickCol}">MITO OU VERDADE?</div>
+  <div class="hl" id="h${n}" style="top:360px;font-size:76px;color:${textCol}">${H}</div>
+  <div class="sl" id="s${n}s" style="top:560px;color:${textCol}">${Sub}</div>
+  <div class="abs" id="obj${n}" style="left:0;top:0;width:1080px;height:1920px">${obj}</div>
+  <div class="chat" id="cc${n}" style="background:${cardBg};height:480px">
+    <div class="top">${avatar('marina',56)} Intercâmbio 2027</div>
+    <div class="msg" id="mm${n}" style="left:28px;top:112px;width:700px">${avatar(who.toLowerCase().replace('é','e'),96)}
+      <div class="bub" id="bb${n}" style="background:#fff;max-width:570px"><div class="nm">${who}</div>${txt}<div class="strike" id="st${n}"></div></div></div>
+  </div>
+  ${stamp('mt'+n,stampCol,330,880)}
+  <div class="abs" id="fg${n}" style="left:20px;top:1180px;width:300px;height:320px;z-index:5;clip-path:inset(-600px -600px 0 -600px)">
+    <div class="abs" style="left:-10px;top:30px;width:320px;height:320px;border-radius:50%;background:${figBg}"></div>
+    <div class="abs" style="left:0;top:0">${[M2,M3,M4][n-1].html}</div></div>
+  </div>`;
+}
+const idCard=`<div class="card" id="idc" style="left:230px;top:790px;width:700px;height:440px;padding:40px">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start"><div><div style="font-size:28px;font-weight:700;letter-spacing:4px;color:${C.salvia}">REGISTRO</div>
+  <div style="font-size:64px;font-weight:800;color:${C.dark};line-height:1.05;margin-top:10px">TRADUTOR<br>PÚBLICO</div></div>
+  <div id="seal1">${check(C.pinho,150)}</div></div>
+  <div style="font-size:36px;font-weight:700;color:${C.pinho};margin-top:26px">matriculado na Junta Comercial</div>
+  <div class="bar" style="width:80%"></div><div class="bar" style="width:55%"></div></div>
+  <div class="abs" id="firma" style="left:400px;top:1280px;width:500px;height:180px;background:${C.w};border-radius:16px;box-shadow:0 8px 0 rgba(31,59,53,.15);padding:22px 24px">
+   <div style="font-size:50px;font-weight:800;color:${C.dark}">reconhecer firma</div><div class="bar" style="width:70%;margin:16px 0 0"></div>
+   <div class="abs" id="firmaX" style="left:22px;top:52px;height:8px;border-radius:4px;background:${C.dark};width:0"></div></div>`;
+const calObj=`<div class="card" id="cal" style="left:220px;top:790px;width:360px;height:400px;overflow:hidden">
+   <div style="height:90px;background:${C.pinho}"></div><div id="calm" style="font-size:96px;font-weight:800;color:${C.dark};text-align:center;margin-top:66px">OUT</div>
+   <div style="font-size:28px;font-weight:700;color:${C.salvia};text-align:center;letter-spacing:4px">MÊS</div></div>
+  <div class="card" id="trd" style="left:610px;top:770px;width:320px;height:460px;padding:32px">
+   <div style="font-size:30px;font-weight:700;letter-spacing:3px;color:${C.salvia}">TRADUÇÃO</div><div class="bar"></div><div class="bar" style="width:70%"></div><div class="bar" style="width:85%"></div>
+   <div style="position:absolute;right:24px;bottom:24px">${check(C.pinho,90)}</div></div>
+  <div class="abs" id="note" style="left:500px;top:1290px;width:400px;padding:22px 26px;background:${C.areia};border-radius:14px;box-shadow:0 8px 0 rgba(31,59,53,.15);font-size:44px;font-weight:800;color:${C.dark};transform:rotate(4deg)">Original recente?</div>`;
+const lapObj=`<div class="abs" id="papers" style="left:380px;top:800px;width:300px;height:380px">${[0,1,2,3,4].map(i=>`<div class="abs pp" style="left:${i*14}px;top:${i*10}px;width:240px;height:320px;background:#fff;border-radius:10px;box-shadow:0 6px 0 rgba(31,59,53,.15)"></div>`).join('')}</div>
+  <div class="abs" id="lap" style="left:370px;top:800px;width:560px;height:400px">
+    <div class="abs" style="left:20px;top:0;width:520px;height:340px;border-radius:22px;background:${C.dark};padding:16px">
+      <div style="width:100%;height:100%;border-radius:10px;background:#fff;padding:24px;position:relative">
+        <div style="font-size:26px;font-weight:700;letter-spacing:3px;color:${C.salvia}">PDF · TRADUÇÃO</div><div class="bar" style="width:80%"></div><div class="bar" style="width:60%"></div>
+        <div id="seal3" class="abs" style="right:20px;bottom:16px;width:200px;height:200px;border-radius:50%;background:${C.areia};border:6px solid ${C.pinho};display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-size:30px;font-weight:800;color:${C.pinho};line-height:1.1">${check(C.pinho,54)}<div style="margin-top:6px">assinatura<br>digital</div></div>
+      </div></div>
+    <div class="abs" style="left:0;top:340px;width:560px;height:30px;border-radius:0 0 18px 18px;background:${C.dark}"></div></div>
+  <div class="abs" id="env" style="left:520px;top:1270px;width:220px;height:140px"><svg width="220" height="140" viewBox="0 0 240 150"><rect x="6" y="6" width="228" height="138" rx="16" fill="#fff" stroke="${C.dark}" stroke-width="7"/><path d="M10 14 L120 86 L230 14" stroke="${C.dark}" stroke-width="7" fill="none"/></svg></div>`;
+
+const stage=$('stage');
+stage.innerHTML=`
+<div class="scene" id="s1" style="background:${C.nevoa}">
+  ${shapes('rgba(255,255,255,.35)',[[720,120,380],[-220,1320,480]])}
+  <div class="hl" id="s1h" style="top:350px;font-size:76px;color:${C.dark}">O grupo do<br>intercâmbio deu<br>3 dicas.</div>
+  <div class="hl" id="s1z" style="top:612px;font-size:80px;color:${C.pinho}">Todas erradas.</div>
+  <div class="chat" id="cc0" style="background:#fff;left:330px;width:600px">
+    <div class="top">${avatar('marina',56)} Intercâmbio 2027</div>
+    ${[['pedro',130],['ana',260],['leo',390]].map((a,i)=>`<div class="msg ph" style="left:150px;top:${a[1]}px">${avatar(a[0],84)}<div class="bub" style="background:${C.nevoa};width:${[300,240,330][i]}px;height:84px"></div></div>`).join('')}
+    <div class="msg" id="mb0" style="right:28px;top:530px"><div class="bub" style="background:${C.areia};display:flex;gap:16px;padding:30px 34px">${[0,1,2].map(i=>`<i class="td" style="display:block;width:22px;height:22px;border-radius:50%;background:${C.pinho}"></i>`).join('')}</div></div>
+  </div>
+  <div class="abs" id="s1F" style="left:40px;top:940px;width:340px;height:560px;clip-path:inset(-600px -600px 0 -600px)">${M1.html}</div>
+</div>
+${mythScene(1,C.areia,'Pedro','Eu traduzo, é só reconhecer firma.','Juramentada, só com tradutor público.','Firma reconhecida não vira juramentada.',idCard,C.dark,C.dark,C.pinho,'#fff',C.dark,C.areia,C.nevoa)}
+${mythScene(2,C.salvia,'Ana','Faz logo, mas vence em 90 dias.','A tradução não tem prazo próprio.','Original novo exigido? Aí, tradução nova.',calObj,C.dark,C.dark,C.dark,'#fff',C.dark,C.areia,C.areia)}
+${mythScene(3,C.pinho,'Léo','Tem que buscar no papel, pessoalmente.','Não precisa buscar no papel.','PDF assinado vale. Veja se aceitam.',lapObj,C.dark,'#fff',C.areia,C.nevoa,C.areia,C.dark,C.areia)}
+<div class="scene" id="s5" style="background:${C.areia}">
+  ${shapes('rgba(255,255,255,.5)',[[700,150,360],[-200,1300,460]])}
+  <div class="badge" id="b5" style="background:${C.pinho};color:#fff;padding:0">${check(C.pinho,110)}</div>
+  <div class="hl" id="s5h" style="top:360px;color:${C.dark}">Marina resolveu no site.</div>
+  <div class="sl" id="s5s" style="top:560px;color:${C.dark}">Preço na hora, Pix e PDF por e‑mail.</div>
+  <div class="abs" style="left:-80px;top:1040px;width:520px;height:520px;border-radius:50%;background:${C.nevoa}"></div>
+  <div class="abs" id="s5F" style="left:20px;top:1010px;width:340px;height:490px;clip-path:inset(-600px -600px 0 -600px)">${M5.html}</div>
+  <div class="abs" id="phone" style="left:420px;top:760px;width:500px;height:740px;border-radius:60px;background:${C.dark};padding:20px">
+    <div style="width:100%;height:100%;border-radius:42px;background:#fff;position:relative;overflow:hidden">
+      <div style="position:absolute;top:34px;left:0;right:0;text-align:center;font-weight:800;font-size:34px;color:${C.pinho}">traduzme</div>
+      <div id="up" class="abs" style="left:30px;right:30px;top:110px;display:flex;align-items:center;justify-content:space-between;background:${C.areia};border-radius:18px;padding:16px 20px;font-size:38px;font-weight:700;color:${C.dark};opacity:0">historico.pdf <span id="upk">${check(C.pinho,40)}</span></div>
+      <div id="price" class="abs" style="left:30px;right:30px;top:230px;height:150px;border-radius:24px;background:${C.areia};padding:22px 26px;opacity:0">
+        <div style="font-size:30px;font-weight:700;letter-spacing:3px;color:${C.pinho}">PREÇO NA HORA</div>
+        <div style="font-size:72px;font-weight:800;color:${C.dark};letter-spacing:6px;line-height:1">●●●</div></div>
+      <div id="pix" class="abs" style="left:30px;right:30px;top:410px;height:96px;border-radius:48px;background:${C.pinho};color:#fff;font-size:44px;font-weight:800;display:flex;align-items:center;justify-content:center;opacity:0">Pagar com Pix</div>
+      <div id="pago" class="abs" style="left:30px;right:30px;top:530px;height:120px;border-radius:24px;background:${C.salvia};display:flex;align-items:center;justify-content:center;gap:18px;font-size:48px;font-weight:800;color:${C.dark};opacity:0">${check(C.pinho,64)} Pago</div>
+    </div></div>
+</div>
+<div class="scene" id="s6" style="background:${C.nevoa}">
+  ${shapes('rgba(255,255,255,.35)',[[720,140,360],[-220,1300,460]])}
+  <div class="hl" id="s6h" style="top:360px;color:${C.dark}">Manda pro seu grupo.</div>
+  <div class="chat" id="cc6" style="background:#fff;left:150px;width:780px;top:640px;height:860px">
+    <div class="top">${avatar('marina',56)} Intercâmbio 2027</div>
+    <div class="abs" id="recap" style="right:26px;top:118px;width:640px;box-sizing:border-box;overflow:hidden;background:${C.areia};border-radius:28px;padding:26px 30px;box-shadow:0 6px 0 rgba(31,59,53,.10);opacity:0">
+      <div style="font-size:32px;font-weight:700;color:${C.pinho}">Marina</div>
+      <div class="row" id="r1">${check(C.pinho,48)}<span>Juramentada: só tradutor público</span></div>
+      <div class="row" id="r2">${check(C.pinho,48)}<span>Sem prazo próprio: confira o original</span></div>
+      <div class="row" id="r3">${check(C.pinho,48)}<span>Digital vale: confira o órgão</span></div>
+    </div>
+    <div class="abs" style="left:26px;top:730px;display:flex;gap:26px">${['pedro','ana','leo'].map((a,i)=>`<div style="position:relative">${avatar(a,100)}<div class="abs rk" style="right:-10px;bottom:-6px;opacity:0">${check(C.pinho,46)}</div></div>`).join('')}</div>
+    <div class="abs" id="valeu" style="left:420px;top:750px;opacity:0"><span class="chip" style="background:${C.nevoa};font-size:46px;padding:14px 32px">valeu!</span></div>
+  </div>
+</div>
+<div class="scene" id="s7" style="background:${C.pinho}">
+  ${shapes('rgba(31,59,53,.28)',[[-160,180,400],[760,1300,420]])}
+  <div class="abs e7" style="left:90px;top:300px;font-size:48px;font-weight:700;color:${C.areia};letter-spacing:1px">Tradução juramentada</div>
+  <div class="hl e7" style="top:370px;font-size:80px;color:#fff">Preço na hora<br>no site.</div>
+  <div class="abs e7" style="left:90px;top:600px;width:640px;height:132px;border-radius:66px;background:${C.areia};display:flex;align-items:center;justify-content:center;font-size:66px;font-weight:800;color:${C.dark};letter-spacing:-1px">traduzme.com.br</div>
+  <div class="abs e7" style="left:90px;top:800px"><div style="font-size:32px;font-weight:700;color:${C.salvia};letter-spacing:4px">WHATSAPP</div><div style="font-size:60px;font-weight:700;color:#fff;margin-top:4px">(61) 99803-8363</div></div>
+  <div class="abs" id="s7g" style="left:0;top:0;width:1080px;height:1920px">
+   <div class="abs" style="left:505px;top:960px;width:420px;height:420px;border-radius:50%;background:${C.areia}"></div>
+   <div class="abs" id="s7F" style="left:615px;top:920px;width:227px;height:560px">${M7.html}</div>
+  </div>
+</div>`;
+
+// ---------- renderers ----------
+const R={};
+R.s1=t=>{sh('s1',t);
+  const cc=eo(lin(t,0,.45)); $('cc0').style.transform=`translateY(${(1-cc)*160}px)`; $('cc0').style.opacity=cc;
+  document.querySelectorAll('#s1 .ph').forEach((e,i)=>popIn(e,t,.1+i*.15,.3));
+  txtIn($('s1h'),t,.3);
+  {const p=lin(t,3.5,3.8);$('s1z').style.opacity=p>0?1:0;$('s1z').style.transform=`scale(${p<=0?0:back(p)})`;$('s1z').style.transformOrigin='0 50%'}
+  popIn($('mb0'),t,1.2,.35); document.querySelectorAll('#mb0 .td').forEach((e,i)=>{e.style.transform=`translateY(${-Math.max(0,Math.sin((t*6-i*.8)))*10}px)`});
+  $('s1F').style.transform=`translateY(${(1-eo(lin(t,.2,.7)))*320}px)`; blink(M1.id,t,.4);
+  mouth(M1.id,t>3.5?'o':'smile');
+  $(M1.id+'armR').style.transform=`rotate(${t<3.5?-40+Math.sin(t*14)*6:-40}deg)`; $(M1.id+'armL').style.transform='rotate(10deg)';
+};
+function mythR(n,t){const sc='s'+(n+1); sh(sc,t); const q=P[n];
+  popIn(document.querySelector('#'+sc+' .bd'),t,.4,.35);
+  if(q.kick!==null){txtIn($('k'+n),t,q.kick); if(t>q.stamp+.6)$('k'+n).style.opacity=1-lin(t,q.stamp+.6,q.stamp+.8)} else $('k'+n).style.opacity=0;
+  txtIn($('h'+n),t,q.h); txtIn($('s'+n+'s'),t,q.s);
+  if(t<q.h)$('h'+n).style.opacity=0; if(t<q.s)$('s'+n+'s').style.opacity=0;
+  const ci=eo(lin(t,.1,.5)), co=eio(lin(t,q.swap,q.swap+.5));
+  $('cc'+n).style.transform=`translate(${-co*1150}px,${(1-ci)*140}px)`; $('cc'+n).style.opacity=ci;
+  popIn($('mm'+n),t,.6,.35);
+  stampIn($('mt'+n),t,q.stamp); if(t>q.swap){$('mt'+n).style.transform+=` translateX(${-co*1300}px)`}
+  $('bb'+n).style.opacity=t>q.stamp+.25?1-.6*lin(t,q.stamp+.25,q.stamp+.45):1; $('st'+n).style.width=(lin(t,q.stamp+.25,q.stamp+.55)*92)+'%';
+  const oi=eo(lin(t,q.swap,q.swap+.6)); $('obj'+n).style.transform=`translateX(${(1-oi)*900}px)`; $('obj'+n).style.opacity=t<q.swap?0:1;
+  const F=[M2,M3,M4][n-1]; $('fg'+n).style.transform=`translateY(${(1-eo(lin(t,.5,1.0)))*360}px)`; blink(F.id,t,n*.7);
+  const fp=t>q.stamp&&t<q.stamp+1.4; mouth(F.id,t<q.stamp?'flat':(fp?'o':'smile'));
+  $(F.id+'armR').style.transform=`rotate(${fp?-150*eo(lin(t,q.stamp,q.stamp+.25)):0}deg)`; $(F.id+'armL').style.transform='rotate(0deg)';
+}
+R.s2=t=>{mythR(1,t);
+  popIn($('seal1'),t,6.5,.35); const fx=lin(t,8.4,8.8); $('firmaX').style.width=(fx*340)+'px';
+  $('firma').style.transform=`translateY(${t>8.9?eio(lin(t,8.9,9.4))*30:0}px) rotate(${t>8.9?eio(lin(t,8.9,9.4))*-6:0}deg)`; $('firma').style.opacity=t>8.9?1-.45*lin(t,8.9,9.4):1;
+};
+const MONTHS=['OUT','NOV','DEZ','JAN','FEV','MAR','ABR','MAI'];
+R.s3=t=>{mythR(2,t);
+  const k=Math.floor(cl((t-5.9)/.3,0,MONTHS.length-1)); $('calm').textContent=MONTHS[k];
+  popIn($('note'),t,8.2,.35,'rotate(4deg)');
+};
+R.s4=t=>{mythR(3,t);
+  const pf=lin(t,5.5,6.0); document.querySelectorAll('#papers .pp').forEach((e,i)=>{const d=eio(cl(pf*1.4-i*.08));e.style.transform=`translate(${-d*(700+i*60)}px,${-d*(500+i*40)}px) rotate(${-d*(30+i*8)}deg)`});
+  $('papers').style.opacity=t<6.1?1:0;
+  const lp=eo(lin(t,6.0,6.5)); $('lap').style.opacity=lp; $('lap').style.transform=`translateY(${(1-lp)*80}px)`;
+  popIn($('seal3'),t,6.7,.35);
+  const ev=eo(lin(t,7.6,8.2)); $('env').style.opacity=ev; $('env').style.transform=`translate(${(1-ev)*-120}px,${(1-ev)*-200}px) rotate(${(1-ev)*-20}deg)`;
+};
+R.s5=t=>{sh('s5',t); popIn($('b5'),t,.3,.35);
+  txtIn($('s5h'),t,1.0); txtIn($('s5s'),t,3.0); if(t<3.0)$('s5s').style.opacity=0;
+  const ph=eo(lin(t,.4,.9)); $('phone').style.transform=`translateY(${(1-ph)*500}px)`;
+  $('s5F').style.transform=`translateY(${(1-eo(lin(t,.3,.8)))*300}px)`; blink(M5.id,t,1.1); mouth(M5.id,t>5.8?'grin':'smile');
+  $(M5.id+'armR').style.transform=`rotate(${-35}deg)`; $(M5.id+'armL').style.transform='rotate(8deg)';
+  txtIn($('up'),t,3.4,.3); popIn($('upk'),t,3.7,.3);
+  const pr=lin(t,4.2,4.5); $('price').style.opacity=pr; $('price').style.transform=`scale(${.85+.15*back(pr)})`;
+  const px=lin(t,5.0,5.3); $('pix').style.opacity=px; $('pix').style.transform=`scale(${t>5.45&&t<5.65?.92:1})`;
+  popIn($('pago'),t,5.8,.35);
+};
+R.s6=t=>{sh('s6',t); txtIn($('s6h'),t,.3);
+  const ci=eo(lin(t,1.8,2.2)); $('cc6').style.transform=`translateY(${(1-ci)*140}px)`; $('cc6').style.opacity=ci;
+  popIn($('recap'),t,2.2,.3);
+  {const rc=$('recap'),nm=rc.firstElementChild,rows=['r1','r2','r3'].map($),bot=e=>e.offsetTop+e.offsetHeight+26;
+   const hs=[bot(nm),...rows.map(bot)],ts=[2.4,4.5,7.3];let h=hs[0];ts.forEach((a,i)=>{h+= (hs[i+1]-hs[i])*eo(lin(t,a-.15,a+.2))});rc.style.height=h+'px'}
+  [['r1',2.4],['r2',4.5],['r3',7.3]].forEach(([id,a])=>txtIn($(id),t,a,.35));
+  document.querySelectorAll('#s6 .rk').forEach((e,i)=>popIn(e,t,9.7+i*.2,.3));
+  popIn($('valeu'),t,10.0,.3);
+};
+R.s7=t=>{sh('s7',t);
+  document.querySelectorAll('#s7 .e7').forEach((e,i)=>{const a=.5+i*.2;const p=eo(lin(t,a,a+.4));e.style.opacity=p;e.style.transform=`translateY(${(1-p)*24}px)`});
+  {const p=eo(lin(t,.5,.9));$('s7g').style.opacity=p;$('s7g').style.transform=`translate(-25px,${(1-p)*40}px)`}
+  blink(M7.id,t,.5); mouth(M7.id,'grin');
+  const w=(t%2)<.8?Math.sin((t%2)/.8*Math.PI*2)*25:0; $(M7.id+'armR').style.transform=`rotate(${-150+w}deg)`; $(M7.id+'armL').style.transform='rotate(30deg)';
+};
+
+// ---------- master ----------
+function sceneAt(t){let c=0;for(let i=0;i<S.length;i++)if(t>=S[i][1])c=i;return c}
+let LAID=false;
+function below(a,b,gap=30){$(b).style.top=($(a).offsetTop+$(a).offsetHeight+gap)+'px'}
+function layout(){LAID=true;
+  [['h1','s1s'],['h2','s2s'],['h3','s3s'],['s5h','s5s']].forEach(([x,y,g])=>{const sx=$(x).closest('.scene'),d=sx.style.display;sx.style.display='block';below(x,y,g);sx.style.display=d});
+}
+function render(t){ if(!LAID)layout();
+  const i=sceneAt(t); const [id,st]=S[i];
+  document.querySelectorAll('.scene').forEach(s=>{s.style.display='none';s.style.clipPath='none';s.style.zIndex=1});
+  const cur=$(id); cur.style.display='block'; R[id](t-st);
+  const tr=TR[id]; const d=t-st;
+  if(tr&&d<TD&&i>0){const [pid,pst]=S[i-1]; const prev=$(pid); prev.style.display='block'; prev.style.zIndex=1; cur.style.zIndex=2; R[pid](t-pst);
+    const p=eio(d/TD);
+    if(tr.k==='circle')cur.style.clipPath=`circle(${p*2300}px at ${tr.x}px ${tr.y}px)`;
+    if(tr.k==='top')cur.style.clipPath=`inset(0 0 ${(1-p)*100}% 0)`;
+    if(tr.k==='left')cur.style.clipPath=`inset(0 ${(1-p)*100}% 0 0)`;
+    if(tr.k==='flip')cur.style.clipPath=`inset(0 ${(1-p)*50}% 0 ${(1-p)*50}%)`;
+  }
+  // Stempel-Shake
+  let sx=0; for(const [s0,n] of [[S[1][1],1],[S[2][1],2],[S[3][1],3]]){const ds=t-(s0+P[n].stamp); if(ds>.15&&ds<.45)sx=(1-(ds-.15)/.3)*12}
+  stage.style.transform=sx?`translate(${Math.sin(t*90)*sx}px,${Math.cos(t*70)*sx}px)`:'none';
+}
+document.fonts.ready.then(()=>{LAID=false});
+</script></body></html>

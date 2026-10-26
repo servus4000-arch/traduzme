@@ -50,7 +50,7 @@ PROGS = {
 STYLES = {
     #        bpm  swing  chords-Instr  bass-Instr  melodie   pad
     'bossa': dict(bpm=126, swing=0.0, chord=24, bass=32, mel=73, pad=48, drums='bossa'),
-    'lofi':  dict(bpm=84, swing=0.14, chord=4, bass=33, mel=None, pad=89, drums='lofi'),
+    'lofi':  dict(bpm=84, swing=0.14, chord=5, bass=33, mel=None, pad=89, drums='lofi'),
     'pop':   dict(bpm=104, swing=0.0, chord=25, bass=33, mel=None, pad=0, drums='pop'),
     'funk':  dict(bpm=108, swing=0.05, chord=27, bass=33, mel=4, pad=None, drums='funk'),
     'calm':  dict(bpm=80, swing=0.0, chord=0, bass=32, mel=None, pad=48, drums=None),
@@ -124,7 +124,7 @@ class Track:
             root, ch = s.chord_notes(b)
             if s.kind_at(t0 + bar * .5) == 'outro':      # Ausklang aufgelöst auf dem Grundakkord
                 root = 48 + s.key - (12 if s.key > 7 else 0); ch = [root + x for x in TYPES['' if s.style == 'pop' else 'maj7']]
-            voc = s.voicing(ch)
+            voc = s.voicing(ch, *((60, 76) if s.style == 'lofi' else (55, 72)))
             for beat in range(4):
                 tb = t0 + beat * B; kind = s.kind_at(tb)
                 if kind == 'outro' and tb > s.dur - .2: continue
@@ -140,7 +140,7 @@ class Track:
                 elif st == 'lofi':
                     if beat == 0:
                         for j, n in enumerate(voc + [voc[0] + 12]): s.add('chord', tb + j * .025, n, 58 * vel, bar * .95)
-                    if beat == 2 and full: s.add('chord', tb + B * (.5 + sw), voc[-1], 40, B)
+                    if beat == 2 and full: s.add('chord', tb + B * (.5 + sw), voc[-1] + 12, 44, B)
                 elif st == 'pop':
                     for k in (0, 1):                            # Achtel-Strums, betont auf 1 und 3
                         acc = 1.0 if (k == 0 and beat in (0, 2)) else .75
@@ -268,7 +268,7 @@ class Track:
             mel = s.render_part('mel', P['mel'] or 0, tmp)
             pad = s.render_part('pad', P['pad'] if P['pad'] is not None else 4, tmp)
         bossa = s.style == 'bossa'
-        music = (chord * 1.0 + bass * (.8 if bossa else 1.1) + drums * (1.2 if s.style == 'lofi' else .75)
+        music = (chord * 1.0 + bass * (.8 if bossa or s.style == 'lofi' else 1.1) + drums * (1.2 if s.style == 'lofi' else .75)
                  + mel * (1.0 if bossa else .55) + pad * .5)
         music = s._f(music, 35, 'high')
         music = s._f(music, 7000 if s.style == 'lofi' else 11000, 'low')

@@ -14,7 +14,8 @@ Benutzung (siehe src/reel13/audio.py):
   tr.hit(21.5)                     # Akzent: weiches Becken + Bassnote beim Wiedereinsatz
   tr.sfx('pop', 1.0, .6)           # SFX aus sound.py, automatisch weicher gefiltert
   tr.duck(10, 1.5, .4)             # Musik kurz leiser
-  tr.write('audio.wav')            # Ziel: ca. -14 LUFS (Plattform-Standard), Peak -1 dBFS
+  tr.write('audio.wav')            # Ziel: -14 LUFS; Master v2 (Default): 48 kHz, True Peak -1,5 dBTP
+  tr.write('audio.wav', master='v1')   # alter Klang von Reel 13–15 (44,1 kHz, Sample-Peak -1 dBFS), bit-identisch
 
 Stile: bossa (Nylon-Gitarre, Kontrabass, Besen-Groove, Flöte), lofi (Rhodes, E-Bass, entspannter Beat),
        pop (Akustik-Gitarre, Klavier, Bass, leichte Drums), funk (leichter Brasil-Funk: Gitarren-Chops, Rhodes, Bass),
@@ -26,15 +27,32 @@ Regeln aus 3 Kritiker-Runden (26.10.):
   des laufenden Takts, eine Oktave über der Begleitung, als Arpeggio (40 ms).
 - Ton auf den sichtbaren Bildwechsel: Hit ca. 0,05 s nach Bildbeginn, Whoosh 0,05 s vor Szenenwechsel.
   Musik vor einem Countdown 0,2 s früher leiser/soft, damit der erste Tick frei steht.
-- Ziele (sound_check.py + eigene Messung): 2-5 kHz unter -15 dB relativ, keine kleinen Sekunden im Akkord,
-  Crash-Sprung unter 10 dB, -14 LUFS. Keine Glöckchen/Sinus-SFX als Lead (sfx 'tick','ding','correct' meiden).
+- Ziele (sound_check.py + eigene Messung): 2-5 kHz unter -15 dB relativ (v1) bzw. um -13 dB (v2, bewusst etwas
+  präsenter fürs Handy, nicht darüber), keine kleinen Sekunden im Akkord, Crash-Sprung unter 10 dB, -14 LUFS.
+  Keine Glöckchen/Sinus-SFX als Lead (sfx 'tick','ding','correct' meiden).
+
+Master v2 (ab 27.10.2026, Default): HP 45 Hz, TP 15 kHz (lofi 10 kHz), -3 dB @300 Hz, +1 dB @2,5 kHz, +2 dB Shelf ab 10 kHz,
+  SFX-Tiefpass 11 kHz, Musik duckt bis -4 dB unter SFX, 'break' -4 dB, True-Peak-Limiter -1,5 dBTP, Ausgabe 48 kHz.
+  Parameter je Reel: tr.v2['presence'] = (2500, 0.5, .8) usw. (siehe V2). Hook-Abschnitt nicht 'soft' lassen, wenn der
+  Hook ohne Musik-Druck zu leise wird (qa_check.sh warnt bei Hook > 4 LU unter Gesamt). SFX-Akzente g >= .6 setzen.
 """
 import os, subprocess, tempfile, wave
 import numpy as np, mido
-from scipy.signal import butter, sosfilt, fftconvolve
+from scipy.signal import butter, sosfilt, fftconvolve, resample_poly
 import sound
 
-SR = 44100
+SR = 44100            # interne Synthese-Rate (fluidsynth + sound.py-SFX)
+SR_OUT_V2 = 48000     # master='v2' schreibt 48 kHz (Plattform-Standard, kein Resampling beim Upload)
+MASTER_DEFAULT = 'v2'  # seit 27.10. (A/B an Reel 15 + 14, siehe PIPELINE-v2.md); alter Klang: Track(..., master='v1')
+# Master-v2-Parameter (pro Reel überschreibbar: tr.v2["presence"] = (2500, 0.5, .8) oder tr.v2["duck_db"] = 0)
+V2 = dict(hp=45, lp=15000, lp_lofi=10000,        # Hoch-/Tiefpass Musik (Hz)
+          mud=(300, -3.0, .9),                   # Mitten-Absenkung (Hz, dB, Q)
+          presence=(2500, +1.0, .8),             # Präsenz 2–4 kHz (Hz, dB, Q) – bewusst sanft (Bens "unangenehm"-Kritik 26.10.)
+          air=(10000, +2.0),                     # High-Shelf (Hz, dB): Luft über dem empfindlichen 2–5-kHz-Bereich
+          sfx_lp=11000, sfx_wet=.08,             # SFX-Tiefpass, SFX-Hall
+          duck_db=-4, duck_att=.02, duck_rel=.25, duck_thr=-18,   # Sidechain: Musik bis -4 dB unter SFX (Einsatz ab SFX-Spitze 18 dB unter Musik-RMS)
+          sections={'break': -4},                # Pegel-Treppe je Abschnittstyp (dB); Hook NICHT leiser machen
+          ceiling=-1.5)                          # True-Peak-Ceiling (dBTP) vor AAC
 SF2 = next((p for p in ('/usr/share/sounds/sf2/FluidR3_GM.sf2', '/usr/share/sounds/sf2/default-GM.sf2') if os.path.exists(p)), None)
 NOTE = dict(C=0, Db=1, D=2, Eb=3, E=4, F=5, Gb=6, G=7, Ab=8, A=9, Bb=10, B=11)
 MAJ = [0, 2, 4, 5, 7, 9, 11]
@@ -64,8 +82,8 @@ PANS = {'chord': (.2, -.3), 'mel': (.15, .35), 'pad': (.6, 0.0), 'bass': (0.0, 0
 
 
 class Track:
-    def __init__(s, style='bossa', dur=40.0, key='C', seed=1, bpm=None, melody=True):
-        s.style = style; s.st = dict(STYLES[style])
+    def __init__(s, style='bossa', dur=40.0, key='C', seed=1, bpm=None, melody=True, master=None):
+        s.style = style; s.st = dict(STYLES[style]); s.master = master; s.v2 = dict(V2)
         if bpm: s.st['bpm'] = bpm
         s.dur = dur; s.N = int(dur * SR); s.B = 60.0 / s.st['bpm']
         s.key = NOTE[key]; s.rng = np.random.default_rng(seed)
@@ -257,8 +275,69 @@ class Track:
     def _f(x, fc, kind):
         return sosfilt(butter(2, fc, kind, fs=SR, output='sos'), x, axis=0)
 
-    def write(s, path, lufs=-14.0, fade=(None, None)):
+    # ---------- Master v2: Helfer (RBJ-Biquads, Hüllkurve, True-Peak) ----------
+    @staticmethod
+    def _biquad(x, f0, gain_db, q=.7, kind='peak', sr=SR):
+        A = 10 ** (gain_db / 40); w = 2 * np.pi * f0 / sr; cw, sw = np.cos(w), np.sin(w); al = sw / (2 * q)
+        if kind == 'peak':
+            b = [1 + al * A, -2 * cw, 1 - al * A]; a = [1 + al / A, -2 * cw, 1 - al / A]
+        elif kind == 'hshelf':
+            sa = 2 * np.sqrt(A) * al
+            b = [A * ((A + 1) + (A - 1) * cw + sa), -2 * A * ((A - 1) + (A + 1) * cw), A * ((A + 1) + (A - 1) * cw - sa)]
+            a = [(A + 1) - (A - 1) * cw + sa, 2 * ((A - 1) - (A + 1) * cw), (A + 1) - (A - 1) * cw - sa]
+        else: raise ValueError(kind)
+        sos = np.array([b + a]) / a[0]
+        return sosfilt(sos, x, axis=0)
+
+    @staticmethod
+    def _follow(x, att, rel, sr=SR):
+        """Hüllkurvenfolger (Peak, getrennte Attack/Release in s) auf 1-D-Signal."""
+        ga, gr = np.exp(-1 / (att * sr)), np.exp(-1 / (rel * sr))
+        # blockweise (1 ms) statt pro Sample: schnell genug in Python, für Ducking ausreichend genau
+        blk = max(1, int(.001 * sr)); n = int(np.ceil(len(x) / blk))
+        pk = np.pad(x, (0, n * blk - len(x))).reshape(n, blk).max(1)
+        ga, gr = ga ** blk, gr ** blk; cur = 0.0; e = np.empty(n)
+        for i, v in enumerate(pk):
+            cur = v + (cur - v) * (ga if v > cur else gr); e[i] = cur
+        return np.repeat(e, blk)[:len(x)]
+
+    @staticmethod
+    def true_peak(x, sr=SR):
+        """True Peak in dBTP (4× Oversampling, wie BS.1770)."""
+        up = resample_poly(x, 4, 1, axis=0)
+        return 20 * np.log10(max(np.abs(up).max(), 1e-12))
+
+    def _tp_limit(s, mix, ceil_db, sr=SR):
+        """Look-ahead-Limiter mit True-Peak-Erkennung (4× Oversampling), 5 ms Vorlauf, 80 ms Release."""
+        from scipy.ndimage import minimum_filter1d
+        ceil = 10 ** (ceil_db / 20)
+        up = np.abs(resample_poly(mix, 4, 1, axis=0)).max(1)
+        env = np.maximum(up[:len(up) // 4 * 4].reshape(-1, 4).max(1), 1e-9)
+        env = np.pad(env, (0, max(0, len(mix) - len(env))), constant_values=1e-9)[:len(mix)]
+        gr = np.minimum(1.0, ceil / env)
+        k = int(.005 * sr); look = minimum_filter1d(gr, size=2 * k + 1)
+        rel = np.exp(-1 / (.08 * sr)); cur = 1.0; sm = np.empty_like(look)
+        for i, v in enumerate(look):
+            cur = v if v < cur else v + (cur - v) * rel
+            sm[i] = cur
+        return mix * sm[:, None]
+
+    def _section_gain(s, gains, ramp=.15, sr=SR):
+        """Pegel-Treppe aus s.sections (dB je Abschnittstyp), mit Rampen – hörbarer Spannungsbogen."""
+        g = np.zeros(s.N)
+        for i, (t, kind) in enumerate(s.sections):
+            a = int(t * sr); b = int(s.sections[i + 1][0] * sr) if i + 1 < len(s.sections) else s.N
+            g[a:b] = gains.get(kind, 0.0)
+        r = max(1, int(ramp * sr)); g = np.convolve(np.pad(g, (r, r), mode='edge'), np.ones(r) / r, 'same')[r:-r]
+        return 10 ** (g / 20)
+
+    def write(s, path, lufs=-14.0, fade=(None, None), master=None):
+        """master='v1': Klang wie Reel 13–15 (44,1 kHz, Sample-Peak -1 dBFS).
+        master='v2': heller/präsenter fürs Handy, Ducking unter SFX, Dynamik-Bogen, True-Peak-Limiter -1,5 dBTP, 48 kHz.
+        Ohne Angabe: Track(master=…) oder MASTER_DEFAULT."""
         assert SF2, 'Soundfont fehlt: apt-get install -y fluidsynth fluid-soundfont-gm'
+        master = master or s.master or MASTER_DEFAULT
+        assert master in ('v1', 'v2'), master
         s.compose()
         with tempfile.TemporaryDirectory() as tmp:
             P = s.st
@@ -270,8 +349,16 @@ class Track:
         bossa = s.style == 'bossa'
         music = (chord * 1.0 + bass * (.8 if bossa or s.style == 'lofi' else 1.1) + drums * (1.2 if s.style == 'lofi' else .75)
                  + mel * (1.0 if bossa else .55) + pad * .5)
-        music = s._f(music, 35, 'high')
-        music = s._f(music, 7000 if s.style == 'lofi' else 11000, 'low')
+        if master == 'v2':
+            V = s.v2
+            music = s._f(music, V['hp'], 'high')                                # Sub: kein Handy kann das, frisst Headroom
+            music = s._f(music, V['lp_lofi'] if s.style == 'lofi' else V['lp'], 'low')   # lofi bleibt warm, Rest bekommt Luft
+            music = s._biquad(music, V['mud'][0], V['mud'][1], q=V['mud'][2])   # Mumpf 250–400 Hz runter
+            music = s._biquad(music, V['presence'][0], V['presence'][1], q=V['presence'][2])  # Anschlag Gitarre/Klavier
+            music = s._biquad(music, V['air'][0], V['air'][1], kind='hshelf')    # etwas Luft
+        else:
+            music = s._f(music, 35, 'high')
+            music = s._f(music, 7000 if s.style == 'lofi' else 11000, 'low')
         # Ducks (Musik leiser, SFX bleiben)
         g = np.ones(s.N)
         for t, d, depth in s.ducks:
@@ -282,10 +369,26 @@ class Track:
             g[a:b] = np.minimum(g[a:b], seg)
         music *= g[:, None]
         # SFX weicher: Höhen runter, etwas Raum
-        sfx = s.fx.bus['sfx']; sfx = s._f(sfx, 7500, 'low'); sfx = s.fx.reverb(sfx, .7, .10)
+        if master == 'v2':
+            sfx = s.fx.bus['sfx']; sfx = s._f(sfx, s.v2['sfx_lp'], 'low'); sfx = s.fx.reverb(sfx, .7, s.v2['sfx_wet'])
+        else:
+            sfx = s.fx.bus['sfx']; sfx = s._f(sfx, 7500, 'low'); sfx = s.fx.reverb(sfx, .7, .10)
         # Musik-Pegel relativ zu SFX festlegen (Musik ~ -18 dBFS RMS vor Master)
         mr = np.sqrt(np.mean(music ** 2)) or 1e-9
         music *= 10 ** (-18 / 20) / mr
+        if master == 'v2':
+            # Sidechain: Musik unter jedem SFX bis duck_db (Attack/Release) → Akzente hörbar, ohne lauter zu sein
+            V = s.v2; sx = np.abs(sfx * .55).max(1)
+            if sx.max() > 1e-6 and V['duck_db']:
+                env = s._follow(sx, V['duck_att'], V['duck_rel'])
+                # Schwelle relativ zum Musikpegel (Musik steht hier auf -18 dBFS RMS): SFX ab duck_thr dB unter der Musik
+                # beginnen zu ducken, volle Tiefe 12 dB darüber (weiches Knie)
+                edb = 20 * np.log10(np.maximum(env, 1e-9)) - (-18 + V['duck_thr'])
+                amt = np.clip(edb / 12, 0, 1)
+                music *= (10 ** (V['duck_db'] * amt / 20))[:, None]
+            # Spannungsbogen über Abschnittspegel (Default nur 'break' leiser; Hook bleibt voll)
+            if V['sections']: music *= s._section_gain(V['sections'])[:, None]
+        s.stems = dict(music=music, sfx=sfx * .55) if getattr(s, 'keep_stems', False) else None   # für Sound-Kritik
         mix = music + sfx * .55
         fo = int((fade[0] or s.dur - 1.6) * SR); fe = int((fade[1] or s.dur - .2) * SR)
         mix[fo:fe] *= np.linspace(1, 0, fe - fo)[:, None]; mix[fe:] = 0
@@ -296,6 +399,8 @@ class Track:
             mix *= 10 ** ((lufs - L) / 20)
         except Exception:
             mix *= 10 ** ((lufs + 2 - 20 * np.log10(np.sqrt(np.mean(mix ** 2)) + 1e-9)) / 20)
+        if master == 'v2':
+            return s._write_v2(path, mix, lufs, fo)
         ceil = 10 ** (-1.0 / 20)
         env = np.maximum(np.abs(mix).max(1), 1e-9)
         gr = np.minimum(1.0, ceil / env)
@@ -315,3 +420,24 @@ class Track:
             return pyln.Meter(SR).integrated_loudness(mix)
         except Exception:
             return 20 * np.log10(np.sqrt(np.mean(mix ** 2)))
+
+    def _write_v2(s, path, mix, lufs, fo):
+        """Master v2: True-Peak-Limiter (-1,5 dBTP Ceiling, 0,5 dB Reserve für AAC), Lautheit nachführen, 48 kHz."""
+        try:
+            import pyloudnorm as pyln
+        except ImportError:
+            raise SystemExit('master v2 braucht pyloudnorm: pip install -q pyloudnorm (oder master=\'v1\')')
+        meas = lambda x, sr: pyln.Meter(sr).integrated_loudness(x[:int(fo / SR * sr)] if fo > SR else x)
+        for _ in range(3):                                       # Limiter kostet etwas Lautheit → nachregeln
+            out = s._tp_limit(mix, s.v2['ceiling'])
+            d = lufs - meas(out, SR)
+            if abs(d) < .1: break
+            mix = mix * 10 ** (d / 20)
+        out = resample_poly(out, SR_OUT_V2 // 300, SR // 300, axis=0)   # 44,1 → 48 kHz (160/147)
+        tp = s.true_peak(out, SR_OUT_V2)
+        if tp > -1.2: out *= 10 ** ((-1.2 - tp) / 20)              # Sicherheitsnetz nach dem Resampling
+        out = np.clip(out, -1, 1)
+        with wave.open(path, 'wb') as w:
+            w.setnchannels(2); w.setsampwidth(2); w.setframerate(SR_OUT_V2)
+            w.writeframes((out * 32767).astype('<i2').tobytes())
+        return pyln.Meter(SR_OUT_V2).integrated_loudness(out)

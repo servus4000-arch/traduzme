@@ -101,6 +101,8 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
     <div class="abs" id="tapR" style="left:440px;top:1662px;width:200px;height:200px;border-radius:50%;border:6px solid #fff;opacity:0"></div>
   </div>
 
+  <!-- Abdeckung über der Dropzone im Rechner-Teil: Captions stehen auf ruhigem Grün, kein halber UI-Text -->
+  <div class="abs" id="mask" style="left:0;top:0;width:1080px;height:780px;display:none;background:linear-gradient(180deg,#376259 0,#376259 712px,rgba(55,98,89,0) 752px)"></div>
   <div class="abs" id="wipe" style="background:#1a7a5e;display:none"></div>
 
   <!-- Bildschirm-Ebene -->
@@ -161,7 +163,7 @@ function cam(K,t){ if(t<=K[0][0])return K[0].slice(1); for(let i=0;i<K.length-1;
 function apply(el,c,extraY=0){const [fx,fy,s,cy]=c; el.style.transform=`translate(${540-s*fx}px,${cy-s*fy+extraY}px) scale(${s})`;}
 function speed(K,t){const a=cam(K,t-1/60),b=cam(K,t+1/60);return Math.hypot((b[0]-a[0])*b[2],(b[1]-a[1])*b[2],(b[3]-a[3]),(b[2]-a[2])*600)*30;}
 const CAM_D=[[0,540,1090,1.0,1090],[2.9,540,1090,1.03,1090],[3.4,540,1090,1.06,1100],[6.3,540,1090,1.08,1100],[6.9,540,1060,.93,1110],[9.8,540,1060,.95,1110],[10.5,540,1090,1.05,1100],[13.3,540,1090,1.09,1100],[13.9,540,1090,1.0,1100],[16.8,540,1090,1.03,1100],[17.3,540,1090,1.08,1100],[20.2,540,1090,1.12,1100]];
-const CAM_P=[[20.4,540,1690,1.22,1420],[21.2,540,1690,1.5,1255],[23.0,540,1690,1.54,1255]];
+const CAM_P=[[20.4,540,1690,1.5,1255],[23.0,540,1690,1.54,1255]];
 
 // ---------- Text-Helfer ----------
 function words(id,t,a,b,step=.07){const el=$(id); const on=t>=a&&t<b+.18; el.style.display=on?'flex':'none'; if(!on)return;
@@ -254,7 +256,7 @@ function render(t){
   if(inP){
     const rise=(1-expo(lin(t,20.3,20.9)))*700; apply(WP,cam(CAM_P,t),rise);
     const v=speed(CAM_P,t); WP.style.filter=v>60?`blur(${Math.min(1.2,(v-60)/220)}px)`:'none';
-    WP.style.opacity=lin(t,20.3,20.5);
+    WP.style.opacity=lin(t,20.36,20.5);
     // Split-Wisch Árabe -> Alemão (diagonale Kante, Lichtkante)
     const w=quint(lin(t,21.9,22.35)); const X=-260+1240*w;
     $('uiDE').style.clipPath=`polygon(${X-260}px -10px, -10px -10px, -10px 1400px, ${X+260-520}px 1400px)`;
@@ -265,6 +267,7 @@ function render(t){
     const rp=lin(t,23.25,23.7); $('tapR').style.opacity=rp>0&&rp<1?1-rp:0; $('tapR').style.transform=`scale(${.4+rp})`;
     $('btnDark').style.opacity=t>23.22&&t<23.42?.2:0;
   }
+  {const M=$('mask'); const on=t>=20.3&&t<23.9; M.style.display=on?'block':'none'; if(on){const r=(1-expo(lin(t,20.3,20.9)))*700; M.style.opacity=lin(t,20.3,20.38); M.style.height=(780+r)+'px'; M.style.background=`linear-gradient(180deg,#376259 0,#376259 ${712+r}px,rgba(55,98,89,0) ${752+r}px)`;}}
   // Match-Cut: Button -> Fläche -> Pinho (Endcard)
   {const W=$('wipe'); const on=t>=23.4&&t<24.2; W.style.display=on?'block':'none';
    if(on){const p=expo(lin(t,23.4,23.8)); const r0=[73,1292,934,146]; const x=r0[0]*(1-p), y=r0[1]*(1-p), w=r0[2]+(1080-r0[2])*p, h=r0[3]+(1920-r0[3])*p;

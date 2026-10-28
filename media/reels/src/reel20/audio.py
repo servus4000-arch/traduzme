@@ -21,7 +21,22 @@ _add = tr.add
 def _add2(part, t, n, v, d):                # Bass leiser (calm-Bass hält ganze Takte -> zu viel 60–250 Hz)
     return _add(part, t, n, v * (.55 if part == 'bass' else 1), d)
 tr.add = _add2
-tr.st['drums'] = 'lofi'; tr.st['mel'] = 11; tr.v2['presence'] = (2500, 2.5, .8); tr.v2['hp'] = 90; tr.v2['air'] = (10000, 3.0)
+tr.st['drums'] = 'lofi'; tr.st['mel'] = 11; tr.v2['presence'] = (2500, 2.5, .8); tr.v2['hp'] = 90; tr.v2['air'] = (10000, 1.5)
+# Abnahme 20-4: Mix weniger mumpfig (200 Hz -2 dB), mehr Höhen (High-Shelf 6 kHz +2 dB); Hook-Akzent -2 dB (Loop-Naht < 3 dB)
+_bq = tr._biquad
+def _bq2(x, f0, gain_db, q=.7, kind='peak', **kw):
+    if kind == 'hshelf':
+        x = _bq(x, 200, -2.0, q=.8); x = _bq(x, 6000, 2.0, kind='hshelf')
+    return _bq(x, f0, gain_db, q=q, kind=kind, **kw)
+tr._biquad = _bq2
+import numpy as _np
+_sg = tr._section_gain
+def _sg2(gains, **kw):
+    g = _sg(gains, **kw); sr = int(len(g) / tr.dur + .5)
+    hk = _np.ones(len(g)); a, b = int(2.3 * sr), int(2.5 * sr)
+    hk[:a] = 10 ** (-2 / 20); hk[a:b] = _np.linspace(10 ** (-2 / 20), 1, b - a)   # Hook-Akzent -2 dB (Musik)
+    return g * hk
+tr._section_gain = _sg2
 for t, k in [(0, 'main')]:          # Endcard ohne soft: Loop-Naht ≤ 6 LU (Raster E8)
     if T(t) is not None: tr.section(T(t), k)
 def sfx(kind, t, g, **kw):
@@ -29,7 +44,7 @@ def sfx(kind, t, g, **kw):
 def hit(t):
     if T(t) is not None: tr.hit(T(t))
 
-sfx('pop', 1.0, .6, f=620); sfx('pop', 1.5, .6, f=740)     # Wett-Pillen
+sfx('pop', 0.5, .6, f=620); sfx('pop', 1.0, .6, f=740)     # Wett-Pillen (Abnahme 20-1: ab 0,5 s)
 hit(2.5); sfx('scratch', 2.5, .6)                            # Payoff: Apostila durchgestrichen
 sfx('pop', 3.0, .6, f=700)                                  # CTA-Chip
 sfx('whoosh', 4.95, .6, d=.5)                               # Dokument zur Mitte
@@ -50,8 +65,18 @@ sfx('pop', 23.5, .6, f=880)                                  # Salva
 sfx('pop', 25.0, .6, f=760); sfx('pop', 25.5, .6, f=680)    # Mitmach
 hit(27.5)                                                    # Endcard
 sfx('pop', 28.0, .6, f=680)                                 # link na bio
-print('LUFS', tr.write(OUT, lufs=-14.0, fade=(END - .3, END)))
+print('LUFS', tr.write(OUT, lufs=-14.0, fade=(END - .15, END)))
 # 20-ms-Einblendung am Dateianfang: verhindert AAC-Überschwinger am harten Start (qa_check True Peak), unhörbar
 import numpy as np, scipy.io.wavfile as _w
 _sr, _x = _w.read(OUT); _n = int(.02 * _sr); _f = np.linspace(0, 1, _n)[:, None]
 _x[:_n] = (_x[:_n].astype(np.float64) * _f).astype(_x.dtype); _w.write(OUT, _sr, _x)
+# Abnahme 20-4: mehr Höhen -> AAC-Überschwinger; zusätzlicher sanfter Limiter auf -3 dBFS Sample-Peak (5 ms Vorlauf, 80 ms Release)
+from scipy.ndimage import minimum_filter1d as _mf
+import scipy.signal as _ss
+_sr, _x = _w.read(OUT); _y = _x.astype(np.float64) / 32768; _c = 10 ** (-3.5 / 20)
+_y = _ss.sosfiltfilt(_ss.butter(4, 15000, 'low', fs=_sr, output='sos'), _y, axis=0)   # > 15 kHz: nur AAC-Überschwinger, für Handy irrelevant
+_gr = np.minimum(1.0, _c / np.maximum(np.abs(_y).max(1), 1e-9)); _k = int(.005 * _sr); _gr = _mf(_gr, size=2 * _k + 1)
+_rel = np.exp(-1 / (.08 * _sr)); _cur = 1.0; _sm = np.empty_like(_gr)
+for _i, _v in enumerate(_gr):
+    _cur = _v if _v < _cur else _v + (_cur - _v) * _rel; _sm[_i] = _cur
+_y = np.clip(_y * _sm[:, None], -_c, _c) * 10 ** (.5 / 20); _w.write(OUT, _sr, (_y * 32767).astype(np.int16))

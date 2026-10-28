@@ -1,0 +1,297 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<!-- Reel 17 – "Mesmo diploma, duas línguas" (Revalidação · Árabe + Alemão). Storyboard + Quellen: STORYBOARD.md -->
+<link rel="stylesheet" href="fonts/os.css">
+<style>
+@font-face{font-family:'Inter Tight';font-weight:100 900;font-style:normal;src:url(fonts/intertight-latin.woff2)}
+@font-face{font-family:'Naskh';font-weight:700;src:url(fonts/naskh-arabic-700.woff2)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',sans-serif;background:#376259}
+.abs{position:absolute}
+#stage{position:absolute;inset:0;overflow:hidden;background:#376259}
+#bgL{position:absolute;inset:0;background:radial-gradient(1100px 1000px at 50% 60%,#41705f 0%,#376259 58%,#2c5048 100%)}
+#bgR{position:absolute;inset:0;background:radial-gradient(1100px 1000px at 50% 60%,#467666 0%,#3b685e 58%,#2f554c 100%);clip-path:polygon(58% 0,100% 0,100% 100%,42% 100%)}
+#seam{position:absolute;left:0;top:0;width:1080px;height:1920px;pointer-events:none}
+.world{position:absolute;left:0;top:0;width:1080px;height:2400px;transform-origin:0 0}
+/* Diplome */
+.dip{position:absolute;width:380px;height:520px;margin:-260px 0 0 -190px;background:#fbf7ee;border-radius:10px;box-shadow:0 30px 60px rgba(10,25,22,.38),0 2px 0 rgba(0,0,0,.05);overflow:hidden}
+.dip .fr{position:absolute;inset:16px;border:3px solid #c9b48f;border-radius:4px}
+.dip .fr2{position:absolute;inset:24px;border:1.5px solid #dccaa8;border-radius:2px}
+.dip .ttl{position:absolute;left:0;right:0;top:58px;text-align:center;color:#1F3B35}
+.dip .orn{position:absolute;left:120px;right:120px;top:150px;height:3px;background:#c9b48f;border-radius:2px}
+.dip .ln{position:absolute;height:13px;border-radius:7px;background:#ddd1bc}
+.hist{position:absolute;width:380px;height:520px;margin:-260px 0 0 -190px;background:#f3eee2;border-radius:10px;box-shadow:0 20px 40px rgba(10,25,22,.3);overflow:hidden}
+.hist .g{position:absolute;left:36px;right:36px;height:2px;background:#d9cfbd}
+.tsm{position:absolute;width:210px;height:156px;margin:-78px 0 0 -105px;background:#fff;border-radius:12px;box-shadow:0 16px 32px rgba(10,25,22,.35);overflow:hidden}
+.tsm .band{height:30px;background:#1a7a5e}
+.tsm .l{position:absolute;left:22px;height:11px;border-radius:6px;background:#d6dde6}
+.sheet{position:absolute;width:460px;height:620px;margin:-310px 0 0 -230px;border-radius:16px;box-shadow:0 40px 80px rgba(10,25,22,.42);overflow:hidden}
+.sheet .l{position:absolute;left:48px;height:15px;border-radius:8px}
+.pill{position:absolute;height:78px;padding:0 34px;border-radius:39px;background:#1F3B35;color:#fff;font-weight:800;font-size:46px;display:flex;align-items:center;transform:translate(-50%,-50%);white-space:nowrap;box-shadow:0 10px 24px rgba(0,0,0,.22)}
+/* Handy (echter Rechner) */
+.phone{position:absolute;left:160px;top:420px;width:760px;height:1420px;border-radius:92px;background:#16302b;padding:20px;box-shadow:0 60px 120px rgba(10,25,22,.45),0 0 0 3px #0f2420 inset}
+.scr{position:relative;width:720px;height:1380px;border-radius:74px;overflow:hidden;background:#fbfaf7}
+.island{position:absolute;left:290px;top:18px;width:140px;height:40px;border-radius:20px;background:#0f2420;z-index:5}
+/* Text */
+.hl{position:absolute;left:90px;top:300px;width:900px;font-weight:800;font-size:104px;line-height:1.03;letter-spacing:-2px;color:#fff;transform-origin:0 0}
+.mk{position:relative;display:inline-block;z-index:0;color:#1F3B35}
+.mk b{position:absolute;left:-12px;right:-12px;top:14px;bottom:4px;background:#EEDECE;border-radius:14px;z-index:-1;transform-origin:0 50%}
+.cap{position:absolute;left:0;width:1080px;top:300px;display:none;flex-direction:column;align-items:center;gap:10px}
+.cap .ln{display:flex;gap:17px;background:#1F3B35;color:#fff;font-weight:800;font-size:64px;line-height:1;padding:20px 30px 24px;border-radius:24px;letter-spacing:-1px;box-shadow:0 14px 30px rgba(0,0,0,.25);white-space:nowrap}
+.cap .w{display:inline-block}
+.cap .hi{color:#1F3B35;background:#EEDECE;border-radius:12px;padding:0 14px 0 16px}
+.chip{position:absolute;display:flex;align-items:center;white-space:nowrap;font-weight:800}
+#chipCta{top:556px;height:86px;padding:0 34px 0 26px;border-radius:43px;background:#EEDECE;color:#1F3B35;font-size:44px;box-shadow:0 10px 24px rgba(0,0,0,.2)}
+#lbl{top:556px;padding:14px 34px 16px;border-radius:22px;background:#BDCBCB;color:#1F3B35;font-size:44px;font-weight:700;line-height:1.16;text-align:center;flex-direction:column;box-shadow:0 10px 24px rgba(0,0,0,.2)}
+#wm{position:absolute;left:90px;top:1434px;font-weight:800;font-size:46px;letter-spacing:-1px;color:#EEDECE}
+.ec{position:absolute;left:90px;color:#fff;font-weight:800;white-space:nowrap}
+</style></head>
+<body><div id="stage">
+  <div id="bgL"></div><div id="bgR"></div>
+  <svg id="seam" viewBox="0 0 1080 1920"><line id="seamL" x1="626" y1="0" x2="454" y2="1920" stroke="#EEDECE" stroke-width="5" stroke-linecap="round" opacity="0"/></svg>
+  <div class="abs" id="bg1" style="left:-240px;top:1300px;width:560px;height:560px;border-radius:50%;background:rgba(31,59,53,.35)"></div>
+  <div class="abs" id="bg2" style="left:800px;top:640px;width:420px;height:420px;border-radius:50%;background:rgba(238,222,206,.07)"></div>
+
+  <!-- Welt D: Dokumente -->
+  <div class="world" id="WD">
+    <div class="hist" id="hAR"></div><div class="hist" id="hDE"></div>
+    <div class="dip" id="dAR"></div><div class="dip" id="dDE"></div>
+    <div class="tsm" id="tAR"></div><div class="tsm" id="tDE"></div>
+    <div class="pill" id="pAR">árabe</div><div class="pill" id="pDE">alemão</div>
+    <div class="dip" id="dN" style="background:#e3eaea"></div>
+    <div class="abs" id="chkN" style="width:116px;height:116px;margin:-58px 0 0 -58px;border-radius:50%;background:#1a7a5e;box-shadow:0 10px 24px rgba(0,0,0,.3)"><svg width="116" height="116" viewBox="0 0 116 116"><path d="M36 60l15 15 30-32" fill="none" stroke="#fff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <!-- großes Übersetzungsblatt / PDF -->
+    <div class="sheet" id="sT" style="background:#fff">
+      <div style="height:84px;background:#1a7a5e"></div>
+      <div style="position:absolute;left:48px;top:118px;font-weight:800;font-size:58px;letter-spacing:-1px;color:#1F3B35">Tradução</div>
+      <div class="l" style="top:220px;width:364px;background:#dfe5ec"></div><div class="l" style="top:256px;width:330px;background:#dfe5ec"></div>
+      <div class="l" style="top:292px;width:350px;background:#dfe5ec"></div><div class="l" style="top:328px;width:240px;background:#dfe5ec"></div>
+      <div class="l" style="top:364px;width:300px;background:#dfe5ec"></div>
+    </div>
+    <div class="abs" id="medal" style="width:150px;height:150px;margin:-75px 0 0 -75px;border-radius:50%;background:#EEDECE;box-shadow:0 12px 26px rgba(0,0,0,.3)"><svg width="150" height="150" viewBox="-7 -6 38 38"><g fill="none" stroke="#1F3B35" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.2 13.5 7 22l5-3 5 3-1.2-8.5"/></g></svg></div>
+    <div class="sheet" id="sP" style="background:#fff">
+      <svg class="abs" style="right:0;top:0" width="96" height="96" viewBox="0 0 96 96"><path d="M0 0h96v96z" fill="#376259" opacity=".0"/><path d="M0 0L96 96H0z" fill="#e7ebef"/></svg>
+      <div class="abs" style="left:44px;top:44px;height:76px;padding:0 26px;border-radius:14px;background:#1F3B35;color:#fff;font-weight:800;font-size:48px;display:flex;align-items:center">PDF</div>
+      <div class="l" style="top:170px;width:364px;background:#dfe5ec"></div><div class="l" style="top:206px;width:330px;background:#dfe5ec"></div>
+      <div class="l" style="top:242px;width:350px;background:#dfe5ec"></div><div class="l" style="top:278px;width:260px;background:#dfe5ec"></div>
+      <svg class="abs" style="left:40px;top:400px" width="240" height="120" viewBox="0 0 240 120"><path id="sig" d="M10 80c20-40 34-52 40-30s-12 46 4 30 26-60 40-36-4 40 14 26 22-30 34-16 10 18 30 6 30-12 56-14" fill="none" stroke="#1F3B35" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><line x1="8" y1="104" x2="232" y2="104" stroke="#c4ccd6" stroke-width="3"/></svg>
+      <svg class="abs" id="qr" style="left:298px;top:428px" width="126" height="126" viewBox="0 0 21 21"></svg>
+    </div>
+    <div class="abs" id="chkP" style="width:128px;height:128px;margin:-64px 0 0 -64px;border-radius:50%;background:#1a7a5e;box-shadow:0 10px 24px rgba(0,0,0,.3)"><svg width="128" height="128" viewBox="0 0 116 116"><path d="M36 60l15 15 30-32" fill="none" stroke="#fff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <!-- Übersetzung aus dem Ausland -->
+    <div class="sheet" id="sX" style="background:#dfe7e7">
+      <svg class="abs" style="left:48px;top:44px" width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#1F3B35" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9.2"/><path d="M2.8 12h18.4M12 2.8c3 3.2 3 15.2 0 18.4M12 2.8c-3 3.2-3 15.2 0 18.4"/></svg>
+      <div class="l" style="top:208px;width:364px;background:#c3cfcf"></div><div class="l" style="top:244px;width:320px;background:#c3cfcf"></div>
+      <div class="l" style="top:280px;width:350px;background:#c3cfcf"></div><div class="l" style="top:316px;width:250px;background:#c3cfcf"></div>
+      <div class="l" style="top:352px;width:300px;background:#c3cfcf"></div><div class="l" style="top:388px;width:200px;background:#c3cfcf"></div>
+    </div>
+    <div class="abs" id="xm" style="width:190px;height:190px;margin:-95px 0 0 -95px;border-radius:50%;background:#1F3B35;box-shadow:0 14px 30px rgba(0,0,0,.35)"><svg width="190" height="190" viewBox="0 0 190 190"><path id="x1" d="M62 62L128 128" stroke="#EEDECE" stroke-width="16" stroke-linecap="round" fill="none" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/><path id="x2" d="M128 62L62 128" stroke="#EEDECE" stroke-width="16" stroke-linecap="round" fill="none" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg></div>
+  </div>
+
+  <!-- Welt P: echter Rechner (Screenshot Live-Seite, Schritt 1) -->
+  <div class="world" id="WP" style="display:none">
+    <div class="phone"><div class="scr"><div class="island"></div>
+      <img src="ui_ar.jpg" style="position:absolute;left:0;top:0;width:720px;height:1376px">
+      <img id="uiDE" src="ui_de.jpg" style="position:absolute;left:0;top:0;width:720px;height:1376px">
+      <div class="abs" id="glint" style="top:-200px;width:10px;height:1800px;background:#fff;box-shadow:0 0 24px 8px rgba(255,255,255,.7);opacity:0"></div>
+      <div class="abs" id="btnDark" style="left:57px;top:1274px;width:606px;height:96px;border-radius:13px;background:#000;opacity:0"></div>
+      <div class="abs" id="langGlow" style="left:45px;top:1145px;width:630px;height:110px;border-radius:18px;border:5px solid #1a7a5e;opacity:0"></div>
+    </div></div>
+    <div class="abs" id="tap" style="left:490px;top:1712px;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,.55);border:4px solid rgba(255,255,255,.9);opacity:0"></div>
+    <div class="abs" id="tapR" style="left:440px;top:1662px;width:200px;height:200px;border-radius:50%;border:6px solid #fff;opacity:0"></div>
+  </div>
+
+  <div class="abs" id="wipe" style="background:#1a7a5e;display:none"></div>
+
+  <!-- Bildschirm-Ebene -->
+  <div id="wm">traduzme</div>
+  <div class="hl" id="hook">Seu diploma é<br>em <span class="mk"><b id="mk1"></b>árabe</span><br>ou <span class="mk"><b id="mk2"></b>alemão</span>?</div>
+  <div class="cap" id="capA"><div class="ln"><span class="w">Revalidar</span><span class="w">no</span><span class="w">Brasil?</span></div><div class="ln"><span class="w">Em</span><span class="w">geral,</span><span class="w hi">juramentada.</span></div></div>
+  <div class="cap" id="capB"><div class="ln"><span class="w">Tem</span><span class="w">língua</span><span class="w">que</span><span class="w">dispensa.</span></div><div class="ln"><span class="w">Árabe</span><span class="w">e</span><span class="w">alemão,</span><span class="w hi">não.</span></div></div>
+  <div class="cap" id="capC"><div class="ln"><span class="w">Só</span><span class="w">tradutor</span><span class="w">juramentado</span></div><div class="ln"><span class="w">registrado</span><span class="w">no</span><span class="w hi">Brasil.</span></div></div>
+  <div class="cap" id="capD"><div class="ln"><span class="w">Feita</span><span class="w">no</span><span class="w">exterior?</span></div><div class="ln"><span class="w">A</span><span class="w">UFMG</span><span class="w hi">não aceita.</span></div></div>
+  <div class="cap" id="capE"><div class="ln"><span class="w">Com</span><span class="w">assinatura</span><span class="w">digital?</span></div><div class="ln"><span class="w">A</span><span class="w">UFMG</span><span class="w hi">aceita</span><span class="w">o</span><span class="w">PDF.</span></div></div>
+  <div class="cap" id="capF"><div class="ln"><span class="w">Árabe</span><span class="w">ou</span><span class="w">alemão:</span></div><div class="ln"><span class="w">preço</span><span class="w">em</span><span class="w hi">segundos.</span></div></div>
+  <div class="chip" id="chipCta"><svg width="48" height="48" viewBox="0 0 24 24" style="margin-right:14px"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1" stroke="#1F3B35" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg>Preço na hora · link na bio</div>
+  <div class="chip" id="lbl"><span>ex.: UFMG –</span><span>confira a sua universidade</span></div>
+
+  <!-- Endcard (gleiche Headline-Position wie Hook) -->
+  <div class="hl" id="ecH">Preço<br><span class="mk"><b id="mkE"></b>na hora</span><br>no site.</div>
+  <div class="chip" id="ecChip" style="left:90px;top:676px;height:100px;padding:0 40px 0 30px;border-radius:50px;background:#EEDECE;color:#1F3B35;font-size:52px;box-shadow:0 10px 24px rgba(0,0,0,.2)"><svg width="54" height="54" viewBox="0 0 24 24" style="margin-right:16px"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1" stroke="#1F3B35" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg>link na bio</div>
+  <div class="ec" id="ecUrl" style="top:822px;font-size:68px;letter-spacing:-1px">traduzme.com.br</div>
+  <div class="ec" id="ecWa" style="top:934px;font-size:66px;letter-spacing:-1px;display:flex;align-items:center;gap:22px">
+    <svg width="76" height="76" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#EEDECE"/><path d="M16 7.2a8.8 8.8 0 0 0-7.6 13.2L7.3 24.6l4.3-1.1A8.8 8.8 0 1 0 16 7.2z" fill="none" stroke="#1F3B35" stroke-width="1.8" stroke-linejoin="round"/><path d="M12.6 12.4c.2-.5.5-.6.8-.6h.6c.2 0 .4.1.5.4l.7 1.7c.1.2 0 .4-.1.6l-.5.6c-.1.2-.1.3 0 .5.6 1 1.4 1.8 2.4 2.3.2.1.4.1.5-.1l.6-.7c.2-.2.4-.2.6-.1l1.7.8c.2.1.3.3.3.5 0 .5-.2 1.2-.8 1.5-.6.4-1.5.5-2.6.1-2-.7-3.6-2.3-4.4-4.2-.4-.9-.5-1.9-.3-2.6z" fill="#1F3B35"/></svg>(61) 99803-8363</div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const lin=(t,a,b)=>cl((t-a)/(b-a));
+const eo=x=>1-Math.pow(1-x,3);
+const expo=x=>x>=1?1:1-Math.pow(2,-10*x);
+const quint=x=>x<.5?16*x**5:1-Math.pow(-2*x+2,5)/2;
+const back=x=>{const c=1.6;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const mix=(a,b,p)=>a+(b-a)*p;
+const END=29.8;
+
+// ---------- Diplome bauen (spiegelgleich: AR rechtsbündig/RTL, DE linksbündig) ----------
+function buildDip(el,ar){
+  let h='<div class="fr"></div><div class="fr2"></div>';
+  h+= ar?'<div class="ttl" style="font-family:Naskh;font-weight:700;font-size:70px;line-height:1.2;direction:rtl">شهادة</div>'
+        :'<div class="ttl" style="font-family:\'Liberation Serif\',serif;font-weight:700;font-size:62px;line-height:1.35;letter-spacing:1px">Urkunde</div>';
+  h+='<div class="orn"></div>';
+  const W=[300,250,280,200,262,170];
+  W.forEach((w,i)=>{h+=`<div class="ln" style="top:${196+i*36}px;${ar?'right':'left'}:40px;width:${w}px"></div>`});
+  // Siegel + Unterschrift
+  const sx=ar?46:250;
+  h+=`<svg class="abs" style="left:${sx}px;top:398px" width="86" height="86" viewBox="0 0 86 86"><circle cx="43" cy="43" r="38" fill="none" stroke="#376259" stroke-width="4"/><circle cx="43" cy="43" r="28" fill="none" stroke="#376259" stroke-width="2" stroke-dasharray="4 4"/><circle cx="43" cy="43" r="12" fill="#376259"/></svg>`;
+  h+=`<svg class="abs" style="left:${ar?190:44}px;top:418px" width="150" height="60" viewBox="0 0 150 60"><path d="M6 40c16-26 26-30 28-14s-6 24 8 12 18-30 28-16 4 18 16 10 14-14 26-8 18 4 32-2" fill="none" stroke="#1F3B35" stroke-width="3.5" stroke-linecap="round"/><line x1="4" y1="52" x2="146" y2="52" stroke="#cdbf9f" stroke-width="2"/></svg>`;
+  el.innerHTML=h;
+}
+buildDip($('dAR'),true); buildDip($('dDE'),false);
+{let h='<div class="fr" style="border-color:#aebebe"></div>'; [300,260,290,220,270,190,240].forEach((w,i)=>{h+=`<div class="ln" style="top:${90+i*44}px;left:${(380-w)/2}px;width:${w}px;background:#c5d2d2"></div>`}); $('dN').innerHTML=h;}
+['hAR','hDE'].forEach(id=>{let h=''; for(let i=0;i<11;i++)h+=`<div class="g" style="top:${70+i*38}px"></div>`; $(id).innerHTML=h;});
+['tAR','tDE'].forEach(id=>{$(id).innerHTML='<div class="band"></div><div class="l" style="top:52px;width:150px"></div><div class="l" style="top:80px;width:124px"></div><div class="l" style="top:108px;width:140px"></div>';});
+// generisches QR-Muster (deterministisch, keine Daten)
+{let h='<rect width="21" height="21" fill="#fff"/>'; let r=7; const f=(x,y)=>{h+=`<rect x="${x}" y="${y}" width="7" height="7" fill="#1F3B35"/><rect x="${x+1}" y="${y+1}" width="5" height="5" fill="#fff"/><rect x="${x+2}" y="${y+2}" width="3" height="3" fill="#1F3B35"/>`};
+ f(0,0);f(14,0);f(0,14); for(let y=0;y<21;y++)for(let x=0;x<21;x++){ if((x<8&&y<8)||(x>12&&y<8)||(x<8&&y>12))continue; r=(r*1103515245+12345)&0x7fffffff; if(r%100<46)h+=`<rect x="${x}" y="${y}" width="1" height="1" fill="#1F3B35"/>`;}
+ $('qr').innerHTML=h;}
+
+// ---------- Kamera ----------
+function cam(K,t){ if(t<=K[0][0])return K[0].slice(1); for(let i=0;i<K.length-1;i++){const a=K[i],b=K[i+1]; if(t<=b[0]){const p=quint(lin(t,a[0],b[0]));return a.slice(1).map((v,j)=>v+(b[j+1]-v)*p)}} return K[K.length-1].slice(1);}
+function apply(el,c,extraY=0){const [fx,fy,s,cy]=c; el.style.transform=`translate(${540-s*fx}px,${cy-s*fy+extraY}px) scale(${s})`;}
+function speed(K,t){const a=cam(K,t-1/60),b=cam(K,t+1/60);return Math.hypot((b[0]-a[0])*b[2],(b[1]-a[1])*b[2],(b[3]-a[3]),(b[2]-a[2])*600)*30;}
+const CAM_D=[[0,540,1090,1.0,1090],[2.9,540,1090,1.03,1090],[3.4,540,1090,1.06,1100],[6.3,540,1090,1.08,1100],[6.9,540,1060,.93,1110],[9.8,540,1060,.95,1110],[10.5,540,1090,1.05,1100],[13.3,540,1090,1.09,1100],[13.9,540,1090,1.0,1100],[16.8,540,1090,1.03,1100],[17.3,540,1090,1.08,1100],[20.2,540,1090,1.12,1100]];
+const CAM_P=[[20.4,540,1690,1.22,1420],[21.2,540,1690,1.5,1255],[23.0,540,1690,1.54,1255]];
+
+// ---------- Text-Helfer ----------
+function words(id,t,a,b,step=.07){const el=$(id); const on=t>=a&&t<b+.18; el.style.display=on?'flex':'none'; if(!on)return;
+  el.querySelectorAll('.w').forEach((w,i)=>{const p=lin(t,a+i*step,a+i*step+.28); w.style.opacity=p>0?1:0; w.style.transform=`translateY(${(1-eo(p))*30}px) scale(${p<=0?.6:.6+.4*back(p)})`});
+  el.querySelectorAll('.ln').forEach((l,i)=>{const p=lin(t,a+i*.12,a+i*.12+.22);l.style.transform=`scale(${.9+.1*eo(p)})`;l.style.opacity=p>0?1:0});
+  const o=lin(t,b,b+.15); el.style.opacity=1-o; el.style.transform=`translateY(${-30*o}px)`;}
+function popIn(el,t,a,b,origin='50% 50%'){const on=t>=a&&t<b+.2; el.style.display=on?'flex':'none'; if(!on)return 0; const p=lin(t,a,a+.32), o=lin(t,b,b+.18);
+  el.style.transformOrigin=origin; el.style.opacity=(p>0?1:0)*(1-o); el.style.transform=`scale(${p<=0?0:back(p)}) translateY(${-24*o}px)`; return 1;}
+function center(el){el.style.left=(540-el.offsetWidth/2)+'px';}
+function place(el,x,y,r=0,s=1,o=1){el.style.left=x+'px';el.style.top=y+'px';el.style.transform=`rotate(${r}deg) scale(${s})`;el.style.opacity=o;}
+
+// ---------- Posen ----------
+// Hook-Pose (Frame 0 = Loop-Ziel): leicht verdreht + 30 px tiefer, setzt sich in 0,7 s
+function hookPose(k){ // k: 0 = Frame-0-Pose, 1 = eingeschwungen
+  return {ar:[310,1060+30*(1-k),-7+3*k,1], de:[735,1060+30*(1-k),7-3*k,1]};}
+function endPose(){return {ar:[370,1300,-4,.7], de:[710,1300,4,.7]};}
+
+function render(t){
+  // Hintergrund
+  $('bg1').style.transform=`translate(${Math.sin(t*.5)*20}px,${-t*5}px)`; $('bg2').style.transform=`translate(${-t*4}px,${Math.cos(t*.6)*16}px)`;
+  const seamO=t<6.4?0:t<6.9?lin(t,6.4,6.7):t<9.7?1:1-lin(t,9.7,10.0); $('seamL').setAttribute('opacity','0');
+
+  const inD=t<20.7||t>=23.7, inP=t>=20.3&&t<23.95;
+  const WD=$('WD'), WP=$('WP');
+  WD.style.display=inD?'block':'none'; WP.style.display=inP?'block':'none';
+
+  // ================= Welt D =================
+  if(inD){
+    const ec=t>=23.7; // Endcard-Bereich: Kamera neutral
+    let c= ec?[540,1090,1,1090]:cam(CAM_D,t); apply(WD,c);
+    const v=ec?0:speed(CAM_D,t); WD.style.filter=v>60?`blur(${Math.min(1.2,(v-60)/220)}px)`:'none';
+    WD.style.opacity= t<20.2?1 : t<20.7? 1-lin(t,20.2,20.6) : 1;
+    // --- Diplome AR / DE ---
+    let P;
+    if(t<3.0){P=hookPose(eo(lin(t,0,.7)));}
+    else P=hookPose(1);
+    let ar=[...P.ar], de=[...P.de], oAR=1, oDE=1;
+    // idle atmen
+    const br=Math.sin(t*2*Math.PI/3)*5; ar[1]+=br; de[1]-=br;
+    // B: ausweichen + dimmen, dann zurück + Puls
+    {const a=eo(lin(t,6.5,6.9)), b=eo(lin(t,8.2,8.6)), k=a*(1-b); ar[0]-=55*k; de[0]+=55*k; oAR=oDE=1-.5*k;
+     const pu=t>8.3&&t<8.75?Math.sin(lin(t,8.3,8.75)*Math.PI)*.05:0; ar[3]+=pu; de[3]+=pu;}
+    // C: zur Mitte hinter das Übersetzungsblatt
+    {const k=quint(lin(t,9.95,10.6)); ar=[mix(ar[0],455,k),mix(ar[1],1125,k),mix(ar[2],-11,k),mix(ar[3],.86,k)]; de=[mix(de[0],625,k),mix(de[1],1125,k),mix(de[2],11,k),mix(de[3],.86,k)];
+     const f=lin(t,17.0,17.4); oAR*=1-f; oDE*=1-f;}
+    // Endcard + Loop-Naht
+    if(t>=23.7){const E=endPose(), H=hookPose(0); const a=eo(lin(t,24.0,24.55)), l=quint(lin(t,29.35,29.7));
+      ar=E.ar.map((v,j)=>mix(v,H.ar[j],l)); de=E.de.map((v,j)=>mix(v,H.de[j],l)); ar[1]+=80*(1-a); de[1]+=80*(1-a); oAR=oDE=a;}
+    place($('dAR'),ar[0],ar[1],ar[2],ar[3],oAR); place($('dDE'),de[0],de[1],de[2],de[3],oDE);
+    // Histórico hinter den Diplomen (ab 3,3)
+    {const k=eo(lin(t,3.3,3.8)); const vis=t>=3.3&&t<17.4&&!(t>=23.7);
+      $('hAR').style.display=$('hDE').style.display=vis?'block':'none';
+      if(vis){place($('hAR'),ar[0]-38*k,ar[1]+22*k,ar[2]-6*k,ar[3],oAR); place($('hDE'),de[0]+38*k,de[1]+22*k,de[2]+6*k,de[3],oDE);}}
+    // kleine Übersetzungsblätter (4,5) -> fliegen in C zur Mitte
+    {const vis=t>=4.4&&t<10.7; $('tAR').style.display=$('tDE').style.display=vis?'block':'none';
+     if(vis){const p=lin(t,4.4,4.75), s0=p<=0?0:back(p), k=quint(lin(t,9.95,10.55));
+       const ax=ar[0]+150*ar[3], ay=ar[1]+200*ar[3], dx=de[0]-150*de[3], dy=de[1]+200*de[3];
+       place($('tAR'),mix(ax,540,k),mix(ay,1080,k),mix(5,0,k),s0*mix(1,1.6,k),(k==0?oAR:1)*(1-lin(t,10.4,10.6)));
+       place($('tDE'),mix(dx,540,k),mix(dy,1080,k),mix(-5,0,k),s0*mix(1,1.6,k),(k==0?oDE:1)*(1-lin(t,10.4,10.6)));}}
+    // Pills nur im Hook (und Loop-Naht)
+    {const o=t<3.0?1-lin(t,2.85,3.0):0; const ol=lin(t,29.65,29.8); const op=Math.max(o,t>=29.4?ol:0);
+      const pa=t>=29.4?[mix(endPose().ar[0],310,lin(t,29.35,29.7)),1370]:[ar[0],ar[1]+310];
+      const pd=t>=29.4?[mix(endPose().de[0],735,lin(t,29.35,29.7)),1370]:[de[0],de[1]+310];
+      $('pAR').style.left=pa[0]+'px';$('pAR').style.top=pa[1]+'px';$('pAR').style.opacity=op; $('pDE').style.left=pd[0]+'px';$('pDE').style.top=pd[1]+'px';$('pDE').style.opacity=op;
+      $('pAR').style.display=$('pDE').style.display=op>0?'flex':'none';}
+    // neutrales Diplom (B)
+    {const vis=t>=6.55&&t<8.75; $('dN').style.display=$('chkN').style.display=vis?'block':'none';
+     if(vis){const a=expo(lin(t,6.55,7.05)), b=eo(lin(t,8.2,8.65)); const y=mix(760,1050,a)-260*b;
+       place($('dN'),540,y,mix(-6,1,a),.84,a*(1-b));
+       const cp=lin(t,7.25,7.55); place($('chkN'),540+130,y-190,0,cp<=0?0:back(cp),1-b);}}
+    // großes Übersetzungsblatt (C, D) -> Flip zur PDF (E)
+    {const vis=t>=10.1&&t<17.2; $('sT').style.display=vis?'block':'none';
+     if(vis){const a=lin(t,10.1,10.55), f=lin(t,17.0,17.2); place($('sT'),540,1080,0,1,eo(a)); $('sT').style.transform=`scale(${mix(.5,1,eo(a))*(1-eo(f))},${mix(.5,1,eo(a))})`;}
+     const mv=t>=11.2&&t<17.2; $('medal').style.display=mv?'block':'none';
+     if(mv){const p=lin(t,11.2,11.5); place($('medal'),540,1290,0,p<=0?0:mix(1.8,1,eo(p))*(p>.95?1+.06*Math.sin(lin(t,11.5,11.8)*Math.PI):1),Math.min(1,p*3)*(1-lin(t,17.0,17.15)));}
+     const pv=t>=17.2&&t<20.75; $('sP').style.display=pv?'block':'none';
+     if(pv){const g=eo(lin(t,17.2,17.45)), out=eo(lin(t,20.2,20.6)); $('sP').style.left='540px'; $('sP').style.top=(1080-500*out)+'px'; $('sP').style.opacity=1-out; $('sP').style.transform=`scale(${g*(1-.3*out)},1)`;
+       const sig=$('sig'); const L=sig.getTotalLength(); sig.style.strokeDasharray=L; sig.style.strokeDashoffset=L*(1-eo(lin(t,17.6,18.3)));}
+     const kv=t>=18.5&&t<20.75; $('chkP').style.display=kv?'block':'none';
+     if(kv){const p=lin(t,18.5,18.82), out=eo(lin(t,20.2,20.6)); place($('chkP'),540+200,1080-300-500*out,0,p<=0?0:back(p),1-out);}}
+    // Übersetzung aus dem Ausland (D)
+    {const vis=t>=13.4&&t<16.7; $('sX').style.display=$('xm').style.display=vis?'block':'none';
+     if(vis){const a=expo(lin(t,13.4,13.95)), b=eo(lin(t,16.15,16.6)); const x=mix(1400,590,a)+800*b;
+       place($('sX'),x,1080+20*b,mix(14,5,a)+12*b,1,1);
+       const xp=lin(t,14.9,15.15); place($('xm'),x,1080,0,xp<=0?0:back(xp),1);
+       $('x1').style.strokeDashoffset=1-eo(lin(t,15.05,15.3)); $('x2').style.strokeDashoffset=1-eo(lin(t,15.2,15.45));}}
+  }
+
+  // ================= Welt P (echter Rechner) =================
+  if(inP){
+    const rise=(1-expo(lin(t,20.3,20.9)))*700; apply(WP,cam(CAM_P,t),rise);
+    const v=speed(CAM_P,t); WP.style.filter=v>60?`blur(${Math.min(1.2,(v-60)/220)}px)`:'none';
+    WP.style.opacity=lin(t,20.3,20.5);
+    // Split-Wisch Árabe -> Alemão (diagonale Kante, Lichtkante)
+    const w=quint(lin(t,21.9,22.35)); const X=-260+1240*w;
+    $('uiDE').style.clipPath=`polygon(${X-260}px -10px, -10px -10px, -10px 1400px, ${X+260-520}px 1400px)`;
+    $('uiDE').style.clipPath=`polygon(-10px -10px, ${X+130}px -10px, ${X-130}px 1400px, -10px 1400px)`;
+    const g=$('glint'); g.style.left=(X-5)+'px'; g.style.transform='rotate(10.6deg)'; g.style.opacity=w>0&&w<1?.9:0;
+    $('langGlow').style.opacity=t>21.5&&t<22.9?Math.min(1,(t-21.5)/.15)*(1-lin(t,22.75,22.9)):0;
+    const tp=lin(t,22.95,23.2); $('tap').style.opacity=t>22.95&&t<23.55?1:0; $('tap').style.transform=`translate(${(1-eo(tp))*160}px,${(1-eo(tp))*120}px) scale(${t>23.2&&t<23.35?.8:1})`;
+    const rp=lin(t,23.25,23.7); $('tapR').style.opacity=rp>0&&rp<1?1-rp:0; $('tapR').style.transform=`scale(${.4+rp})`;
+    $('btnDark').style.opacity=t>23.22&&t<23.42?.2:0;
+  }
+  // Match-Cut: Button -> Fläche -> Pinho (Endcard)
+  {const W=$('wipe'); const on=t>=23.4&&t<24.2; W.style.display=on?'block':'none';
+   if(on){const p=expo(lin(t,23.4,23.8)); const r0=[73,1292,934,146]; const x=r0[0]*(1-p), y=r0[1]*(1-p), w=r0[2]+(1080-r0[2])*p, h=r0[3]+(1920-r0[3])*p;
+     W.style.left=x+'px';W.style.top=y+'px';W.style.width=w+'px';W.style.height=h+'px';W.style.borderRadius=(18*(1-p))+'px'; W.style.opacity=1-eo(lin(t,23.8,24.15));}}
+
+  // ================= Bildschirm-Ebene =================
+  // Wortmarke
+  {const o=t<3.0?0:t<20.2?lin(t,3.0,3.3):1-lin(t,20.2,20.4); $('wm').style.opacity=.92*o; $('wm').style.display=o>0?'block':'none';}
+  // Hook (Frame 0 voll sichtbar) + Loop-Naht
+  {const H=$('hook'); const out=lin(t,2.82,2.98), back_=lin(t,29.55,29.8); const vis=t<2.98||t>=29.55; H.style.display=vis?'block':'none';
+   const pulse=1+.035*Math.sin(lin(t,.1,.55)*Math.PI);
+   H.style.opacity=t>=29.55?back_:1-out; H.style.transform=`translateY(${-40*out+(t>=29.55?(1-eo(back_))*24:0)}px) scale(${t<1?pulse:1})`;
+   $('mk1').style.transform=`scaleX(${t<29.55?1:eo(back_)})`; $('mk2').style.transform=`scaleX(${t<29.55?1:eo(back_)})`;
+   const k=lin(t,.05,.45),k2=lin(t,.35,.75); $('mk1').style.filter=`brightness(${1+.06*Math.sin(k*Math.PI)})`; if(t<1){$('mk1').style.transform=`scaleY(${1+.12*Math.sin(k*Math.PI)})`;$('mk2').style.transform=`scaleY(${1+.12*Math.sin(k2*Math.PI)})`;}}
+  words('capA',t,2.92,6.2); words('capB',t,6.5,9.7); words('capC',t,10.0,13.2); words('capD',t,13.5,16.7); words('capE',t,17.0,20.2,.06); words('capF',t,20.6,23.85);
+  // Chip-Platz: CTA (3,2–6,3 und 20,6–23,4) / Quelle UFMG (6,9–20,2)
+  {const c=$('chipCta'); const a=t<10?popIn(c,t,3.2,6.25):popIn(c,t,20.7,23.4); if(a){center(c);}
+   const l=$('lbl'); if(popIn(l,t,6.9,20.2)){center(l);} }
+  // Endcard
+  {const on=t>=23.92&&t<29.8; ['ecH','ecChip','ecUrl','ecWa'].forEach(id=>$(id).style.display=on?($(id).classList.contains('chip')||id==='ecWa'?'flex':'block'):'none');
+   if(on){const o=1-lin(t,29.4,29.58);
+     const h=lin(t,23.92,24.3); $('ecH').style.opacity=h*o; $('ecH').style.transform=`translateY(${(1-eo(h))*40-30*lin(t,29.4,29.58)}px)`;
+     const m=expo(lin(t,24.15,24.5)); $('mkE').style.transform=`scaleX(${m})`; $('mkE').parentNode.style.color=m>.5?'#1F3B35':'#fff';
+     const cp=lin(t,24.25,24.55); $('ecChip').style.opacity=(cp>0?1:0)*o; $('ecChip').style.transform=`scale(${cp<=0?0:back(cp)})`; $('ecChip').style.transformOrigin='0 50%';
+     const u=lin(t,24.3,24.6); $('ecUrl').style.opacity=u*o; $('ecUrl').style.transform=`translateY(${(1-eo(u))*30}px)`;
+     const wa=lin(t,24.35,24.65); $('ecWa').style.opacity=wa*o; $('ecWa').style.transform=`translateY(${(1-eo(wa))*30}px)`;}}
+}
+document.fonts.ready.then(()=>render(0));
+render(0);
+</script></body></html>

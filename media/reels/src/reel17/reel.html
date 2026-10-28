@@ -90,15 +90,15 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
 
   <!-- Welt P: echter Rechner (Screenshot Live-Seite, Schritt 1) -->
   <div class="world" id="WP" style="display:none">
-    <!-- Ausschnitt der echten Rechner-Seite (Schritt 1: Sprachfelder + Button; Datei-Zeile, Abschnittstitel und Feld-Beschriftungen ausgeblendet, weil < 34 px), Zoom 0.789: ganz in x 90–900 -->
-    <div class="abs" id="uiCard" style="left:90px;top:728px;width:810px;height:328px;border-radius:28px;overflow:hidden;background:#fff;box-shadow:0 40px 80px rgba(10,25,22,.42)">
-      <img id="uiAR" src="ui_ar_crop.jpg" style="position:absolute;left:0;top:24px;width:810px;height:290.5px">
-      <img id="uiDE" src="ui_de_crop.jpg" style="position:absolute;left:0;top:24px;width:810px;height:290.5px">
+    <!-- Ausschnitt der echten Rechner-Seite (Schritt 1: Abschnittstitel, beide Sprachfelder untereinander + Button; Datei-Zeile und Feld-Beschriftungen ausgeblendet), Zoom 1,0: UI-Schrift ≈ 46 px, ganz in x 90–900 -->
+    <div class="abs" id="uiCard" style="left:90px;top:700px;width:810px;height:651px;border-radius:28px;overflow:hidden;background:#fff;box-shadow:0 40px 80px rgba(10,25,22,.42)">
+      <img id="uiAR" src="ui_ar_crop.jpg" style="position:absolute;left:24px;top:24px;width:762px;height:603px">
+      <img id="uiDE" src="ui_de_crop.jpg" style="position:absolute;left:24px;top:24px;width:762px;height:603px">
       <div class="abs" id="glint" style="top:-200px;width:10px;height:1000px;background:#fff;box-shadow:0 0 24px 8px rgba(255,255,255,.7);opacity:0"></div>
-      <div class="abs" id="btnDark" style="left:17px;top:183px;width:777px;height:123px;border-radius:17px;background:#000;opacity:0"></div>
-      <div class="abs" id="langGlow" style="left:7px;top:22px;width:797px;height:132px;border-radius:20px;border:5px solid #1a7a5e;opacity:0"></div>
-      <div class="abs" id="tap" style="left:355px;top:195px;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,.55);border:4px solid rgba(255,255,255,.9);opacity:0"></div>
-      <div class="abs" id="tapR" style="left:305px;top:145px;width:200px;height:200px;border-radius:50%;border:6px solid #fff;opacity:0"></div>
+      <div class="abs" id="btnDark" style="left:26px;top:469px;width:758px;height:156px;border-radius:22px;background:#000;opacity:0"></div>
+      <div class="abs" id="langGlow" style="left:14px;top:105px;width:782px;height:336px;border-radius:26px;border:5px solid #1a7a5e;opacity:0"></div>
+      <div class="abs" id="tap" style="left:355px;top:497px;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,.55);border:4px solid rgba(255,255,255,.9);opacity:0"></div>
+      <div class="abs" id="tapR" style="left:305px;top:447px;width:200px;height:200px;border-radius:50%;border:6px solid #fff;opacity:0"></div>
     </div>
   </div>
 
@@ -274,7 +274,7 @@ function base(t,tv){
        const sig=$('sig'); const L=sig.getTotalLength(); sig.style.strokeDasharray=L; sig.style.strokeDashoffset=L*(1-eo(lin(t,17.6,18.3)));}
      const kv=t>=18.8&&t<20.75; $('chkP').style.display=kv?'block':'none';
      if(kv){const p=lin(t,18.8,19.12), out=lin(t,20.2,20.32); place($('chkP'),800,1330,0,p<=0?0:back(p),1-out);}}   // Haken unten rechts am PDF, frei von der Beleg-Pille (N1)
-    $('sTt').style.opacity=(t>=13.4&&t<17.05)?1-lin(t,13.4,13.48):1;   // „Tradução“ nie angeschnitten unter dem Auslandsblatt
+    $('sTt').style.opacity=(t>=13.25&&t<17.05)?1-lin(t,13.25,13.35):1;   // „Tradução“ nie angeschnitten unter dem Auslandsblatt
     // Übersetzung aus dem Ausland (D)
     {const vis=t>=13.4&&t<17.3; $('sX').style.display=$('xm').style.display=vis?'block':'none';
      if(vis){const a=expo(lin(t,13.4,13.95)), b=eo(lin(t,16.98,17.33)); const x=mix(1400,590,a)+800*b;
@@ -289,7 +289,7 @@ function base(t,tv){
     $('uiCard').style.transform=`translateY(${(1-expo(lin(t,20.35,20.75)))*90}px)`;
     // Split-Wisch Árabe -> Alemão (schräge Kante, Lichtkante)
     const w=quint(lin(t,21.8,22.25)); const X=-150+1110*w;
-    $('uiDE').style.clipPath=`polygon(-10px -10px, ${X+70}px -10px, ${X-70}px 400px, -10px 400px)`;
+    $('uiDE').style.clipPath=`polygon(-10px -10px, ${X+70}px -10px, ${X-70}px 620px, -10px 620px)`;
     const g=$('glint'); g.style.left=(X-5)+'px'; g.style.transform='rotate(19.5deg)'; g.style.opacity=0;   // kein Glanzstreifen (zerschnitt Buchstaben, N2)
     $('langGlow').style.opacity=t>21.5&&t<22.9?Math.min(1,(t-21.5)/.15)*(1-lin(t,22.75,22.9)):0;
     const tp=lin(t,23.05,23.3); $('tap').style.opacity=t>23.05&&t<23.65?1:0; $('tap').style.transform=`translate(${(1-eo(tp))*160}px,${(1-eo(tp))*120}px) scale(${t>23.3&&t<23.45?.8:1})`;
@@ -298,7 +298,7 @@ function base(t,tv){
   }
   // Übergang: Tap -> Kreis in Pinho wächst aus dem Tap-Punkt (Handy-Push-in), dann Endcard/Mitmach auf ruhigem Grund
   {const W=$('wipe'); const on=t>=23.4&&t<23.8; W.style.display=on?'block':'none';
-   if(on){const p=expo(lin(t,23.4,23.67)), r=40+1760*p; W.style.left=(495-r)+'px'; W.style.top=(973-r)+'px'; W.style.width=W.style.height=(2*r)+'px'; W.style.opacity=1-lin(t,23.67,23.78);}}
+   if(on){const p=expo(lin(t,23.4,23.67)), r=40+1760*p; W.style.left=(495-r)+'px'; W.style.top=(1247-r)+'px'; W.style.width=W.style.height=(2*r)+'px'; W.style.opacity=1-lin(t,23.67,23.78);}}
   // ================= Bildschirm-Ebene =================
   // Wortmarke
   {const o=t<3.0?0:t<20.2?lin(t,3.0,3.3):1-lin(t,20.2,20.4); $('wm').style.opacity=.92*o; $('wm').style.display=o>0?'block':'none';}

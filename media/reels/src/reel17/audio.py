@@ -39,7 +39,7 @@ tr.hit(T(23.8))                                # Endcard (Video 25,0 bzw. 28,0)
 if not GMB: sf('pop', 24.3, 1.00, f=850)       # „link na bio“-Chip (24,3–24,6)
 for k, v, b in LOG: print(f'  {k:7s} Bild {v:6.2f} s  -> Schlag {b:5.1f} s  ({(b - v) * 1000:+.0f} ms)')
 tr.keep_stems = bool(os.environ.get('STEMS'))
-kw = dict(lufs=-14.0, fade=((END - .25) if GMB else (END - .5), END))   # GMB: kurzer Fade, Loop-Naht ≤ 6 LU (E8)
+kw = dict(lufs=-14.0, fade=(END - .03, END))   # nur Entknacksen (30 ms): Loop-Naht ≤ 6 dB (E8, 17N2-1)
 if MASTER: kw['master'] = MASTER
 print('LUFS', tr.write(OUT, **kw))
 if tr.stems:

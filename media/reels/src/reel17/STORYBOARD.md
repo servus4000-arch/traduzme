@@ -55,3 +55,8 @@ Feinzeiten nach Video-Kritik: Caption A ab 2,92 s, Endcard ab 23,92 s (ruhig ab 
 - Rechner-Ausschnitt nur Sprachfelder + Button (Abschnittstitel, Datei-Zeile, Feld-Beschriftungen ausgeblendet), Karte top 728, Höhe 328, Kreis-Übergang aus dem Tap-Punkt (495, 973). Kein Glanzstreifen.
 - E1 ab 16,98 s, F ab 21,52 s (auf dem Schlag). Endcard: Domain + WhatsApp kommen mit der Headline (Kontakt ≥ 4,5 s), Ausblendung 29,35–29,45 (Szene).
 - Audio: alle SFX auf dem 0,5-s-Schlag, Mitmach ein Pop, GMB-Fade 0,25 s (Loop-Naht).
+
+## v5 – Nachabnahme 2 (28.10.)
+- Rechner: Abschnittstitel + beide Sprachfelder untereinander (Tausch-Knopf dazwischen) + Button, Zoom 1,0 (UI ≈ 45 px), Karte y 700–1351, Kreis-Übergang aus (495, 1247). Objektfläche-Ausnahme in qa.json.
+- „Tradução“-Titel blendet 13,25–13,35 aus, bevor das Auslandsblatt kommt.
+- Audio: End-Fade 30 ms (Loop-Naht ≤ 6 dB).

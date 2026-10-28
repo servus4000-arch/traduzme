@@ -1,0 +1,274 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<!-- Reel 19 · POV: traduziu antes de apostilar · Dokument-Tisch + VHS-Rückspulen · Névoa · pop 120 BPM
+     Quellen je Aussage: STORYBOARD.md (FAQ a8, Info-Popup Apostila L1474, pc2 L1016, CNJ Res. 228/2016 Art. 6) -->
+<link rel="stylesheet" href="fonts/os.css">
+<style>
+@font-face{font-family:'Inter Tight';font-weight:100 900;font-style:normal;src:url(fonts/intertight-latin.woff2)}
+:root{--nev:#BDCBCB;--dark:#1F3B35;--pinho:#376259;--sal:#97B9A8;--areia:#EEDECE;--paper:#FBFAF6}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',sans-serif;background:var(--nev)}
+.abs{position:absolute}
+#stage{position:absolute;inset:0;overflow:hidden;background:radial-gradient(1300px 1200px at 50% 58%,#C8D5D4 0%,#BDCBCB 55%,#AFBFBE 100%)}
+#world{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0}
+/* Papier */
+.doc{position:absolute;left:0;top:0;border-radius:10px;background:var(--paper);box-shadow:0 26px 50px rgba(31,59,53,.28),0 2px 0 rgba(31,59,53,.08);transform-origin:50% 50%;overflow:hidden}
+.d540{width:540px;height:720px}
+.apo{width:400px;height:520px;background:#F7F0E6;border:5px solid var(--pinho);border-radius:12px}
+.apo .in{position:absolute;inset:12px;border:2px solid rgba(55,98,89,.45);border-radius:6px}
+.hd{position:absolute;font-weight:800;color:var(--dark);letter-spacing:-.5px;line-height:1.02}
+.bar{position:absolute;height:16px;border-radius:8px;background:#D5DAD4}
+.lbl{position:absolute;font-weight:700;font-size:44px;color:var(--pinho);letter-spacing:-.5px}
+.slot{position:absolute;left:36px;top:430px;width:468px;height:220px;border:5px dashed var(--dark);border-radius:16px;display:flex;align-items:center;justify-content:center;gap:16px;font-weight:800;font-size:48px;color:var(--dark);background:rgba(238,222,206,.55)}
+/* Text-Ebene */
+.hl{position:absolute;left:90px;top:400px;width:900px;font-weight:800;font-size:108px;line-height:1.02;letter-spacing:-2px;color:var(--dark)}
+.mk{position:relative;display:inline-block;z-index:0}
+.mk b{position:absolute;left:-12px;right:-12px;top:16px;bottom:2px;background:var(--areia);border-radius:14px;z-index:-1;transform-origin:0 50%}
+.tag{position:absolute;left:90px;top:300px;height:76px;padding:0 26px;border-radius:14px;background:var(--dark);color:#fff;font-weight:800;font-size:46px;display:flex;align-items:center;gap:14px;white-space:nowrap}
+.cap{position:absolute;left:0;width:1080px;top:300px;display:flex;flex-direction:column;align-items:center;gap:10px}
+.cap .ln{display:flex;gap:16px;align-items:center;background:var(--dark);color:#fff;font-weight:800;font-size:66px;line-height:1;padding:20px 32px 24px;border-radius:24px;letter-spacing:-1px;box-shadow:0 14px 30px rgba(0,0,0,.18)}
+.w{display:inline-block}
+.cap .hi{color:var(--dark);background:var(--areia);border-radius:12px;padding:0 12px}
+.chip{position:absolute;height:76px;padding:0 30px;border-radius:38px;font-size:46px;font-weight:800;display:flex;align-items:center;white-space:nowrap;background:var(--areia);color:var(--dark);box-shadow:0 10px 24px rgba(31,59,53,.18)}
+.step{position:absolute;left:90px;top:396px;width:820px;height:250px}
+.num{position:absolute;left:0;top:6px;width:124px;height:124px;border-radius:50%;background:var(--dark);color:var(--areia);font-weight:800;font-size:80px;display:flex;align-items:center;justify-content:center;letter-spacing:-2px}
+.stt{position:absolute;left:150px;top:0;width:670px;font-weight:800;font-size:84px;line-height:1.04;letter-spacing:-1.5px;color:var(--dark)}
+.sub{position:absolute;left:150px;top:190px;font-weight:700;font-size:54px;color:var(--dark);letter-spacing:-.5px;white-space:nowrap}
+.pill{height:120px;padding:0 54px;border-radius:60px;background:var(--dark);color:#fff;font-weight:800;font-size:72px;display:flex;align-items:center}
+.big{position:absolute;font-weight:800;color:var(--dark);letter-spacing:-1px}
+</style></head>
+<body><div id="stage">
+  <div class="abs" id="bg1" style="left:-300px;top:1250px;width:700px;height:700px;border-radius:50%;background:rgba(151,185,168,.28)"></div>
+  <div class="abs" id="bg2" style="left:760px;top:180px;width:520px;height:520px;border-radius:50%;background:rgba(255,255,255,.18)"></div>
+
+  <!-- ===== Welt: Tisch von oben (Kamera) ===== -->
+  <div id="world">
+    <!-- Original: Certidão (Vektor, keine echten Daten) -->
+    <div class="doc d540" id="ORIG">
+      <svg class="abs" style="left:226px;top:30px" width="88" height="88" viewBox="0 0 88 88"><circle cx="44" cy="44" r="38" fill="none" stroke="#376259" stroke-width="5"/><circle cx="44" cy="44" r="24" fill="none" stroke="#376259" stroke-width="3"/><path d="M44 26l5 11 12 1-9 8 3 12-11-6-11 6 3-12-9-8 12-1z" fill="#376259"/></svg>
+      <div class="hd" style="left:0;width:540px;top:132px;text-align:center;font-size:52px">CERTIDÃO DE<br>NASCIMENTO</div>
+      <div class="bar" style="left:50px;top:290px;width:440px"></div><div class="bar" style="left:50px;top:330px;width:380px"></div>
+      <div class="bar" style="left:50px;top:390px;width:440px"></div><div class="bar" style="left:50px;top:430px;width:300px"></div>
+      <div class="bar" style="left:50px;top:490px;width:420px"></div><div class="bar" style="left:50px;top:530px;width:360px"></div>
+      <svg class="abs" style="left:300px;top:590px" width="190" height="80" viewBox="0 0 190 80"><path d="M6 52c18-30 30-34 34-18s-6 28 4 20 22-36 30-26-4 30 8 22 18-26 30-20 4 22 16 16 28-18 50-14" fill="none" stroke="#1F3B35" stroke-width="4" stroke-linecap="round"/><path d="M4 70h180" stroke="#1F3B35" stroke-width="2.5" opacity=".5"/></svg>
+    </div>
+    <!-- Tradução juramentada -->
+    <div class="doc d540" id="TRAD">
+      <div class="hd" style="left:40px;top:40px;font-size:50px">TRADUÇÃO<br>JURAMENTADA</div>
+      <div class="abs" style="left:40px;top:160px;width:460px;height:6px;border-radius:3px;background:#376259"></div>
+      <div id="secA">
+        <div class="lbl" style="left:40px;top:196px">Certidão</div>
+        <div class="bar" style="left:40px;top:272px;width:450px"></div><div class="bar" style="left:40px;top:308px;width:390px"></div><div class="bar" style="left:40px;top:344px;width:420px"></div><div class="bar" style="left:40px;top:380px;width:300px"></div>
+      </div>
+      <div id="secB">
+        <div class="lbl" style="left:40px;top:430px">Apostila</div>
+        <div class="bar" style="left:40px;top:506px;width:440px"></div><div class="bar" style="left:40px;top:542px;width:360px"></div><div class="bar" style="left:40px;top:578px;width:410px"></div>
+      </div>
+      <div class="slot" id="slot">apostila<svg width="40" height="58" viewBox="0 0 40 58"><path d="M6 16C6 6 13 2 20 2s14 4 14 13c0 10-12 12-12 24" fill="none" stroke="#1F3B35" stroke-width="7" stroke-linecap="round"/><circle cx="22" cy="51" r="5" fill="#1F3B35"/></svg></div>
+      <div class="abs" id="scanT" style="left:0;top:0;width:540px;height:60px;background:linear-gradient(180deg,rgba(151,185,168,0),rgba(151,185,168,.55),rgba(151,185,168,0));opacity:0"></div>
+      <svg class="abs" style="left:330px;top:630px" width="170" height="60" viewBox="0 0 170 60"><path d="M6 40c14-22 24-26 28-12s-4 20 4 14 18-28 24-20-2 22 8 16 16-20 24-14 4 16 14 12 24-14 52-10" fill="none" stroke="#376259" stroke-width="4" stroke-linecap="round"/></svg>
+    </div>
+    <!-- Apostila 1 (no original) -->
+    <div class="doc apo" id="APO1"><div class="in"></div>
+      <div class="hd" style="left:34px;top:34px;font-size:52px;color:#376259">APOSTILA</div>
+      <div class="bar" style="left:34px;top:112px;width:320px;background:#E2D6C6"></div><div class="bar" style="left:34px;top:146px;width:260px;background:#E2D6C6"></div>
+      <div class="bar" style="left:34px;top:180px;width:300px;background:#E2D6C6"></div><div class="bar" style="left:34px;top:214px;width:220px;background:#E2D6C6"></div>
+      <svg class="abs qr" style="left:34px;top:280px" width="150" height="150" viewBox="0 0 15 15"></svg>
+      <svg class="abs" style="left:222px;top:290px" width="140" height="140" viewBox="0 0 140 140"><circle cx="70" cy="70" r="62" fill="none" stroke="#376259" stroke-width="6"/><circle cx="70" cy="70" r="46" fill="none" stroke="#376259" stroke-width="3" stroke-dasharray="6 6"/><path d="M48 72l15 15 30-34" fill="none" stroke="#376259" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <!-- Apostila 2 (na tradução) -->
+    <div class="doc apo" id="APO2"><div class="in"></div>
+      <div class="hd" style="left:34px;top:34px;font-size:52px;color:#376259">APOSTILA</div>
+      <div class="bar" style="left:34px;top:112px;width:320px;background:#E2D6C6"></div><div class="bar" style="left:34px;top:146px;width:260px;background:#E2D6C6"></div>
+      <div class="bar" style="left:34px;top:180px;width:300px;background:#E2D6C6"></div><div class="bar" style="left:34px;top:214px;width:220px;background:#E2D6C6"></div>
+      <svg class="abs qr" style="left:34px;top:280px" width="150" height="150" viewBox="0 0 15 15"></svg>
+      <svg class="abs" style="left:222px;top:290px" width="140" height="140" viewBox="0 0 140 140"><circle cx="70" cy="70" r="62" fill="none" stroke="#376259" stroke-width="6"/><circle cx="70" cy="70" r="46" fill="none" stroke="#376259" stroke-width="3" stroke-dasharray="6 6"/><path d="M48 72l15 15 30-34" fill="none" stroke="#376259" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <!-- Heftklammern -->
+    <svg class="abs" id="stp1" width="90" height="40" viewBox="0 0 90 40" style="left:0;top:0;opacity:0"><path d="M6 30V12a6 6 0 0 1 6-6h66a6 6 0 0 1 6 6v18" fill="none" stroke="#8A9A97" stroke-width="7" stroke-linecap="round"/></svg>
+    <svg class="abs" id="stp2" width="90" height="40" viewBox="0 0 90 40" style="left:0;top:0;opacity:0"><path d="M6 30V12a6 6 0 0 1 6-6h66a6 6 0 0 1 6 6v18" fill="none" stroke="#8A9A97" stroke-width="7" stroke-linecap="round"/></svg>
+  </div>
+
+  <!-- Scanner-Licht Schritt 2 (Bildschirm) -->
+  <div class="abs" id="scan" style="left:0;width:1080px;height:90px;top:0;opacity:0;background:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.55),rgba(255,255,255,0))"></div>
+  <!-- Dimmer + echter FAQ-Screenshot -->
+  <div class="abs" id="dim" style="inset:0;background:#BDCBCB;opacity:0"></div>
+  <div class="abs" id="faq" style="left:200px;top:768px;width:708px;height:770px;transform-origin:0 0;border-radius:30px;overflow:hidden;box-shadow:0 40px 80px rgba(31,59,53,.35);opacity:0;background:#fbfaf7">
+    <img src="shots/faq8_top.png" style="position:absolute;left:0;top:0;width:708px">
+    <div id="hlLayer" class="abs" style="left:0;top:0;width:708px;height:770px;mix-blend-mode:multiply"></div>
+    <div class="abs" style="left:0;bottom:0;width:708px;height:46px;background:linear-gradient(180deg,rgba(251,250,247,0),#fbfaf7)"></div>
+  </div>
+  <!-- Recap 1 → 2 → 3 -->
+  <div class="abs" id="recap" style="left:0;top:800px;width:1080px;height:520px;opacity:0">
+    <svg width="1080" height="520" viewBox="0 0 1080 520" id="recapSvg"></svg>
+  </div>
+
+  <!-- VHS-Rückspul-Ebene -->
+  <div class="abs" id="vhs" style="inset:0;opacity:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(31,59,53,.10) 0 3px,rgba(0,0,0,0) 3px 7px)">
+    <div class="abs" id="tb1" style="left:0;width:1080px;height:70px;background:rgba(255,255,255,.42)"></div>
+    <div class="abs" id="tb2" style="left:0;width:1080px;height:26px;background:rgba(31,59,53,.22)"></div>
+  </div>
+  <!-- ===== Text-Ebene ===== -->
+  <div class="tag" id="pov">POV</div>
+  <div class="abs" id="wm" style="left:600px;top:300px;width:300px;height:76px;display:flex;align-items:center;justify-content:flex-end;font-weight:800;font-size:50px;color:#1F3B35;letter-spacing:-1px">traduzme</div>
+  <div class="hl" id="hook"><span class="w">Você</span> <span class="w">traduziu</span><br><span class="mk w"><b id="mkb"></b>antes</span> <span class="w">de</span><br><span class="w">apostilar?</span></div>
+
+  <div class="cap" id="cap1"><div class="ln"><span class="w">A</span><span class="w">apostila</span><span class="w">do</span><span class="w">original</span></div><div class="ln"><span class="w">ficou</span><span class="w hi">sem tradução.</span></div></div>
+  <div class="cap" id="cap2"><div class="ln"><svg class="w" width="78" height="52" viewBox="0 0 78 52"><path d="M38 4L4 26l34 22zM74 4L40 26l34 22z" fill="#EEDECE"/></svg><span class="w">Rebobina:</span></div><div class="ln"><span class="w">a</span><span class="w">ordem</span><span class="w hi">recomendada</span></div></div>
+
+  <div class="tag" id="dtag" style="opacity:0">Doc. brasileiro<svg width="56" height="36" viewBox="0 0 56 36"><path d="M4 18h44M34 5l14 13-14 13" fill="none" stroke="#EEDECE" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>exterior</div>
+  <div class="step" id="s1"><div class="num">1</div><div class="stt"><span class="w">Apostila</span> <span class="w">no</span><br><span class="w">original</span></div><div class="sub"><span class="w">em</span> <span class="w">cartório</span></div></div>
+  <div class="step" id="s2"><div class="num">2</div><div class="stt"><span class="w">Tradução</span><br><span class="w">juramentada</span></div><div class="sub"><span class="w">com</span> <span class="w">a</span> <span class="w">apostila</span> <span class="w">junto</span></div></div>
+  <div class="step" id="s3"><div class="num">3</div><div class="stt"><span class="w">Apostila</span> <span class="w">na</span><br><span class="w">tradução</span></div><div class="sub"><span class="w">uma</span> <span class="w">apostila</span> <span class="w">própria</span></div></div>
+
+  <div class="cap" id="cap3"><div class="ln"><span class="w">Dá</span><span class="w">pra</span><span class="w">incluir</span></div><div class="ln"><span class="w">no</span><span class="w hi">orçamento.</span></div></div>
+  <div class="cap" id="cap4"><div class="ln"><span class="w">Regras</span><span class="w">variam:</span><span class="w">confirme</span></div><div class="ln"><span class="w">com</span><span class="w">o</span><span class="w hi">órgão de destino.</span></div></div>
+
+  <div class="abs" id="mit" style="left:0;top:0;width:1080px;height:1920px;display:none">
+    <div class="hl" style="top:330px;text-align:left"><span class="w">Você</span> <span class="w">sabia</span><br><span class="w">a</span> <span class="mk w"><b id="mkm"></b>ordem?</span></div>
+    <div class="big w" style="left:90px;top:840px;font-size:66px">Comenta:</div>
+    <div class="abs" style="left:90px;top:950px;display:flex;gap:44px"><div class="pill w" id="pS" style="height:150px;font-size:90px;padding:0 70px;border-radius:75px">SIM</div><div class="pill w" id="pN" style="height:150px;font-size:90px;padding:0 70px;border-radius:75px">NÃO</div></div>
+  </div>
+
+  <div class="chip" id="chip"><svg width="46" height="46" viewBox="0 0 24 24" style="margin-right:14px"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1" stroke="#1F3B35" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg><span id="chipT">Preço na hora · link na bio</span></div>
+
+  <!-- Endcard (Bild-Reim auf den Hook) -->
+  <div class="abs" id="end" style="left:0;top:0;width:1080px;height:1920px;opacity:0">
+    <div class="hl" style="top:400px">Preço <span class="mk"><b id="mke"></b>na hora</span><br>no site.</div>
+    <div class="chip" id="eBio" style="left:90px;top:660px;height:96px;font-size:56px;padding:0 40px;border-radius:48px;background:#1F3B35;color:#fff"><svg width="56" height="56" viewBox="0 0 24 24" style="margin-right:16px"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1" stroke="#EEDECE" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg>link na bio</div>
+    <div class="big" id="eUrl" style="left:90px;top:800px;font-size:66px">traduzme.com.br</div>
+    <div class="big" id="eWa" style="left:90px;top:900px;font-size:66px;display:flex;align-items:center;gap:20px"><svg width="70" height="70" viewBox="0 0 32 32"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3z" fill="#1F3B35"/><path d="M11.6 9.6c.3-.6.6-.6 1-.6h.8c.3 0 .6.1.8.6l1.1 2.6c.1.3.1.6-.1.9l-.7.9c-.2.2-.2.5 0 .8a10 10 0 0 0 4.3 3.8c.3.1.6.1.8-.1l.9-1.1c.2-.3.6-.3.9-.2l2.6 1.2c.3.2.5.4.4.8-.2 1.3-1.3 2.4-2.7 2.5-1.2.1-3.6-.5-6.4-3.1-2.6-2.4-3.7-5-3.8-6.2 0-.8.3-1.6.8-2.3z" fill="#EEDECE"/></svg>(61) 99803-8363</div>
+  </div>
+
+</div>
+<script>
+const GMB=0;                                   // gmb/reel.html setzt 1 (≤ 30 s, ohne Mitmach-Block)
+const END=GMB?29.9:33.5;
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const lin=(t,a,b)=>cl((t-a)/(b-a));
+const eo=x=>1-Math.pow(1-x,3);
+const expo=x=>x>=1?1:1-Math.pow(2,-10*x);
+const quint=x=>x<.5?16*x**5:1-Math.pow(-2*x+2,5)/2;
+const back=x=>{const c=1.6;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const ein=x=>x*x*x;
+const EZ={q:quint,x:expo,o:eo,l:x=>x,i:ein};
+// GMB: Zeitachse ohne Mitmach (25,0–28,0) und ohne 0,6 s FAQ-Halt (20,9–21,5)
+const SKIP=GMB?[[20.9,0.6],[25.0,3.0]]:[];
+function remap(tn){let t=tn;for(const [a,d] of SKIP){if(t>=a)t+=d;}return t;}
+
+// QR-Muster (deterministisch, Deko)
+document.querySelectorAll('.qr').forEach((s,k)=>{let h='',r=7+k*13;for(let y=0;y<15;y++)for(let x=0;x<15;x++){r=(r*1103515245+12345)&0x7fffffff;const f=(x<4&&y<4)||(x>10&&y<4)||(x<4&&y>10);const on=f?((x%3==0||y%3==0||(x%3==1&&y%3==1))&&!(x==3||y==3||x==11||y==11)):(r>>16)%2;if(on)h+=`<rect x="${x}" y="${y}" width="1" height="1" fill="#1F3B35"/>`;}s.innerHTML=h;});
+// Marker-Rechtecke aus dem echten Screenshot (CSS-px x3), Belegstellen FAQ a8
+const HL={h1:[[137.4,151.2,81.3,16],[15,172.1,152.7,16]],h2:[[184.6,172.1,7,16],[15,193,199.5,16],[15,214,181.5,16],[15,234.9,153.6,16]]};
+{let h='';for(const k of ['h1','h2'])HL[k].forEach((r,i)=>{h+=`<div class="abs ${k}" data-i="${i}" style="left:${r[0]*3-6}px;top:${r[1]*3+2}px;width:${r[2]*3+12}px;height:${r[3]*3+4}px;border-radius:8px;background:#EEDECE;transform-origin:0 50%;transform:scaleX(0)"></div>`});$('hlLayer').innerHTML=h;}
+// Recap-Grafik
+{const doc=(x,y,w,h,f)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="10" fill="${f}" stroke="#1F3B35" stroke-width="4"/>`+[0,1,2,3].map(i=>`<rect x="${x+22}" y="${y+40+i*34}" width="${w-44-(i%2)*40}" height="12" rx="6" fill="#C9CFC9"/>`).join('');
+ const apo=(x,y)=>`<rect x="${x}" y="${y}" width="104" height="134" rx="8" fill="#F7F0E6" stroke="#376259" stroke-width="5"/><circle cx="${x+52}" cy="${y+78}" r="30" fill="none" stroke="#376259" stroke-width="5"/><path d="M${x+38} ${y+79}l10 10 18-22" fill="none" stroke="#376259" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>`;
+ const arr=x=>`<path d="M${x} 190h56M${x+40} 172l18 18-18 18" fill="none" stroke="#1F3B35" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" class="ra"/>`;
+ const g=(i,x,inner)=>`<g class="rg" data-i="${i}" style="transform-origin:${x+105}px 200px">${inner}<circle cx="${x+105}" cy="${420}" r="46" fill="#1F3B35"/><text x="${x+105}" y="${441}" text-anchor="middle" font-family="Open Sans" font-weight="800" font-size="58" fill="#EEDECE">${i+1}</text></g>`;
+ $('recapSvg').innerHTML=g(0,90,doc(90,60,170,230,'#FBFAF6')+apo(170,190))+arr(320)+g(1,420,doc(420,60,170,230,'#FBFAF6')+`<rect x="442" y="76" width="126" height="16" rx="8" fill="#376259"/>`)+arr(650)+g(2,750,doc(750,60,170,230,'#FBFAF6')+`<rect x="772" y="76" width="126" height="16" rx="8" fill="#376259"/>`+apo(830,190));}
+
+// Posen [t, x, y, rot, scale, opacity, ease]  (x/y = Mittelpunkt in Weltkoordinaten)
+const P={
+ ORIG:[[0,330,1255,-9,1,1],[0.8,330,1215,-6,1,1,'x'],[5.6,330,1215,-6,1,1],[6.8,540,1150,-2,1,1,'q'],[10.5,540,1150,-2,1,1],[11.3,330,1185,-4,.88,1,'q'],[18,330,1185,-4,.88,1],[21.6,330,1185,-4,.88,1],[22.0,330,1185,-4,.88,0,'l'],[27.8,300,1560,-6,.88,0],[28.4,300,1560,-6,.88,1,'o'],[33.1,300,1560,-6,.88,1],[33.5,330,1255,-9,1,1,'q']],
+ TRAD:[[0,690,1225,8,1,1],[0.7,690,1170,4,1,1,'x'],[5.7,690,1170,4,1,1],[6.5,1420,760,14,1,1,'i'],[10.6,1420,1150,10,1,1],[11.5,720,1150,3,1,1,'x'],[21.6,720,1150,3,1,1],[22.0,720,1150,3,1,0,'l'],[27.8,690,1540,4,1,0],[28.4,690,1540,4,1,1,'o'],[33.1,690,1540,4,1,1],[33.5,690,1225,8,1,1,'q']],
+ APO1:[[0,280,1330,-9,1.6,0],[2.18,280,1330,-9,1.6,0],[2.5,280,1330,-9,1,1,'i'],[5.3,280,1330,-9,1,1],[5.9,-260,1700,-30,1.3,1,'i'],[5.95,-260,1700,-30,1.3,0,'l'],[7.68,690,1250,7,1.6,0,'l'],[8.0,690,1250,7,1,1,'i'],[10.5,690,1250,7,1,1],[11.3,450,1300,5,.88,1,'q'],[21.6,450,1300,5,.88,1],[22.0,450,1300,5,.88,0,'l'],[27.8,410,1660,4,.88,0],[28.4,410,1660,4,.88,1,'o'],[33.1,410,1660,4,.88,1],[33.4,410,1660,4,.88,0,'l']],
+ APO2:[[0,760,1390,-6,1.6,0],[15.18,760,1390,-6,1.6,0],[15.5,760,1390,-6,1,1,'i'],[21.6,760,1390,-6,1,1],[22.0,760,1390,-6,1,0,'l'],[27.8,790,1710,-5,.88,0],[28.4,790,1710,-5,.88,1,'o'],[33.1,790,1710,-5,.88,1],[33.4,860,1700,-5,.88,0,'l']]
+};
+const SIZE={ORIG:[540,720],TRAD:[540,720],APO1:[400,520],APO2:[400,520]};
+function pose(K,t){if(t<=K[0][0])return K[0].slice(1,6);for(let i=0;i<K.length-1;i++){const a=K[i],b=K[i+1];if(t<=b[0]){const p=(EZ[b[6]||'q'])(lin(t,a[0],b[0]));return a.slice(1,6).map((v,j)=>v+(b[j+1]-v)*p)}}return K[K.length-1].slice(1,6);}
+function place(id,t){const [x,y,r,k,o]=pose(P[id],t),[w,h]=SIZE[id],el=$(id);el.style.transform=`translate(${x-w/2}px,${y-h/2}px) rotate(${r}deg) scale(${k})`;el.style.opacity=o;return [x,y,r,k,o];}
+// Aufprall-Zeiten (Stempel) -> Weltschütteln
+const IMP=[2.5,8.0,15.5];
+// Kamera [t, fx, fy, s] (Fokus -> Bildmitte 540/960)
+const CAM=[[0,540,1500,1.0],[0.8,540,1500,1.03,'o'],[2.3,540,1500,1.045,'l'],[5.2,540,1500,1.05],[7.0,540,1500,1.0,'q'],[10.4,540,1500,1.04,'l'],[11.3,620,1500,1.0,'q'],[14.4,620,1500,1.04,'l'],[15.2,700,1500,1.02,'q'],[18,700,1500,1.05,'l'],[21.5,540,1500,1.0,'q'],[28,540,1500,1.0],[33.1,540,1500,1.0],[33.5,540,1500,1.0]];
+function cam(t){if(t<=CAM[0][0])return CAM[0].slice(1,4);for(let i=0;i<CAM.length-1;i++){const a=CAM[i],b=CAM[i+1];if(t<=b[0]){const p=(EZ[b[4]||'q'])(lin(t,a[0],b[0]));return a.slice(1,4).map((v,j)=>v+(b[j+1]-v)*p)}}return CAM[CAM.length-1].slice(1,4);}
+const nz=(t,s)=>{const x=Math.sin(t*127.1+s*311.7)*43758.5453;return x-Math.floor(x)};   // deterministisches Rauschen
+
+function words(id,t,a,step=.08){const el=$(id); const on=t>=a; el.style.display=on?'':'none'; if(!on)return;
+  el.querySelectorAll('.w').forEach((w,i)=>{const p=lin(t,a+i*step,a+i*step+.28); w.style.opacity=p>0?1:0; w.style.transform=`translateY(${(1-eo(p))*28}px) scale(${p<=0?.6:.6+.4*back(p)})`});
+  let wi=0; el.querySelectorAll('.ln').forEach((l)=>{const a0=a+wi*step; wi+=l.querySelectorAll('.w').length; const p=lin(t,a0-.02,a0+.2);l.style.opacity=p>0?1:0;l.style.transform=`scale(${.9+.1*eo(p)})`});}
+function vis(id,t,a,b,d=.18){const el=$(id); if(t<a||t>=b+d){el.style.display='none';return 0;} el.style.display=''; const o=1-lin(t,b,b+d); el.style.opacity=o; if(t>=b)el.style.transform=(el.style.transform||'')+` translateY(${-24*lin(t,b,b+d)}px)`; return o;}
+function show(id,t,a,b,step){words(id,t,a,step); if(t>=a) vis(id,t,a,b);}
+
+function render(tn){const t=remap(tn);
+  $('bg1').style.transform=`translate(${Math.sin(t*.4)*24}px,${-t*5}px)`; $('bg2').style.transform=`translate(${-t*4}px,${Math.cos(t*.5)*18}px)`;
+  // ---- Welt ----
+  for(const id of ['ORIG','TRAD','APO1','APO2'])place(id,t);
+  // Stapelreihenfolge: Hook/W: TRAD über ORIG, APO1 obenauf; ab Schritt 2 TRAD vor Original-Gruppe
+  $('ORIG').style.zIndex=1; $('APO1').style.zIndex=t<6?4:2; $('TRAD').style.zIndex=t<6?3:3; $('APO2').style.zIndex=5;
+  // Tradução-Inhalt je Phase: Hook/W = nur Certidão + leerer Rahmen (ab 3,0); Schritt 2 druckt "Apostila"
+  const slotO=t<6?lin(t,3.0,3.25):0; $('slot').style.opacity=slotO; $('slot').style.transform=`scale(${slotO<=0?.9:.9+.1*back(lin(t,3.0,3.3))})`;
+  $('secB').style.opacity=t<6?0:lin(t,12.3,12.6)*(1-lin(t,33.15,33.4)); $('secA').style.opacity=t<6?1:lin(t,11.8,12.1);
+  {const sp=lin(t,11.5,12.7);$('scanT').style.opacity=sp>0&&sp<1?1:0;$('scanT').style.top=(sp*660)+'px';}
+  // Heftklammern
+  {const a=pose(P.APO1,t),b=pose(P.APO2,t);
+   const s1=$('stp1');s1.style.opacity=t>=8.05&&t<22?Math.min(lin(t,8.05,8.15),a[4]):(t>=28.4&&t<33.4?a[4]:0);s1.style.transform=`translate(${a[0]-110}px,${a[1]-275}px) rotate(${a[2]}deg) scale(${a[3]})`;
+   const s2=$('stp2');s2.style.opacity=t>=15.55&&t<22?Math.min(lin(t,15.55,15.65),b[4]):(t>=28.4&&t<33.4?b[4]:0);s2.style.transform=`translate(${b[0]-110}px,${b[1]-275}px) rotate(${b[2]}deg) scale(${b[3]})`;}
+  // Kamera + Aufprall-Schütteln + VHS-Ruckeln
+  let [fx,fy,s]=cam(t); let sx=0,sy=0;
+  for(const ti of IMP){const d=t-ti; if(d>=0&&d<.32){const a=(1-d/.32)*14; sx+=Math.sin(d*90)*a; sy+=Math.cos(d*75)*a*.6;}}
+  const rw=t>=5.0&&t<7.0; const rwI=rw?Math.sin(lin(t,5.0,7.0)*Math.PI):0;
+  if(rw){const f=Math.floor(t*30); sx+=(nz(f,1)-.5)*40*rwI; sy+=(nz(f,2)-.5)*16*rwI;}
+  // Glitch auf der Tradução (falsche Reihenfolge)
+  const gI=t>=3.4&&t<5.2?lin(t,3.4,4.8):0; const TR=$('TRAD');
+  if(gI>0||rw){const f=Math.floor(t*15),k=Math.max(gI,rwI); const o=(nz(f,3)-.5)*18*k+ (k>0?6*k:0); TR.style.filter=`drop-shadow(${o}px 0 0 rgba(55,98,89,.75)) drop-shadow(${-o}px 0 0 rgba(238,222,206,.95))`; if(nz(f,4)>.6) TR.style.transform+=` translateX(${(nz(f,5)-.5)*30*k}px)`;}
+  else TR.style.filter='none';
+  $('world').style.transform=`translate(${fx-s*fx+sx}px,${fy-s*fy+sy}px) scale(${s})`;
+  // VHS-Ebene
+  {const v=$('vhs'); v.style.opacity=rw?Math.min(1,rwI*1.6):0; if(rw){$('tb1').style.top=(1920-((t-5.0)*1500)%1990)+'px';$('tb2').style.top=(1920-((t-5.0)*2300+700)%1990)+'px';}}
+  // Scanner Schritt 2 (Original-Gruppe)
+  {const p=lin(t,10.8,11.6);$('scan').style.opacity=p>0&&p<1?.9:0;$('scan').style.top=(780+p*760)+'px';}
+
+  // ---- Hook (Frame 0 fertig) + Loop-Rückkehr ----
+  const loopIn=lin(t,33.22,33.45);
+  {const H=$('hook'); const ho=t<2.3?1:(t>=33.1?loopIn:0); const hOut=lin(t,2.1,2.3);
+   H.style.display=(t<2.3||t>=33.1)?'':'none'; H.style.opacity=t<2.3?1-hOut:loopIn;
+   H.style.transform=`translateY(${t<2.3?-30*hOut:0}px) scale(${1+.03*Math.sin(lin(t,0,.4)*Math.PI)})`; H.style.transformOrigin='0 0';
+   H.querySelectorAll('.w').forEach(w=>{w.style.opacity=1;w.style.transform='none'});
+   $('mkb').style.transform=`scale(${1+.12*Math.sin(lin(t,.05,.45)*Math.PI)+.04*Math.sin(lin(t,1.0,1.4)*Math.PI)})`;
+   for(const id of ['pov','wm']){const e=$(id); e.style.opacity=t<2.3?1-hOut:(t>=33.1?loopIn:(t>=28.0?lin(t,28.3,28.6):0)); e.style.display='';}
+   $('pov').style.opacity=t<2.3?1-hOut:(t>=33.1?loopIn:0);}
+  // ---- Captions ----
+  show('cap1',t,2.3,5.15); show('cap2',t,5.2,6.95,.1);
+  // Schritt-Tag + Schritte
+  {const d=$('dtag'); const o=t>=7.0&&t<18.0?Math.min(lin(t,7.0,7.25),1-lin(t,17.85,18.0)):0; d.style.opacity=o; d.style.display=o>0?'flex':'none';}
+  const step=(id,a,b)=>{const el=$(id); if(t<a||t>=b+.15){el.style.display='none';return;} el.style.display=''; words(id,t,a,.1);
+     const n=el.querySelector('.num'); const p=lin(t,a,a+.3); n.style.transform=`scale(${p<=0?0:back(p)}) rotate(${(1-eo(p))*-90}deg)`; n.style.opacity=1;
+     el.querySelector('.stt').style.opacity=1; el.querySelector('.sub').style.opacity=1; el.style.opacity=1-lin(t,b,b+.15);};
+  step('s1',7.05,10.45); step('s2',10.55,14.45); step('s3',14.55,17.95);
+  show('cap3',t,18.05,21.45); show('cap4',t,21.55,24.95,.07);
+  // ---- FAQ (echter Screenshot) ----
+  {const a=lin(t,18.0,18.5), b=lin(t,21.45,21.85); const F=$('faq'); const o=t<18||t>21.85?0:Math.min(1,a*2)*(1-b);
+   F.style.opacity=o; F.style.transform=`translateY(${(1-expo(a))*500+eo(b)*600}px) rotate(${(1-expo(a))*4}deg) scale(.96)`;
+   $('dim').style.opacity=.78*Math.min(lin(t,18.0,18.4),1-lin(t,21.5,21.9));
+   document.querySelectorAll('#hlLayer .h1').forEach((e,i)=>{e.style.transform=`scaleX(${eo(lin(t,18.5+i*.22,18.5+i*.22+.25))})`});
+   document.querySelectorAll('#hlLayer .h2').forEach((e,i)=>{e.style.transform=`scaleX(${eo(lin(t,19.0+i*.2,19.0+i*.2+.24))})`});}
+  // ---- Recap ----
+  {const R=$('recap'); const o=t<21.5?0:(t<25?lin(t,21.5,21.8):1-lin(t,24.95,25.25)); R.style.opacity=o;
+   R.querySelectorAll('.rg').forEach((g,i)=>{const p=lin(t,21.95+i*.5,21.95+i*.5+.35); g.style.opacity=p>0?1:0; g.style.transform=`scale(${p<=0?.5:.5+.5*back(p)})`});
+   R.querySelectorAll('.ra').forEach((a,i)=>{a.style.opacity=lin(t,22.25+i*.5,22.45+i*.5)});
+   }
+  // ---- Mitmach ----
+  {const M=$('mit'); const on=!GMB&&t>=25.0&&t<28.15; M.style.display=on?'':'none';
+   if(on){M.style.opacity=1-lin(t,27.95,28.15); M.querySelectorAll('.w').forEach((w,i)=>{const p=lin(t,25.05+i*.12,25.05+i*.12+.3);w.style.opacity=p>0?1:0;w.style.transform=`translateY(${(1-eo(p))*28}px) scale(${p<=0?.6:.6+.4*back(p)})`});
+    $('mkm').style.transform=`scaleX(${expo(lin(t,25.45,25.75))})`;
+    const bt=t-25.5; const pulse=(id,ph)=>{const x=((bt-ph)%1+1)%1; $(id).style.transform=`scale(${bt>ph?1+.07*Math.exp(-x*8):1})`};
+    if(t>25.9){pulse('pS',.5);pulse('pN',1.0);} }}
+  // ---- CTA-Chip (ab 3,0 s bis Endcard) ----
+  {const C=$('chip'); $('chipT').textContent=GMB?'Preço na hora no site':'Preço na hora · link na bio';
+   const p=lin(t,3.0,3.3), q=lin(t,27.8,28.0); C.style.display=t>=3.0&&t<28.0?'flex':'none';
+   C.style.left=(540-C.offsetWidth/2)+'px'; C.style.top='672px'; C.style.opacity=1-q;
+   C.style.transform=`scale(${p<=0?0:back(p)})`;
+   // während FAQ und Mitmach Chip nach unten in die freie Zone
+   if(t>=25.0) C.style.top=(672+eo(lin(t,25.0,25.3))*500)+'px';}
+  // ---- Endcard ----
+  {const E=$('end'); const p=lin(t,28.0,28.45); const o=t<28?0:(t>=33.1?1-lin(t,33.1,33.24):p); E.style.opacity=o; E.style.display=o>0?'':'none';
+   E.style.transform=`translateY(${(1-eo(p))*40}px)`;
+   $('mke').style.transform=`scaleX(${expo(lin(t,28.2,28.55))})`;
+   const b=lin(t,28.5,28.8); $('eBio').style.transform=`scale(${b<=0?0:back(b)})`; $('eBio').style.transformOrigin='0 50%';
+   $('eBio').style.display=GMB?'none':'flex'; if(GMB){$('eUrl').style.top='680px';$('eWa').style.top='790px';}}
+}
+render(0);
+</script></body></html>

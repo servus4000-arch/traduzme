@@ -28,7 +28,7 @@ Abgrenzung: Reel 15 = Figur + Handy-UI (pop), Reel 16 (Kollege) = Alemão-Chat. 
 
 ## Regeln (Selbstcheck)
 - Lesbares nur y 300–1500, x 90–900 (rechts ab y 700); Schrift ≥ 44 px; keine Glyphen als Text (Haken/X/Pfeile/Link/WhatsApp = SVG).
-- Keine Preise, keine Sprachliste (nur die zwei Themen-Sprachen), keine Via física/Urgência, kein IA/ICP, keine Superlative, keine erfundenen Zahlen/Kommentare. Screenshot ohne IA-Hinweiszeile (abgeschnitten über dem Hinweistext).
+- Keine Preise, keine Sprachliste (nur die zwei Themen-Sprachen), keine Via física/Urgência, keine Sperrwörter, keine Superlative, keine erfundenen Zahlen/Kommentare. Screenshot ohne Hinweiszeile (abgeschnitten über dem Hinweistext).
 - Lernpunkte: (1) Revalidação → Diploma + Histórico juramentada (U1) · (2) manche Sprachen befreit, AR/DE nicht – Beispiel UFMG (U2) · (3) nur tradutor juramentado mit Registro in BR, Übersetzung aus dem Ausland gilt nicht (U3/U4) · (4) digitale Übersetzung mit Signatur wird akzeptiert (U5) → Rechner.
 - Mitmach: Hook-Frage mit Ein-Wort-Antwort (Pills „árabe“/„alemão“ im Bild) + Caption-Zeile 1 „Comenta: árabe ou alemão?“.
 - Cover: 500 ms (Hook komplett, im 3:4-Raster lesbar).
@@ -36,7 +36,7 @@ Abgrenzung: Reel 15 = Figur + Handy-UI (pop), Reel 16 (Kollege) = Alemão-Chat. 
 ## Kritiker-Runden Storyboard
 | Runde | Fakten | Design | Hook/Tempo | Conversion |
 |---|---|---|---|---|
-| 1 | (a) E „Em PDF, assinada?“ zu weit (Scan mit Handunterschrift ≠ U5) → „Com assinatura digital? A UFMG aceita o PDF.“ (b) Medaille auf dem Original-Diplom wirkt wie Stempel/Apostila auf dem Original → statt dessen eigenes Übersetzungsblatt je Paar | (a) Bis zu 4 Text-Ebenen in B (Caption, Label, Pills, Wortmarke) → Pills nur im Hook, Wortmarke unten links erst ab 3,0 (b) neutrales Diplom hat zwischen den Karten keinen Platz → AR/DE weichen aus + dimmen (c) Pinho direkt nach R15 (Pinho) – Vorgänger am 28.10. ist aber R16 (Kollege, andere Farbe) → bleibt, im Log notieren | (a) B (7 Wörter) + Label (7 Wörter) gleichzeitig neu = 0,23 s/Wort → Label erst ab 6,9, steht bis 20,2 (13 s) | (a) Brücke „UFMG akzeptiert digital → traduzme liefert PDF mit assinatura digital“ nur implizit → Caption-Text sagt es ausdrücklich (L1007, FAQ a6 ohne ICP); Wortmarke im Bild bis 20,2 |
+| 1 | (a) E „Em PDF, assinada?“ zu weit (Scan mit Handunterschrift ≠ U5) → „Com assinatura digital? A UFMG aceita o PDF.“ (b) Medaille auf dem Original-Diplom wirkt wie Stempel/Apostila auf dem Original → statt dessen eigenes Übersetzungsblatt je Paar | (a) Bis zu 4 Text-Ebenen in B (Caption, Label, Pills, Wortmarke) → Pills nur im Hook, Wortmarke unten links erst ab 3,0 (b) neutrales Diplom hat zwischen den Karten keinen Platz → AR/DE weichen aus + dimmen (c) Pinho direkt nach R15 (Pinho) – Vorgänger am 28.10. ist aber R16 (Kollege, andere Farbe) → bleibt, im Log notieren | (a) B (7 Wörter) + Label (7 Wörter) gleichzeitig neu = 0,23 s/Wort → Label erst ab 6,9, steht bis 20,2 (13 s) | (a) Brücke „UFMG akzeptiert digital → traduzme liefert PDF mit assinatura digital“ nur implizit → Caption-Text sagt es ausdrücklich (L1007, FAQ a6 ohne Zertifikatsnamen); Wortmarke im Bild bis 20,2 |
 | 2 | E neu gegen U5 + L1007 geprüft; Übersetzungsblatt-Logik konsistent (A heftet an → C verschmilzt → E wird PDF) | 6 Blätter in A zu voll → Übersetzungsblatt klein (Eckzettel), Histórico nur angeschnitten | E neu 8 Wörter in 3,2 s = 0,4 s/Wort, ok | – |
 | 3 | keine Mängel | keine Mängel | keine Mängel | keine Mängel |
 
@@ -50,3 +50,8 @@ Feinzeiten nach Video-Kritik: Caption A ab 2,92 s, Endcard ab 23,92 s (ruhig ab 
 - Diplom-Titel nie halb verdeckt: neutrales Diplom kleiner und tiefer (B), Titel vor dem Übersetzungsblatt ausgeblendet (C), „Tradução“ unter dem Auslandsblatt ausgeblendet (D); Auslandsblatt geht erst mit Caption E (17-9).
 - Rechner: statt Handy mit 1,5× Zoom ein Ausschnitt der echten Seite (ui_ar_crop.jpg / ui_de_crop.jpg, Datei + Idiomas + Button) als Karte x 90–900, y 664–1260, UI-Schrift ≈ 40 px. Übergang Tap → Kreis in Pinho aus dem Tap-Punkt → Mitmach/Endcard (keine Fremdfarbe).
 - Loop: letzte 3 Frames = Frame 0. GMB: gmb/reel.html (make_gmb.sh) ohne Mitmach und ohne „link na bio“.
+
+## v4 – Nachabnahme-Feinschliff (28.10.)
+- Rechner-Ausschnitt nur Sprachfelder + Button (Abschnittstitel, Datei-Zeile, Feld-Beschriftungen ausgeblendet), Karte top 728, Höhe 328, Kreis-Übergang aus dem Tap-Punkt (495, 973). Kein Glanzstreifen.
+- E1 ab 16,98 s, F ab 21,52 s (auf dem Schlag). Endcard: Domain + WhatsApp kommen mit der Headline (Kontakt ≥ 4,5 s), Ausblendung 29,35–29,45 (Szene).
+- Audio: alle SFX auf dem 0,5-s-Schlag, Mitmach ein Pop, GMB-Fade 0,25 s (Loop-Naht).

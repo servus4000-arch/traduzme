@@ -41,7 +41,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
 .cap .w{display:inline-block}
 .cap .hi{color:#1F3B35;background:#EEDECE;border-radius:12px;padding:0 14px 0 16px}
 .chip{position:absolute;display:flex;align-items:center;white-space:nowrap;font-weight:800}
-#chipCta{top:556px;height:86px;padding:0 34px 0 26px;border-radius:43px;background:#EEDECE;color:#1F3B35;font-size:44px;box-shadow:0 10px 24px rgba(0,0,0,.2)}
+#chipCta{top:540px;height:96px;padding:0 28px 0 22px;border-radius:48px;background:#EEDECE;color:#1F3B35;font-size:54px;letter-spacing:-1.2px;box-shadow:0 10px 24px rgba(0,0,0,.2)}
 #lbl{top:556px;padding:14px 34px 16px;border-radius:22px;background:#BDCBCB;color:#1F3B35;font-size:44px;font-weight:700;line-height:1.16;text-align:center;flex-direction:column;box-shadow:0 10px 24px rgba(0,0,0,.2)}
 #wm{position:absolute;left:90px;top:1434px;font-weight:800;font-size:46px;letter-spacing:-1px;color:#EEDECE}
 .ec{position:absolute;left:90px;color:#fff;font-weight:800;white-space:nowrap}
@@ -90,15 +90,15 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
 
   <!-- Welt P: echter Rechner (Screenshot Live-Seite, Schritt 1) -->
   <div class="world" id="WP" style="display:none">
-    <!-- Ausschnitt der echten Rechner-Seite (Schritt 1, Datei + Idiomas + Button), Zoom 0.789: ganz in x 90–900, UI-Schrift ≈ 40 px -->
-    <div class="abs" id="uiCard" style="left:90px;top:664px;width:810px;height:596px;border-radius:28px;overflow:hidden;background:#fff;box-shadow:0 40px 80px rgba(10,25,22,.42)">
-      <img id="uiAR" src="ui_ar_crop.jpg" style="position:absolute;left:0;top:0;width:810px;height:583.4px">
-      <img id="uiDE" src="ui_de_crop.jpg" style="position:absolute;left:0;top:0;width:810px;height:583.4px">
+    <!-- Ausschnitt der echten Rechner-Seite (Schritt 1: Sprachfelder + Button; Datei-Zeile, Abschnittstitel und Feld-Beschriftungen ausgeblendet, weil < 34 px), Zoom 0.789: ganz in x 90–900 -->
+    <div class="abs" id="uiCard" style="left:90px;top:728px;width:810px;height:328px;border-radius:28px;overflow:hidden;background:#fff;box-shadow:0 40px 80px rgba(10,25,22,.42)">
+      <img id="uiAR" src="ui_ar_crop.jpg" style="position:absolute;left:0;top:24px;width:810px;height:290.5px">
+      <img id="uiDE" src="ui_de_crop.jpg" style="position:absolute;left:0;top:24px;width:810px;height:290.5px">
       <div class="abs" id="glint" style="top:-200px;width:10px;height:1000px;background:#fff;box-shadow:0 0 24px 8px rgba(255,255,255,.7);opacity:0"></div>
-      <div class="abs" id="btnDark" style="left:17px;top:452px;width:777px;height:123px;border-radius:17px;background:#000;opacity:0"></div>
-      <div class="abs" id="langGlow" style="left:7px;top:292px;width:797px;height:131px;border-radius:20px;border:5px solid #1a7a5e;opacity:0"></div>
-      <div class="abs" id="tap" style="left:355px;top:463px;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,.55);border:4px solid rgba(255,255,255,.9);opacity:0"></div>
-      <div class="abs" id="tapR" style="left:305px;top:413px;width:200px;height:200px;border-radius:50%;border:6px solid #fff;opacity:0"></div>
+      <div class="abs" id="btnDark" style="left:17px;top:183px;width:777px;height:123px;border-radius:17px;background:#000;opacity:0"></div>
+      <div class="abs" id="langGlow" style="left:7px;top:22px;width:797px;height:132px;border-radius:20px;border:5px solid #1a7a5e;opacity:0"></div>
+      <div class="abs" id="tap" style="left:355px;top:195px;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,.55);border:4px solid rgba(255,255,255,.9);opacity:0"></div>
+      <div class="abs" id="tapR" style="left:305px;top:145px;width:200px;height:200px;border-radius:50%;border:6px solid #fff;opacity:0"></div>
     </div>
   </div>
 
@@ -108,13 +108,13 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
   <div id="wm">traduzme</div>
   <div class="hl" id="hook" style="font-size:104px">Seu diploma<br>está em <span class="mk"><b id="mk1"></b>árabe</span><br>ou <span class="mk"><b id="mk2"></b>alemão</span>?</div>
   <div class="cap" id="capA"><div class="ln"><span class="w">Em</span><span class="w">geral:</span><span class="w">tradução</span></div><div class="ln"><span class="w hi">juramentada.</span></div></div>
-  <div class="cap" id="capB"><div class="ln"><span class="w">Árabe</span><span class="w">e</span><span class="w">alemão</span></div><div class="ln"><span class="w">não</span><span class="w">têm</span><span class="w hi">dispensa.</span></div></div>
+  <div class="cap" id="capB"><div class="ln"><span class="w">Árabe</span><span class="w">e</span><span class="w">alemão:</span></div><div class="ln"><span class="w">exigem</span><span class="w hi">tradução.</span></div></div>
   <div class="cap" id="capC"><div class="ln"><span class="w">Tradutor</span><span class="w">juramentado</span></div><div class="ln"><span class="w hi">do Brasil.</span></div></div>
   <div class="cap" id="capD"><div class="ln"><span class="w">Feita</span><span class="w">no</span><span class="w">exterior?</span></div><div class="ln"><span class="w">A</span><span class="w">UFMG</span><span class="w hi">não aceita.</span></div></div>
   <div class="cap" id="capE"><div class="ln"><span class="w">PDF</span><span class="w">assinado</span><span class="w">com</span></div><div class="ln"><span class="w">certificado</span><span class="w">digital</span></div></div>
   <div class="cap" id="capE2"><div class="ln"><span class="w">e</span><span class="w">verificável?</span></div><div class="ln"><span class="w">A</span><span class="w">UFMG</span><span class="w hi">aceita.</span></div></div>
   <div class="cap" id="capF"><div class="ln"><span class="w">Árabe</span><span class="w">ou</span><span class="w">alemão:</span></div><div class="ln"><span class="w">preço</span><span class="w">em</span><span class="w hi">segundos.</span></div></div>
-  <div class="chip" id="chipCta"><svg width="48" height="48" viewBox="0 0 24 24" style="margin-right:14px"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1" stroke="#1F3B35" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg><span id="chipT">Preço na hora · link na bio</span></div>
+  <div class="chip" id="chipCta"><svg width="50" height="50" viewBox="0 0 24 24" style="margin-right:10px"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1" stroke="#1F3B35" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg><span id="chipT">Preço na hora · link na bio</span></div>
   <div class="chip" id="lbl"><span>ex.: UFMG –</span><span>confira a sua universidade</span></div>
 
   <!-- Mitmach (nur Hauptfassung): Ein-Wort-Antwort, gleiche Position wie Hook/Endcard -->
@@ -128,7 +128,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
 
   <!-- Endcard (gleiche Headline-Position wie Hook) -->
   <div class="hl" id="ecH">Preço<br><span class="mk"><b id="mkE"></b>na hora</span><br>no site.</div>
-  <div class="chip" id="ecChip" style="left:90px;top:676px;height:100px;padding:0 40px 0 30px;border-radius:50px;background:#EEDECE;color:#1F3B35;font-size:52px;box-shadow:0 10px 24px rgba(0,0,0,.2)"><svg width="54" height="54" viewBox="0 0 24 24" style="margin-right:16px"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1" stroke="#1F3B35" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg>link na bio</div>
+  <div class="chip" id="ecChip" style="left:90px;top:676px;height:100px;padding:0 40px 0 30px;border-radius:50px;background:#EEDECE;color:#1F3B35;font-size:54px;box-shadow:0 10px 24px rgba(0,0,0,.2)"><svg width="54" height="54" viewBox="0 0 24 24" style="margin-right:16px"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1" stroke="#1F3B35" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg>link na bio</div>
   <div class="ec" id="ecUrl" style="top:822px;font-size:68px;letter-spacing:-1px">traduzme.com.br</div>
   <div class="ec" id="ecWa" style="top:934px;font-size:66px;letter-spacing:-1px;display:flex;align-items:center;gap:22px">
     <svg width="76" height="76" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#EEDECE"/><path d="M16 7.2a8.8 8.8 0 0 0-7.6 13.2L7.3 24.6l4.3-1.1A8.8 8.8 0 1 0 16 7.2z" fill="none" stroke="#1F3B35" stroke-width="1.8" stroke-linejoin="round"/><path d="M12.6 12.4c.2-.5.5-.6.8-.6h.6c.2 0 .4.1.5.4l.7 1.7c.1.2 0 .4-.1.6l-.5.6c-.1.2-.1.3 0 .5.6 1 1.4 1.8 2.4 2.3.2.1.4.1.5-.1l.6-.7c.2-.2.4-.2.6-.1l1.7.8c.2.1.3.3.3.5 0 .5-.2 1.2-.8 1.5-.6.4-1.5.5-2.6.1-2-.7-3.6-2.3-4.4-4.2-.4-.9-.5-1.9-.3-2.6z" fill="#1F3B35"/></svg>(61) 99803-8363</div>
@@ -144,9 +144,9 @@ const back=x=>{const c=1.6;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
 const mix=(a,b,p)=>a+(b-a)*p;
 // GMB=1 (gmb/reel.html): ohne Mitmach-Block, ohne „link na bio“, ≤ 30 s
 const GMB=1;
-const ENDB=29.8, IP=24.4, DM=2.5;           // Video-Zeitachse ohne Mitmach (= GMB); Hauptfassung fügt bei IP den Mitmach-Block (DM s) ein
-// Szenen-Zeit t aus Video-Zeit tv: PDF-Szene hält 0,6 s (Caption E in zwei Einblendungen), Endcard-Ruhe dafür 0,6 s kürzer
-function warp(tv){return tv<18.4?tv : tv<19.0?18.4 : tv<26.6?tv-0.6 : tv;}
+const ENDB=30.0, IP=25.0, DM=3.0;           // Video-Zeitachse ohne Mitmach (= GMB); Hauptfassung fügt bei IP den Mitmach-Block (DM s) ein
+// Szenen-Zeit t aus Video-Zeit tv: PDF-Szene hält 1,2 s (Caption E in zwei Einblendungen à ≥ 2,0 s), Endcard-Ruhe dafür 1,0 s kürzer
+function warp(tv){return tv<18.4?tv : tv<19.6?18.4 : tv<27.2?tv-1.2 : tv-0.2;}
 const END=GMB?ENDB:ENDB+DM;
 
 // ---------- Diplome bauen (spiegelgleich: AR rechtsbündig/RTL, DE linksbündig) ----------
@@ -182,13 +182,14 @@ const CAM_P=[[20.4,540,1690,1.5,1255],[23.0,540,1690,1.54,1255],[23.25,540,1690,
 // ---------- Text-Helfer ----------
 function words(id,t,a,b,step=.07){const el=$(id); const on=t>=a&&t<b+.18; el.style.display=on?'flex':'none'; if(!on)return;
   let i=0; el.querySelectorAll('.ln').forEach(l=>{const ws=[...l.querySelectorAll('.w')]; const L=l.offsetWidth; let right=0, any=false, lo=0;
-    ws.forEach((w,j)=>{const s0=a+i*step; i++; const p=lin(t,s0,s0+.2), e=eo(p); w.style.opacity=e; w.style.transform=`translateY(${(1-e)*12}px) scale(${.93+.07*e})`;
-      if(j===0)lo=e;   // Pille erscheint mit ihrem ersten Wort, nie leer
+    ws.forEach((w,j)=>{const s0=a+i*step; i++; const p=lin(t,s0,s0+.2), e=eo(p); w.style.opacity=eo(lin(t,s0,s0+.1)); w.style.transform=`translateY(${(1-e)*12}px) scale(${.93+.07*e})`;
+      if(j===0)lo=eo(lin(t,s0,s0+.1));   // Pille erscheint mit ihrem ersten Wort, nie leer
       if(p>0){any=true; const r=w.offsetLeft-l.offsetLeft+w.offsetWidth; right=right+(r-right)*eo(lin(t,s0,s0+.05));}});
-    const vis=any?Math.min(L,right+28):0; l.style.opacity=any?Math.min(1,lo*1.4):0; l.style.clipPath=`inset(-2px ${Math.max(0,L-vis)}px -2px 0 round 22px)`;});
+    const vis=any?Math.min(L,right+28):0; l.style.opacity=any?lo:0; l.style.clipPath=`inset(-2px ${Math.max(0,L-vis)}px -2px 0 round 22px)`;});
   const o=lin(t,b,b+.12); el.style.opacity=1-o;}
-function popIn(el,t,a,b,origin='50% 50%'){const on=t>=a&&t<b+.2; el.style.display=on?'flex':'none'; if(!on)return 0; const p=lin(t,a,a+.32), o=lin(t,b,b+.18);
-  el.style.transformOrigin=origin; el.style.opacity=(p>0?1:0)*(1-o); el.style.transform=`scale(${p<=0?0:back(p)}) translateY(${-24*o}px)`; return 1;}
+// Chip/Beleg: erscheint mit Deckkraft + Skala 0,9 → 1 (kein Überschwingen über x 900), geht nur per Deckkraft (keine Bewegung in andere Ebenen)
+function popIn(el,t,a,b,origin='50% 50%'){const on=t>=a&&t<b+.12; el.style.display=on?'flex':'none'; if(!on)return 0; const p=lin(t,a,a+.2), o=lin(t,b,b+.12);
+  el.style.transformOrigin=origin; el.style.opacity=eo(p)*(1-o); el.style.transform=`scale(${.9+.1*eo(p)})`; return 1;}
 function center(el){el.style.left=(495-el.offsetWidth/2)+'px';}   // Mitte der sicheren Zone x 90–900
 function place(el,x,y,r=0,s=1,o=1){el.style.left=x+'px';el.style.top=y+'px';el.style.transform=`rotate(${r}deg) scale(${s})`;el.style.opacity=o;}
 
@@ -201,9 +202,11 @@ function endPose(){return {ar:[365,1300,-4,.72], de:[715,1300,4,.72]};}
 function render(T){ if(T>=END-0.1-1e-6)T=0;             // letzte 3 Frames = Frame 0 (Loop)
   let tv=T, mt=-1; if(!GMB&&T>=IP){ if(T<IP+DM){tv=IP; mt=T-IP;} else tv=T-DM; }
   base(warp(tv),tv); mitmach(mt); }
-function mitmach(m){const M=$('mit'), B=$('bub'); const on=m>=0&&m<2.5; M.style.display=on?'block':'none'; B.style.display=on?'block':'none'; if(!on)return;
-  const i=lin(m,0,.18), o=lin(m,2.38,2.5); M.style.opacity=eo(i)*(1-o); M.style.transform=`translateY(${(1-eo(i))*36-30*o}px)`;
-  [['mkM1',.22],['mkM2',.36]].forEach(([id,a])=>{const k=expo(lin(m,a,a+.3)); $(id).style.transform=`scaleX(${k})`; $(id).parentNode.style.color=k>.5?'#1F3B35':'#fff';});
+// Marker erscheint als Ganzes (Skala 0,9 → 1), Wortfarbe wechselt im selben Frame: nie halb dunkel/halb weiß (N3)
+function markPop(id,tt,a){const k=lin(tt,a,a+.16), b=$(id); b.style.opacity=k>0?1:0; b.style.transformOrigin='50% 50%'; b.style.transform=`scale(${k<=0?.9:.9+.1*back(k)})`; b.parentNode.style.color=k>0?'#1F3B35':'#fff';}
+function mitmach(m){const M=$('mit'), B=$('bub'); const on=m>=0&&m<DM; M.style.display=on?'block':'none'; B.style.display=on?'block':'none'; if(!on)return;
+  const i=lin(m,0,.18), o=lin(m,DM-.12,DM); M.style.opacity=eo(i)*(1-o); M.style.transform=`translateY(${(1-eo(i))*36-30*o}px)`;
+  markPop('mkM1',m,.2); markPop('mkM2',m,.5);   // ein Pop auf dem Schlag (m = 0,5)
   const bp=lin(m,.55,.85); B.style.opacity=(bp>0?1:0)*(1-o); B.style.transformOrigin='20% 100%'; B.style.transform=`scale(${bp<=0?0:back(bp)}) translateY(${-30*o}px)`;
   ['dot1','dot2','dot3'].forEach((id,j)=>{const ph=(m-.9-j*.13); $(id).style.transform=`translateY(${ph>0?-14*Math.max(0,Math.sin(ph*2*Math.PI/.8)):0}px)`;});}
 function base(t,tv){
@@ -211,7 +214,7 @@ function base(t,tv){
   const u=2*Math.PI*tv/ENDB; $('bg1').style.transform=`translate(${Math.sin(u)*30}px,${(Math.cos(u)-1)*60}px)`; $('bg2').style.transform=`translate(${(Math.cos(u)-1)*40}px,${Math.sin(u)*16}px)`;
   const seamO=t<6.4?0:t<6.9?lin(t,6.4,6.7):t<9.7?1:1-lin(t,9.7,10.0); $('seamL').setAttribute('opacity','0');
 
-  const inD=t<20.7||t>=23.55, inP=t>=20.35&&t<23.62;
+  const inD=t<20.7||t>=23.55, inP=t>=20.35&&t<23.67;
   const WD=$('WD'), WP=$('WP');
   WD.style.display=inD?'block':'none'; WP.style.display=inP?'block':'none';
 
@@ -230,7 +233,7 @@ function base(t,tv){
     const br=Math.sin(t*2*Math.PI/3)*5; ar[1]+=br; de[1]-=br;
     // B: ausweichen + dimmen, dann zurück + Puls
     {const a=eo(lin(t,6.5,6.9)), b=eo(lin(t,8.2,8.6)), k=a*(1-b); ar[0]-=55*k; de[0]+=55*k; oAR=oDE=1-.3*k;
-     const pu=t>8.3&&t<8.75?Math.sin(lin(t,8.3,8.75)*Math.PI)*.05:0; ar[3]+=pu; de[3]+=pu;}
+     const pu=t>8.5&&t<8.95?Math.sin(lin(t,8.5,8.95)*Math.PI)*.05:0; ar[3]+=pu; de[3]+=pu;}
     // C: zur Mitte hinter das Übersetzungsblatt
     {const k=quint(lin(t,9.95,10.6)); ar=[mix(ar[0],455,k),mix(ar[1],1125,k),mix(ar[2],-11,k),mix(ar[3],.86,k)]; de=[mix(de[0],625,k),mix(de[1],1125,k),mix(de[2],11,k),mix(de[3],.86,k)];
      const f=lin(t,16.85,17.0); oAR*=1-f; oDE*=1-f;}
@@ -260,7 +263,7 @@ function base(t,tv){
     {const vis=t>=6.55&&t<8.75; $('dN').style.display=$('chkN').style.display=vis?'block':'none';
      if(vis){const a=expo(lin(t,6.55,7.05)), b=eo(lin(t,8.2,8.65)); const y=mix(980,1250,a)+140*b;
        place($('dN'),540,y,mix(-6,1,a),.66,a*(1-b));
-       const cp=lin(t,7.25,7.55); place($('chkN'),540+105,y-150,0,cp<=0?0:back(cp),1-b);}}
+       const cp=lin(t,7.35,7.65); place($('chkN'),540+105,y-150,0,cp<=0?0:back(cp),1-b);}}
     // großes Übersetzungsblatt (C, D) -> Flip zur PDF (E)
     {const vis=t>=10.1&&t<17.2; $('sT').style.display=vis?'block':'none';
      if(vis){const a=lin(t,10.1,10.55), f=lin(t,17.0,17.2); place($('sT'),540,1080,0,1,eo(a)); $('sT').style.transform=`scale(${mix(.5,1,eo(a))*(1-eo(f))},${mix(.5,1,eo(a))})`;}
@@ -269,12 +272,12 @@ function base(t,tv){
      const pv=t>=17.2&&t<20.75; $('sP').style.display=pv?'block':'none';
      if(pv){const g=eo(lin(t,17.2,17.45)), out=lin(t,20.2,20.32); $('sP').style.left='540px'; $('sP').style.top='1080px'; $('sP').style.opacity=1-out; $('sP').style.transform=`scale(${g*(1-.3*out)},1)`;
        const sig=$('sig'); const L=sig.getTotalLength(); sig.style.strokeDasharray=L; sig.style.strokeDashoffset=L*(1-eo(lin(t,17.6,18.3)));}
-     const kv=t>=18.5&&t<20.75; $('chkP').style.display=kv?'block':'none';
-     if(kv){const p=lin(t,18.5,18.82), out=lin(t,20.2,20.32); place($('chkP'),540+200,1080-300,0,p<=0?0:back(p),1-out);}}
+     const kv=t>=18.8&&t<20.75; $('chkP').style.display=kv?'block':'none';
+     if(kv){const p=lin(t,18.8,19.12), out=lin(t,20.2,20.32); place($('chkP'),800,1330,0,p<=0?0:back(p),1-out);}}   // Haken unten rechts am PDF, frei von der Beleg-Pille (N1)
     $('sTt').style.opacity=(t>=13.4&&t<17.05)?1-lin(t,13.4,13.48):1;   // „Tradução“ nie angeschnitten unter dem Auslandsblatt
     // Übersetzung aus dem Ausland (D)
     {const vis=t>=13.4&&t<17.3; $('sX').style.display=$('xm').style.display=vis?'block':'none';
-     if(vis){const a=expo(lin(t,13.4,13.95)), b=eo(lin(t,16.95,17.3)); const x=mix(1400,590,a)+800*b;
+     if(vis){const a=expo(lin(t,13.4,13.95)), b=eo(lin(t,16.98,17.33)); const x=mix(1400,590,a)+800*b;
        place($('sX'),x,1080+20*b,mix(14,5,a)+12*b,1,1);
        const xp=lin(t,14.9,15.15); place($('xm'),x,1080,0,xp<=0?0:back(xp),1);
        $('x1').style.strokeDashoffset=1-eo(lin(t,15.05,15.3)); $('x2').style.strokeDashoffset=1-eo(lin(t,15.2,15.45));}}
@@ -285,40 +288,40 @@ function base(t,tv){
     WP.style.transform='none'; WP.style.filter='none'; WP.style.opacity=lin(t,20.35,20.5);
     $('uiCard').style.transform=`translateY(${(1-expo(lin(t,20.35,20.75)))*90}px)`;
     // Split-Wisch Árabe -> Alemão (schräge Kante, Lichtkante)
-    const w=quint(lin(t,21.9,22.35)); const X=-150+1110*w;
-    $('uiDE').style.clipPath=`polygon(-10px -10px, ${X+110}px -10px, ${X-110}px 620px, -10px 620px)`;
-    const g=$('glint'); g.style.left=(X-5)+'px'; g.style.transform='rotate(19.5deg)'; g.style.opacity=w>0&&w<1?.9:0;
+    const w=quint(lin(t,21.8,22.25)); const X=-150+1110*w;
+    $('uiDE').style.clipPath=`polygon(-10px -10px, ${X+70}px -10px, ${X-70}px 400px, -10px 400px)`;
+    const g=$('glint'); g.style.left=(X-5)+'px'; g.style.transform='rotate(19.5deg)'; g.style.opacity=0;   // kein Glanzstreifen (zerschnitt Buchstaben, N2)
     $('langGlow').style.opacity=t>21.5&&t<22.9?Math.min(1,(t-21.5)/.15)*(1-lin(t,22.75,22.9)):0;
-    const tp=lin(t,22.95,23.2); $('tap').style.opacity=t>22.95&&t<23.55?1:0; $('tap').style.transform=`translate(${(1-eo(tp))*160}px,${(1-eo(tp))*120}px) scale(${t>23.2&&t<23.35?.8:1})`;
-    const rp=lin(t,23.25,23.7); $('tapR').style.opacity=rp>0&&rp<1?1-rp:0; $('tapR').style.transform=`scale(${.4+rp})`;
-    $('btnDark').style.opacity=t>23.22&&t<23.42?.2:0;
+    const tp=lin(t,23.05,23.3); $('tap').style.opacity=t>23.05&&t<23.65?1:0; $('tap').style.transform=`translate(${(1-eo(tp))*160}px,${(1-eo(tp))*120}px) scale(${t>23.3&&t<23.45?.8:1})`;
+    const rp=lin(t,23.35,23.8); $('tapR').style.opacity=rp>0&&rp<1?1-rp:0; $('tapR').style.transform=`scale(${.4+rp})`;
+    $('btnDark').style.opacity=t>23.32&&t<23.52?.2:0;
   }
   // Übergang: Tap -> Kreis in Pinho wächst aus dem Tap-Punkt (Handy-Push-in), dann Endcard/Mitmach auf ruhigem Grund
-  {const W=$('wipe'); const on=t>=23.35&&t<23.75; W.style.display=on?'block':'none';
-   if(on){const p=expo(lin(t,23.35,23.62)), r=40+1760*p; W.style.left=(495-r)+'px'; W.style.top=(1177-r)+'px'; W.style.width=W.style.height=(2*r)+'px'; W.style.opacity=1-lin(t,23.62,23.75);}}
+  {const W=$('wipe'); const on=t>=23.4&&t<23.8; W.style.display=on?'block':'none';
+   if(on){const p=expo(lin(t,23.4,23.67)), r=40+1760*p; W.style.left=(495-r)+'px'; W.style.top=(973-r)+'px'; W.style.width=W.style.height=(2*r)+'px'; W.style.opacity=1-lin(t,23.67,23.78);}}
   // ================= Bildschirm-Ebene =================
   // Wortmarke
   {const o=t<3.0?0:t<20.2?lin(t,3.0,3.3):1-lin(t,20.2,20.4); $('wm').style.opacity=.92*o; $('wm').style.display=o>0?'block':'none';}
   // Hook (Frame 0 voll sichtbar) + Loop-Naht
-  {const H=$('hook'); const out=lin(t,2.8,2.95), back_=lin(t,29.45,29.68); const vis=t<2.95||t>=29.45; H.style.display=vis?'block':'none';
+  {const H=$('hook'); const out=lin(t,2.5,2.62), back_=lin(t,29.45,29.68); const vis=t<2.62||t>=29.45; H.style.display=vis?'block':'none';
    const pulse=1+.035*Math.sin(lin(t,.1,.55)*Math.PI);
    H.style.opacity=t>=29.45?back_:1-out; H.style.transform=`translateY(${t>=29.45?(1-eo(back_))*24:0}px) scale(${t<1?pulse:1})`;
-   $('mk1').style.transform=`scaleX(${t<29.45?1:eo(back_)})`; $('mk2').style.transform=`scaleX(${t<29.45?1:eo(back_)})`;
+   $('mk1').style.transform=''; $('mk2').style.transform='';   // Loop: Marker stehen, Hook blendet als Ganzes ein (N3)
    const k=lin(t,.05,.45),k2=lin(t,.35,.75); $('mk1').style.filter=`brightness(${1+.06*Math.sin(k*Math.PI)})`; if(t<1){$('mk1').style.transform=`scaleY(${1+.12*Math.sin(k*Math.PI)})`;$('mk2').style.transform=`scaleY(${1+.12*Math.sin(k2*Math.PI)})`;}}
   // Captions laufen auf Video-Zeit tv (je Einblendung 2 Zeilen, ≥ 1,8 s)
-  words('capA',tv,2.95,6.2,.05); words('capB',tv,6.5,9.7); words('capC',tv,10.0,13.2); words('capD',tv,13.5,16.85); words('capE',tv,16.95,18.85); words('capE2',tv,18.95,20.8); words('capF',tv,20.95,24.2);
+  words('capA',tv,2.65,6.2,.04); words('capB',tv,6.5,9.7); words('capC',tv,10.0,13.2); words('capD',tv,13.5,16.85); words('capE',tv,16.98,19.15); words('capE2',tv,19.25,21.4); words('capF',tv,21.52,24.8);
   // Chip-Platz: CTA (3,2–6,3 und 20,6–23,4) / Quelle UFMG (6,9–20,2)
-  {const c=$('chipCta'); $('chipT').textContent=GMB?'Preço na hora no site':'Preço na hora · link na bio'; const a=popIn(c,tv,2.95,24.1); if(a){center(c); c.style.top='540px';}   // CTA-Chip ab 2,95 s bis vor Mitmach/Endcard
-   const l=$('lbl'); if(popIn(l,tv,6.9,20.6)){center(l); l.style.top='648px';} }
+  {const c=$('chipCta'); $('chipT').textContent=GMB?'Preço na hora no site':'Preço na hora · link na bio'; const a=popIn(c,tv,2.65,24.7); if(a){center(c); c.style.top='540px';}   // CTA-Chip ab 2,95 s bis vor Mitmach/Endcard
+   const l=$('lbl'); if(popIn(l,tv,6.9,21.2)){center(l); l.style.top='648px';} }
   // Endcard
   {const on=t>=23.8&&t<29.7; ['ecH','ecChip','ecUrl','ecWa'].forEach(id=>$(id).style.display=on?($(id).classList.contains('chip')||id==='ecWa'?'flex':'block'):'none');
-   if(on){const o=1-lin(t,29.3,29.45);
+   if(on){const o=1-lin(t,29.35,29.45);   // Kontakt ≥ 4,5 s im Bild (F2)
      if(GMB){$('ecChip').style.display='none'; $('ecUrl').style.top='700px'; $('ecWa').style.top='812px';}
      const h=lin(t,23.8,23.92); $('ecH').style.opacity=h*o; $('ecH').style.transform=`translateY(${(1-eo(h))*30}px)`;
-     const m=expo(lin(t,23.9,24.2)); $('mkE').style.transform=`scaleX(${m})`; $('mkE').parentNode.style.color=m>.5?'#1F3B35':'#fff';
-     const cp=lin(t,24.0,24.3); $('ecChip').style.opacity=(cp>0?1:0)*o; $('ecChip').style.transform=`scale(${cp<=0?0:back(cp)})`; $('ecChip').style.transformOrigin='0 50%';
-     const u=lin(t,24.05,24.3); $('ecUrl').style.opacity=u*o; $('ecUrl').style.transform=`translateY(${(1-eo(u))*30}px)`;
-     const wa=lin(t,24.1,24.35); $('ecWa').style.opacity=wa*o; $('ecWa').style.transform=`translateY(${(1-eo(wa))*30}px)`;}}
+     markPop('mkE',t,23.9);
+     const cp=lin(t,24.3,24.6); $('ecChip').style.opacity=(cp>0?1:0)*o; $('ecChip').style.transform=`scale(${cp<=0?0:back(cp)})`; $('ecChip').style.transformOrigin='0 50%';
+     const u=lin(t,23.8,23.95); $('ecUrl').style.opacity=u*o; $('ecUrl').style.transform=`translateY(${(1-eo(u))*30}px)`;
+     const wa=lin(t,23.84,23.99); $('ecWa').style.opacity=wa*o; $('ecWa').style.transform=`translateY(${(1-eo(wa))*30}px)`;}}
 }
 document.fonts.ready.then(()=>render(0));
 render(0);

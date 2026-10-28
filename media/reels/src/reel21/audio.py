@@ -10,7 +10,7 @@ sys.path.insert(0, LIB)
 from music import Track
 
 OUT = sys.argv[1]; GMB = len(sys.argv) > 2 and sys.argv[2] == 'gmb'
-END = 28.5 if GMB else 36.0
+END = 29.5 if GMB else 37.0     # Abnahme 21-1: Endcard +1,0 s
 # Ereigniszeiten unten = Endzeit der Hauptfassung (36,0 s). GMB entfernt 5,0–10,0 (180 dias/CNH) und 28,5–31,0 (Mitmach).
 SKIP = [(5.0, 10.0), (28.5, 31.0)] if GMB else []
 def T(t):                                 # Hauptzeit -> Zeit dieser Fassung (None = Ereignis entfällt)
@@ -53,4 +53,15 @@ sfx('whoosh', 28.5, .6, d=.45)            # Mitmach
 for i, t in enumerate((29.0, 29.5, 30.0)): sfx('pop', t, .6, f=640 + 80 * i)
 hit(31.0)                                 # Endcard
 sfx('pop', 31.5, .6, f=680)               # link na bio
-print('LUFS', tr.write(OUT, lufs=-14.0, fade=(END - .4, END)))
+L = tr.write(OUT, lufs=-14.0, fade=(END - .15, END))   # kurzer Fade: Loop-Naht ohne Loch (Abnahme 21-10)
+# Abnahme 21-10: Hook-Akzent 0–2,3 s um 2,5 dB zurück (Pegelsprung Ende→Anfang < 3 dB), Rampe bis 2,5 s
+import wave, numpy as np
+with wave.open(OUT, 'rb') as w:
+    sr, ch = w.getframerate(), w.getnchannels(); x = np.frombuffer(w.readframes(w.getnframes()), '<i2').astype(np.float64).reshape(-1, ch)
+tt = np.arange(len(x)) / sr
+gdb = np.where(tt < 2.3, -2.5, np.where(tt < 2.5, -2.5 * (2.5 - tt) / .2, 0.0))
+if GMB: gdb = gdb + np.where(tt > END - .6, 2.0 * np.clip((tt - (END - .6)) / .15, 0, 1), 0.0)   # GMB-Ende liegt auf leiserem Takt: +2 dB
+x *= (10 ** (gdb / 20))[:, None]
+with wave.open(OUT, 'wb') as w:
+    w.setnchannels(ch); w.setsampwidth(2); w.setframerate(sr); w.writeframes(np.clip(x, -32768, 32767).astype('<i2').tobytes())
+print('LUFS', L)

@@ -51,3 +51,18 @@ Bauzeit-Hinweis: reel.html rechnet intern mit der Bau-Zeitachse (39,5 s) und map
 | V4 | Tempo (Standzeit ≥ max(1,8 s; 0,4 s/W.)) | cap2 7 W. in 2,25 s, cap6 7 W. in 2,25 s, cap9 1,75 s | cap2 neu 6 W. 2,4 s; cap6 „Confira no Detran do seu estado.“ 5 W.; cap9 1,8 s; Tipp/Match-Cut auf Schlag 26,5 |
 | V5 | Design-Regeln v3 (Koordinator 28.10.) | Rechner-Anteil 32 % (> 30 %), Detran-Liste 5,5 s (> 5 s), riser 1,35 s (> 1,2) | Pix/PDF-Kacheln raus (Caption), Liste 4,5 s, riser 1,2 s → 36,0 s |
 | V6 | qa_check/qa_video (1. Encode) | BLOCK „fast leeres Bild“ 25,8–26,6 (grüne Vollfläche) = auch Raster B7 (Button-Grün als Fläche); Stillstand 17 %; Hook-Bewegung 0,5 | Vollfläche ersetzt durch Button-Zustand + Ergebnis-Karte (D5: Bild = „Preço e data na hora“), „Sem cadastro“ nur noch in der Caption; Mikro-Bewegung auf Karten/Zeilen/Gebäude; Karte wackelt im Hook stärker |
+
+## V8 – nach unabhängiger Abnahme 28.10. (13-abnahme, Abschnitt „Abnahme Reel 21“)
+| # | Befund | Fix |
+|---|---|---|
+| 21-1 | Kontaktzeile nur 4,17 s voll sichtbar | Endcard +1,0 s (Haupt 37,0 s, GMB 29,5 s), Einblendung 0,15 s ab 60 %, harter Schnitt zurück auf den Hook → voll sichtbar 5,5 s |
+| 21-2 | CTA-Chip wirkt im Mitmach-Block wie 4. Antwort | Chip endet mit dem Schnitt auf den Mitmach-Block (28,5 s) |
+| 21-3 | Hook-Bewegung YDIF 0,71 | Karte pendelt ±4,5° + Zoom 1,00→1,05→1,00 in 0–2,4 s → YDIF 1,06 |
+| 21-4 | Überblendung Panel A→B, Panel B schiebt aus der Safe Zone | harte Schnitte 22,5 / 25,0 s, Panel B nur leichter Scale-in |
+| 21-5 | UI-Schrift Panel B 30–32 px | neuer Live-Ausschnitt (cap4.js, Viewport 320 px): nur „Documentos padrão (certidões, diplomas, CNH…): preço fixo por documento“, 13 px × 810/260 = 40,5 px, Marker neu |
+| 21-6 | „Sem tradução.“ ohne „em geral“ | „Em português? / Em geral, sem tradução.“ (Zeile 2 mit 60 px, sonst > x 900); IG-Absatz 2 „Em geral, sim“ |
+| 21-7 | 28,4–28,7 fast leer | Ergebnis-Karte bis zum Schnitt, Mitmach-Zeilen ganz ab dem Schnitt |
+| 21-8 | letzte Zeile beantwortet den Hook nicht | Endcard-Headline „Juramentada, preço na hora.“ |
+| 21-9 | Figur/Karte bis y ≈ 1790 | Endcard ohne Karte, Figur 0,58 und winkend, sichtbar bis y ≈ 1495; Karte kommt erst zur Loop-Rückkehr zurück |
+| 21-10 | Pegelsprung +6 dB an der Loop-Naht | Fade 0,15 s statt 0,4 s, Hook 0–2,3 s −2,5 dB, GMB-Ende +2 dB → Sprung 0,1 dB (Haupt), 1,6 dB (GMB) |
+| V8-Prüfrunde | Figur lief schon bei 30,9 s während der Mitmach-Frage ins Bild | Einlauf auf 31,0–31,5 s gelegt |

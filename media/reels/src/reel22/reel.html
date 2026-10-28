@@ -83,13 +83,15 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
   </div>
 
   <!-- echte Screenshots -->
-  <div class="abs" id="pc2" style="left:96px;top:1232px;width:804px;height:264px;border-radius:26px;background:#fff;box-shadow:0 30px 60px rgba(0,0,0,.35);overflow:hidden;opacity:0"><img class="shot" src="shots/pc2.png" style="position:absolute;left:20px;top:20px;width:879px"></div>
+  <!-- pc2: echte Zeile aus dem Rechner, für ≥ 40 px Schrift neu umbrochen (Wort-Ausschnitte aus shots/pc2.png, ohne „sem custo extra“) -->
+  <div class="abs" id="pc2" style="left:96px;top:1144px;width:804px;height:352px;border-radius:26px;background:#fff;box-shadow:0 30px 60px rgba(0,0,0,.35);overflow:hidden;opacity:0"><img class="shot" src="shots/pc2_wrap.png" style="position:absolute;left:28px;top:10px;width:693px"></div>
   <div class="abs" id="faq" style="left:96px;top:1288px;width:804px;height:192px;border-radius:26px;background:#fbfaf7;box-shadow:0 30px 60px rgba(0,0,0,.35);overflow:hidden;opacity:0">
     <div id="hlf" class="abs" style="left:0;top:0;width:804px;height:192px"></div>
     <img class="shot" src="shots/faq8c.png" style="position:absolute;left:12px;top:16px;width:780px;mix-blend-mode:multiply">
     <div class="abs" style="left:436px;top:100px;width:368px;height:92px;background:#fbfaf7"></div>
   </div>
-  <div class="win" id="flowWin" style="opacity:0;height:680px"><div class="shot" id="flowImg" style="position:absolute;inset:0;background:url(shots/flow_card.png) no-repeat;background-size:898px auto;background-position:-36px 0"></div></div>
+  <!-- „Como funciona“: echte Schritt-Titel aus dem Rechner (shots/flow_titles.png, Nebenzeilen entfernt, damit nur Schrift ≥ 40 px bleibt) -->
+  <div class="win" id="flowWin" style="opacity:0;height:680px"><div class="shot" id="flowImg" style="position:absolute;inset:0;background:url(shots/flow_titles.png) no-repeat;background-size:784px auto;background-position:10px 1px"></div><div id="flowDim" class="abs" style="left:0;top:0;width:804px;height:338px;background:rgba(251,250,247,.72);opacity:0"></div></div>
 
   <!-- ===== Text-Ebene (Kopfzone y 304–640 · Chip y 672 · Pillen y 800 · Bildzone y 944–1496) ===== -->
   <div class="badge" id="badge">VEIO DE FORA · #1</div>
@@ -135,7 +137,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
 // GMB-Fassung (≤ 30 s, ohne Frage 1 und ohne Mitmach): gmb/reel.html setzt GMB=1, oder URL ?cut=gmb (qa_frames --query cut=gmb)
 let GMB=0;
 if(new URLSearchParams(location.search).get('cut')==='gmb') GMB=1;
-const END=GMB?28.75:37.25;   // Echtzeit; Designzeit läuft weiter bis 39,0 (Skips unten)
+const END=GMB?29.5:38.0;   // Echtzeit; Designzeit läuft weiter bis 39,0 (Skips unten)
 const $=id=>document.getElementById(id);
 const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
 const lin=(t,a,b)=>cl((t-a)/(b-a));
@@ -151,7 +153,7 @@ const Q=[5.5,11.5,17.5], QL=6.0;
 // v3 Länge 32–36 s: je Frage 0,5 s Ruhe vor dem Countdown (a+0,85), 0,5 s im Mitmach, 1,0 s Endcard-Standzeit (bleibt 4,5 s) – alle Schläge bleiben im 0,5-s-Raster
 const SKIP=GMB?[[5.5,6.0],[Q[1]+.85,.5],[Q[2]+.85,.5],[29.5,3.5]]:[[Q[0]+.85,.5],[Q[1]+.85,.5],[Q[2]+.85,.5],[31.5,.5]];
 function remap(tn){let t=tn;for(const [a,d] of SKIP){if(t>=a-1e-6)t+=d;}return t;}
-const LOOP=38.75, ENDM=39.25, LOOPR=END-.5;   // Endcard 33,0–38,75 voll (5,6 s lesbar), dann harter Schnitt auf das Hook-Bild
+const LOOP=39.5, ENDM=40.0, LOOPR=END-.5;   // Endcard 33,0–39,5 voll (6,4 s lesbar), dann harter Schnitt auf das Hook-Bild; Hauptfassung 38,0 s = 19 Takte → Loop-Naht auf der Takt-Eins
 const PUNCH=[3.0,Q[0]+3.0,Q[1]+3.0,Q[2]+3.0];   // Zoom-Punch 1,00→1,06→1,00 in 0,22 s + impact (Payoff + 3 Auflösungen)
 
 document.querySelectorAll('.qr').forEach((s,k)=>{let h='',r=11+k*13;for(let y=0;y<15;y++)for(let x=0;x<15;x++){r=(r*1103515245+12345)&0x7fffffff;const f=(x<4&&y<4)||(x>10&&y<4)||(x<4&&y>10);const on=f?((x%3==0||y%3==0||(x%3==1&&y%3==1))&&!(x==3||y==3||x==11||y==11)):(r>>16)%2;if(on)h+=`<rect x="${x}" y="${y}" width="1" height="1" fill="#1F3B35"/>`;}s.innerHTML=h;});
@@ -161,13 +163,13 @@ document.querySelectorAll('.qr').forEach((s,k)=>{let h='',r=11+k*13;for(let y=0;
 // Posen [t, x, y, rot, scale, opacity, ease]  (Mittelpunkt in Bildkoordinaten)
 const P={
  ACTA:[[0,456,1168,-4,1,1],[1.5,456,1168,-4,1,1],[1.9,456,1160,-2.5,1,1,'q'],[2.85,456,1160,-2.5,1,1],[3.35,296,1112,-4,.74,1,'q'],[5.35,296,1112,-4,.74,1],[5.85,424,1208,-3,.8,1,'q'],[11.35,424,1208,-3,.8,1],[11.85,296,1200,-3,.62,1,'q'],[14.35,296,1200,-3,.62,1],[14.55,432,1128,0,.35,0,'i'],
-       [29.5,496,1224,-4,.7,0],[29.8,496,1224,-4,.7,1,'o'],[32.85,496,1224,-4,.7,1],[33.0,304,1288,-4,.6,0,'l'],[33.3,304,1288,-4,.6,1,'o'],[38.749,304,1288,-4,.6,1],[38.75,456,1168,-4,1,1,'l']],
- APO:[[0,720,1300,6,1,1],[0.5,720,1300,6,1,1],[0.9,728,1316,8,1,1,'q'],[2.85,728,1316,8,1,1],[3.35,400,1248,6,.66,1,'q'],[5.35,400,1248,6,.66,1],[5.85,704,1240,5,.85,1,'q'],[11.35,704,1240,5,.85,1],[11.85,688,1200,3,.9,1,'q'],[14.35,688,1200,3,.9,1],[14.55,552,1128,0,.35,0,'i'],
-       [38.749,560,1288,6,.6,0],[38.75,720,1300,6,1,1,'l']],
+       [29.5,496,1224,-4,.7,0],[29.8,496,1224,-4,.7,1,'o'],[32.85,496,1224,-4,.7,1],[33.0,304,1288,-4,.6,0,'l'],[33.3,304,1288,-4,.6,1,'o'],[39.499,304,1288,-4,.6,1],[39.5,456,1168,-4,1,1,'l']],
+ APO:[[0,696,1300,6,1,1],[0.5,696,1300,6,1,1],[0.9,696,1316,8,1,1,'q'],[2.85,696,1316,8,1,1],[3.35,400,1248,6,.66,1,'q'],[5.35,400,1248,6,.66,1],[5.85,704,1240,5,.85,1,'q'],[11.35,704,1240,5,.85,1],[11.85,688,1200,3,.9,1,'q'],[14.35,688,1200,3,.9,1],[14.55,552,1128,0,.35,0,'i'],
+       [39.499,560,1288,6,.6,0],[39.5,696,1300,6,1,1,'l']],
  TRAD:[[0,1352,1112,8,.74,1],[2.95,1352,1112,8,.74,1],[3.45,704,1112,3,.74,1,'x'],[5.35,704,1112,3,.74,1],[5.85,1400,1048,12,.74,1,'i'],
        [17.5,1400,1184,10,.78,1],[18.0,496,1184,2,.78,1,'x'],[20.5,496,1184,2,.78,1],[20.9,496,1112,0,.45,1,'q'],[23.2,496,1112,0,.45,1],[23.45,496,1112,0,.45,0,'l'],
-       [33.0,736,1288,4,.6,0],[33.3,736,1288,4,.6,1,'o'],[38.749,736,1288,4,.6,1],[38.75,1352,1112,8,.74,1,'l']],
- FILE:[[0,496,1088,0,.4,0],[14.55,496,1088,0,.4,0],[14.85,496,1088,0,1,1,'x'],[17.2,496,1088,0,1,1],[17.4,496,1048,0,.9,0,'l']],
+       [33.0,736,1288,4,.6,0],[33.3,736,1288,4,.6,1,'o'],[39.499,736,1288,4,.6,1],[39.5,1352,1112,8,.74,1,'l']],
+ FILE:[[0,496,1036,0,.35,0],[14.55,496,1036,0,.35,0],[14.85,496,1036,0,.86,1,'x'],[17.2,496,1036,0,.86,1],[17.4,496,1000,0,.75,0,'l']],
  LUPE:[[0,1250,1500,0,1,1],[8.0,1250,1500,0,1,1],[8.5,736,1296,0,1,1,'q'],[11.1,736,1296,0,1,1],[11.4,1300,1500,0,1,1,'i']]
 };
 const SIZE={ACTA:[520,680],APO:[300,400],TRAD:[520,680],FILE:[640,210],LUPE:[230,230]};
@@ -240,7 +242,7 @@ function render(tn){const t=tn>=END-1e-6?LOOP+.01:remap(tn);
   // ---- Rechner "Como funciona" (echter Screenshot) ----
   show('r1',t,23.52,26.35,.07); show('r2',t,26.52,29.35,.07);
   {const W=$('flowWin'); const o=fadeBox('flowWin',t,23.5,29.35,.25,.15,''); W.style.transform=`translateY(${(1-expo(lin(t,23.5,23.95)))*120}px)`;
-   const pan=quint(lin(t,26.5,27.0)); $('flowImg').style.backgroundPosition=`-36px ${(-415*pan).toFixed(1)}px`; W.style.height=(680-128*pan)+'px';}
+   $('flowDim').style.opacity=quint(lin(t,26.5,26.8)).toFixed(3);}   // Schritte 1–2 treten zurück, 3–4 (Pix, e-mail) bleiben hell
 
   // ---- Mitmach ----
   {const M=$('mit'); const on=!GMB&&t>=29.5&&t<33.0; M.style.display=on?'':'none';

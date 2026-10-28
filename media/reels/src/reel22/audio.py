@@ -4,7 +4,7 @@ Quiz-Dramaturgie je Frage: Ratepause = Musik 'soft' + Woodblock-Ticks 3-2-1 auf 
 Auflösung a+3,0 = Hit + Akkord-Arpeggio im laufenden Akkord. Jedes Bildereignis höchstens ein Sound.
 GMB-Fassung: gleiche Ereignisse, Zeitachse ohne Frage 1 (5,5–11,5) und ohne Mitmach (29,5–33,0).
 v3 (Serie „Veio de fora #1“): Stinger-stamp 0,03 · impact je Payoff/Auflösung (4×) · stamp Endcard-Badge · whoosh ≤ 4×.
-Zeiten unten = Designzeit wie in reel.html; SKIP kürzt auf 37,25 s (GMB 28,75 s), alle Schläge bleiben im 0,5-s-Raster.
+Zeiten unten = Designzeit wie in reel.html; SKIP kürzt auf 38,0 s = 19 Takte, Loop-Naht auf der Takt-Eins (GMB 29,5 s), alle Schläge bleiben im 0,5-s-Raster.
 """
 import os, sys
 LIB = next(p for p in ('/tmp/v2lib-r22',   # Pipeline v2 = git show a9df053:media/reels/lib/* (Branch reels-pipeline-v2)
@@ -13,9 +13,9 @@ sys.path.insert(0, LIB)
 from music import Track
 
 OUT = sys.argv[1]; GMB = len(sys.argv) > 2 and sys.argv[2] == 'gmb'
-END = 28.75 if GMB else 37.25
+END = 29.5 if GMB else 38.0
 QS = [(a + .85, a + 1.35) for a in (5.5, 11.5, 17.5)]
-SKIP = ([(5.5, 11.5)] + QS[1:] + [(29.5, 33.0)]) if GMB else (QS + [(31.5, 32.0)])   # Endcard ohne Skip (5,6 s voll lesbar), Loop 38,75
+SKIP = ([(5.5, 11.5)] + QS[1:] + [(29.5, 33.0)]) if GMB else (QS + [(31.5, 32.0)])   # Endcard ohne Skip (5,6 s voll lesbar), Loop 39,5
 def T(t):                                  # Hauptzeit -> Zeit dieser Fassung (None = Ereignis entfällt)
     for a, b in SKIP:
         if a <= t < b: return None
@@ -53,9 +53,13 @@ sfx('whoosh', 23.45, .6, d=.5)             # Rechner-Screenshot kommt
 sfx('pop', 30.0, .65, f=700)               # Pille "Comenta só o país"
 hit(33.0); sfx('stamp', 33.0, .42)         # Endcard + Serien-Badge
 sfx('pop', 33.5, .6, f=680)                # link na bio
-print('LUFS', tr.write(OUT, lufs=-14.0, fade=(END - .45, END)))
+print('LUFS', tr.write(OUT, lufs=-14.0, fade=(END - .15, END)))
 # 15-ms-Einblendung am Dateianfang: Downbeat + Stinger auf Sample 0 ließen den AAC-Encoder auf -0,3 dBTP überschwingen
 import wave, numpy as np
 with wave.open(OUT, 'rb') as w: prm = w.getparams(); x = np.frombuffer(w.readframes(prm.nframes), dtype=np.int16).reshape(-1, prm.nchannels).astype(np.float64)
 n = int(.015 * prm.framerate); x[:n] *= (np.sin(np.linspace(0, np.pi / 2, n)) ** 2)[:, None]
+# Loop-Naht: letzte Takthälfte ist leiser als die Takt-Eins bei 0,0 → ab dem Nachklang des letzten Schlags (END−0,42) um bis +7 dB anheben (Sprung ≤ 6 dB), Ausblendung bleibt 0,15 s
+sr = prm.framerate; a0 = int((END - .42) * sr); a1 = int((END - .25) * sr)
+g = np.ones(len(x)); g[a0:a1] = np.linspace(1, 10 ** (7 / 20), a1 - a0); g[a1:] = 10 ** (7 / 20)
+if not GMB: x *= g[:, None]; x = np.clip(x, -32767, 32767)   # GMB endet in der Takthälfte mit Schlag: dort kein Loch
 with wave.open(OUT, 'wb') as w: w.setparams(prm); w.writeframes(np.round(x).astype(np.int16).tobytes())

@@ -1,0 +1,11 @@
+{
+  "ausnahmen": [
+    {
+      "regel": "Design-Regel v3 #1 / Raster B4: Held-Objekt >= 40 % des Bildes",
+      "zeit": "21,6-24,6 s (Rechner-Szene, Haupt + GMB)",
+      "ist": "Rechner-Karte 810 x 651 px (x 90-900, y 700-1351) = 25 % der Bildflaeche, 75 % der Bildbreite; UI-Schrift ca. 45 px (Versalhoehe 33 px)",
+      "grund": "Die Karte nutzt die volle Breite der Text-Safe-Zone (x 90-900). Darueber stehen Caption F (y 300-470) und der CTA-Chip (y 540-636). Mehr Hoehe ginge nur ueber y 1500 hinaus, dort waere UI-Text ausserhalb der Safe-Zone (B1/B6). Mehr Zoom wuerde die Karte ueber x 900 schieben. Der Inhalt ist mit beiden Sprachfeldern untereinander und dem Button vollstaendig und gross lesbar.",
+      "freigabe": "Nachabnahme 2 Reel 17 (13-abnahme-16-17-19.md, 17N2-3): Ausnahme schriftlich begruenden"
+    }
+  ]
+}

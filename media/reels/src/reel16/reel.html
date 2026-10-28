@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<!-- Reel 16 · "O cartório disse que não lê alemão" · Stil v2 (Chat + Dokument-Tisch + echter Rechner DE)
+     render(t) ist deterministisch. ?cut=gmb -> 30,0-s-Schnitt für Google-Profil (ohne Szene 25,0–29,5, Endcard 4,6 s, Loop-Naht wie Master). -->
+<link rel="stylesheet" href="fonts/os.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',sans-serif;background:#97B9A8}
+.abs{position:absolute}
+#stage{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:hidden;background:radial-gradient(1300px 1200px at 50% 48%,#a3c3b3 0%,#97B9A8 52%,#8bb09d 100%)}
+/* ---------- Chat ---------- */
+.msg{position:absolute;max-width:810px;transform-origin:0 100%}
+.msg.A{transform-origin:100% 100%}
+.bub{font-weight:700;font-size:62px;line-height:1.16;letter-spacing:-.6px;padding:28px 40px 32px;border-radius:44px;box-shadow:0 14px 30px rgba(31,59,53,.18)}
+.J .bub{background:#EEDECE;color:#1F3B35;border-bottom-left-radius:12px}
+.A .bub{background:#1F3B35;color:#fff;border-bottom-right-radius:12px}
+.big .bub{font-size:90px;font-weight:800;line-height:1.06;letter-spacing:-2px;padding:36px 46px 42px;border-radius:56px;border-bottom-left-radius:14px}
+.hi{color:#1F3B35;background:#EEDECE;border-radius:12px;padding:0 10px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.name{font-size:44px;font-weight:800;color:#1F3B35;margin:0 0 10px 12px;letter-spacing:-.3px}
+.A .name{text-align:right;margin:0 12px 10px 0}
+.src{display:flex;align-items:center;gap:14px;margin-top:16px;font-size:44px;font-weight:700;color:#1F3B35;background:rgba(238,222,206,.92);border-radius:30px;padding:8px 24px 10px 18px;width:max-content;max-width:810px;margin-left:auto}
+.emo{display:inline-block;width:84px;height:84px;vertical-align:-12px;margin-left:10px}
+/* ---------- Chips / Endcard ---------- */
+.chip{position:absolute;display:flex;align-items:center;white-space:nowrap;font-weight:800;color:#1F3B35;background:#EEDECE;border-radius:44px}
+/* ---------- Dokumente ---------- */
+.doc{position:absolute;left:0;top:0;width:580px;height:780px;margin:-390px 0 0 -290px;background:#EEDECE;border-radius:14px;box-shadow:0 30px 60px rgba(25,50,44,.32);padding:34px}
+.doc .in{width:100%;height:100%;border:6px double #9b8a63;border-radius:6px;padding:40px 38px}
+.doc h3{font-family:'DejaVu Serif',Georgia,serif;font-weight:700;font-size:72px;line-height:1.15;letter-spacing:1px;color:#1F3B35;text-align:center}
+.ln{height:16px;border-radius:8px;background:#d8ceb6;margin-top:30px}
+.tag{position:absolute;font-weight:800;font-size:72px;color:#fff;background:#1F3B35;border-radius:20px;padding:4px 22px 8px}
+.pt{position:absolute;left:0;top:0;width:560px;height:760px;margin:-380px 0 0 -280px;background:#EEDECE;border-radius:14px;box-shadow:0 30px 60px rgba(25,50,44,.3);padding:46px 44px}
+.pt h4{font-weight:800;font-size:74px;line-height:1.0;letter-spacing:-1.5px;color:#1F3B35}
+.pt h4 small{display:block;font-size:74px;text-transform:none}
+.stamp{position:absolute;left:0;top:0;width:470px;height:150px;margin:-75px 0 0 -235px;border:9px solid #1F3B35;border-radius:20px;color:#1F3B35;font-weight:800;font-size:76px;letter-spacing:4px;display:flex;align-items:center;justify-content:center;mix-blend-mode:multiply}
+.folder{position:absolute;left:0;top:0;width:820px;height:700px;margin:-350px 0 0 -410px}
+/* ---------- Rechner-Karten (echte Screenshots) ---------- */
+.card{position:absolute;left:0;top:0;width:810px;padding:28px 20px;background:#fbfaf7;border-radius:40px;box-shadow:0 40px 90px rgba(10,25,22,.32);display:none;z-index:8}
+.card img{display:block;width:770px}
+.glow{position:absolute;border:6px solid #1F3B35;opacity:0}
+.A.big .bub{border-bottom-left-radius:56px;border-bottom-right-radius:14px}
+.ynrow{display:flex;align-items:center;gap:16px;margin:18px 0 0 12px;font-weight:800;font-size:54px;color:#1F3B35}
+.yn{background:#1F3B35;color:#fff;border-radius:30px;padding:4px 30px 10px}
+</style></head>
+<body><div id="stage">
+  <div class="abs" id="bg1" style="left:-240px;top:1240px;width:640px;height:640px;border-radius:50%;background:rgba(31,59,53,.10)"></div>
+  <div class="abs" id="bg2" style="left:780px;top:560px;width:480px;height:480px;border-radius:50%;background:rgba(238,222,206,.22)"></div>
+
+  <!-- ===== Objekt-Bühne (Weltkoordinaten = Bildschirm, Objekte per Keyframes) ===== -->
+  <div id="folderBack" class="folder" style="display:none"><svg width="820" height="700" viewBox="0 0 820 700"><path d="M20 70 Q20 40 50 40 H300 Q322 40 334 58 L356 90 H770 Q800 90 800 120 V680 H20 Z" fill="#16302b"/></svg></div>
+  <div id="pt" class="pt">
+    <h4>TRADUÇÃO<small>juramentada</small></h4>
+    <div class="ln" style="width:92%;margin-top:40px"></div><div class="ln" style="width:80%"></div><div class="ln" style="width:88%"></div><div class="ln" style="width:70%"></div><div class="ln" style="width:84%"></div><div class="ln" style="width:60%"></div>
+    <svg id="seal" class="abs" style="left:350px;top:520px;transform-origin:75px 75px" width="150" height="150" viewBox="0 0 150 150"><circle cx="75" cy="75" r="66" fill="#1F3B35"/><circle cx="75" cy="75" r="54" fill="none" stroke="#e8f3ee" stroke-width="4" stroke-dasharray="6 7"/><path d="M48 77 L67 96 L104 57" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div class="tag" style="right:-42px;top:-46px;background:#1F3B35">PT</div>
+  </div>
+  <div id="doc" class="doc"><div class="in">
+    <h3>HEIRATS&shy;URKUNDE</h3>
+    <div class="ln" style="width:90%;margin-top:44px"></div><div class="ln" style="width:76%"></div><div class="ln" style="width:84%"></div><div class="ln" style="width:66%"></div><div class="ln" style="width:88%"></div><div class="ln" style="width:72%"></div><div class="ln" style="width:58%"></div>
+    <svg class="abs" style="left:66px;top:560px" width="130" height="130" viewBox="0 0 130 130"><circle cx="65" cy="65" r="56" fill="none" stroke="#9b8a63" stroke-width="5"/><circle cx="65" cy="65" r="40" fill="none" stroke="#9b8a63" stroke-width="3" stroke-dasharray="4 6"/></svg>
+    <div class="abs" style="left:300px;top:640px;width:200px;height:6px;background:#9b8a63;border-radius:3px;opacity:.7"></div>
+    </div>
+    <div class="tag" style="left:-26px;top:-30px">DE</div>
+    <div id="stamp" class="stamp" style="opacity:0">APOSTILLE</div>
+  </div>
+  <svg id="arrow" class="abs" style="left:0;top:0;opacity:0" width="150" height="110" viewBox="0 0 150 110"><path d="M12 55 H118 M84 18 L126 55 L84 92" fill="none" stroke="#1F3B35" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <div id="folderFront" class="folder" style="display:none">
+    <svg class="abs" width="820" height="700" viewBox="0 0 820 700"><path d="M0 250 Q0 220 30 220 H790 Q820 220 820 250 V680 Q820 700 800 700 H20 Q0 700 0 680 Z" fill="#1F3B35"/><path d="M0 250 Q0 220 30 220 H790 Q820 220 820 250 V262 H0 Z" fill="#1F3B35"/></svg>
+    <div class="abs" style="left:0;top:250px;width:820px;text-align:center;font-weight:800;font-size:72px;color:#fff;letter-spacing:-1px">Cartório</div>
+    
+  </div>
+  <svg id="fchk" class="abs" style="left:0;top:0;margin:-55px 0 0 -55px;opacity:0;z-index:6" width="110" height="110" viewBox="0 0 110 110"><circle cx="55" cy="55" r="50" fill="#1F3B35" stroke="#fff" stroke-width="6"/><path d="M33 57 L49 73 L79 40" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <div id="chipTr" class="chip" style="height:96px;padding:0 40px;font-size:54px;opacity:0">
+    <svg width="50" height="50" viewBox="0 0 24 24" style="margin-right:14px"><path d="M4 7h11M11 3l4 4-4 4M20 17H9M13 13l-4 4 4 4" fill="none" stroke="#1F3B35" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Traslado</div>
+
+  <!-- Abnahme 16-4/16-10: Ausschnitt-Karten des echten Rechners (DE), ganz in x 90–900, keine Dynamic Island -->
+  <div id="cardA" class="card"><img src="ui_card_files.png"><div class="abs" style="right:0;top:0;width:150px;height:100%;background:linear-gradient(to right,rgba(251,250,247,0),#fbfaf7 85%)"></div><div id="freeB" class="chip" style="left:330px;top:412px;height:80px;padding:0 26px 0 18px;font-size:44px;opacity:0;z-index:3;transform-origin:50% 50%"><svg width="42" height="42" viewBox="0 0 24 24" style="margin-right:10px"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#1F3B35" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>sem custo extra</div><div id="rowGlow" class="glow" style="left:14px;top:22px;width:782px;height:396px;border-radius:24px"></div></div>
+  <div id="cardB" class="card"><img src="ui_card_head.png"><div id="deGlow" class="glow" style="left:564px;top:30px;width:90px;height:86px;border-radius:22px"></div></div>
+  <div id="cardC" class="card"><img src="ui_card_cpf.png">
+    <div class="abs" id="chk" style="left:27px;top:155px;width:55px;height:55px;border-radius:13px;background:#1F3B35;opacity:0"><svg width="55" height="55" viewBox="0 0 24 24"><path d="M6 12.5l4 4 8-9" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div id="estGlow" class="glow" style="left:12px;top:130px;width:786px;height:118px;border-radius:20px"></div></div>
+  <div id="tap" class="abs" style="left:0;top:0;width:96px;height:96px;margin:-48px 0 0 -48px;border-radius:50%;background:rgba(255,255,255,.6);border:4px solid #fff;opacity:0;z-index:30"></div>
+  <div id="tapR" class="abs" style="left:0;top:0;width:200px;height:200px;margin:-100px 0 0 -100px;border-radius:50%;border:6px solid #fff;opacity:0;z-index:30"></div>
+
+  <!-- ===== Bildschirm-Ebene: Chat ===== -->
+  <div id="chat" class="abs" style="left:0;top:0;width:1080px;height:1920px;z-index:20"></div>
+
+  <!-- CTA-Chip ab 3,0 s -->
+  <div id="chipCta" class="chip" style="left:90px;top:300px;height:86px;padding:0 30px 0 22px;font-size:44px;z-index:25;opacity:0;transform-origin:0 50%">
+    <svg width="46" height="46" viewBox="0 0 24 24" style="margin-right:12px"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1" stroke="#1F3B35" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg>Preço na hora · link na bio</div>
+
+  <!-- Endcard-Kontakt -->
+  <div id="endc" class="abs" style="left:90px;top:0;width:810px;z-index:25;opacity:0">
+    <div id="chipBio" class="chip" style="position:relative;height:100px;padding:0 40px 0 30px;font-size:54px;width:max-content;transform-origin:0 50%">
+      <svg width="54" height="54" viewBox="0 0 24 24" style="margin-right:14px"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1" stroke="#1F3B35" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg>link na bio</div>
+    <div id="url" style="margin-left:44px;margin-top:44px;font-weight:800;font-size:72px;letter-spacing:-1.5px;color:#1F3B35">traduzme.com.br</div>
+    <div id="wa" style="margin-left:44px;margin-top:22px;display:flex;align-items:center;gap:18px;font-weight:800;font-size:68px;letter-spacing:-1px;color:#1F3B35">
+      <svg width="74" height="74" viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z" fill="#1F3B35"/><path d="M9 8.2c.3-.6.6-.6 1-.6h.4c.2 0 .4.1.5.4l.7 1.6c.1.3 0 .5-.1.7l-.5.6c-.1.2-.1.4 0 .6.6 1 1.4 1.8 2.5 2.4.2.1.4.1.6-.1l.6-.7c.2-.2.4-.2.7-.1l1.6.8c.3.1.4.3.4.5 0 .5-.2 1.3-.9 1.7-.6.4-1.6.5-3.2-.2-1.7-.8-3.5-2.6-4.3-4.3-.6-1.4-.4-2.6 0-3.3z" fill="#EEDECE"/></svg>(61) 99803-8363</div>
+    <div id="mit" style="margin-left:44px;margin-top:60px;transform-origin:0 50%;display:flex;align-items:center;gap:20px;max-width:766px;font-weight:800;font-size:58px;line-height:1.12;letter-spacing:-1px;color:#1F3B35">
+      <svg width="72" height="72" viewBox="0 0 24 24" style="flex:none"><path d="M3 11.5 21 3l-6.5 18-3.2-7.3z" fill="#EEDECE" stroke="#1F3B35" stroke-width="2" stroke-linejoin="round"/><path d="M11.3 13.7 21 3" stroke="#1F3B35" stroke-width="2"/></svg>
+      <span>Manda pra quem casou na Alemanha</span></div>
+  </div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const lin=(t,a,b)=>cl((t-a)/(b-a));
+const eo=x=>1-Math.pow(1-x,3);
+const expo=x=>x>=1?1:1-Math.pow(2,-10*x);
+const quint=x=>x<.5?16*x**5:1-Math.pow(-2*x+2,5)/2;
+const back=x=>{const c=1.6;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const CUT=new URLSearchParams(location.search).get('cut');
+const HOLDS=CUT==='gmb'?[[20.5,1.8]]:[[20.5,1.8],[24.0,1.0],[29.0,0.3]];   // [Master-Zeit, Halt in s] – gleiche Liste in audio.py
+const GCUT=20.5+1.8+0.5, GJ=29.5-GCUT;   // GMB: Ausgabe 22,8 -> Master 29,5 (Endcard)
+const END=CUT==='gmb'?35-GJ:35+HOLDS.reduce((a,h)=>a+h[1],0);
+// Ausgabe-Zeit -> Master-Zeit. Halte-Punkte geben A4 (13 Wörter) und A5 (12 Wörter) je ≥ 0,4 s/Wort (Raster D3);
+// in jedem Halt gibt es ein eigenes Bildereignis (Haken auf der Mappe 21,0 s, Pille „sem custo extra" 25,5 s).
+const MM=t=>{let o=0; for(const [h,d] of HOLDS){if(t<h+o) return t-o; if(t<h+o+d) return h; o+=d;} return t-o;};
+const M=t=>CUT!=='gmb'?MM(t):(t<GCUT?MM(t):t+GJ);   // GMB: nach A4 (22,8 s) direkt Endcard + Loop-Naht, 28,3 s
+
+// ---------- Chat-Daten (Text = Storyboard, jede Faktenaussage mit Quelle) ----------
+const SRC='<svg width="40" height="40" viewBox="0 0 24 24"><path d="M5 4h10l4 4v12H5z" fill="none" stroke="#1F3B35" stroke-width="2.2" stroke-linejoin="round"/><path d="M8.5 12h7M8.5 15.5h7M8.5 8.5h4" stroke="#1F3B35" stroke-width="2.2" stroke-linecap="round"/></svg>';
+const MSG={
+ J1:{w:'J',big:1,h:'Sua certidão alemã travou no cartório?',ex:'<div class="ynrow">Comenta <span class="yn">SIM</span><span class="yn">NÃO</span></div>'},
+ TY:{w:'A',h:'<span class="dots"><i></i><i></i><i></i></span>'},
+ A1:{w:'A',name:'Ana',h:'Normal! Falta a <span class="hi">tradução juramentada</span>.'},
+ A2:{w:'A',h:'Documento estrangeiro só tem efeito legal no Brasil <span class="hi">traduzido pro português</span>.',src:'Código Civil, art. 224'},
+ J2:{w:'J',h:'E a apostila? Faço aqui no Brasil?'},
+ A3:{w:'A',h:'Não: é feita <span class="hi">na Alemanha</span>, antes da tradução.',src:'Decreto 8.660/2016 (Apostila)'},
+ J3:{w:'J',h:'E pra registrar nosso casamento aqui?'},
+ A4:{w:'A',h:'Traslado, entre outros documentos: certidão alemã apostilada + tradução juramentada <span class="hi">feita no Brasil</span>.',src:'Res. CNJ 155/2012, art. 13'},
+ A5:{w:'A',h:'A página da apostila entra na tradução: <span class="hi">sem custo extra</span> (documento padrão).'},
+ J4:{w:'J',h:'Tem até em alemão!'},
+ A6:{w:'A',h:'Sem CPF? Tem opção <span class="hi">pra estrangeiro</span>.'},
+ J5:{w:'A',big:1,name:'traduzme',h:'Preço na hora, no site.'},
+};
+// Szenen: ab Zeit t sichtbare Nachrichten (oben -> unten); neue Nachricht poppt bei ihrem ersten Auftreten
+const SC0=[[0,['J1']],[0.6,['J1','TY']],[2.5,['J1','A1']],[5.0,['A1','A2']],[9.0,['A2','J2']],[11.0,['J2','A3']],[15.0,['A3','J3']],[17.0,['J3','A4']],[19.0,['A4']],
+          [21.0,['A5']],[25.0,['J4']],[27.0,['J4','A6']],[29.5,['J5']],[34.6,['J1']]];
+const SC=CUT==='gmb'?SC0.filter(([t])=>t<21||t>=29.5):SC0;
+const Y0=420, GAP=30;
+const chat=$('chat'), EL={};
+for(const [k,m] of Object.entries(MSG)){const d=document.createElement('div'); d.className='msg '+m.w+(m.big?' big':''); d.id='m_'+k;
+  d.innerHTML=(m.name?`<div class="name">${m.name}</div>`:'')+`<div class="bub">${m.h}</div>`+(m.ex||'')+(m.src?`<div class="src">${SRC}${m.src}</div>`:'');
+  d.style.display='none'; chat.appendChild(d); EL[k]=d;}
+// Tipp-Punkte
+const st=document.createElement('style'); st.textContent='.dots{display:inline-flex;gap:16px;padding:14px 6px}.dots i{width:22px;height:22px;border-radius:50%;background:#fff;display:block}'; document.head.appendChild(st);
+const H={}; function measure(){for(const k in EL){const e=EL[k]; e.style.display='block'; e.style.visibility='hidden'; e.style.width=(Math.ceil(e.getBoundingClientRect().width)+2)+'px'; H[k]=e.offsetHeight;} LAY=SC.map(([t,l])=>[t,l,layout(l)]);}
+function layout(list){const y={}; let c=Y0; for(const k of list){y[k]=c; c+=H[k]+GAP;} return y;}
+let LAY=[]; window.READY=false;   // qa_frames wartet auf READY
+const firstSeen={}; for(const [t,l] of SC) for(const k of l) if(!(k in firstSeen)) firstSeen[k]=t;
+// Abnahme 16-2: Chat-Schritt in drei sauberen Phasen VOR dem Schlag des nächsten Schritts:
+// (1) wegfallende Blasen aus, (2) bleibende Blasen rücken hoch, (3) auf dem Schlag poppt die neue Blase an ihrem Endplatz.
+// Nie zwei Blasen übereinander, kein Überblenden von Text.
+function renderChat(t){
+  if(!LAY.length) measure();   // Absicherung, falls render() vor READY aufgerufen wird (Prüfwerkzeuge unter Last)
+  let i=0; for(let j=0;j<LAY.length;j++) if(t>=LAY[j][0]) i=j;
+  const [t0,list,Y]=LAY[i]; const prev=i>0?LAY[i-1]:null; const nx=LAY[i+1]||null;
+  let fa=0,fb=0,ma=0,mb=0, moving=false;
+  if(nx){const n0=nx[0]; moving=list.some(k=>nx[1].includes(k)&&nx[2][k]!==Y[k]);
+    if(moving){fa=n0-.45; fb=n0-.35; ma=n0-.35; mb=n0-.05;} else {fa=n0-.1; fb=n0;}}
+  for(const k in EL){const e=EL[k]; const show=list.includes(k); let y=Y[k]||0, o=1, sc=1;
+    if(show){const isNew=!(prev&&prev[1].includes(k));
+      if(isNew){const a=lin(t,t0,t0+.3); sc=.6+.4*eo(a);}   // ab dem Schlag sichtbar (kein Leerbild)
+      if(k==='J1'&&t0===34.6){const a=lin(t,34.6,34.9); sc=.85+.15*eo(a);}  // Loop-Naht
+      if(i===0&&k==='J1'){o=1;sc=1;}
+      if(nx){ if(!nx[1].includes(k)) o*=1-lin(t,fa,fb);
+              else if(moving) y=Y[k]+(nx[2][k]-Y[k])*quint(lin(t,ma,mb)); }
+    }
+    const vis=show&&o>0.001; e.style.display=vis?'block':'none'; e.style.visibility='visible'; if(!vis) continue;
+    const x=MSG[k].w==='J'?90:900-e.offsetWidth;
+    e.style.left=x+'px'; e.style.top=y+'px'; e.style.opacity=o; e.style.transform=`scale(${sc})`;
+  }
+  // Tipp-Punkte animieren
+  EL.TY.querySelectorAll('i').forEach((d,n)=>{d.style.transform=`translateY(${-10*Math.max(0,Math.sin(t*7-n*.8))}px)`; d.style.opacity=.55+.45*Math.max(0,Math.sin(t*7-n*.8));});
+}
+
+// ---------- Objekt-Keyframes: [t, x, y, scale, rot, opacity] (Mittelpunkt in Bildschirm-px) ----------
+function kf(K,t){if(t<=K[0][0])return K[0].slice(1); for(let i=0;i<K.length-1;i++){const a=K[i],b=K[i+1]; if(t<=b[0]){const p=b[6]==='x'?expo(lin(t,a[0],b[0])):quint(lin(t,a[0],b[0])); return a.slice(1,6).map((v,j)=>v+(b[j+1]-v)*p)}} return K[K.length-1].slice(1,6);}
+function put(el,v,dy=0){const [x,y,s,r,o]=v; el.style.transform=`translate(${x}px,${y+dy}px) rotate(${r}deg) scale(${s})`; el.style.opacity=o; el.style.display=o<=0.001?'none':'block';}
+// Abnahme 16-1: DE und PT liegen nebeneinander (Titel ganz lesbar), in der Mappe ragen beide mit ganzem Kopf heraus; Endcard ohne Blätter
+const DOC=[[0,540,1600,.92,-9,1],[0.5,540,1620,1,-4,1,'x'],[4.6,540,1620,1.06,-1.5,1],[5.0,300,1530,.62,-2,1],[8.65,300,1515,.62,-1.5,1],[9.0,540,1545,.85,-2,1],
+           [11.6,540,1545,.85,-2,1],[14.5,540,1535,.9,-1,1],[16.5,540,1535,.9,-1,1],[16.95,300,1515,.62,-2,1],[19.0,300,1515,.62,-2,1],[19.5,300,1170,.62,-2,1],[19.9,300,1222,.62,-2,1],[20.6,300,1222,.62,-2,1],[21.0,300,2400,.62,-2,1],
+           [34.6,540,2400,.92,-9,1],[35.0,540,1600,.92,-9,1]];
+const PT=[[0,680,1600,.5,2,0],[4.88,680,1600,.5,2,0],[5.15,680,1540,.62,2,1,'x'],[8.45,680,1525,.62,1.5,1],[8.65,680,1560,.58,2,0],
+          [16.85,680,1580,.55,2,0],[17.1,680,1520,.62,2,1,'x'],[19.0,680,1520,.62,2,1],[19.5,680,1165,.62,2,1],[19.9,680,1216,.62,2,1],[20.6,680,1216,.62,2,1],[21.0,680,2420,.62,2,1],[21.1,680,2420,.62,2,0]];
+const FOLD=[[0,540,2400,.86,0,1],[19.0,540,2400,.86,0,1],[19.45,540,1342,.86,0,1,'x'],[20.6,540,1342,.86,0,1],[21.0,540,2500,.86,0,1]];
+// Rechner-Karten: [t, x(links), y(oben), scale, rot, opacity]
+const EA=CUT==='gmb'?29.5:25.0;
+const CA=[[0,90,1000,1,0,0],[21.0,90,1000,1,0,0],[21.45,90,800,1,0,1,'x'],[EA-.2,90,800,1,0,1],[EA,90,770,1,0,0]];
+const CB=[[0,90,840,1,0,0],[25.0,90,840,1,0,0],[25.4,90,640,1,0,1,'x'],[26.8,90,640,1,0,1],[27.0,90,610,1,0,0]];
+const CC=[[0,90,1060,1,0,0],[27.0,90,1060,1,0,0],[27.4,90,860,1,0,1,'x'],[29.3,90,860,1,0,1],[29.5,90,830,1,0,0]];
+function card(id,K,t){const v=kf(K,t); const c=$(id); c.style.display=v[4]>0.001?'block':'none'; c.style.opacity=v[4]; c.style.transform=`translate(${v[0]}px,${v[1]+Math.sin(TVG*2.1)*8}px) scale(${v[2]}) rotate(${.2*Math.sin(TVG*1.7)}deg)`; return v;}   // Raster B4: Karten schweben leicht (kein Standbild)
+let TVG=0;
+
+function render(tv){TVG=tv; const t=M(tv);
+  // Hintergrund-Parallaxe (kein Frame völlig still)
+  $('bg1').style.transform=`translate(${Math.sin(tv*.45)*22}px,${-tv*5}px)`; $('bg2').style.transform=`translate(${-tv*4}px,${Math.cos(tv*.55)*18}px)`;
+  renderChat(t);
+  const idle=Math.sin(tv*1.05)*4;
+  document.querySelectorAll('.yn').forEach((e,n)=>{const ph=((t-0.5)%1+1)%1, q=t>=0.5&&t<4.5?lin(ph,n*.5,n*.5+.35):0; e.style.display='inline-block'; e.style.transform=`scale(${1+.12*Math.sin(q*Math.PI)})`;});   // Raster H2: SIM/NÃO pulsieren im Wechsel auf dem Schlag (0,5–4,5 s), keine Standbild-Spanne > 0,3 s
+  // Urkunde + Übersetzung
+  const dv=kf(DOC,t); put($('doc'),dv,idle);
+  const pv=kf(PT,t); put($('pt'),pv,-idle); $('pt').style.display=pv[0]>1300?'none':'block';
+  {const q=lin(t,7.0,7.35); $('seal').style.transform=`scale(${1+.18*Math.sin(q*Math.PI)}) rotate(${-20*Math.sin(q*Math.PI)}deg)`;}
+  // Pfeil DE -> PT (Lernpunkt 1)
+  const A=$('arrow'); A.style.opacity=0; A.style.transform=`translate(${475+(1-eo(lin(t,5.5,5.8)))*-30}px,${1300}px)`;
+  // Stempel APOSTILLE (Lernpunkt 2), sitzt auf der Urkunde
+  const S=$('stamp'); const sp=lin(t,11.25,11.5); S.style.opacity=t<11.25||t>=34.0?0:1;   // Loop: Frame 0 zeigt die Urkunde ohne Stempel
+  S.style.left='290px'; S.style.top='345px';   // Nachabnahme 16N-1: Stempel (0,7) unter der Titel-Grundlinie, „URKUNDE“ frei, in der Mappe ganz sichtbar
+  S.style.transform=`rotate(-9deg) scale(${.7*(t<11.5?1.3-0.3*sp*sp:1)+.05*Math.sin(lin(t,11.5,11.7)*Math.PI)+.1*Math.sin(lin(t,13.0,13.35)*Math.PI)})`;   // Raster B4: Stempel-Puls 13,0 (kein Abstand > 2 s ohne Bildereignis)
+  if(t>=11.5&&t<11.75){const q=lin(t,11.5,11.75); $('doc').style.transform+=` scale(${1-.025*Math.sin(q*Math.PI)})`;}
+  // Mappe Cartório (Lernpunkt 3)
+  const fv=kf(FOLD,t); const fb=$('folderBack'), ff=$('folderFront'); const fshow=t>19.0&&t<21.05;
+  fb.style.display=ff.style.display=fshow?'block':'none';
+  if(fshow){fb.style.transform=`translate(${fv[0]}px,${fv[1]}px) scale(${fv[2]})`; ff.style.transform=`translate(${fv[0]}px,${fv[1]+40*fv[2]}px) scale(${fv[2]})`;
+    // Dokumente gleiten in die Mappe: hinter die Vorderseite legen
+    const into=t>=19.45; $('doc').style.zIndex=$('pt').style.zIndex=into?1:3; fb.style.zIndex=0; ff.style.zIndex=4;}
+  else {$('doc').style.zIndex=3; $('pt').style.zIndex=2;}
+  const tr=$('chipTr'); const tp=lin(t,19.9,20.2); tr.style.opacity=t>=19.9&&t<20.75?1-lin(t,20.6,20.75):0; tr.style.left='0px'; tr.style.top='0px';
+  tr.style.transform=`translate(${540-tr.offsetWidth/2}px,${fv[1]+30}px) scale(${tp<=0?0:back(tp)})`; tr.style.zIndex=5;
+  // Rechner-Karten (echte Screenshots, DE)
+  card('cardA',CA,CUT==='gmb'?0:t); const vb=card('cardB',CB,CUT==='gmb'?0:t); const vc=card('cardC',CC,CUT==='gmb'?0:t);
+  $('rowGlow').style.opacity=t>22.4&&t<EA?lin(t,22.4,22.6):0;
+  $('deGlow').style.opacity=t>25.6&&t<26.95?lin(t,25.6,25.8)*(.75+.25*Math.sin((t-25.6)*6)):0;
+  $('estGlow').style.opacity=t>27.45&&t<29.3?lin(t,27.45,27.6):0;
+  $('chk').style.opacity=t>=27.95?1:0; $('chk').style.transform=`scale(${t<27.95?0:back(lin(t,27.95,28.2))})`;
+  if(CUT!=='gmb'&&t>27.4&&t<28.4){const sx=vc[0]+20+27+27.5, sy=vc[1]+28+155+27.5;   // Finger-Tap auf die Checkbox
+    const fp=lin(t,27.5,27.8); const T=$('tap'); T.style.opacity=t>27.5&&t<28.35?1-lin(t,28.15,28.35):0;
+    T.style.transform=`translate(${sx+(1-eo(fp))*220}px,${sy+(1-eo(fp))*160}px) scale(${t>27.85&&t<28.0?.8:1})`;
+    const rp=lin(t,27.9,28.35); const R=$('tapR'); R.style.opacity=rp>0&&rp<1?1-rp:0; R.style.transform=`translate(${sx}px,${sy}px) scale(${.4+rp})`;
+  } else {$('tap').style.opacity=0; $('tapR').style.opacity=0;}
+  {const fp=lin(tv,21.0,21.3); const F=$('fchk'); F.style.opacity=CUT!=='gmb'||tv<GCUT?(tv>=21.0&&t<20.95?1:0):0;
+   F.style.transform=`translate(${540+250}px,${fv[1]-60}px) scale(${eo(fp)})`;}
+  {const bp=lin(tv,25.8,26.1); const B=$('freeB'); B.style.opacity=CUT!=='gmb'&&tv>=25.8&&t<24.9?1:0; B.style.transform=`scale(${.6+.4*eo(bp)})`;}
+  // CTA-Chip ab 3,0 s bis Endcard
+  const C=$('chipCta'); const cp=lin(t,2.7,3.0); C.style.opacity=t<2.7?0:1-lin(t,29.4,29.5); C.style.transform=`scale(${cp<=0?0:eo(cp)})`;
+  // Endcard-Kontakt (unter der Endcard-Blase)
+  const E=$('endc'); const ep=lin(t,30.0,30.5); const eb=EL.J5; E.style.top=(parseFloat(eb.style.top||420)+H.J5+60)+'px';
+  E.style.opacity=t<30.0?0:(1-lin(t,34.5,34.6)); E.style.transform=`translateY(${(1-eo(ep))*40}px)`;
+  const bp=lin(t,30.0,30.35); $('chipBio').style.transform=`scale(${bp<=0?0:eo(bp)})`;
+  const mp=lin(t,31.0,31.35); $('mit').style.opacity=mp>0?1:0; $('mit').style.transform=`scale(${mp<=0?.6:.6+.4*eo(mp)})`;
+}
+if(CUT==='gmb'){ // Google-Profil: Link-Knopf statt Bio -> kein "link na bio" im Bild
+  $('chipCta').lastChild.textContent='Preço na hora no site'; $('chipBio').style.display='none'; $('url').style.marginTop='0px'; $('mit').style.display='none';}
+// Schriften erst sicher laden, dann messen (sonst Messung mit Ersatzschrift → Blasen zu schmal/zu niedrig)
+document.fonts.ready.then(()=>Promise.all(['700 62px "Open Sans"','800 90px "Open Sans"','800 44px "Open Sans"','700 44px "Open Sans"'].map(f=>document.fonts.load(f,'ãéçÃ!?'))))
+  .then(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))))
+  .then(()=>{for(const k in EL) EL[k].style.width='auto'; measure(); render(0); window.READY=true;});
+</script></body></html>

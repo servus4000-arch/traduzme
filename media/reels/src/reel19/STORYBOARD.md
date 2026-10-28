@@ -34,6 +34,7 @@ GMB-Fassung (29,9 s): Mitmach-Block 25,0–28,0 und 0,6 s ruhiges Halten in Schr
 - 19-6 Pillen erscheinen als ganze Zeile (keine 1-Wort-Pille), Apostila-Aufprall sofort ≥ 100 % Deckkraft.
 - 19-7 Recap mit Wörtern, 19-8 „Rebobinando:“. Kamera-Fokus Bühnenmitte (Push-in schiebt nichts in Text-/Chip-Zone).
 - Ton: gleiche Komposition (seed 19), nur Marker-Pop 19,0 → 19,5, Endcard bleibt 'main' statt 'soft' (Raster E6: vorher 5 LU Pegel-Delle 28,8–31,1), Fade 0,2 s (Loop-Naht), GMB-Schnitt neu.
+- v3 (28.10. nach bestandener Abnahme, letzte Kleinigkeiten): CTA-Chip 54 px (Pille x 90–900), alle SFX g = .6, Pops ≤ 760 Hz; Endcard gestaffelt (Text 28,0 als Ganzes, „link na bio“ landet 28,5, Blätter ab 29,0 mit whoosh) → ≤ 12 neue Wörter je 0,5 s; FAQ-Karte 16 px tiefer (kein Kontakt mit dem höheren Chip).
 - Gate: `qa_frames.js` (Haupt + `gmb/`) und `qa_check.sh` inkl. `qa_video.sh` aus origin/reels-pipeline-v2 a9df053.
 
 ## Kritiker-Runden Storyboard

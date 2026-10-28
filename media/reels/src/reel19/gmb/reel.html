@@ -31,7 +31,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
 .cap .ln{display:flex;gap:16px;align-items:center;background:var(--dark);color:#fff;font-weight:800;font-size:66px;line-height:1;padding:20px 30px 24px;border-radius:24px;letter-spacing:-1px;box-shadow:0 14px 30px rgba(0,0,0,.18);white-space:nowrap}
 .w{display:inline-block}
 .cap .hi{color:var(--dark);background:var(--areia);border-radius:12px;padding:0 12px}
-.chip{position:absolute;height:76px;padding:0 30px;border-radius:38px;font-size:46px;font-weight:800;display:flex;align-items:center;white-space:nowrap;background:var(--areia);color:var(--dark);box-shadow:0 10px 24px rgba(31,59,53,.18)}
+.chip{position:absolute;height:88px;padding:0 22px;border-radius:44px;font-size:54px;letter-spacing:-.6px;font-weight:800;display:flex;align-items:center;white-space:nowrap;background:var(--areia);color:var(--dark);box-shadow:0 10px 24px rgba(31,59,53,.18)}
 .step{position:absolute;left:100px;top:396px;width:800px;height:250px}
 .num{position:absolute;left:0;top:6px;width:124px;height:124px;border-radius:50%;background:var(--dark);color:var(--areia);font-weight:800;font-size:80px;display:flex;align-items:center;justify-content:center;letter-spacing:-2px}
 .stt{position:absolute;left:150px;top:0;width:660px;font-weight:800;font-size:84px;line-height:1.04;letter-spacing:-1.5px;color:var(--dark)}
@@ -99,7 +99,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
   <!-- Scanner-Licht Schritt 2 (Bildschirm) -->
   <div class="abs" id="scan" style="left:0;width:1080px;height:90px;top:0;opacity:0;background:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.55),rgba(255,255,255,0))"></div>
   <!-- Echter FAQ-Screenshot als kleiner Beleg: Frage-Zeile + die drei Zeilen mit der Belegstelle (Rest ausgeblendet) -->
-  <div class="abs" id="faq" style="left:141px;top:830px;width:708px;height:364px;border-radius:30px;overflow:hidden;box-shadow:0 34px 70px rgba(31,59,53,.30);opacity:0;background:#fbfaf7;transform-origin:50% 50%">
+  <div class="abs" id="faq" style="left:141px;top:846px;width:708px;height:364px;border-radius:30px;overflow:hidden;box-shadow:0 34px 70px rgba(31,59,53,.30);opacity:0;background:#fbfaf7;transform-origin:50% 50%">
     <img src="shots/faq8_top.png" class="abs" style="left:0;top:0;width:708px;height:126px;object-fit:none;object-position:0 0">
     <div class="abs" style="left:46px;top:132px;display:flex;gap:12px"><i style="width:12px;height:12px;border-radius:50%;background:#b9c2c4"></i><i style="width:12px;height:12px;border-radius:50%;background:#b9c2c4"></i><i style="width:12px;height:12px;border-radius:50%;background:#b9c2c4"></i></div>
     <div class="abs" style="left:0;top:160px;width:708px;height:204px;overflow:hidden">
@@ -138,7 +138,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
     <div class="abs" style="left:100px;top:950px;display:flex;gap:44px"><div class="pill w" id="pS" style="height:150px;font-size:90px;padding:0 70px;border-radius:75px">SIM</div><div class="pill w" id="pN" style="height:150px;font-size:90px;padding:0 70px;border-radius:75px">NÃO</div></div>
   </div>
 
-  <div class="chip" id="chip"><svg width="46" height="46" viewBox="0 0 24 24" style="margin-right:14px"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1" stroke="#1F3B35" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg><span id="chipT">Preço na hora · link na bio</span></div>
+  <div class="chip" id="chip"><svg width="44" height="44" viewBox="0 0 24 24" style="margin-right:8px"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1" stroke="#1F3B35" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg><span id="chipT">Preço na hora · link na bio</span></div>
 
   <!-- Endcard (Bild-Reim auf den Hook) -->
   <div class="abs" id="end" style="left:0;top:0;width:1080px;height:1920px;opacity:0">
@@ -179,8 +179,8 @@ $('hlLayer').innerHTML=HL.map(r=>`<div class="abs h2" style="left:${r[0]*3-6}px;
 // Posen [t, x, y, rot, scale, opacity, ease]  (x/y = Mittelpunkt in Weltkoordinaten)
 // Fächer-Layout L (Hook, Schritte 2–3): ORIG links, TRAD rechts – kein Blatt verdeckt einen Titel.
 const P={
- ORIG:[[0,345,1160,-3,.88,1],[0.8,345,1120,-3,.88,1,'x'],[5.6,345,1120,-3,.88,1],[6.8,450,1120,-2,.88,1,'q'],[10.5,450,1120,-2,.88,1],[11.3,345,1120,-3,.88,1,'q'],[17.9,345,1120,-3,.88,1],[18.12,345,1120,-3,.88,0,'l'],[28.0,345,1400,-3,.88,0],[28.4,345,1400,-3,.88,1,'o'],[33.1,345,1400,-3,.88,1],[33.5,345,1160,-3,.88,1,'q']],
- TRAD:[[0,720,1160,3,.88,1],[0.7,720,1120,3,.88,1,'x'],[5.7,720,1120,3,.88,1],[6.5,1420,1120,10,.88,1,'i'],[10.6,1420,1120,10,.88,1],[11.5,720,1120,3,.88,1,'x'],[17.9,720,1120,3,.88,1],[18.12,720,1120,3,.88,0,'l'],[28.0,710,1400,3,.88,0],[28.4,710,1400,3,.88,1,'o'],[33.1,710,1400,3,.88,1],[33.5,720,1160,3,.88,1,'q']],
+ ORIG:[[0,345,1160,-3,.88,1],[0.8,345,1120,-3,.88,1,'x'],[5.6,345,1120,-3,.88,1],[6.8,450,1120,-2,.88,1,'q'],[10.5,450,1120,-2,.88,1],[11.3,345,1120,-3,.88,1,'q'],[17.9,345,1120,-3,.88,1],[18.12,345,1120,-3,.88,0,'l'],[29.0,345,1480,-3,.88,0],[29.4,345,1400,-3,.88,1,'o'],[33.1,345,1400,-3,.88,1],[33.5,345,1160,-3,.88,1,'q']],
+ TRAD:[[0,720,1160,3,.88,1],[0.7,720,1120,3,.88,1,'x'],[5.7,720,1120,3,.88,1],[6.5,1420,1120,10,.88,1,'i'],[10.6,1420,1120,10,.88,1],[11.5,720,1120,3,.88,1,'x'],[17.9,720,1120,3,.88,1],[18.12,720,1120,3,.88,0,'l'],[29.0,710,1480,3,.88,0],[29.4,710,1400,3,.88,1,'o'],[33.1,710,1400,3,.88,1],[33.5,720,1160,3,.88,1,'q']],
  APO1:[[0,330,1315,-5,1.14,0],[2.3,330,1315,-5,1.14,0],[2.31,330,1315,-5,1.12,1,'l'],[2.5,330,1315,-5,.88,1,'i'],[5.3,330,1315,-5,.88,1],[5.9,-260,1700,-30,1.2,1,'i'],[5.95,-260,1700,-30,1.2,0,'l'],[7.8,440,1315,-4,1.14,0],[7.81,440,1315,-4,1.12,1,'l'],[8.0,440,1315,-4,.88,1,'i'],[10.5,440,1315,-4,.88,1],[11.3,330,1315,-5,.88,1,'q'],[17.9,330,1315,-5,.88,1],[18.12,330,1315,-5,.88,0,'l']],
  APO2:[[0,750,1462,4,1.14,0],[15.3,750,1462,4,1.14,0],[15.31,750,1462,4,1.12,1,'l'],[15.5,750,1462,4,.88,1,'i'],[17.9,750,1462,4,.88,1],[18.12,750,1462,4,.88,0,'l']]
 };
@@ -253,7 +253,7 @@ function render(tn){const t=remap(tn);
   // ---- FAQ (echter Screenshot, kleiner Beleg) – erst nach dem Ausblenden der Blätter, raus nach oben ----
   {const a=lin(t,18.15,18.5), b=lin(t,21.1,21.35); const F=$('faq'); const o=t<18.15||t>21.35?0:Math.min(1,a*1.6)*(1-b);
    F.style.opacity=o; F.style.display=o>0?'':'none';
-   F.style.transform=`translateY(${(1-eo(a))*60-eo(b)*60}px) scale(${1.0+.1*eo(a)})`;
+   F.style.transform=`translateY(${(1-eo(a))*60-eo(b)*40}px) scale(${1.0+.1*eo(a)})`;
    document.querySelectorAll('#hlLayer .h2').forEach((e,i)=>{e.style.transform=`scaleX(${eo(lin(t,19.55+i*.2,19.55+i*.2+.24))})`});}
   // ---- Recap ----
   {const R=$('recap'); const o=t<21.4?0:(t<24.85?1:1-lin(t,24.85,24.97)); R.style.opacity=o; R.style.display=o>0?'':'none';
@@ -273,10 +273,10 @@ function render(tn){const t=remap(tn);
    // während Mitmach Chip nach unten in die freie Zone
    if(t>=25.0) C.style.top=(672+eo(lin(t,25.0,25.3))*500)+'px';}
   // ---- Endcard ----
-  {const E=$('end'); const p=lin(t,28.0,28.25); const o=t<28?0:(t>=33.1?1-lin(t,33.1,33.24):p); E.style.opacity=o; E.style.display=o>0?'':'none';
+  {const E=$('end'); const p=lin(t,28.0,28.25); const o=t<28?0:(t>=33.1?1-lin(t,33.1,33.24):Math.min(1,p*4)); E.style.opacity=o; E.style.display=o>0?'':'none';
    E.style.transform=`translateY(${(1-eo(p))*40}px)`;
    $('mke').style.transform=`scaleX(${expo(lin(t,28.2,28.55))})`;
-   const b=lin(t,28.5,28.75); $('eBio').style.opacity=b; $('eBio').style.transform=`scale(${.8+.2*eo(b)})`; $('eBio').style.transformOrigin='0 50%';
+   const b=lin(t,28.3,28.5); $('eBio').style.opacity=b; $('eBio').style.transform=`scale(${.8+.2*eo(b)})`; $('eBio').style.transformOrigin='0 50%';
    $('eBio').style.display=GMB?'none':'flex'; if(GMB){$('eUrl').style.top='680px';$('eWa').style.top='790px';}}
 }
 render(0);

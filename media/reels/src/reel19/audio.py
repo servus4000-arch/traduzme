@@ -1,6 +1,6 @@
 """Reel 19 – Ton: music.py 'pop' (Akustik-Gitarre, Klavier, Bass, leichte Drums), 120 BPM (Schlag = 0,5 s), Master v2.
 Aufruf: python3 audio.py audio.wav [gmb]
-Jedes Bildereignis hat genau einen Sound auf dem Schlag. Rückspulen (5,0–7,0 s): Bandstopp + Musik rückwärts
+Jedes Bildereignis hat genau einen Sound auf dem Schlag, alle SFX g = .6 (Raster E4), Pops ≤ 760 Hz (kein Klirren). Rückspulen (5,0–7,0 s): Bandstopp + Musik rückwärts
 (aus music.py-Mix selbst erzeugt, keine Fremd-Samples). GMB-Fassung: gleiche Ereignisse, Zeitachse ohne 9,0–9,6 (ruhiges Halten Schritt 1) und ohne Mitmach 25,0–28,0.
 """
 import os, sys
@@ -27,24 +27,25 @@ def sfx(kind, t, g, **kw):
 def hit(t):
     if T(t) is not None: tr.hit(T(t))
 
-sfx('stamp', 2.5, .55)                    # Apostila knallt aufs Original (zu spät)
-sfx('pop', 3.0, .4, f=700)                # CTA-Chip
-sfx('scratch', 4.9, .35)                  # Glitch -> Rückspulen
+sfx('stamp', 2.5, .6)                    # Apostila knallt aufs Original (zu spät)
+sfx('pop', 3.0, .6, f=700)                # CTA-Chip
+sfx('scratch', 4.9, .6)                  # Glitch -> Rückspulen
 hit(7.0)                                  # Musik zurück, Schritt 1
-sfx('stamp', 8.0, .55)                    # Apostila aufs Original
-sfx('whoosh', 10.45, .3, d=.5)            # Schritt 2
-sfx('typing', 11.5, .35, d=1.1)           # Tradução druckt
-sfx('whoosh', 14.45, .3, d=.5)            # Schritt 3
-sfx('stamp', 15.5, .55)                   # Apostila auf die Tradução
-sfx('whoosh', 17.95, .3, d=.55)           # FAQ gleitet hoch
-sfx('pop', 18.5, .3, f=820)               # FAQ-Beleg liegt
-sfx('pop', 19.5, .3, f=900)               # Caption „Dá pra incluir“ + Marker
-sfx('whoosh', 21.45, .28, d=.5)           # Recap (FAQ raus nach oben)
-for i in range(3): sfx('pop', 22.0 + i * .5, .32, f=650 + 90 * i)
-sfx('pop', 25.5, .35, f=760)              # Mitmach-Marker
-sfx('pop', 26.0, .3, f=700); sfx('pop', 26.5, .3, f=620)   # SIM / NÃO
+sfx('stamp', 8.0, .6)                    # Apostila aufs Original
+sfx('whoosh', 10.45, .6, d=.5)            # Schritt 2
+sfx('typing', 11.5, .6, d=1.1)           # Tradução druckt
+sfx('whoosh', 14.45, .6, d=.5)            # Schritt 3
+sfx('stamp', 15.5, .6)                   # Apostila auf die Tradução
+sfx('whoosh', 17.95, .6, d=.55)           # FAQ gleitet hoch
+sfx('pop', 18.5, .6, f=720)               # FAQ-Beleg liegt
+sfx('pop', 19.5, .6, f=760)               # Caption „Dá pra incluir“ + Marker
+sfx('whoosh', 21.45, .6, d=.5)           # Recap (FAQ raus nach oben)
+for i in range(3): sfx('pop', 22.0 + i * .5, .6, f=600 + 60 * i)
+sfx('pop', 25.5, .6, f=700)              # Mitmach-Marker
+sfx('pop', 26.0, .6, f=680); sfx('pop', 26.5, .6, f=620)   # SIM / NÃO
 hit(28.0)                                 # Endcard
-sfx('pop', 28.5, .38, f=680)              # link na bio / Kontakt
+sfx('pop', 28.5, .6, f=680)               # link na bio landet (GMB: Kontakt)
+sfx('whoosh', 29.0, .6, d=.4)             # Blätter fahren in die Endcard
 
 # Rückspulen in den Mix (vor dem v2-Master, der danach Lautheit + True Peak nachführt)
 _orig = tr._write_v2

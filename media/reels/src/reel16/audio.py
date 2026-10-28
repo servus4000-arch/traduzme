@@ -10,18 +10,18 @@ sys.path.insert(0, LIB)
 from music import Track
 assert 'master' in inspect.signature(Track.__init__).parameters, 'music.py v2 nötig: REELS_LIB=/tmp/v2lib setzen'
 CUT = sys.argv[1] if len(sys.argv) > 1 else 'main'; OUT = sys.argv[2] if len(sys.argv) > 2 else 'audio.wav'
-END = 28.0 if CUT == 'gmb' else 37.5
+HOLDS = [(20.5, 1.8)] if CUT == 'gmb' else [(20.5, 1.8), (24.0, 1.0), (29.0, 0.3)]   # wie HOLDS in reel.html
+GCUT = 20.5 + 1.8 + 0.5; GJ = 29.5 - GCUT                                              # GMB: Ausgabe 22,8 -> Master 29,5
+END = round(35 - GJ, 3) if CUT == 'gmb' else 35 + sum(d for _, d in HOLDS)
 def T(m):                       # Master-Zeit (intern) -> Schnitt-Zeit (None = entfällt); spiegelt MM()/M() in reel.html
-    if m < 20.5: return m       # Lese-Halte (Raster D3): Ausgabe 20,5–22,0 hält Master 20,5; Ausgabe 25,5–26,5 hält Master 24,0
-    if CUT == 'gmb':
-        if m < 21.0: return m + 1.5
-        return None if m < 29.5 else m - 7.0   # GMB: harter Schnitt Ausgabe 22,5 -> Endcard (Master 29,5)
-    return m + 1.5 if m < 24.0 else m + 2.5
+    if CUT == 'gmb' and 21.0 <= m < 29.5: return None
+    if CUT == 'gmb' and m >= 29.5: return m - GJ
+    return m + sum(d for h, d in HOLDS if h < m)
 
 tr = Track(style='bossa', dur=END, key='F', seed=16, bpm=120, master='v2')
 tr.v2['presence'] = (2500, 1.5, .8); tr.v2['air'] = (10000, 3.0)
 tr.v2['sections'] = {'break': -4, 'soft': 0.5}   # Abnahme 16-11: 'soft' nur dünner arrangiert, Pegel höchstens ~4 dB unter dem Körper
-SEC = [(0, 'main'), (9.0, 'soft'), (11.5, 'main'), (15.0, 'soft'), (17.0, 'main'), (30.5, 'soft'), (34.0, 'main')]   # Abnahme 16-11: Atempausen vor den Lernpunkten; Endcard kurz dünner, letzte Sekunde wieder voll (Loop-Naht ohne Pegelsprung)
+SEC = [(0, 'main'), (9.0, 'soft'), (11.5, 'main'), (15.0, 'soft'), (17.0, 'main')]   # Abnahme 16-11 + 16N-4: Atempausen nur vor den Lernpunkten; Endcard voll bis zum Loop (kein Pegelabfall)
 for m, k in SEC:
     t = T(m)
     if t is not None: tr.section(t, k)
@@ -45,7 +45,7 @@ for m, k, g, kw in EV:
     t = T(m)
     if t is not None: tr.sfx(k, t, g, **kw)
 OUTEV = [(21.0, 'pop', .55, dict(f=600))]          # Ausgabezeit: Häkchen an der Mappe (im Lese-Halt)
-if CUT != 'gmb': OUTEV.append((25.5, 'pop', .55, dict(f=640)))   # Plakette „sem custo extra“
+if CUT != 'gmb': OUTEV.append((25.8, 'pop', .55, dict(f=640)))   # Plakette „sem custo extra“
 for t, k, g, kw in OUTEV: tr.sfx(k, t, g, **kw)
 for m in (7.0, 19.45, 22.5, 25.6):                     # Claves auf Fokus-/Lande-Momente
     t = T(m)

@@ -73,3 +73,12 @@ GMB 28,0 s: bis 22,5 wie oben (Halt 1 inklusive), dann harter Schnitt auf die En
 Ton: Whoosh 4,95 gestrichen (keine zwei Whooshes in 1 s, M3); Musik-Abschnitte Master 9,0 soft · 11,5 main · 15,0 soft · 17,0 main · 30,5 soft · 34,0 main (letzte Sekunde voll = Loop ohne Pegelsprung).
 Farben (Raster B3/D2, ≤ 3 Flächenfarben je Bild, nur erlaubte Paare): Sálvia (Grund) · Dark #1F3B35 (Ana-Blasen, Mappe, Tags, Siegel, Stempel-Tinte) · Areia #EEDECE (Jonas-/Hook-Blase, Chips, Markierungen, beide Blätter). Text nur Weiß/Dark, Dark/Areia, Dark/Sálvia. Ausnahme: Ausschnitte des echten Rechners (weiße UI, wie bei D1 „UI-Screens ausgenommen").
 Bildereignisse (Raster B4, Abstand ≤ 2,0 s außer Endcard): 0,0 Urkunde · 0,5–4,5 SIM/NÃO-Puls · 0,6 Tippen · 2,5 A1 · 3,0 Chip · 5,0 A2 + Blätter · 7,0 Siegel · 9,0 J2 · 11,0 A3 · 11,5 Stempel · 13,0 Stempel-Puls (neu) · 15,0 J3 · 17,0 A4 · 19,0 Mappe · 19,9 Chip Traslado · 21,0 Häkchen · 22,5 A5 + Dateien-Karte · 23,9 Zeilen-Rahmen · 25,5 Plakette · 27,5 J4 + Kopf-Karte · 28,1 DE-Rahmen · 29,5 A6 + Daten-Karte · 30,0 Rahmen · 30,4 Tipp/Haken · 32,0 Endcard. Loop: Stempel ab Master 34,0 aus (Urkunde in Frame 0 ohne Stempel, kein Aufblitzen an der Naht).
+
+## Nachabnahme 9c566ca (16N-1 … 16N-7)
+- 16N-1: Stempel APOSTILLE kleiner (0,7) und tiefer (Mitte y 345 im Blatt, Lande-Skalierung 1,3→1): Oberkante unter der Grundlinie von „URKUNDE", in der Mappe ganz sichtbar.
+- 16N-2: CTA-Chip poppt 2,7–3,0 s (bei 3,0 s voll da).
+- 16N-3: Lese-Halte jetzt [Master 20,5: 1,8 s] [24,0: 1,0 s] [29,0: 0,3 s] (HOLDS in reel.html = audio.py). A4 17,0–22,7 s (5,7 s), A5 22,8–27,7 s, A6 29,8–32,5 s (2,7 s); Hauptfassung 38,1 s, GMB 28,3 s (Schnitt 22,8 s → Endcard). Endcard-Kontakt 33,1–37,6 s (4,5 s), GMB 23,3–27,8 s.
+- 16N-4: Endcard ohne „soft"-Abschnitt (kein Pegelabfall, Kurzzeit-Lautheit ab 31 s ≥ −14,7 LUFS).
+- 16N-5: URL, WhatsApp und Weiterschick-Zeile um 44 px eingerückt (bündig mit dem Blasentext), Weiterschick max. 766 px breit (rechte Kante ≤ x 900).
+- 16N-7: PT-Badge 16 px nach rechts/oben (Abstand zum „O" von TRADUÇÃO).
+- Plakette „sem custo extra" und Pop jetzt bei 25,8 s (Beginn Halt 2).

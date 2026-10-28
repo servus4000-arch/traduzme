@@ -51,7 +51,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
     <h4>TRADUÇÃO<small>juramentada</small></h4>
     <div class="ln" style="width:92%;margin-top:40px"></div><div class="ln" style="width:80%"></div><div class="ln" style="width:88%"></div><div class="ln" style="width:70%"></div><div class="ln" style="width:84%"></div><div class="ln" style="width:60%"></div>
     <svg id="seal" class="abs" style="left:350px;top:520px;transform-origin:75px 75px" width="150" height="150" viewBox="0 0 150 150"><circle cx="75" cy="75" r="66" fill="#1F3B35"/><circle cx="75" cy="75" r="54" fill="none" stroke="#e8f3ee" stroke-width="4" stroke-dasharray="6 7"/><path d="M48 77 L67 96 L104 57" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    <div class="tag" style="right:-26px;top:-30px;background:#1F3B35">PT</div>
+    <div class="tag" style="right:-42px;top:-46px;background:#1F3B35">PT</div>
   </div>
   <div id="doc" class="doc"><div class="in">
     <h3>HEIRATS&shy;URKUNDE</h3>
@@ -92,10 +92,10 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
   <div id="endc" class="abs" style="left:90px;top:0;width:810px;z-index:25;opacity:0">
     <div id="chipBio" class="chip" style="position:relative;height:100px;padding:0 40px 0 30px;font-size:54px;width:max-content;transform-origin:0 50%">
       <svg width="54" height="54" viewBox="0 0 24 24" style="margin-right:14px"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1" stroke="#1F3B35" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg>link na bio</div>
-    <div id="url" style="margin-top:44px;font-weight:800;font-size:72px;letter-spacing:-1.5px;color:#1F3B35">traduzme.com.br</div>
-    <div id="wa" style="margin-top:22px;display:flex;align-items:center;gap:18px;font-weight:800;font-size:68px;letter-spacing:-1px;color:#1F3B35">
+    <div id="url" style="margin-left:44px;margin-top:44px;font-weight:800;font-size:72px;letter-spacing:-1.5px;color:#1F3B35">traduzme.com.br</div>
+    <div id="wa" style="margin-left:44px;margin-top:22px;display:flex;align-items:center;gap:18px;font-weight:800;font-size:68px;letter-spacing:-1px;color:#1F3B35">
       <svg width="74" height="74" viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z" fill="#1F3B35"/><path d="M9 8.2c.3-.6.6-.6 1-.6h.4c.2 0 .4.1.5.4l.7 1.6c.1.3 0 .5-.1.7l-.5.6c-.1.2-.1.4 0 .6.6 1 1.4 1.8 2.5 2.4.2.1.4.1.6-.1l.6-.7c.2-.2.4-.2.7-.1l1.6.8c.3.1.4.3.4.5 0 .5-.2 1.3-.9 1.7-.6.4-1.6.5-3.2-.2-1.7-.8-3.5-2.6-4.3-4.3-.6-1.4-.4-2.6 0-3.3z" fill="#EEDECE"/></svg>(61) 99803-8363</div>
-    <div id="mit" style="margin-top:60px;transform-origin:0 50%;display:flex;align-items:center;gap:20px;max-width:810px;font-weight:800;font-size:58px;line-height:1.12;letter-spacing:-1px;color:#1F3B35">
+    <div id="mit" style="margin-left:44px;margin-top:60px;transform-origin:0 50%;display:flex;align-items:center;gap:20px;max-width:766px;font-weight:800;font-size:58px;line-height:1.12;letter-spacing:-1px;color:#1F3B35">
       <svg width="72" height="72" viewBox="0 0 24 24" style="flex:none"><path d="M3 11.5 21 3l-6.5 18-3.2-7.3z" fill="#EEDECE" stroke="#1F3B35" stroke-width="2" stroke-linejoin="round"/><path d="M11.3 13.7 21 3" stroke="#1F3B35" stroke-width="2"/></svg>
       <span>Manda pra quem casou na Alemanha</span></div>
   </div>
@@ -109,11 +109,13 @@ const expo=x=>x>=1?1:1-Math.pow(2,-10*x);
 const quint=x=>x<.5?16*x**5:1-Math.pow(-2*x+2,5)/2;
 const back=x=>{const c=1.6;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
 const CUT=new URLSearchParams(location.search).get('cut');
-const END=CUT==='gmb'?28.0:37.5;
+const HOLDS=CUT==='gmb'?[[20.5,1.8]]:[[20.5,1.8],[24.0,1.0],[29.0,0.3]];   // [Master-Zeit, Halt in s] – gleiche Liste in audio.py
+const GCUT=20.5+1.8+0.5, GJ=29.5-GCUT;   // GMB: Ausgabe 22,8 -> Master 29,5 (Endcard)
+const END=CUT==='gmb'?35-GJ:35+HOLDS.reduce((a,h)=>a+h[1],0);
 // Ausgabe-Zeit -> Master-Zeit. Halte-Punkte geben A4 (13 Wörter) und A5 (12 Wörter) je ≥ 0,4 s/Wort (Raster D3);
 // in jedem Halt gibt es ein eigenes Bildereignis (Haken auf der Mappe 21,0 s, Pille „sem custo extra" 25,5 s).
-const MM=t=>t<20.5?t:t<22.0?20.5:t<25.5?t-1.5:t<26.5?24.0:t-2.5;
-const M=t=>CUT!=='gmb'?MM(t):(t<22.5?MM(t):t+7.0);   // GMB: nach A4 (22,5 s) direkt Endcard + Loop-Naht, 28,0 s
+const MM=t=>{let o=0; for(const [h,d] of HOLDS){if(t<h+o) return t-o; if(t<h+o+d) return h; o+=d;} return t-o;};
+const M=t=>CUT!=='gmb'?MM(t):(t<GCUT?MM(t):t+GJ);   // GMB: nach A4 (22,8 s) direkt Endcard + Loop-Naht, 28,3 s
 
 // ---------- Chat-Daten (Text = Storyboard, jede Faktenaussage mit Quelle) ----------
 const SRC='<svg width="40" height="40" viewBox="0 0 24 24"><path d="M5 4h10l4 4v12H5z" fill="none" stroke="#1F3B35" stroke-width="2.2" stroke-linejoin="round"/><path d="M8.5 12h7M8.5 15.5h7M8.5 8.5h4" stroke="#1F3B35" stroke-width="2.2" stroke-linecap="round"/></svg>';
@@ -187,9 +189,10 @@ const EA=CUT==='gmb'?29.5:25.0;
 const CA=[[0,90,1000,1,0,0],[21.0,90,1000,1,0,0],[21.45,90,800,1,0,1,'x'],[EA-.2,90,800,1,0,1],[EA,90,770,1,0,0]];
 const CB=[[0,90,840,1,0,0],[25.0,90,840,1,0,0],[25.4,90,640,1,0,1,'x'],[26.8,90,640,1,0,1],[27.0,90,610,1,0,0]];
 const CC=[[0,90,1060,1,0,0],[27.0,90,1060,1,0,0],[27.4,90,860,1,0,1,'x'],[29.3,90,860,1,0,1],[29.5,90,830,1,0,0]];
-function card(id,K,t){const v=kf(K,t); const c=$(id); c.style.display=v[4]>0.001?'block':'none'; c.style.opacity=v[4]; c.style.transform=`translate(${v[0]}px,${v[1]}px) scale(${v[2]})`; return v;}
+function card(id,K,t){const v=kf(K,t); const c=$(id); c.style.display=v[4]>0.001?'block':'none'; c.style.opacity=v[4]; c.style.transform=`translate(${v[0]}px,${v[1]+Math.sin(TVG*2.1)*8}px) scale(${v[2]}) rotate(${.2*Math.sin(TVG*1.7)}deg)`; return v;}   // Raster B4: Karten schweben leicht (kein Standbild)
+let TVG=0;
 
-function render(tv){const t=M(tv);
+function render(tv){TVG=tv; const t=M(tv);
   // Hintergrund-Parallaxe (kein Frame völlig still)
   $('bg1').style.transform=`translate(${Math.sin(tv*.45)*22}px,${-tv*5}px)`; $('bg2').style.transform=`translate(${-tv*4}px,${Math.cos(tv*.55)*18}px)`;
   renderChat(t);
@@ -203,8 +206,8 @@ function render(tv){const t=M(tv);
   const A=$('arrow'); A.style.opacity=0; A.style.transform=`translate(${475+(1-eo(lin(t,5.5,5.8)))*-30}px,${1300}px)`;
   // Stempel APOSTILLE (Lernpunkt 2), sitzt auf der Urkunde
   const S=$('stamp'); const sp=lin(t,11.25,11.5); S.style.opacity=t<11.25||t>=34.0?0:1;   // Loop: Frame 0 zeigt die Urkunde ohne Stempel
-  S.style.left='290px'; S.style.top='300px';
-  S.style.transform=`rotate(-9deg) scale(${t<11.5?1.9-0.9*sp*sp:1+.05*Math.sin(lin(t,11.5,11.7)*Math.PI)+.1*Math.sin(lin(t,13.0,13.35)*Math.PI)})`;   // Raster B4: Stempel-Puls 13,0 (kein Abstand > 2 s ohne Bildereignis)
+  S.style.left='290px'; S.style.top='345px';   // Nachabnahme 16N-1: Stempel (0,7) unter der Titel-Grundlinie, „URKUNDE“ frei, in der Mappe ganz sichtbar
+  S.style.transform=`rotate(-9deg) scale(${.7*(t<11.5?1.3-0.3*sp*sp:1)+.05*Math.sin(lin(t,11.5,11.7)*Math.PI)+.1*Math.sin(lin(t,13.0,13.35)*Math.PI)})`;   // Raster B4: Stempel-Puls 13,0 (kein Abstand > 2 s ohne Bildereignis)
   if(t>=11.5&&t<11.75){const q=lin(t,11.5,11.75); $('doc').style.transform+=` scale(${1-.025*Math.sin(q*Math.PI)})`;}
   // Mappe Cartório (Lernpunkt 3)
   const fv=kf(FOLD,t); const fb=$('folderBack'), ff=$('folderFront'); const fshow=t>19.0&&t<21.05;
@@ -226,11 +229,11 @@ function render(tv){const t=M(tv);
     T.style.transform=`translate(${sx+(1-eo(fp))*220}px,${sy+(1-eo(fp))*160}px) scale(${t>27.85&&t<28.0?.8:1})`;
     const rp=lin(t,27.9,28.35); const R=$('tapR'); R.style.opacity=rp>0&&rp<1?1-rp:0; R.style.transform=`translate(${sx}px,${sy}px) scale(${.4+rp})`;
   } else {$('tap').style.opacity=0; $('tapR').style.opacity=0;}
-  {const fp=lin(tv,21.0,21.3); const F=$('fchk'); F.style.opacity=CUT!=='gmb'||tv<22.5?(tv>=21.0&&t<20.95?1:0):0;
+  {const fp=lin(tv,21.0,21.3); const F=$('fchk'); F.style.opacity=CUT!=='gmb'||tv<GCUT?(tv>=21.0&&t<20.95?1:0):0;
    F.style.transform=`translate(${540+250}px,${fv[1]-60}px) scale(${eo(fp)})`;}
-  {const bp=lin(tv,25.5,25.8); const B=$('freeB'); B.style.opacity=CUT!=='gmb'&&tv>=25.5&&t<24.9?1:0; B.style.transform=`scale(${.6+.4*eo(bp)})`;}
+  {const bp=lin(tv,25.8,26.1); const B=$('freeB'); B.style.opacity=CUT!=='gmb'&&tv>=25.8&&t<24.9?1:0; B.style.transform=`scale(${.6+.4*eo(bp)})`;}
   // CTA-Chip ab 3,0 s bis Endcard
-  const C=$('chipCta'); const cp=lin(t,3.0,3.3); C.style.opacity=t<3.0?0:1-lin(t,29.4,29.5); C.style.transform=`scale(${cp<=0?0:eo(cp)})`;
+  const C=$('chipCta'); const cp=lin(t,2.7,3.0); C.style.opacity=t<2.7?0:1-lin(t,29.4,29.5); C.style.transform=`scale(${cp<=0?0:eo(cp)})`;
   // Endcard-Kontakt (unter der Endcard-Blase)
   const E=$('endc'); const ep=lin(t,30.0,30.5); const eb=EL.J5; E.style.top=(parseFloat(eb.style.top||420)+H.J5+60)+'px';
   E.style.opacity=t<30.0?0:(1-lin(t,34.5,34.6)); E.style.transform=`translateY(${(1-eo(ep))*40}px)`;

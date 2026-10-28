@@ -42,3 +42,11 @@ Abgrenzung: Reel 15 = Figur + Handy-UI (pop), Reel 16 (Kollege) = Alemão-Chat. 
 
 ## Umsetzung (Stand Render)
 Feinzeiten nach Video-Kritik: Caption A ab 2,92 s, Endcard ab 23,92 s (ruhig ab ~24,65 s bis 29,35 s), Loop-Naht 29,35–29,8 s. Länge 29,8 s. Kritiker-Protokoll Video/Sound/Texte: /mnt/project-files/social/reels/reel17-texte.md.
+
+## v3 – Nachbesserung nach Abnahme (13-abnahme-16-17-19, 28.10.2026) + QUALITAETSRASTER
+- Zeitachse: Video-Zeit tv (= GMB-Fassung, 29,8 s); Szenen-Zeit t = warp(tv): PDF-Szene hält 0,6 s (18,4), Endcard-Ruhe 0,6 s kürzer. Hauptfassung fügt bei tv 24,4 den Mitmach-Block (2,5 s) ein → 32,3 s.
+- Hook „Seu diploma / está em árabe / ou alemão?“ 104 px. Captions 66 px, je Einblendung 2 Zeilen ≤ 4 Wörter, Mitte x 495 (Zone 90–900): A „Em geral: tradução / juramentada.“ 2,95 · B „Árabe e alemão / não têm dispensa.“ 6,5 · C „Tradutor juramentado / do Brasil.“ 10,0 · D „Feita no exterior? / A UFMG não aceita.“ 13,5 · E1 „PDF assinado com / certificado digital“ 16,95 · E2 „e verificável? / A UFMG aceita.“ 18,95 (U5) · F „Árabe ou alemão: / preço em segundos.“ 20,95.
+- Pillen wachsen mit den Wörtern (clip-path), Wort-Pop nur Deckkraft + Skala ≥ 0,93. CTA-Chip y 540 ab 2,95 s bis 24,1 s; Beleg-Label y 648 von 6,9 bis 20,6 s.
+- Diplom-Titel nie halb verdeckt: neutrales Diplom kleiner und tiefer (B), Titel vor dem Übersetzungsblatt ausgeblendet (C), „Tradução“ unter dem Auslandsblatt ausgeblendet (D); Auslandsblatt geht erst mit Caption E (17-9).
+- Rechner: statt Handy mit 1,5× Zoom ein Ausschnitt der echten Seite (ui_ar_crop.jpg / ui_de_crop.jpg, Datei + Idiomas + Button) als Karte x 90–900, y 664–1260, UI-Schrift ≈ 40 px. Übergang Tap → Kreis in Pinho aus dem Tap-Punkt → Mitmach/Endcard (keine Fremdfarbe).
+- Loop: letzte 3 Frames = Frame 0. GMB: gmb/reel.html (make_gmb.sh) ohne Mitmach und ohne „link na bio“.

@@ -33,11 +33,11 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
 .scr{position:relative;width:720px;height:1380px;border-radius:74px;overflow:hidden;background:#fbfaf7}
 .island{position:absolute;left:290px;top:18px;width:140px;height:40px;border-radius:20px;background:#0f2420;z-index:5}
 /* Text */
-.hl{position:absolute;left:90px;top:300px;width:900px;font-weight:800;font-size:104px;line-height:1.03;letter-spacing:-2px;color:#fff;transform-origin:0 0}
+.hl{position:absolute;left:90px;top:300px;width:900px;font-weight:800;font-size:92px;line-height:1.05;letter-spacing:-2px;color:#fff;transform-origin:0 0}
 .mk{position:relative;display:inline-block;z-index:0;color:#1F3B35}
 .mk b{position:absolute;left:-12px;right:-12px;top:14px;bottom:4px;background:#EEDECE;border-radius:14px;z-index:-1;transform-origin:0 50%}
-.cap{position:absolute;left:0;width:1080px;top:300px;display:none;flex-direction:column;align-items:center;gap:10px}
-.cap .ln{display:flex;gap:17px;background:#1F3B35;color:#fff;font-weight:800;font-size:64px;line-height:1;padding:20px 30px 24px;border-radius:24px;letter-spacing:-1px;box-shadow:0 14px 30px rgba(0,0,0,.25);white-space:nowrap}
+.cap{position:absolute;left:-45px;width:1080px;top:300px;display:none;flex-direction:column;align-items:center;gap:8px;filter:drop-shadow(0 12px 18px rgba(0,0,0,.25))}
+.cap .ln{display:flex;gap:16px;background:#1F3B35;color:#fff;font-weight:800;font-size:66px;line-height:1;padding:17px 28px 21px;border-radius:24px;letter-spacing:-1px;white-space:nowrap}
 .cap .w{display:inline-block}
 .cap .hi{color:#1F3B35;background:#EEDECE;border-radius:12px;padding:0 14px 0 16px}
 .chip{position:absolute;display:flex;align-items:center;white-space:nowrap;font-weight:800}
@@ -63,7 +63,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
     <!-- großes Übersetzungsblatt / PDF -->
     <div class="sheet" id="sT" style="background:#fff">
       <div style="height:84px;background:#1a7a5e"></div>
-      <div style="position:absolute;left:48px;top:118px;font-weight:800;font-size:58px;letter-spacing:-1px;color:#1F3B35">Tradução</div>
+      <div id="sTt" style="position:absolute;left:48px;top:118px;font-weight:800;font-size:58px;letter-spacing:-1px;color:#1F3B35">Tradução</div>
       <div class="l" style="top:220px;width:364px;background:#dfe5ec"></div><div class="l" style="top:256px;width:330px;background:#dfe5ec"></div>
       <div class="l" style="top:292px;width:350px;background:#dfe5ec"></div><div class="l" style="top:328px;width:240px;background:#dfe5ec"></div>
       <div class="l" style="top:364px;width:300px;background:#dfe5ec"></div>
@@ -90,32 +90,41 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
 
   <!-- Welt P: echter Rechner (Screenshot Live-Seite, Schritt 1) -->
   <div class="world" id="WP" style="display:none">
-    <div class="phone"><div class="scr"><div class="island"></div>
-      <img src="ui_ar.jpg" style="position:absolute;left:0;top:0;width:720px;height:1376px">
-      <img id="uiDE" src="ui_de.jpg" style="position:absolute;left:0;top:0;width:720px;height:1376px">
-      <div class="abs" id="glint" style="top:-200px;width:10px;height:1800px;background:#fff;box-shadow:0 0 24px 8px rgba(255,255,255,.7);opacity:0"></div>
-      <div class="abs" id="btnDark" style="left:57px;top:1274px;width:606px;height:96px;border-radius:13px;background:#000;opacity:0"></div>
-      <div class="abs" id="langGlow" style="left:45px;top:1145px;width:630px;height:110px;border-radius:18px;border:5px solid #1a7a5e;opacity:0"></div>
-    </div></div>
-    <div class="abs" id="tap" style="left:490px;top:1712px;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,.55);border:4px solid rgba(255,255,255,.9);opacity:0"></div>
-    <div class="abs" id="tapR" style="left:440px;top:1662px;width:200px;height:200px;border-radius:50%;border:6px solid #fff;opacity:0"></div>
+    <!-- Ausschnitt der echten Rechner-Seite (Schritt 1, Datei + Idiomas + Button), Zoom 0.789: ganz in x 90–900, UI-Schrift ≈ 40 px -->
+    <div class="abs" id="uiCard" style="left:90px;top:664px;width:810px;height:596px;border-radius:28px;overflow:hidden;background:#fff;box-shadow:0 40px 80px rgba(10,25,22,.42)">
+      <img id="uiAR" src="ui_ar_crop.jpg" style="position:absolute;left:0;top:0;width:810px;height:583.4px">
+      <img id="uiDE" src="ui_de_crop.jpg" style="position:absolute;left:0;top:0;width:810px;height:583.4px">
+      <div class="abs" id="glint" style="top:-200px;width:10px;height:1000px;background:#fff;box-shadow:0 0 24px 8px rgba(255,255,255,.7);opacity:0"></div>
+      <div class="abs" id="btnDark" style="left:17px;top:452px;width:777px;height:123px;border-radius:17px;background:#000;opacity:0"></div>
+      <div class="abs" id="langGlow" style="left:7px;top:292px;width:797px;height:131px;border-radius:20px;border:5px solid #1a7a5e;opacity:0"></div>
+      <div class="abs" id="tap" style="left:355px;top:463px;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,.55);border:4px solid rgba(255,255,255,.9);opacity:0"></div>
+      <div class="abs" id="tapR" style="left:305px;top:413px;width:200px;height:200px;border-radius:50%;border:6px solid #fff;opacity:0"></div>
+    </div>
   </div>
 
-  <!-- Abdeckung über der Dropzone im Rechner-Teil: Captions stehen auf ruhigem Grün, kein halber UI-Text -->
-  <div class="abs" id="mask" style="left:0;top:0;width:1080px;height:780px;display:none;background:linear-gradient(180deg,#376259 0,#376259 712px,rgba(55,98,89,0) 752px)"></div>
-  <div class="abs" id="wipe" style="background:#1a7a5e;display:none"></div>
+  <div class="abs" id="wipe" style="background:#376259;border-radius:50%;display:none"></div>
 
   <!-- Bildschirm-Ebene -->
   <div id="wm">traduzme</div>
-  <div class="hl" id="hook">Seu diploma é<br>em <span class="mk"><b id="mk1"></b>árabe</span><br>ou <span class="mk"><b id="mk2"></b>alemão</span>?</div>
-  <div class="cap" id="capA"><div class="ln"><span class="w">Revalidar</span><span class="w">no</span><span class="w">Brasil?</span></div><div class="ln"><span class="w">Em</span><span class="w">geral,</span><span class="w hi">juramentada.</span></div></div>
-  <div class="cap" id="capB"><div class="ln"><span class="w">Tem</span><span class="w">língua</span><span class="w">que</span><span class="w">dispensa.</span></div><div class="ln"><span class="w">Árabe</span><span class="w">e</span><span class="w">alemão,</span><span class="w hi">não.</span></div></div>
-  <div class="cap" id="capC"><div class="ln"><span class="w">Só</span><span class="w">tradutor</span><span class="w">juramentado</span></div><div class="ln"><span class="w">registrado</span><span class="w">no</span><span class="w hi">Brasil.</span></div></div>
+  <div class="hl" id="hook" style="font-size:104px">Seu diploma<br>está em <span class="mk"><b id="mk1"></b>árabe</span><br>ou <span class="mk"><b id="mk2"></b>alemão</span>?</div>
+  <div class="cap" id="capA"><div class="ln"><span class="w">Em</span><span class="w">geral:</span><span class="w">tradução</span></div><div class="ln"><span class="w hi">juramentada.</span></div></div>
+  <div class="cap" id="capB"><div class="ln"><span class="w">Árabe</span><span class="w">e</span><span class="w">alemão</span></div><div class="ln"><span class="w">não</span><span class="w">têm</span><span class="w hi">dispensa.</span></div></div>
+  <div class="cap" id="capC"><div class="ln"><span class="w">Tradutor</span><span class="w">juramentado</span></div><div class="ln"><span class="w hi">do Brasil.</span></div></div>
   <div class="cap" id="capD"><div class="ln"><span class="w">Feita</span><span class="w">no</span><span class="w">exterior?</span></div><div class="ln"><span class="w">A</span><span class="w">UFMG</span><span class="w hi">não aceita.</span></div></div>
-  <div class="cap" id="capE"><div class="ln"><span class="w">Com</span><span class="w">assinatura</span><span class="w">digital?</span></div><div class="ln"><span class="w">A</span><span class="w">UFMG</span><span class="w hi">aceita</span><span class="w">o</span><span class="w">PDF.</span></div></div>
+  <div class="cap" id="capE"><div class="ln"><span class="w">PDF</span><span class="w">assinado</span><span class="w">com</span></div><div class="ln"><span class="w">certificado</span><span class="w">digital</span></div></div>
+  <div class="cap" id="capE2"><div class="ln"><span class="w">e</span><span class="w">verificável?</span></div><div class="ln"><span class="w">A</span><span class="w">UFMG</span><span class="w hi">aceita.</span></div></div>
   <div class="cap" id="capF"><div class="ln"><span class="w">Árabe</span><span class="w">ou</span><span class="w">alemão:</span></div><div class="ln"><span class="w">preço</span><span class="w">em</span><span class="w hi">segundos.</span></div></div>
-  <div class="chip" id="chipCta"><svg width="48" height="48" viewBox="0 0 24 24" style="margin-right:14px"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1" stroke="#1F3B35" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg>Preço na hora · link na bio</div>
+  <div class="chip" id="chipCta"><svg width="48" height="48" viewBox="0 0 24 24" style="margin-right:14px"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1" stroke="#1F3B35" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg><span id="chipT">Preço na hora · link na bio</span></div>
   <div class="chip" id="lbl"><span>ex.: UFMG –</span><span>confira a sua universidade</span></div>
+
+  <!-- Mitmach (nur Hauptfassung): Ein-Wort-Antwort, gleiche Position wie Hook/Endcard -->
+  <div class="hl" id="mit" style="display:none">Comenta:<br><span class="mk"><b id="mkM1"></b>árabe</span><br>ou <span class="mk"><b id="mkM2"></b>alemão</span>?</div>
+  <div class="abs" id="bub" style="left:104px;top:700px;width:230px;height:150px;display:none">
+    <svg width="230" height="150" viewBox="0 0 230 150"><path d="M30 6h170a24 24 0 0 1 24 24v62a24 24 0 0 1-24 24H86l-38 30v-30H30A24 24 0 0 1 6 92V30A24 24 0 0 1 30 6z" fill="#EEDECE"/></svg>
+    <div class="abs" id="dot1" style="left:62px;top:50px;width:24px;height:24px;border-radius:50%;background:#1F3B35"></div>
+    <div class="abs" id="dot2" style="left:103px;top:50px;width:24px;height:24px;border-radius:50%;background:#1F3B35"></div>
+    <div class="abs" id="dot3" style="left:144px;top:50px;width:24px;height:24px;border-radius:50%;background:#1F3B35"></div>
+  </div>
 
   <!-- Endcard (gleiche Headline-Position wie Hook) -->
   <div class="hl" id="ecH">Preço<br><span class="mk"><b id="mkE"></b>na hora</span><br>no site.</div>
@@ -133,7 +142,12 @@ const expo=x=>x>=1?1:1-Math.pow(2,-10*x);
 const quint=x=>x<.5?16*x**5:1-Math.pow(-2*x+2,5)/2;
 const back=x=>{const c=1.6;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
 const mix=(a,b,p)=>a+(b-a)*p;
-const END=29.8;
+// GMB=1 (gmb/reel.html): ohne Mitmach-Block, ohne „link na bio“, ≤ 30 s
+const GMB=0;
+const ENDB=29.8, IP=24.4, DM=2.5;           // Video-Zeitachse ohne Mitmach (= GMB); Hauptfassung fügt bei IP den Mitmach-Block (DM s) ein
+// Szenen-Zeit t aus Video-Zeit tv: PDF-Szene hält 0,6 s (Caption E in zwei Einblendungen), Endcard-Ruhe dafür 0,6 s kürzer
+function warp(tv){return tv<18.4?tv : tv<19.0?18.4 : tv<26.6?tv-0.6 : tv;}
+const END=GMB?ENDB:ENDB+DM;
 
 // ---------- Diplome bauen (spiegelgleich: AR rechtsbündig/RTL, DE linksbündig) ----------
 function buildDip(el,ar){
@@ -163,39 +177,50 @@ function cam(K,t){ if(t<=K[0][0])return K[0].slice(1); for(let i=0;i<K.length-1;
 function apply(el,c,extraY=0){const [fx,fy,s,cy]=c; el.style.transform=`translate(${540-s*fx}px,${cy-s*fy+extraY}px) scale(${s})`;}
 function speed(K,t){const a=cam(K,t-1/60),b=cam(K,t+1/60);return Math.hypot((b[0]-a[0])*b[2],(b[1]-a[1])*b[2],(b[3]-a[3]),(b[2]-a[2])*600)*30;}
 const CAM_D=[[0,540,1090,1.0,1090],[2.9,540,1090,1.03,1090],[3.4,540,1090,1.06,1100],[6.3,540,1090,1.08,1100],[6.9,540,1060,.93,1110],[9.8,540,1060,.95,1110],[10.5,540,1090,1.05,1100],[13.3,540,1090,1.09,1100],[13.9,540,1090,1.0,1100],[16.8,540,1090,1.03,1100],[17.3,540,1090,1.08,1100],[20.2,540,1090,1.12,1100]];
-const CAM_P=[[20.4,540,1690,1.5,1255],[23.0,540,1690,1.54,1255]];
+const CAM_P=[[20.4,540,1690,1.5,1255],[23.0,540,1690,1.54,1255],[23.25,540,1690,1.54,1255],[23.62,540,1760,1.85,1366]];
 
 // ---------- Text-Helfer ----------
 function words(id,t,a,b,step=.07){const el=$(id); const on=t>=a&&t<b+.18; el.style.display=on?'flex':'none'; if(!on)return;
-  el.querySelectorAll('.w').forEach((w,i)=>{const p=lin(t,a+i*step,a+i*step+.28); w.style.opacity=p>0?1:0; w.style.transform=`translateY(${(1-eo(p))*30}px) scale(${p<=0?.6:.6+.4*back(p)})`});
-  el.querySelectorAll('.ln').forEach((l,i)=>{const p=lin(t,a+i*.12,a+i*.12+.22);l.style.transform=`scale(${.9+.1*eo(p)})`;l.style.opacity=p>0?1:0});
-  const o=lin(t,b,b+.15); el.style.opacity=1-o; el.style.transform=`translateY(${-30*o}px)`;}
+  let i=0; el.querySelectorAll('.ln').forEach(l=>{const ws=[...l.querySelectorAll('.w')]; const L=l.offsetWidth; let right=0, any=false, lo=0;
+    ws.forEach((w,j)=>{const s0=a+i*step; i++; const p=lin(t,s0,s0+.2), e=eo(p); w.style.opacity=e; w.style.transform=`translateY(${(1-e)*12}px) scale(${.93+.07*e})`;
+      if(j===0)lo=e;   // Pille erscheint mit ihrem ersten Wort, nie leer
+      if(p>0){any=true; const r=w.offsetLeft-l.offsetLeft+w.offsetWidth; right=right+(r-right)*eo(lin(t,s0,s0+.05));}});
+    const vis=any?Math.min(L,right+28):0; l.style.opacity=any?Math.min(1,lo*1.4):0; l.style.clipPath=`inset(-2px ${Math.max(0,L-vis)}px -2px 0 round 22px)`;});
+  const o=lin(t,b,b+.12); el.style.opacity=1-o;}
 function popIn(el,t,a,b,origin='50% 50%'){const on=t>=a&&t<b+.2; el.style.display=on?'flex':'none'; if(!on)return 0; const p=lin(t,a,a+.32), o=lin(t,b,b+.18);
   el.style.transformOrigin=origin; el.style.opacity=(p>0?1:0)*(1-o); el.style.transform=`scale(${p<=0?0:back(p)}) translateY(${-24*o}px)`; return 1;}
-function center(el){el.style.left=(540-el.offsetWidth/2)+'px';}
+function center(el){el.style.left=(495-el.offsetWidth/2)+'px';}   // Mitte der sicheren Zone x 90–900
 function place(el,x,y,r=0,s=1,o=1){el.style.left=x+'px';el.style.top=y+'px';el.style.transform=`rotate(${r}deg) scale(${s})`;el.style.opacity=o;}
 
 // ---------- Posen ----------
 // Hook-Pose (Frame 0 = Loop-Ziel): leicht verdreht + 30 px tiefer, setzt sich in 0,7 s
 function hookPose(k){ // k: 0 = Frame-0-Pose, 1 = eingeschwungen
   return {ar:[310,1060+30*(1-k),-7+3*k,1], de:[735,1060+30*(1-k),7-3*k,1]};}
-function endPose(){return {ar:[370,1300,-4,.7], de:[710,1300,4,.7]};}
+function endPose(){return {ar:[365,1300,-4,.72], de:[715,1300,4,.72]};}
 
-function render(t){
+function render(T){ if(T>=END-0.1-1e-6)T=0;             // letzte 3 Frames = Frame 0 (Loop)
+  let tv=T, mt=-1; if(!GMB&&T>=IP){ if(T<IP+DM){tv=IP; mt=T-IP;} else tv=T-DM; }
+  base(warp(tv),tv); mitmach(mt); }
+function mitmach(m){const M=$('mit'), B=$('bub'); const on=m>=0&&m<2.5; M.style.display=on?'block':'none'; B.style.display=on?'block':'none'; if(!on)return;
+  const i=lin(m,0,.18), o=lin(m,2.38,2.5); M.style.opacity=eo(i)*(1-o); M.style.transform=`translateY(${(1-eo(i))*36-30*o}px)`;
+  [['mkM1',.22],['mkM2',.36]].forEach(([id,a])=>{const k=expo(lin(m,a,a+.3)); $(id).style.transform=`scaleX(${k})`; $(id).parentNode.style.color=k>.5?'#1F3B35':'#fff';});
+  const bp=lin(m,.55,.85); B.style.opacity=(bp>0?1:0)*(1-o); B.style.transformOrigin='20% 100%'; B.style.transform=`scale(${bp<=0?0:back(bp)}) translateY(${-30*o}px)`;
+  ['dot1','dot2','dot3'].forEach((id,j)=>{const ph=(m-.9-j*.13); $(id).style.transform=`translateY(${ph>0?-14*Math.max(0,Math.sin(ph*2*Math.PI/.8)):0}px)`;});}
+function base(t,tv){
   // Hintergrund
-  $('bg1').style.transform=`translate(${Math.sin(t*.5)*20}px,${-t*5}px)`; $('bg2').style.transform=`translate(${-t*4}px,${Math.cos(t*.6)*16}px)`;
+  const u=2*Math.PI*tv/ENDB; $('bg1').style.transform=`translate(${Math.sin(u)*30}px,${(Math.cos(u)-1)*60}px)`; $('bg2').style.transform=`translate(${(Math.cos(u)-1)*40}px,${Math.sin(u)*16}px)`;
   const seamO=t<6.4?0:t<6.9?lin(t,6.4,6.7):t<9.7?1:1-lin(t,9.7,10.0); $('seamL').setAttribute('opacity','0');
 
-  const inD=t<20.7||t>=23.7, inP=t>=20.3&&t<23.95;
+  const inD=t<20.7||t>=23.55, inP=t>=20.35&&t<23.62;
   const WD=$('WD'), WP=$('WP');
   WD.style.display=inD?'block':'none'; WP.style.display=inP?'block':'none';
 
   // ================= Welt D =================
   if(inD){
-    const ec=t>=23.7; // Endcard-Bereich: Kamera neutral
+    const ec=t>=23.55; // Endcard-Bereich: Kamera neutral
     let c= ec?[540,1090,1,1090]:cam(CAM_D,t); apply(WD,c);
     const v=ec?0:speed(CAM_D,t); WD.style.filter=v>60?`blur(${Math.min(1.2,(v-60)/220)}px)`:'none';
-    WD.style.opacity= t<20.2?1 : t<20.7? 1-lin(t,20.2,20.6) : 1;
+    WD.style.opacity= t<20.2?1 : t<20.7? 1-lin(t,20.2,20.32) : 1;
     // --- Diplome AR / DE ---
     let P;
     if(t<3.0){P=hookPose(eo(lin(t,0,.7)));}
@@ -204,17 +229,19 @@ function render(t){
     // idle atmen
     const br=Math.sin(t*2*Math.PI/3)*5; ar[1]+=br; de[1]-=br;
     // B: ausweichen + dimmen, dann zurück + Puls
-    {const a=eo(lin(t,6.5,6.9)), b=eo(lin(t,8.2,8.6)), k=a*(1-b); ar[0]-=55*k; de[0]+=55*k; oAR=oDE=1-.5*k;
+    {const a=eo(lin(t,6.5,6.9)), b=eo(lin(t,8.2,8.6)), k=a*(1-b); ar[0]-=55*k; de[0]+=55*k; oAR=oDE=1-.3*k;
      const pu=t>8.3&&t<8.75?Math.sin(lin(t,8.3,8.75)*Math.PI)*.05:0; ar[3]+=pu; de[3]+=pu;}
     // C: zur Mitte hinter das Übersetzungsblatt
     {const k=quint(lin(t,9.95,10.6)); ar=[mix(ar[0],455,k),mix(ar[1],1125,k),mix(ar[2],-11,k),mix(ar[3],.86,k)]; de=[mix(de[0],625,k),mix(de[1],1125,k),mix(de[2],11,k),mix(de[3],.86,k)];
-     const f=lin(t,17.0,17.4); oAR*=1-f; oDE*=1-f;}
+     const f=lin(t,16.85,17.0); oAR*=1-f; oDE*=1-f;}
     // Endcard + Loop-Naht
-    if(t>=23.7){const E=endPose(), H=hookPose(0); const a=eo(lin(t,24.0,24.55)), l=quint(lin(t,29.35,29.7));
+    if(t>=23.55){const E=endPose(), H=hookPose(0); const a=eo(lin(t,23.55,23.8)), l=quint(lin(t,29.3,29.65));
       ar=E.ar.map((v,j)=>mix(v,H.ar[j],l)); de=E.de.map((v,j)=>mix(v,H.de[j],l)); ar[1]+=80*(1-a); de[1]+=80*(1-a); oAR=oDE=a;}
     place($('dAR'),ar[0],ar[1],ar[2],ar[3],oAR); place($('dDE'),de[0],de[1],de[2],de[3],oDE);
+    // Titel nie halb verdeckt: vor dem Übersetzungsblatt (C) ausblenden, im Endcard wieder da
+    {const tt=(t>=9.95&&t<23.55)?1-lin(t,9.95,10.1):1; document.querySelectorAll('.dip .ttl').forEach(e=>e.style.opacity=tt);}
     // Histórico hinter den Diplomen (ab 3,3)
-    {const k=eo(lin(t,3.3,3.8)); const vis=t>=3.3&&t<17.4&&!(t>=23.7);
+    {const k=eo(lin(t,3.3,3.8)); const vis=t>=3.3&&t<17.4&&!(t>=23.55);
       $('hAR').style.display=$('hDE').style.display=vis?'block':'none';
       if(vis){place($('hAR'),ar[0]-38*k,ar[1]+22*k,ar[2]-6*k,ar[3],oAR); place($('hDE'),de[0]+38*k,de[1]+22*k,de[2]+6*k,de[3],oDE);}}
     // kleine Übersetzungsblätter (4,5) -> fliegen in C zur Mitte
@@ -224,29 +251,30 @@ function render(t){
        place($('tAR'),mix(ax,540,k),mix(ay,1080,k),mix(5,0,k),s0*mix(1,1.6,k),(k==0?oAR:1)*(1-lin(t,10.4,10.6)));
        place($('tDE'),mix(dx,540,k),mix(dy,1080,k),mix(-5,0,k),s0*mix(1,1.6,k),(k==0?oDE:1)*(1-lin(t,10.4,10.6)));}}
     // Pills nur im Hook (und Loop-Naht)
-    {const o=t<3.0?1-lin(t,2.85,3.0):0; const ol=lin(t,29.65,29.8); const op=Math.max(o,t>=29.4?ol:0);
-      const pa=t>=29.4?[mix(endPose().ar[0],310,lin(t,29.35,29.7)),1370]:[ar[0],ar[1]+310];
-      const pd=t>=29.4?[mix(endPose().de[0],735,lin(t,29.35,29.7)),1370]:[de[0],de[1]+310];
+    {const o=t<3.0?1-lin(t,2.85,3.0):0; const ol=lin(t,29.5,29.65); const op=Math.max(o,t>=29.3?ol:0);
+      const pa=t>=29.3?[mix(endPose().ar[0],310,lin(t,29.3,29.65)),1400]:[ar[0],ar[1]+310];
+      const pd=t>=29.3?[mix(endPose().de[0],735,lin(t,29.3,29.65)),1400]:[de[0],de[1]+310];
       $('pAR').style.left=pa[0]+'px';$('pAR').style.top=pa[1]+'px';$('pAR').style.opacity=op; $('pDE').style.left=pd[0]+'px';$('pDE').style.top=pd[1]+'px';$('pDE').style.opacity=op;
       $('pAR').style.display=$('pDE').style.display=op>0?'flex':'none';}
     // neutrales Diplom (B)
     {const vis=t>=6.55&&t<8.75; $('dN').style.display=$('chkN').style.display=vis?'block':'none';
-     if(vis){const a=expo(lin(t,6.55,7.05)), b=eo(lin(t,8.2,8.65)); const y=mix(760,1050,a)-260*b;
-       place($('dN'),540,y,mix(-6,1,a),.84,a*(1-b));
-       const cp=lin(t,7.25,7.55); place($('chkN'),540+130,y-190,0,cp<=0?0:back(cp),1-b);}}
+     if(vis){const a=expo(lin(t,6.55,7.05)), b=eo(lin(t,8.2,8.65)); const y=mix(980,1250,a)+140*b;
+       place($('dN'),540,y,mix(-6,1,a),.66,a*(1-b));
+       const cp=lin(t,7.25,7.55); place($('chkN'),540+105,y-150,0,cp<=0?0:back(cp),1-b);}}
     // großes Übersetzungsblatt (C, D) -> Flip zur PDF (E)
     {const vis=t>=10.1&&t<17.2; $('sT').style.display=vis?'block':'none';
      if(vis){const a=lin(t,10.1,10.55), f=lin(t,17.0,17.2); place($('sT'),540,1080,0,1,eo(a)); $('sT').style.transform=`scale(${mix(.5,1,eo(a))*(1-eo(f))},${mix(.5,1,eo(a))})`;}
      const mv=t>=11.2&&t<17.2; $('medal').style.display=mv?'block':'none';
      if(mv){const p=lin(t,11.2,11.5); place($('medal'),540,1290,0,p<=0?0:mix(1.8,1,eo(p))*(p>.95?1+.06*Math.sin(lin(t,11.5,11.8)*Math.PI):1),Math.min(1,p*3)*(1-lin(t,17.0,17.15)));}
      const pv=t>=17.2&&t<20.75; $('sP').style.display=pv?'block':'none';
-     if(pv){const g=eo(lin(t,17.2,17.45)), out=eo(lin(t,20.2,20.6)); $('sP').style.left='540px'; $('sP').style.top=(1080-500*out)+'px'; $('sP').style.opacity=1-out; $('sP').style.transform=`scale(${g*(1-.3*out)},1)`;
+     if(pv){const g=eo(lin(t,17.2,17.45)), out=lin(t,20.2,20.32); $('sP').style.left='540px'; $('sP').style.top='1080px'; $('sP').style.opacity=1-out; $('sP').style.transform=`scale(${g*(1-.3*out)},1)`;
        const sig=$('sig'); const L=sig.getTotalLength(); sig.style.strokeDasharray=L; sig.style.strokeDashoffset=L*(1-eo(lin(t,17.6,18.3)));}
      const kv=t>=18.5&&t<20.75; $('chkP').style.display=kv?'block':'none';
-     if(kv){const p=lin(t,18.5,18.82), out=eo(lin(t,20.2,20.6)); place($('chkP'),540+200,1080-300-500*out,0,p<=0?0:back(p),1-out);}}
+     if(kv){const p=lin(t,18.5,18.82), out=lin(t,20.2,20.32); place($('chkP'),540+200,1080-300,0,p<=0?0:back(p),1-out);}}
+    $('sTt').style.opacity=(t>=13.4&&t<17.05)?1-lin(t,13.4,13.48):1;   // „Tradução“ nie angeschnitten unter dem Auslandsblatt
     // Übersetzung aus dem Ausland (D)
-    {const vis=t>=13.4&&t<16.7; $('sX').style.display=$('xm').style.display=vis?'block':'none';
-     if(vis){const a=expo(lin(t,13.4,13.95)), b=eo(lin(t,16.15,16.6)); const x=mix(1400,590,a)+800*b;
+    {const vis=t>=13.4&&t<17.3; $('sX').style.display=$('xm').style.display=vis?'block':'none';
+     if(vis){const a=expo(lin(t,13.4,13.95)), b=eo(lin(t,16.95,17.3)); const x=mix(1400,590,a)+800*b;
        place($('sX'),x,1080+20*b,mix(14,5,a)+12*b,1,1);
        const xp=lin(t,14.9,15.15); place($('xm'),x,1080,0,xp<=0?0:back(xp),1);
        $('x1').style.strokeDashoffset=1-eo(lin(t,15.05,15.3)); $('x2').style.strokeDashoffset=1-eo(lin(t,15.2,15.45));}}
@@ -254,46 +282,43 @@ function render(t){
 
   // ================= Welt P (echter Rechner) =================
   if(inP){
-    const rise=(1-expo(lin(t,20.3,20.9)))*700; apply(WP,cam(CAM_P,t),rise);
-    const v=speed(CAM_P,t); WP.style.filter=v>60?`blur(${Math.min(1.2,(v-60)/220)}px)`:'none';
-    WP.style.opacity=lin(t,20.36,20.5);
-    // Split-Wisch Árabe -> Alemão (diagonale Kante, Lichtkante)
-    const w=quint(lin(t,21.9,22.35)); const X=-260+1240*w;
-    $('uiDE').style.clipPath=`polygon(${X-260}px -10px, -10px -10px, -10px 1400px, ${X+260-520}px 1400px)`;
-    $('uiDE').style.clipPath=`polygon(-10px -10px, ${X+130}px -10px, ${X-130}px 1400px, -10px 1400px)`;
-    const g=$('glint'); g.style.left=(X-5)+'px'; g.style.transform='rotate(10.6deg)'; g.style.opacity=w>0&&w<1?.9:0;
+    WP.style.transform='none'; WP.style.filter='none'; WP.style.opacity=lin(t,20.35,20.5);
+    $('uiCard').style.transform=`translateY(${(1-expo(lin(t,20.35,20.75)))*90}px)`;
+    // Split-Wisch Árabe -> Alemão (schräge Kante, Lichtkante)
+    const w=quint(lin(t,21.9,22.35)); const X=-150+1110*w;
+    $('uiDE').style.clipPath=`polygon(-10px -10px, ${X+110}px -10px, ${X-110}px 620px, -10px 620px)`;
+    const g=$('glint'); g.style.left=(X-5)+'px'; g.style.transform='rotate(19.5deg)'; g.style.opacity=w>0&&w<1?.9:0;
     $('langGlow').style.opacity=t>21.5&&t<22.9?Math.min(1,(t-21.5)/.15)*(1-lin(t,22.75,22.9)):0;
     const tp=lin(t,22.95,23.2); $('tap').style.opacity=t>22.95&&t<23.55?1:0; $('tap').style.transform=`translate(${(1-eo(tp))*160}px,${(1-eo(tp))*120}px) scale(${t>23.2&&t<23.35?.8:1})`;
     const rp=lin(t,23.25,23.7); $('tapR').style.opacity=rp>0&&rp<1?1-rp:0; $('tapR').style.transform=`scale(${.4+rp})`;
     $('btnDark').style.opacity=t>23.22&&t<23.42?.2:0;
   }
-  {const M=$('mask'); const on=t>=20.3&&t<23.9; M.style.display=on?'block':'none'; if(on){const r=(1-expo(lin(t,20.3,20.9)))*700; M.style.opacity=lin(t,20.3,20.38); M.style.height=(780+r)+'px'; M.style.background=`linear-gradient(180deg,#376259 0,#376259 ${712+r}px,rgba(55,98,89,0) ${752+r}px)`;}}
-  // Match-Cut: Button -> Fläche -> Pinho (Endcard)
-  {const W=$('wipe'); const on=t>=23.4&&t<24.2; W.style.display=on?'block':'none';
-   if(on){const p=expo(lin(t,23.4,23.8)); const r0=[73,1292,934,146]; const x=r0[0]*(1-p), y=r0[1]*(1-p), w=r0[2]+(1080-r0[2])*p, h=r0[3]+(1920-r0[3])*p;
-     W.style.left=x+'px';W.style.top=y+'px';W.style.width=w+'px';W.style.height=h+'px';W.style.borderRadius=(18*(1-p))+'px'; W.style.opacity=1-eo(lin(t,23.8,24.15));}}
-
+  // Übergang: Tap -> Kreis in Pinho wächst aus dem Tap-Punkt (Handy-Push-in), dann Endcard/Mitmach auf ruhigem Grund
+  {const W=$('wipe'); const on=t>=23.35&&t<23.75; W.style.display=on?'block':'none';
+   if(on){const p=expo(lin(t,23.35,23.62)), r=40+1760*p; W.style.left=(495-r)+'px'; W.style.top=(1177-r)+'px'; W.style.width=W.style.height=(2*r)+'px'; W.style.opacity=1-lin(t,23.62,23.75);}}
   // ================= Bildschirm-Ebene =================
   // Wortmarke
   {const o=t<3.0?0:t<20.2?lin(t,3.0,3.3):1-lin(t,20.2,20.4); $('wm').style.opacity=.92*o; $('wm').style.display=o>0?'block':'none';}
   // Hook (Frame 0 voll sichtbar) + Loop-Naht
-  {const H=$('hook'); const out=lin(t,2.82,2.98), back_=lin(t,29.55,29.8); const vis=t<2.98||t>=29.55; H.style.display=vis?'block':'none';
+  {const H=$('hook'); const out=lin(t,2.8,2.95), back_=lin(t,29.45,29.68); const vis=t<2.95||t>=29.45; H.style.display=vis?'block':'none';
    const pulse=1+.035*Math.sin(lin(t,.1,.55)*Math.PI);
-   H.style.opacity=t>=29.55?back_:1-out; H.style.transform=`translateY(${-40*out+(t>=29.55?(1-eo(back_))*24:0)}px) scale(${t<1?pulse:1})`;
-   $('mk1').style.transform=`scaleX(${t<29.55?1:eo(back_)})`; $('mk2').style.transform=`scaleX(${t<29.55?1:eo(back_)})`;
+   H.style.opacity=t>=29.45?back_:1-out; H.style.transform=`translateY(${t>=29.45?(1-eo(back_))*24:0}px) scale(${t<1?pulse:1})`;
+   $('mk1').style.transform=`scaleX(${t<29.45?1:eo(back_)})`; $('mk2').style.transform=`scaleX(${t<29.45?1:eo(back_)})`;
    const k=lin(t,.05,.45),k2=lin(t,.35,.75); $('mk1').style.filter=`brightness(${1+.06*Math.sin(k*Math.PI)})`; if(t<1){$('mk1').style.transform=`scaleY(${1+.12*Math.sin(k*Math.PI)})`;$('mk2').style.transform=`scaleY(${1+.12*Math.sin(k2*Math.PI)})`;}}
-  words('capA',t,2.92,6.2); words('capB',t,6.5,9.7); words('capC',t,10.0,13.2); words('capD',t,13.5,16.7); words('capE',t,17.0,20.2,.06); words('capF',t,20.6,23.85);
+  // Captions laufen auf Video-Zeit tv (je Einblendung 2 Zeilen, ≥ 1,8 s)
+  words('capA',tv,2.95,6.2,.05); words('capB',tv,6.5,9.7); words('capC',tv,10.0,13.2); words('capD',tv,13.5,16.85); words('capE',tv,16.95,18.85); words('capE2',tv,18.95,20.8); words('capF',tv,20.95,24.2);
   // Chip-Platz: CTA (3,2–6,3 und 20,6–23,4) / Quelle UFMG (6,9–20,2)
-  {const c=$('chipCta'); const a=t<10?popIn(c,t,3.2,6.25):popIn(c,t,20.7,23.4); if(a){center(c);}
-   const l=$('lbl'); if(popIn(l,t,6.9,20.2)){center(l);} }
+  {const c=$('chipCta'); $('chipT').textContent=GMB?'Preço na hora no site':'Preço na hora · link na bio'; const a=popIn(c,tv,2.95,24.1); if(a){center(c); c.style.top='540px';}   // CTA-Chip ab 2,95 s bis vor Mitmach/Endcard
+   const l=$('lbl'); if(popIn(l,tv,6.9,20.6)){center(l); l.style.top='648px';} }
   // Endcard
-  {const on=t>=23.92&&t<29.8; ['ecH','ecChip','ecUrl','ecWa'].forEach(id=>$(id).style.display=on?($(id).classList.contains('chip')||id==='ecWa'?'flex':'block'):'none');
-   if(on){const o=1-lin(t,29.4,29.58);
-     const h=lin(t,23.92,24.3); $('ecH').style.opacity=h*o; $('ecH').style.transform=`translateY(${(1-eo(h))*40-30*lin(t,29.4,29.58)}px)`;
-     const m=expo(lin(t,24.15,24.5)); $('mkE').style.transform=`scaleX(${m})`; $('mkE').parentNode.style.color=m>.5?'#1F3B35':'#fff';
-     const cp=lin(t,24.25,24.55); $('ecChip').style.opacity=(cp>0?1:0)*o; $('ecChip').style.transform=`scale(${cp<=0?0:back(cp)})`; $('ecChip').style.transformOrigin='0 50%';
-     const u=lin(t,24.3,24.6); $('ecUrl').style.opacity=u*o; $('ecUrl').style.transform=`translateY(${(1-eo(u))*30}px)`;
-     const wa=lin(t,24.35,24.65); $('ecWa').style.opacity=wa*o; $('ecWa').style.transform=`translateY(${(1-eo(wa))*30}px)`;}}
+  {const on=t>=23.8&&t<29.7; ['ecH','ecChip','ecUrl','ecWa'].forEach(id=>$(id).style.display=on?($(id).classList.contains('chip')||id==='ecWa'?'flex':'block'):'none');
+   if(on){const o=1-lin(t,29.3,29.45);
+     if(GMB){$('ecChip').style.display='none'; $('ecUrl').style.top='700px'; $('ecWa').style.top='812px';}
+     const h=lin(t,23.8,23.92); $('ecH').style.opacity=h*o; $('ecH').style.transform=`translateY(${(1-eo(h))*30}px)`;
+     const m=expo(lin(t,23.9,24.2)); $('mkE').style.transform=`scaleX(${m})`; $('mkE').parentNode.style.color=m>.5?'#1F3B35':'#fff';
+     const cp=lin(t,24.0,24.3); $('ecChip').style.opacity=(cp>0?1:0)*o; $('ecChip').style.transform=`scale(${cp<=0?0:back(cp)})`; $('ecChip').style.transformOrigin='0 50%';
+     const u=lin(t,24.05,24.3); $('ecUrl').style.opacity=u*o; $('ecUrl').style.transform=`translateY(${(1-eo(u))*30}px)`;
+     const wa=lin(t,24.1,24.35); $('ecWa').style.opacity=wa*o; $('ecWa').style.transform=`translateY(${(1-eo(wa))*30}px)`;}}
 }
 document.fonts.ready.then(()=>render(0));
 render(0);

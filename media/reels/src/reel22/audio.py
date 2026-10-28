@@ -4,7 +4,7 @@ Quiz-Dramaturgie je Frage: Ratepause = Musik 'soft' + Woodblock-Ticks 3-2-1 auf 
 Auflösung a+3,0 = Hit + Akkord-Arpeggio im laufenden Akkord. Jedes Bildereignis höchstens ein Sound.
 GMB-Fassung: gleiche Ereignisse, Zeitachse ohne Frage 1 (5,5–11,5) und ohne Mitmach (29,5–33,0).
 v3 (Serie „Veio de fora #1“): Stinger-stamp 0,03 · impact je Payoff/Auflösung (4×) · stamp Endcard-Badge · whoosh ≤ 4×.
-Zeiten unten = Designzeit wie in reel.html; SKIP kürzt auf 36,0 s (GMB 27,5 s), alle Schläge bleiben im 0,5-s-Raster.
+Zeiten unten = Designzeit wie in reel.html; SKIP kürzt auf 37,25 s (GMB 28,75 s), alle Schläge bleiben im 0,5-s-Raster.
 """
 import os, sys
 LIB = next(p for p in ('/tmp/v2lib-r22',   # Pipeline v2 = git show a9df053:media/reels/lib/* (Branch reels-pipeline-v2)
@@ -13,9 +13,9 @@ sys.path.insert(0, LIB)
 from music import Track
 
 OUT = sys.argv[1]; GMB = len(sys.argv) > 2 and sys.argv[2] == 'gmb'
-END = 27.5 if GMB else 36.0
+END = 28.75 if GMB else 37.25
 QS = [(a + .85, a + 1.35) for a in (5.5, 11.5, 17.5)]
-SKIP = ([(5.5, 11.5)] + QS[1:] + [(29.5, 33.0), (35.5, 36.5)]) if GMB else (QS + [(31.5, 32.0), (35.5, 36.5)])
+SKIP = ([(5.5, 11.5)] + QS[1:] + [(29.5, 33.0)]) if GMB else (QS + [(31.5, 32.0)])   # Endcard ohne Skip (5,6 s voll lesbar), Loop 38,75
 def T(t):                                  # Hauptzeit -> Zeit dieser Fassung (None = Ereignis entfällt)
     for a, b in SKIP:
         if a <= t < b: return None
@@ -37,6 +37,7 @@ for a in Q:
     sfx('whoosh', a - .05, .6, d=.45)      # neue Frage
     sfx('pop', a + .5, .6, f=640)          # Pillen SIM/NÃO
     sec(a + 1.35, 'soft')                  # Ratepause (nach dem Skip)
+    if T(a + .3) is not None: tr.duck(T(a + .3), T(a + 2.95) - T(a + .3), .45 if GMB else .5)   # Frage-Phase −6 dB (GMB −7 dB, nur 2 Fragen) → Auflösung hebt sich ab (LRA)
     for k, x in enumerate((1.5, 2.0, 2.5)):
         if T(a + x) is not None: tr.ev['drums'].append((T(a + x), 76, 68 + 6 * k, .1))   # Woodblock 3-2-1
     R = a + 3.0

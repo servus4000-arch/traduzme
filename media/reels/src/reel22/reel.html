@@ -36,7 +36,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
 .src{position:absolute;left:96px;height:64px;padding:0 24px;border-radius:33px;background:#2A4A42;border:3px solid var(--sal);color:#fff;font-weight:700;font-size:44px;display:flex;align-items:center;white-space:nowrap}
 .cap{position:absolute;left:90px;top:330px;width:810px;font-weight:800;font-size:84px;line-height:1.06;letter-spacing:-1.5px;color:#fff}
 .big{position:absolute;font-weight:800;color:#fff;letter-spacing:-1px}
-.badge{position:absolute;left:128px;top:340px;height:92px;padding:0 30px;border-radius:16px;background:var(--areia);color:var(--dark);border:6px solid var(--dark);box-shadow:0 0 0 3px var(--areia);font-weight:800;font-size:54px;letter-spacing:-.5px;display:flex;align-items:center;white-space:nowrap;transform-origin:50% 50%;transform:rotate(-3deg)}
+.badge{position:absolute;left:0;top:0;height:92px;padding:0 30px;border-radius:16px;background:var(--areia);color:var(--dark);border:6px solid var(--dark);box-shadow:0 0 0 3px var(--areia);font-weight:800;font-size:54px;letter-spacing:-.5px;display:flex;align-items:center;white-space:nowrap;transform-origin:50% 50%;transform:rotate(-3deg)}
 .win{position:absolute;left:96px;top:800px;width:804px;height:616px;border-radius:30px;overflow:hidden;background:#fbfaf7;box-shadow:0 40px 80px rgba(0,0,0,.4)}
 </style></head>
 <body><div id="stage">
@@ -83,26 +83,26 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
   </div>
 
   <!-- echte Screenshots -->
-  <div class="abs" id="pc2" style="left:96px;top:1232px;width:804px;height:240px;border-radius:26px;background:#fff;box-shadow:0 30px 60px rgba(0,0,0,.35);overflow:hidden;opacity:0"><img class="shot" src="shots/pc2.png" style="position:absolute;left:24px;top:22px;width:764px"></div>
+  <div class="abs" id="pc2" style="left:96px;top:1232px;width:804px;height:264px;border-radius:26px;background:#fff;box-shadow:0 30px 60px rgba(0,0,0,.35);overflow:hidden;opacity:0"><img class="shot" src="shots/pc2.png" style="position:absolute;left:20px;top:20px;width:879px"></div>
   <div class="abs" id="faq" style="left:96px;top:1288px;width:804px;height:192px;border-radius:26px;background:#fbfaf7;box-shadow:0 30px 60px rgba(0,0,0,.35);overflow:hidden;opacity:0">
     <div id="hlf" class="abs" style="left:0;top:0;width:804px;height:192px"></div>
     <img class="shot" src="shots/faq8c.png" style="position:absolute;left:12px;top:16px;width:780px;mix-blend-mode:multiply">
     <div class="abs" style="left:436px;top:100px;width:368px;height:92px;background:#fbfaf7"></div>
   </div>
-  <div class="win" id="flowWin" style="opacity:0"><img class="shot" id="flowImg" src="shots/flow_card.png" style="position:absolute;left:0;top:0;width:804px;height:100%;object-fit:none;object-position:0 0"></div>
+  <div class="win" id="flowWin" style="opacity:0;height:680px"><div class="shot" id="flowImg" style="position:absolute;inset:0;background:url(shots/flow_card.png) no-repeat;background-size:898px auto;background-position:-36px 0"></div></div>
 
   <!-- ===== Text-Ebene (Kopfzone y 304–640 · Chip y 672 · Pillen y 800 · Bildzone y 944–1496) ===== -->
   <div class="badge" id="badge">VEIO DE FORA · #1</div>
-  <div class="hl" id="hook" style="top:480px"><span class="w">Sua</span> <span class="w">certidão</span><br><span class="w">do</span> <span class="w">exterior</span> <span class="w">já</span><br><span class="w">tem</span> <span class="mk w on"><b id="mkh"></b>apostila?</span></div>
+  <div class="hl" id="hook" style="top:480px"><span class="w">Sua</span> <span class="w">certidão</span><br><span class="w">estrangeira</span> <span class="w">já</span><br><span class="w">tem</span> <span class="mk w on"><b id="mkh"></b>apostila?</span></div>
   <div class="q" id="pay"><span class="w">Falta</span> <span class="w">a</span> <span class="mk w on"><b></b>tradução</span><br><span class="mk w on"><b></b>juramentada.</span></div>
   <div class="src" id="src224" style="top:1408px">Regra geral: Código Civil, art. 224</div>
 
   <div class="tag" id="qtag">Pergunta 1 de 3</div>
   <div class="q" id="q1"><span class="w">A</span> <span class="w">apostila</span> <span class="w">já</span><br><span class="w">traduz</span> <span class="w">o</span> <span class="w">texto?</span></div>
-  <div class="q" id="a1"><span class="mk w on"><b></b>Não:</span> <span class="w">confirma</span> <span class="w">só</span><br><span class="w">quem</span> <span class="w">assinou.</span></div>
+  <div class="q" id="a1"><span class="mk w on"><b></b>Não:</span> <span class="w">confirma</span><br><span class="w">assinatura</span> <span class="w">e</span> <span class="w">cargo.</span></div>
   <div class="src" id="src860" style="top:1408px">Fonte: Decreto 8.660/2016, art. 5</div>
   <div class="q" id="q2"><span class="w">Manda</span> <span class="w">a</span> <span class="w">página</span> <span class="w">da</span><br><span class="w">apostila</span> <span class="w">junto?</span></div>
-  <div class="q" id="a2"><span class="mk w on"><b></b>Sim:</span> <span class="w">num</span> <span class="w">upload,</span><br><span class="w">sem</span> <span class="w">custo</span> <span class="w">extra.</span></div>
+  <div class="q" id="a2"><span class="mk w on"><b></b>Sim:</span> <span class="w">faz</span> <span class="w">parte</span><br><span class="w">do</span> <span class="w">documento.</span></div>
   <div class="q" id="q3"><span class="w">A</span> <span class="w">tradução</span> <span class="w">precisa</span><br><span class="w">de</span> <span class="w">apostila</span> <span class="w">aqui?</span></div>
   <div class="q" id="a3"><span class="mk w on"><b></b>Em geral, não:</span><br><span class="w">confira</span> <span class="w">no</span> <span class="w">órgão.</span></div>
 
@@ -135,7 +135,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
 // GMB-Fassung (≤ 30 s, ohne Frage 1 und ohne Mitmach): gmb/reel.html setzt GMB=1, oder URL ?cut=gmb (qa_frames --query cut=gmb)
 let GMB=0;
 if(new URLSearchParams(location.search).get('cut')==='gmb') GMB=1;
-const END=GMB?27.5:36.0;   // Echtzeit; Designzeit läuft weiter bis 39,0 (Skips unten)
+const END=GMB?28.75:37.25;   // Echtzeit; Designzeit läuft weiter bis 39,0 (Skips unten)
 const $=id=>document.getElementById(id);
 const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
 const lin=(t,a,b)=>cl((t-a)/(b-a));
@@ -149,9 +149,9 @@ const EZ={q:quint,x:expo,o:eo,l:x=>x,i:ein};
 // Szenen (Hauptzeit): Hook 0 · Payoff 3,0 · F1 5,5 · F2 11,5 · F3 17,5 · Rechner 23,5 · Mitmach 29,5 · Endcard 33,0 · Loop-Schnitt 38,5 · Ende 39,0
 const Q=[5.5,11.5,17.5], QL=6.0;
 // v3 Länge 32–36 s: je Frage 0,5 s Ruhe vor dem Countdown (a+0,85), 0,5 s im Mitmach, 1,0 s Endcard-Standzeit (bleibt 4,5 s) – alle Schläge bleiben im 0,5-s-Raster
-const SKIP=GMB?[[5.5,6.0],[Q[1]+.85,.5],[Q[2]+.85,.5],[29.5,3.5],[35.5,1.0]]:[[Q[0]+.85,.5],[Q[1]+.85,.5],[Q[2]+.85,.5],[31.5,.5],[35.5,1.0]];
+const SKIP=GMB?[[5.5,6.0],[Q[1]+.85,.5],[Q[2]+.85,.5],[29.5,3.5]]:[[Q[0]+.85,.5],[Q[1]+.85,.5],[Q[2]+.85,.5],[31.5,.5]];
 function remap(tn){let t=tn;for(const [a,d] of SKIP){if(t>=a-1e-6)t+=d;}return t;}
-const LOOP=38.5, ENDM=39.0, LOOPR=END-.5;
+const LOOP=38.75, ENDM=39.25, LOOPR=END-.5;   // Endcard 33,0–38,75 voll (5,6 s lesbar), dann harter Schnitt auf das Hook-Bild
 const PUNCH=[3.0,Q[0]+3.0,Q[1]+3.0,Q[2]+3.0];   // Zoom-Punch 1,00→1,06→1,00 in 0,22 s + impact (Payoff + 3 Auflösungen)
 
 document.querySelectorAll('.qr').forEach((s,k)=>{let h='',r=11+k*13;for(let y=0;y<15;y++)for(let x=0;x<15;x++){r=(r*1103515245+12345)&0x7fffffff;const f=(x<4&&y<4)||(x>10&&y<4)||(x<4&&y>10);const on=f?((x%3==0||y%3==0||(x%3==1&&y%3==1))&&!(x==3||y==3||x==11||y==11)):(r>>16)%2;if(on)h+=`<rect x="${x}" y="${y}" width="1" height="1" fill="#1F3B35"/>`;}s.innerHTML=h;});
@@ -160,13 +160,13 @@ document.querySelectorAll('.qr').forEach((s,k)=>{let h='',r=11+k*13;for(let y=0;
 
 // Posen [t, x, y, rot, scale, opacity, ease]  (Mittelpunkt in Bildkoordinaten)
 const P={
- ACTA:[[0,456,1168,-4,1,1],[2.85,456,1168,-4,1,1],[3.35,296,1112,-4,.74,1,'q'],[5.35,296,1112,-4,.74,1],[5.85,424,1208,-3,.8,1,'q'],[11.35,424,1208,-3,.8,1],[11.85,296,1200,-3,.62,1,'q'],[14.35,296,1200,-3,.62,1],[14.55,432,1128,0,.35,0,'i'],
-       [29.5,496,1224,-4,.7,0],[29.8,496,1224,-4,.7,1,'o'],[32.85,496,1224,-4,.7,1],[33.0,304,1288,-4,.6,0,'l'],[33.3,304,1288,-4,.6,1,'o'],[38.15,304,1288,-4,.6,1],[38.5,456,1168,-4,1,1,'q']],
- APO:[[0,720,1272,6,1,1],[2.85,720,1272,6,1,1],[3.35,400,1248,6,.66,1,'q'],[5.35,400,1248,6,.66,1],[5.85,704,1240,5,.85,1,'q'],[11.35,704,1240,5,.85,1],[11.85,688,1200,3,.9,1,'q'],[14.35,688,1200,3,.9,1],[14.55,552,1128,0,.35,0,'i'],
-       [38.15,560,1288,6,.6,0],[38.5,720,1272,6,1,1,'q']],
+ ACTA:[[0,456,1168,-4,1,1],[1.5,456,1168,-4,1,1],[1.9,456,1160,-2.5,1,1,'q'],[2.85,456,1160,-2.5,1,1],[3.35,296,1112,-4,.74,1,'q'],[5.35,296,1112,-4,.74,1],[5.85,424,1208,-3,.8,1,'q'],[11.35,424,1208,-3,.8,1],[11.85,296,1200,-3,.62,1,'q'],[14.35,296,1200,-3,.62,1],[14.55,432,1128,0,.35,0,'i'],
+       [29.5,496,1224,-4,.7,0],[29.8,496,1224,-4,.7,1,'o'],[32.85,496,1224,-4,.7,1],[33.0,304,1288,-4,.6,0,'l'],[33.3,304,1288,-4,.6,1,'o'],[38.749,304,1288,-4,.6,1],[38.75,456,1168,-4,1,1,'l']],
+ APO:[[0,720,1300,6,1,1],[0.5,720,1300,6,1,1],[0.9,728,1316,8,1,1,'q'],[2.85,728,1316,8,1,1],[3.35,400,1248,6,.66,1,'q'],[5.35,400,1248,6,.66,1],[5.85,704,1240,5,.85,1,'q'],[11.35,704,1240,5,.85,1],[11.85,688,1200,3,.9,1,'q'],[14.35,688,1200,3,.9,1],[14.55,552,1128,0,.35,0,'i'],
+       [38.749,560,1288,6,.6,0],[38.75,720,1300,6,1,1,'l']],
  TRAD:[[0,1352,1112,8,.74,1],[2.95,1352,1112,8,.74,1],[3.45,704,1112,3,.74,1,'x'],[5.35,704,1112,3,.74,1],[5.85,1400,1048,12,.74,1,'i'],
        [17.5,1400,1184,10,.78,1],[18.0,496,1184,2,.78,1,'x'],[20.5,496,1184,2,.78,1],[20.9,496,1112,0,.45,1,'q'],[23.2,496,1112,0,.45,1],[23.45,496,1112,0,.45,0,'l'],
-       [33.0,736,1288,4,.6,0],[33.3,736,1288,4,.6,1,'o'],[38.15,736,1288,4,.6,1],[38.5,1352,1112,8,.74,1,'q']],
+       [33.0,736,1288,4,.6,0],[33.3,736,1288,4,.6,1,'o'],[38.749,736,1288,4,.6,1],[38.75,1352,1112,8,.74,1,'l']],
  FILE:[[0,496,1088,0,.4,0],[14.55,496,1088,0,.4,0],[14.85,496,1088,0,1,1,'x'],[17.2,496,1088,0,1,1],[17.4,496,1048,0,.9,0,'l']],
  LUPE:[[0,1250,1500,0,1,1],[8.0,1250,1500,0,1,1],[8.5,736,1296,0,1,1,'q'],[11.1,736,1296,0,1,1],[11.4,1300,1500,0,1,1,'i']]
 };
@@ -190,7 +190,7 @@ function render(tn){const t=tn>=END-1e-6?LOOP+.01:remap(tn);
   for(const id of ['ACTA','APO','TRAD','FILE','LUPE'])place(id,tt);
   $('ACTA').style.zIndex=1; $('APO').style.zIndex=3; $('TRAD').style.zIndex=2; $('FILE').style.zIndex=4; $('LUPE').style.zIndex=6;
   {const pl=$('plus'); const o=t>=11.85&&t<14.45?Math.min(lin(t,11.85,12.05),1-lin(t,14.3,14.45)):0; pl.style.opacity=o; pl.style.display=o>0?'':'none'; pl.style.transform=`translate(${504-35}px,${1200-35}px) scale(${.6+.4*back(lin(t,11.85,12.15))})`;}
-  const push=loop?1:1+.03*eo(lin(tb,0,.6))*(1-quint(lin(t,2.85,3.35)));   // Stinger: Kamera-Push +3 % bis 0,6 s (nicht im Loop-Bild → letztes = erstes Bild)
+  const push=loop?1:1+(.03*eo(lin(tb,0,.6))+.03*lin(tb,.6,2.6))*(1-quint(lin(t,2.6,3.35)));   // Stinger: Kamera-Push +3 % bis 0,6 s (nicht im Loop-Bild → letztes = erstes Bild)
   const punch=PUNCH.reduce((m,P)=>m*(1+.06*Math.sin(Math.PI*lin(t,P,P+.22))),1);
   const s=(1+.012*Math.sin(tb*.9))*push*punch, dy=6*Math.sin(tb*.7);
   $('world').style.transform=`translate(${540-540*s}px,${1150-1150*s+dy}px) scale(${s})`;
@@ -198,17 +198,20 @@ function render(tn){const t=tn>=END-1e-6?LOOP+.01:remap(tn);
   $('seal').style.transform=`scale(${1+.12*Math.sin(lin(t,8.5,9.0)*Math.PI)})`; $('seal').style.transformOrigin='50% 50%';
 
   // ---- Hook (Frame 0 fertig) ----
-  {const H=$('hook'); const on=t<3.0||loop; H.style.display=on?'':'none'; const o=t<3.0?1-lin(t,2.85,3.0):1; H.style.opacity=o;
+  {const H=$('hook'); const on=t<2.7||loop; H.style.display=on?'':'none'; const o=t<2.7?1-lin(t,2.55,2.7):1; H.style.opacity=o;
    H.querySelectorAll('.w').forEach(w=>{w.style.opacity=1;w.style.transform='none'});
-   H.style.transform=`translateY(${t<3.0?-24*lin(t,2.85,3.0):0}px)`;
+   H.style.transform=`translateY(${t<2.7?-24*lin(t,2.55,2.7):0}px)`;
    $('mkh').style.transform=`scale(${1+.06*Math.sin(lin(tb,.1,.6)*Math.PI)+.04*Math.sin(lin(tb,1.5,1.9)*Math.PI)})`;}
   // ---- Serien-Badge „VEIO DE FORA · #1“ (Hook-Bild + Endcard), Stempel-Stinger ab Frame 1 ----
-  {const B=$('badge'); const inH=t<3.0||loop, inE=t>=33.0&&!loop; let o=0,sc=1,rot=-3;
-   if(inH){o=t<3.0?1-lin(t,2.85,3.0):1; if(!loop){const p=lin(tb,0,.4); sc=1+.12*Math.sin(Math.PI*p); rot=-3-3*Math.sin(Math.PI*p);}}
+  {const B=$('badge'); const inH=t<2.7||loop, inE=t>=33.0&&!loop; let o=0,sc=1,rot=-3;
+   if(inH){o=t<2.7?1-lin(t,2.55,2.7):1; if(!loop){const p=lin(tb,0,.4); sc=1+.12*Math.sin(Math.PI*p); rot=-3-3*Math.sin(Math.PI*p);}}
    else if(inE){const p=lin(t,33.0,33.4); o=Math.min(1,lin(t,33.0,33.08)); sc=1+.12*Math.sin(Math.PI*p); rot=-3-3*Math.sin(Math.PI*p);}
-   B.style.opacity=o; B.style.display=o>0?'flex':'none'; B.style.transform=`rotate(${rot}deg) scale(${sc})`;}
+   B.style.opacity=o; B.style.display=o>0?'flex':'none';
+   // Bounding-Box links bündig x 90, Oberkante ≥ 300 auch auf dem Stinger-Höhepunkt (×1,12, −6°): Mittelpunkt fest bei y 383,6
+   const W=B.offsetWidth,H=B.offsetHeight,r=Math.abs(rot)*Math.PI/180, hw=(W*sc*Math.cos(r)+H*sc*Math.sin(r))/2;
+   B.style.transform=`translate(${(90+hw-W/2).toFixed(1)}px,${(383.6-H/2).toFixed(1)}px) rotate(${rot}deg) scale(${sc})`;}
   // ---- Payoff ----
-  show('pay',t,3.0,5.35,.08);
+  show('pay',t,2.7,5.35,.04);
   fadeBox('src224',t,3.5,5.35);
   // ---- Quiz ----
   const ANS=['pN','pS','pN']; let qi=-1; for(let i=0;i<3;i++) if(t>=Q[i]&&t<Q[i]+QL) qi=i;
@@ -237,7 +240,7 @@ function render(tn){const t=tn>=END-1e-6?LOOP+.01:remap(tn);
   // ---- Rechner "Como funciona" (echter Screenshot) ----
   show('r1',t,23.52,26.35,.07); show('r2',t,26.52,29.35,.07);
   {const W=$('flowWin'); const o=fadeBox('flowWin',t,23.5,29.35,.25,.15,''); W.style.transform=`translateY(${(1-expo(lin(t,23.5,23.95)))*120}px)`;
-   const pan=quint(lin(t,26.5,27.0)); $('flowImg').style.objectPosition=`0 ${(-377*pan).toFixed(1)}px`; W.style.height=(616-120*pan)+'px';}
+   const pan=quint(lin(t,26.5,27.0)); $('flowImg').style.backgroundPosition=`-36px ${(-415*pan).toFixed(1)}px`; W.style.height=(680-128*pan)+'px';}
 
   // ---- Mitmach ----
   {const M=$('mit'); const on=!GMB&&t>=29.5&&t<33.0; M.style.display=on?'':'none';
@@ -247,10 +250,10 @@ function render(tn){const t=tn>=END-1e-6?LOOP+.01:remap(tn);
   {const C=$('chip'); $('chipT').textContent=GMB?'Preço na hora no site':'Preço na hora · link na bio';
    const p=lin(t,3.0,3.25), q=lin(t,32.85,33.0); C.style.display=t>=3.0&&t<33.0?'flex':'none'; C.style.opacity=1-q; C.style.transform=`scale(${p<=0?.9:.9+.1*back(p)})`;}
   // ---- Endcard ----
-  {const E=$('end'); const p=lin(t,33.0,33.12); const o=t<33||loop?0:p*(1-lin(t,38.12,38.24)); E.style.opacity=o; E.style.display=o>0?'':'none';
+  {const E=$('end'); const p=lin(t,33.0,33.12); const o=t<33||loop?0:p; E.style.opacity=o; E.style.display=o>0?'':'none';
    E.style.transform=`translateY(${(1-eo(lin(t,33.0,33.4)))*24}px)`;
    $('mke').style.transform=`scaleX(${expo(lin(t,33.15,33.45))})`;
-   const b=lin(t,33.5,33.75); $('eBio').style.transform=`scale(${b<=0?.9:.9+.1*back(b)})`; $('eBio').style.opacity=b>0?Math.min(1,b*3):0;
+   const b=lin(t,33.25,33.45); $('eBio').style.transform=`scale(${b<=0?.9:.9+.1*back(b)})`; $('eBio').style.opacity=b>0?Math.min(1,b*3):0;
    $('eBio').style.display=GMB?'none':'flex'; if(GMB){$('eUrl').style.top='728px';$('eWa').style.top='824px';}}
 }
 render(0);

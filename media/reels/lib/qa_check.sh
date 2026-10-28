@@ -9,6 +9,8 @@
 #
 # K.-o.: Auflösung 1080×1920 · 30 fps · H.264 yuv420p · BT.709 getaggt (Matrix/Primaries/TRC) · Länge 20–60 s ·
 #        -14 ±1 LUFS · True Peak ≤ -1,0 dBTP · Sperrliste (confer|reembol|corrig|1 dia útil|devol) in reel.html/Texten
+#        + qa_frames.js (Doppelbelichtung, Pille über x 900, angeschnittener Text, leere Pille, …) und qa_video.sh
+#          (Loop-SSIM, fast leeres Bild, Pegel-Dellen); Env QA_QUERY=cut=gmb für GMB-Schnitt, QA_FRAMES=0 schaltet ab
 # WARN:  Audio ≠ 48 kHz · Länge > 45 s (TikTok) · LRA < 3 LU · Hook 0–3 s > 4 LU leiser · Stillstand > 15 % · Hook-Bewegung · Keyframe-Abstand > 2 s ·
 #        kein faststart · Hinweisliste (IA, Claude, ICP, Nota Fiscal, intérprete …) · Glyphen ✓ ■ als Text in reel.html
 # Zeilen mit "qa-ignore" in reel.html/Texten werden bei der Wortsuche übersprungen (bewusste Ausnahme, z. B. Kommentar).
@@ -102,6 +104,20 @@ if [ ${#FILES[@]} -eq 0 ]; then warn "Sperrliste" "keine Dateien (reelDir angebe
     G=$(grep -nP '>[^<]*[✓✔✗✘■□]' "$RD/reel.html" | grep -v 'qa-ignore')
     [ -n "$G" ] && { warn "Glyphen als Text" "$(echo "$G" | wc -l) Zeile(n) – als SVG/DIV bauen"; echo "$G" | cut -c1-160 | sed 's/^/      /'; }
   fi
+fi
+
+echo "-- Bild für Bild (qa_frames.js, 10 fps DOM) + Video (qa_video.sh)   [QA_FRAMES=0 schaltet ab]"
+if [ "${QA_FRAMES:-1}" != "0" ]; then
+  L=$(cd "$(dirname "$0")" && pwd)
+  if [ -n "$RD" ] && [ -f "$RD/reel.html" ] && command -v node >/dev/null; then
+    QF=$(node "$L/qa_frames.js" "$RD" ${QA_QUERY:+--query "$QA_QUERY"} 2>&1); RC=$?
+    echo "$QF" | sed 's/^/    /'
+    [ $RC -eq 0 ] && pass "qa_frames" "keine blockierenden Treffer" || fail "qa_frames" "blockierende Treffer (s. o.)"
+  else warn "qa_frames" "übersprungen (reelDir mit reel.html + node nötig)"; fi
+  QV=$("$L/qa_video.sh" "$F" "$D/video" 2>&1); RC=$?
+  echo "$QV" | grep -v 'Kontaktbögen:' | sed 's/^/    /'
+  [ $RC -eq 0 ] && pass "qa_video" "Loop/Leere/Pegel ok" || fail "qa_video" "blockierende Treffer (s. o.)"
+  row "Kontaktbögen 10 fps" "$D/video/sheet_t*.png" "ANSEHEN"
 fi
 
 echo "-- Kontrollbilder"

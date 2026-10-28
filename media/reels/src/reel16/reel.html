@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<!-- Reel 16 · "O cartório disse que não lê alemão" · Stil v2 (Chat + Dokument-Tisch + echter Rechner DE)
+     render(t) ist deterministisch. ?cut=gmb -> 29,5-s-Schnitt für Google-Profil (ohne Szene 25,0–29,5, Endcard 4,5 s). -->
+<link rel="stylesheet" href="fonts/os.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',sans-serif;background:#97B9A8}
+.abs{position:absolute}
+#stage{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:hidden;background:radial-gradient(1300px 1200px at 50% 48%,#a3c3b3 0%,#97B9A8 52%,#8bb09d 100%)}
+/* ---------- Chat ---------- */
+.msg{position:absolute;max-width:810px;transform-origin:0 100%}
+.msg.A{transform-origin:100% 100%}
+.bub{font-weight:700;font-size:62px;line-height:1.16;letter-spacing:-.6px;padding:28px 40px 32px;border-radius:44px;box-shadow:0 14px 30px rgba(31,59,53,.18)}
+.J .bub{background:#fff;color:#1F3B35;border-bottom-left-radius:12px}
+.A .bub{background:#1F3B35;color:#fff;border-bottom-right-radius:12px}
+.big .bub{font-size:90px;font-weight:800;line-height:1.06;letter-spacing:-2px;padding:36px 46px 42px;border-radius:56px;border-bottom-left-radius:14px}
+.hi{color:#1F3B35;background:#EEDECE;border-radius:12px;padding:0 10px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.name{font-size:44px;font-weight:800;color:#1F3B35;margin:0 0 10px 12px;letter-spacing:-.3px}
+.A .name{text-align:right;margin:0 12px 10px 0}
+.src{display:flex;align-items:center;gap:14px;margin-top:16px;font-size:44px;font-weight:700;color:#1F3B35;background:rgba(238,222,206,.92);border-radius:30px;padding:8px 24px 10px 18px;width:max-content;max-width:810px;margin-left:auto}
+.emo{display:inline-block;width:84px;height:84px;vertical-align:-12px;margin-left:10px}
+/* ---------- Chips / Endcard ---------- */
+.chip{position:absolute;display:flex;align-items:center;white-space:nowrap;font-weight:800;color:#1F3B35;background:#EEDECE;border-radius:44px}
+/* ---------- Dokumente ---------- */
+.doc{position:absolute;left:0;top:0;width:580px;height:780px;margin:-390px 0 0 -290px;background:#f7f1e3;border-radius:14px;box-shadow:0 30px 60px rgba(25,50,44,.32);padding:34px}
+.doc .in{width:100%;height:100%;border:6px double #9b8a63;border-radius:6px;padding:40px 38px}
+.doc h3{font-family:'DejaVu Serif',Georgia,serif;font-weight:700;font-size:50px;letter-spacing:3px;color:#3d3423;text-align:center}
+.ln{height:16px;border-radius:8px;background:#d8ceb6;margin-top:30px}
+.tag{position:absolute;font-weight:800;font-size:60px;color:#fff;background:#1F3B35;border-radius:20px;padding:4px 22px 8px}
+.pt{position:absolute;left:0;top:0;width:560px;height:760px;margin:-380px 0 0 -280px;background:#fff;border-radius:14px;box-shadow:0 30px 60px rgba(25,50,44,.3);padding:46px 44px}
+.pt h4{font-weight:800;font-size:56px;line-height:1.02;letter-spacing:-1px;color:#1F3B35}
+.stamp{position:absolute;left:0;top:0;width:470px;height:150px;margin:-75px 0 0 -235px;border:9px solid #2d4f8a;border-radius:20px;color:#2d4f8a;font-weight:800;font-size:76px;letter-spacing:4px;display:flex;align-items:center;justify-content:center;mix-blend-mode:multiply}
+.folder{position:absolute;left:0;top:0;width:820px;height:700px;margin:-350px 0 0 -410px}
+/* ---------- Handy mit echtem Rechner ---------- */
+.phone{position:absolute;left:0;top:0;width:760px;height:1420px;border-radius:92px;background:#16302b;padding:20px;box-shadow:0 60px 120px rgba(10,25,22,.42),0 0 0 3px #0f2420 inset;transform-origin:0 0}
+.scr{position:relative;width:720px;height:1380px;border-radius:74px;overflow:hidden;background:#fbfaf7}
+.island{position:absolute;left:290px;top:18px;width:140px;height:40px;border-radius:20px;background:#0f2420;z-index:5}
+</style></head>
+<body><div id="stage">
+  <div class="abs" id="bg1" style="left:-240px;top:1240px;width:640px;height:640px;border-radius:50%;background:rgba(31,59,53,.10)"></div>
+  <div class="abs" id="bg2" style="left:780px;top:560px;width:480px;height:480px;border-radius:50%;background:rgba(238,222,206,.22)"></div>
+
+  <!-- ===== Objekt-Bühne (Weltkoordinaten = Bildschirm, Objekte per Keyframes) ===== -->
+  <div id="folderBack" class="folder" style="display:none"><svg width="820" height="700" viewBox="0 0 820 700"><path d="M20 70 Q20 40 50 40 H300 Q322 40 334 58 L356 90 H770 Q800 90 800 120 V680 H20 Z" fill="#2c5048"/></svg></div>
+  <div id="pt" class="pt">
+    <h4>TRADUÇÃO<br>JURAMENTADA</h4>
+    <div class="ln" style="width:92%;margin-top:40px"></div><div class="ln" style="width:80%"></div><div class="ln" style="width:88%"></div><div class="ln" style="width:70%"></div><div class="ln" style="width:84%"></div><div class="ln" style="width:60%"></div>
+    <svg id="seal" class="abs" style="left:350px;top:520px;transform-origin:75px 75px" width="150" height="150" viewBox="0 0 150 150"><circle cx="75" cy="75" r="66" fill="#1a7a5e"/><circle cx="75" cy="75" r="54" fill="none" stroke="#e8f3ee" stroke-width="4" stroke-dasharray="6 7"/><path d="M48 77 L67 96 L104 57" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div class="abs" style="left:44px;top:600px;font-weight:800;font-size:56px;letter-spacing:-1.5px;color:#1F3B35">traduzme</div>
+    <div class="tag" style="right:-26px;top:-30px;background:#1a7a5e">PT</div>
+  </div>
+  <div id="doc" class="doc"><div class="in">
+    <h3>HEIRATS&shy;URKUNDE</h3>
+    <div class="ln" style="width:90%;margin-top:44px"></div><div class="ln" style="width:76%"></div><div class="ln" style="width:84%"></div><div class="ln" style="width:66%"></div><div class="ln" style="width:88%"></div><div class="ln" style="width:72%"></div><div class="ln" style="width:58%"></div>
+    <svg class="abs" style="left:66px;top:560px" width="130" height="130" viewBox="0 0 130 130"><circle cx="65" cy="65" r="56" fill="none" stroke="#9b8a63" stroke-width="5"/><circle cx="65" cy="65" r="40" fill="none" stroke="#9b8a63" stroke-width="3" stroke-dasharray="4 6"/></svg>
+    <div class="abs" style="left:300px;top:640px;width:200px;height:6px;background:#9b8a63;border-radius:3px;opacity:.7"></div>
+    </div>
+    <div class="tag" style="left:-26px;top:-30px">DE</div>
+    <div id="stamp" class="stamp" style="opacity:0">APOSTILLE</div>
+  </div>
+  <svg id="arrow" class="abs" style="left:0;top:0;opacity:0" width="150" height="110" viewBox="0 0 150 110"><path d="M12 55 H118 M84 18 L126 55 L84 92" fill="none" stroke="#1F3B35" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <div id="folderFront" class="folder" style="display:none">
+    <svg class="abs" width="820" height="700" viewBox="0 0 820 700"><path d="M0 250 Q0 220 30 220 H790 Q820 220 820 250 V680 Q820 700 800 700 H20 Q0 700 0 680 Z" fill="#376259"/><path d="M0 250 Q0 220 30 220 H790 Q820 220 820 250 V262 H0 Z" fill="#41705f"/></svg>
+    <div class="abs" style="left:0;top:250px;width:820px;text-align:center;font-weight:800;font-size:72px;color:#fff;letter-spacing:-1px">Cartório</div>
+    
+  </div>
+  <div id="chipTr" class="chip" style="height:96px;padding:0 40px;font-size:54px;opacity:0">
+    <svg width="50" height="50" viewBox="0 0 24 24" style="margin-right:14px"><path d="M4 7h11M11 3l4 4-4 4M20 17H9M13 13l-4 4 4 4" fill="none" stroke="#1F3B35" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Traslado</div>
+
+  <div id="phone" class="phone" style="display:none"><div class="scr"><div class="island"></div>
+    <div id="scrA" class="abs" style="left:0;top:0;width:720px;height:1529px"><img src="ui_form_de.png" style="width:720px;height:1529px;display:block">
+      <div class="abs" id="rowGlow" style="left:38px;top:962px;width:644px;height:228px;border-radius:18px;border:6px solid #1a7a5e;opacity:0"></div>
+      <div class="abs" id="deGlow" style="left:500px;top:20px;width:86px;height:80px;border-radius:20px;border:6px solid #1a7a5e;opacity:0"></div></div>
+    <div id="scrB" class="abs" style="left:0;top:0;width:720px;height:1380px;display:none;background:#fbfaf7"><img src="ui_dados_de.png" style="width:720px;height:578px;display:block;margin-top:60px">
+      <div class="abs" id="chk" style="left:57px;top:450px;width:37px;height:37px;border-radius:9px;background:#1a7a5e;opacity:0"><svg width="37" height="37" viewBox="0 0 24 24"><path d="M6 12.5l4 4 8-9" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="abs" id="estGlow" style="left:38px;top:422px;width:644px;height:94px;border-radius:16px;border:5px solid #1a7a5e;opacity:0"></div></div>
+  </div></div>
+  <div id="tap" class="abs" style="left:0;top:0;width:96px;height:96px;margin:-48px 0 0 -48px;border-radius:50%;background:rgba(255,255,255,.6);border:4px solid #fff;opacity:0;z-index:30"></div>
+  <div id="tapR" class="abs" style="left:0;top:0;width:200px;height:200px;margin:-100px 0 0 -100px;border-radius:50%;border:6px solid #fff;opacity:0;z-index:30"></div>
+
+  <!-- ===== Bildschirm-Ebene: Chat ===== -->
+  <div id="fadeB" class="abs" style="left:0;top:1540px;width:1080px;height:380px;z-index:19;opacity:0;background:linear-gradient(to bottom,rgba(139,176,157,0) 0%,rgba(139,176,157,.92) 55%,#8bb09d 100%)"></div>
+  <div id="chat" class="abs" style="left:0;top:0;width:1080px;height:1920px;z-index:20"></div>
+
+  <!-- CTA-Chip ab 3,0 s -->
+  <div id="chipCta" class="chip" style="left:90px;top:300px;height:86px;padding:0 30px 0 22px;font-size:44px;z-index:25;opacity:0;transform-origin:0 50%">
+    <svg width="46" height="46" viewBox="0 0 24 24" style="margin-right:12px"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1" stroke="#1F3B35" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg>Preço na hora · link na bio</div>
+
+  <!-- Endcard-Kontakt -->
+  <div id="endc" class="abs" style="left:90px;top:0;width:810px;z-index:25;opacity:0">
+    <div id="chipBio" class="chip" style="position:relative;height:100px;padding:0 40px 0 30px;font-size:54px;width:max-content;transform-origin:0 50%">
+      <svg width="54" height="54" viewBox="0 0 24 24" style="margin-right:14px"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1" stroke="#1F3B35" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg>link na bio</div>
+    <div id="url" style="margin-top:44px;font-weight:800;font-size:72px;letter-spacing:-1.5px;color:#1F3B35">traduzme.com.br</div>
+    <div id="wa" style="margin-top:22px;display:flex;align-items:center;gap:18px;font-weight:800;font-size:68px;letter-spacing:-1px;color:#1F3B35">
+      <svg width="74" height="74" viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z" fill="#1F3B35"/><path d="M9 8.2c.3-.6.6-.6 1-.6h.4c.2 0 .4.1.5.4l.7 1.6c.1.3 0 .5-.1.7l-.5.6c-.1.2-.1.4 0 .6.6 1 1.4 1.8 2.5 2.4.2.1.4.1.6-.1l.6-.7c.2-.2.4-.2.7-.1l1.6.8c.3.1.4.3.4.5 0 .5-.2 1.3-.9 1.7-.6.4-1.6.5-3.2-.2-1.7-.8-3.5-2.6-4.3-4.3-.6-1.4-.4-2.6 0-3.3z" fill="#EEDECE"/></svg>(61) 99803-8363</div>
+  </div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const lin=(t,a,b)=>cl((t-a)/(b-a));
+const eo=x=>1-Math.pow(1-x,3);
+const expo=x=>x>=1?1:1-Math.pow(2,-10*x);
+const quint=x=>x<.5?16*x**5:1-Math.pow(-2*x+2,5)/2;
+const back=x=>{const c=1.6;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const CUT=new URLSearchParams(location.search).get('cut');
+const END=CUT==='gmb'?29.5:35.0;
+const M=t=>CUT==='gmb'&&t>=25.0?t+4.5:t;      // GMB: Szene 25,0–29,5 entfällt, Endcard endet bei Master 34,0
+
+// ---------- Chat-Daten (Text = Storyboard, jede Faktenaussage mit Quelle) ----------
+const EMO='<svg class="emo" viewBox="0 0 64 64"><circle cx="32" cy="34" r="27" fill="#FFCC4D"/><path d="M19 30q4-5 8 0M37 30q4-5 8 0" fill="none" stroke="#664500" stroke-width="3.4" stroke-linecap="round"/><path d="M19 39q13 12 26 0z" fill="#664500"/><path d="M50 8c-4 6-6 9-6 12a6 6 0 0 0 12 0c0-3-2-6-6-12z" fill="#5DADEC"/></svg>';
+const SRC='<svg width="40" height="40" viewBox="0 0 24 24"><path d="M5 4h10l4 4v12H5z" fill="none" stroke="#1F3B35" stroke-width="2.2" stroke-linejoin="round"/><path d="M8.5 12h7M8.5 15.5h7M8.5 8.5h4" stroke="#1F3B35" stroke-width="2.2" stroke-linecap="round"/></svg>';
+const MSG={
+ J1:{w:'J',big:1,name:'Jonas',h:'O cartório disse que não lê alemão'+EMO},
+ TY:{w:'A',h:'<span class="dots"><i></i><i></i><i></i></span>'},
+ A1:{w:'A',name:'Ana',h:'Normal! Falta a <span class="hi">tradução juramentada</span>.'},
+ A2:{w:'A',h:'Documento estrangeiro só tem efeito legal no Brasil <span class="hi">traduzido pro português</span>.',src:'Código Civil, art. 224'},
+ J2:{w:'J',h:'E a apostila? Faço aqui no Brasil?'},
+ A3:{w:'A',h:'Não: é feita <span class="hi">na Alemanha</span>, antes da tradução.',src:'Decreto 8.660/2016 (Apostila)'},
+ J3:{w:'J',h:'E pra registrar nosso casamento aqui?'},
+ A4:{w:'A',h:'Traslado: certidão alemã apostilada + tradução juramentada <span class="hi">feita no Brasil</span>.',src:'Res. CNJ 155/2012, art. 13'},
+ A5:{w:'A',h:'Manda certidão + apostila juntas: <span class="hi">sem custo extra</span>.'},
+ J4:{w:'J',h:'Tem até em alemão!'},
+ A6:{w:'A',h:'Sem CPF? Tem opção <span class="hi">pra estrangeiro</span>.'},
+ J5:{w:'J',big:1,name:'Jonas',h:'Preço na hora, no site.'},
+};
+// Szenen: ab Zeit t sichtbare Nachrichten (oben -> unten); neue Nachricht poppt bei ihrem ersten Auftreten
+const SC=[[0,['J1']],[0.6,['J1','TY']],[2.5,['J1','A1']],[5.0,['A1','A2']],[9.0,['A2','J2']],[11.0,['J2','A3']],[15.0,['A3','J3']],[17.0,['J3','A4']],[19.0,['A4']],
+          [21.0,['A5']],[25.0,['J4']],[27.0,['J4','A6']],[29.5,['J5']],[34.6,['J1']]];
+const Y0=420, GAP=30;
+const chat=$('chat'), EL={};
+for(const [k,m] of Object.entries(MSG)){const d=document.createElement('div'); d.className='msg '+m.w+(m.big?' big':''); d.id='m_'+k;
+  d.innerHTML=(m.name?`<div class="name">${m.name}</div>`:'')+`<div class="bub">${m.h}</div>`+(m.src?`<div class="src">${SRC}${m.src}</div>`:'');
+  d.style.display='none'; chat.appendChild(d); EL[k]=d;}
+// Tipp-Punkte
+const st=document.createElement('style'); st.textContent='.dots{display:inline-flex;gap:16px;padding:14px 6px}.dots i{width:22px;height:22px;border-radius:50%;background:#fff;display:block}'; document.head.appendChild(st);
+const H={}; function measure(){for(const k in EL){const e=EL[k]; e.style.display='block'; e.style.visibility='hidden'; e.style.width=(Math.ceil(e.getBoundingClientRect().width)+2)+'px'; H[k]=e.offsetHeight;} LAY=SC.map(([t,l])=>[t,l,layout(l)]);}
+function layout(list){const y={}; let c=Y0; for(const k of list){y[k]=c; c+=H[k]+GAP;} return y;}
+let LAY=[];
+const firstSeen={}; for(const [t,l] of SC) for(const k of l) if(!(k in firstSeen)) firstSeen[k]=t;
+const SCROLL=.4;
+function renderChat(t){
+  let i=0; for(let j=0;j<LAY.length;j++) if(t>=LAY[j][0]) i=j;
+  const [t0,list,Y]=LAY[i]; const prev=i>0?LAY[i-1]:null; const p=quint(lin(t,t0,t0+SCROLL));
+  for(const k in EL){const e=EL[k]; let show=false, y=0, o=1, sc=1;
+    const inNow=list.includes(k), inPrev=prev&&prev[1].includes(k);
+    if(inNow){show=true; const yp=inPrev?prev[2][k]:Y[k]; y=yp+(Y[k]-yp)*p;
+      const isNew=!inPrev; if(isNew){const a=lin(t,t0,t0+.32); sc=a<=0?.6:.6+.4*back(a); o=a>0?1:0;}
+      if(k==='J1'&&t0===34.6){const a=lin(t,34.62,34.92); sc=.85+.15*back(a); o=a>0?1:0;}  // Loop-Naht
+    } else if(inPrev&&t<t0+SCROLL){show=true; const yp=prev[2][k]; y=yp-150*p; o=1-lin(t,t0,t0+(t0===34.6?.12:.22));}
+    if(i===0&&k==='J1'){o=1;sc=1;}
+    e.style.display=show?'block':'none'; e.style.visibility='visible'; if(!show) continue;
+    const x=MSG[k].w==='J'?90:900-e.offsetWidth;
+    e.style.left=x+'px'; e.style.top=y+'px'; e.style.opacity=o; e.style.transform=`scale(${sc})`;
+  }
+  // Tipp-Punkte animieren
+  EL.TY.querySelectorAll('i').forEach((d,n)=>{d.style.transform=`translateY(${-10*Math.max(0,Math.sin(t*7-n*.8))}px)`; d.style.opacity=.55+.45*Math.max(0,Math.sin(t*7-n*.8));});
+}
+
+// ---------- Objekt-Keyframes: [t, x, y, scale, rot, opacity] (Mittelpunkt in Bildschirm-px) ----------
+function kf(K,t){if(t<=K[0][0])return K[0].slice(1); for(let i=0;i<K.length-1;i++){const a=K[i],b=K[i+1]; if(t<=b[0]){const p=b[6]==='x'?expo(lin(t,a[0],b[0])):quint(lin(t,a[0],b[0])); return a.slice(1,6).map((v,j)=>v+(b[j+1]-v)*p)}} return K[K.length-1].slice(1,6);}
+function put(el,v,dy=0){const [x,y,s,r,o]=v; el.style.transform=`translate(${x}px,${y+dy}px) rotate(${r}deg) scale(${s})`; el.style.opacity=o; el.style.display=o<=0.001?'none':'block';}
+const DOC=[[0,540,1900,1,-6,1],[0.5,540,1640,1,-4,1,'x'],[5.0,540,1630,1.06,-2,1],[5.5,330,1500,.78,-6,1],[9.0,315,1485,.81,-4.5,1],[9.5,540,1530,.95,-2,1],
+           [11.6,540,1530,.95,-2,1],[15.0,540,1520,1.0,-1,1],[17.0,540,1520,1.0,-1,1],[17.5,430,1470,.72,-5,1],[19.0,430,1470,.72,-5,1],[19.5,440,1130,.6,-4,1],[19.9,450,1190,.6,-3,1],[21.0,450,1190,.6,-3,1],[21.5,450,2400,.6,-3,1],
+           [29.5,470,2500,.75,-6,1],[30.1,400,1720,.75,-7,1,'x'],[34.6,400,1720,.75,-7,1],[35.0,540,1900,1,-6,1]];
+const PT=[[0,1500,1520,.78,7,1],[5.0,1500,1520,.78,7,1],[5.6,770,1520,.78,5,1,'x'],[9.0,785,1505,.81,3.5,1],[9.5,1500,1560,.78,8,1],
+          [17.0,1500,1560,.78,8,1],[17.5,690,1500,.72,5,1],[19.0,690,1500,.72,5,1],[19.5,640,1150,.6,4,1],[19.9,630,1210,.6,4,1],[21.0,630,1210,.6,4,1],[21.5,630,2420,.6,4,1],
+          [29.5,620,2520,.75,6,1],[30.1,665,1740,.75,6,1,'x'],[34.6,665,1740,.75,6,1],[35.0,1500,1740,.75,9,1]];
+const FOLD=[[0,540,2400,1,0,1],[19.0,540,2400,1,0,1],[19.45,540,1270,1,0,1,'x'],[21.0,540,1270,1,0,1],[21.5,540,2500,1,0,1]];
+// Handy: [t, x(linke Kante), y(obere Kante), scale, innerScrollA]
+const PH=[[0,160,2000,1,900],[21.0,160,2000,1,900],[21.55,160,800,1,900,'x'],[22.0,160,800,1,900],[22.6,-46,848,1.65,900],[25.0,-72,836,1.72,900],
+          [25.6,60,600,1.15,0],[27.0,60,600,1.15,0],[27.45,60,780,1.35,0],[29.5,60,780,1.35,0],[30.0,60,2100,1.35,0]];
+function kph(t){if(t<=PH[0][0])return PH[0].slice(1); for(let i=0;i<PH.length-1;i++){const a=PH[i],b=PH[i+1]; if(t<=b[0]){const p=b[5]==='x'?expo(lin(t,a[0],b[0])):quint(lin(t,a[0],b[0])); return a.slice(1,5).map((v,j)=>v+(b[j+1]-v)*p)}} return PH[PH.length-1].slice(1,5);}
+
+function render(tv){const t=M(tv);
+  // Hintergrund-Parallaxe (kein Frame völlig still)
+  $('bg1').style.transform=`translate(${Math.sin(t*.45)*22}px,${-t*5}px)`; $('bg2').style.transform=`translate(${-t*4}px,${Math.cos(t*.55)*18}px)`;
+  renderChat(t);
+  $('fadeB').style.opacity=lin(t,27.2,27.6)*(1-lin(t,29.5,29.9));   // leere Handy-Fläche unter dem Formular ausblenden
+  const idle=Math.sin(t*1.05)*4;
+  // Urkunde + Übersetzung
+  const dv=kf(DOC,t); put($('doc'),dv,idle);
+  const pv=kf(PT,t); put($('pt'),pv,-idle); $('pt').style.display=pv[0]>1300?'none':'block';
+  {const q=lin(t,7.0,7.35); $('seal').style.transform=`scale(${1+.18*Math.sin(q*Math.PI)}) rotate(${-20*Math.sin(q*Math.PI)}deg)`;}
+  // Pfeil DE -> PT (Lernpunkt 1)
+  const A=$('arrow'); A.style.opacity=0; A.style.transform=`translate(${475+(1-eo(lin(t,5.5,5.8)))*-30}px,${1300}px)`;
+  // Stempel APOSTILLE (Lernpunkt 2), sitzt auf der Urkunde
+  const S=$('stamp'); const sp=lin(t,11.25,11.5); S.style.opacity=t<11.25?0:1-lin(t,34.6,34.9);   // Loop: Frame 0 zeigt die Urkunde ohne Stempel
+  S.style.left='290px'; S.style.top='335px';
+  S.style.transform=`rotate(-9deg) scale(${t<11.5?1.9-0.9*sp*sp:1+.05*Math.sin(lin(t,11.5,11.7)*Math.PI)})`;
+  if(t>=11.5&&t<11.75){const q=lin(t,11.5,11.75); $('doc').style.transform+=` scale(${1-.025*Math.sin(q*Math.PI)})`;}
+  // Mappe Cartório (Lernpunkt 3)
+  const fv=kf(FOLD,t); const fb=$('folderBack'), ff=$('folderFront'); const fshow=t>19.0&&t<21.6;
+  fb.style.display=ff.style.display=fshow?'block':'none';
+  if(fshow){fb.style.transform=`translate(${fv[0]}px,${fv[1]}px)`; ff.style.transform=`translate(${fv[0]}px,${fv[1]+40}px)`;
+    // Dokumente gleiten in die Mappe: hinter die Vorderseite legen
+    const into=t>=19.45; $('doc').style.zIndex=$('pt').style.zIndex=into?1:3; fb.style.zIndex=0; ff.style.zIndex=4;}
+  else {$('doc').style.zIndex=3; $('pt').style.zIndex=2;}
+  const tr=$('chipTr'); const tp=lin(t,19.9,20.2); tr.style.opacity=t>=19.9&&t<21.2?1-lin(t,21.0,21.2):0; tr.style.left='0px'; tr.style.top='0px';
+  tr.style.transform=`translate(${540-tr.offsetWidth/2}px,${fv[1]+30}px) scale(${tp<=0?0:back(tp)})`; tr.style.zIndex=5;
+  // Handy mit echtem Rechner (DE)
+  const P=$('phone'); const ph=kph(t); P.style.display=t>=21.0&&t<30.0?'block':'none';
+  if(t>=21.0){P.style.transform=`translate(${ph[0]}px,${ph[1]}px) scale(${ph[2]})`;
+    const a=$('scrA'), b=$('scrB'); const sw=quint(lin(t,27.0,27.4));
+    a.style.transform=`translate(${-720*sw}px,${-ph[3]}px)`; b.style.display=t>=27.0?'block':'none'; b.style.transform=`translateX(${720*(1-sw)}px)`;
+    $('rowGlow').style.opacity=t>22.4&&t<24.9?lin(t,22.4,22.6):0;
+    $('deGlow').style.opacity=t>25.6&&t<26.95?lin(t,25.6,25.8)*(.75+.25*Math.sin((t-25.6)*6)):0;
+    $('estGlow').style.opacity=t>27.45&&t<29.45?lin(t,27.45,27.6):0;
+    $('chk').style.opacity=t>=27.95?1:0; $('chk').style.transform=`scale(${t<27.95?0:back(lin(t,27.95,28.2))})`;
+    // Finger-Tap auf die Checkbox (Bildschirmkoordinaten aus Handy-Transform)
+    const sx=ph[0]+ph[2]*(20+75.5), sy=ph[1]+ph[2]*(20+468.5);
+    const fp=lin(t,27.5,27.8); const T=$('tap'); T.style.opacity=t>27.5&&t<28.35?1-lin(t,28.15,28.35):0;
+    T.style.transform=`translate(${sx+(1-eo(fp))*220}px,${sy+(1-eo(fp))*160}px) scale(${t>27.85&&t<28.0?.8:1})`;
+    const rp=lin(t,27.9,28.35); const R=$('tapR'); R.style.opacity=rp>0&&rp<1?1-rp:0; R.style.transform=`translate(${sx}px,${sy}px) scale(${.4+rp})`;
+  } else {$('tap').style.opacity=0; $('tapR').style.opacity=0;}
+  // CTA-Chip ab 3,0 s bis Endcard
+  const C=$('chipCta'); const cp=lin(t,3.0,3.3); C.style.opacity=t<3.0?0:1-lin(t,29.5,29.7); C.style.transform=`scale(${cp<=0?0:back(cp)})`;
+  // Endcard-Kontakt (unter der Endcard-Blase)
+  const E=$('endc'); const ep=lin(t,30.0,30.5); const eb=EL.J5; E.style.top=(parseFloat(eb.style.top||420)+H.J5+60)+'px';
+  E.style.opacity=t<30.0?0:(1-lin(t,34.6,34.8)); E.style.transform=`translateY(${(1-eo(ep))*40}px)`;
+  const bp=lin(t,30.0,30.35); $('chipBio').style.transform=`scale(${bp<=0?0:back(bp)})`;
+}
+if(CUT==='gmb'){ // Google-Profil: Link-Knopf statt Bio -> kein "link na bio" im Bild
+  $('chipCta').lastChild.textContent='Preço na hora no site'; $('chipBio').style.display='none'; $('url').style.marginTop='0px';}
+// Schriften erst sicher laden, dann messen (sonst Messung mit Ersatzschrift → Blasen zu schmal/zu niedrig)
+document.fonts.ready.then(()=>Promise.all(['700 62px "Open Sans"','800 90px "Open Sans"','800 44px "Open Sans"','700 44px "Open Sans"'].map(f=>document.fonts.load(f,'ãéçÃ!?'))))
+  .then(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))))
+  .then(()=>{for(const k in EL) EL[k].style.width='auto'; measure(); render(0); window.READY=true;});
+</script></body></html>

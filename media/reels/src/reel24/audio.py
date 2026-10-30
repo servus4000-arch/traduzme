@@ -2,7 +2,7 @@
 SFX-Grammatik (Design-Regeln v3 D7): impact = Payoff (2,5 Stempel / 25,5 Haken) · stamp = Urteil/Aufschlag (9,5 / 15,5) + Endcard (27,5) ·
 whoosh = Fahrt (≤ 4×: 2,95 / 6,0 / 18,0 / 24,0) · click = Tap (19,0 / 20,0) · pop = Pille/Beleg/Haken. Gleiche SFX nie innerhalb 1 s, ≤ 1 SFX je Bildereignis.
 Zeiten = Designzeit wie reel.html; GMB lässt 18,0–24,0 weg (Rechner-Szenen), alles bleibt im 0,5-s-Raster.
-SFX-Pegel nach Messung (Raster E4 ≤ Musik + 4 dB, Abnahme R23 23-4): g siehe G unten.
+SFX-Pegel nach Messung (Raster E4 ≤ Musik + 4 dB, Abnahme R23 23-4); Abnahme R24 24-3: pop/whoosh +6 dB, click +10 dB (vorher 9–23 dB unter der Musik).
 """
 import os, sys
 LIB = next(p for p in ('/tmp/r24pipe',   # Pipeline v2 = git show origin/reels-pipeline-v2:media/reels/lib/*
@@ -26,27 +26,27 @@ def hit(t):
     if T(t) is not None: tr.hit(T(t))
 
 tr.section(0, 'main')
-for a, d in ((6.0, 2.95), (12.0, 2.95), (18.0, 2.95), (24.0, 3.45)):   # ruhigere Erklär-Phasen −4 dB (Ducking ≤ 4 dB, LRA ≥ 3)
+for a, d in ((6.0, 2.95), (12.0, 2.95), (18.0, 2.95), (24.0, 2.95)):   # ruhigere Erklär-Phasen −4 dB (Ducking ≤ 4 dB, LRA ≥ 3)
     if T(a) is not None: tr.duck(T(a), d, .631)
 sfx('impact', 2.5, .44)                # Stempel JURAMENTADA + Punch
-sfx('whoosh', 2.95, .5, d=.45)         # Tradução gleitet ein
-sfx('pop', 3.5, .5, f=760)             # Beleg CC 224
-sfx('whoosh', 6.0, .5, d=.4)           # Pasta fällt
-sfx('pop', 6.5, .5, f=720)             # Beleg + Blatt A
+sfx('whoosh', 2.95, 1.0, d=.45)         # Tradução gleitet ein
+sfx('pop', 3.5, 1.0, f=760)             # Beleg CC 224
+sfx('whoosh', 6.0, 1.0, d=.4)           # Pasta fällt
+sfx('pop', 6.5, 1.0, f=720)             # Beleg + Blatt A
 sfx('stamp', 9.5, .44)                 # Mini-Acte landet in Spalte B + Punch
-sfx('pop', 10.0, .5, f=760)            # Beleg
-sfx('pop', 12.5, .5, f=800)            # Haken SP
-sfx('pop', 13.5, .5, f=840)            # Haken PR
+sfx('pop', 10.0, 1.0, f=760)            # Beleg
+sfx('pop', 12.5, 1.0, f=800)            # Haken SP
+sfx('pop', 13.5, 1.0, f=840)            # Haken PR
 sfx('stamp', 15.5, .44)                # Apostille schlägt auf + Punch
-sfx('pop', 16.0, .5, f=760)            # Beleg FAQ
-sfx('whoosh', 18.0, .5, d=.45)         # Formular kommt
-sfx('click', 19.0, .4)                # Tipp Francês
-sfx('click', 20.0, .5)                # Tipp Português
-sfx('pop', 21.0, .5, f=780)            # „Como funciona“ Schritt 4
-sfx('whoosh', 24.0, .5, d=.45)         # Balcão
-sfx('pop', 25.0, .5, f=740)            # Beleg
+sfx('pop', 16.0, 1.0, f=760)            # Beleg FAQ
+sfx('whoosh', 18.0, 1.0, d=.45)         # Formular kommt
+sfx('click', 19.0, 1.26)                # Tipp Francês
+sfx('click', 20.0, 1.58)                # Tipp Português
+sfx('pop', 21.0, 1.0, f=780)            # „Como funciona“ Schritt 4
+sfx('whoosh', 24.0, 1.0, d=.45)         # Balcão
+sfx('pop', 25.0, 1.0, f=740)            # Beleg
 sfx('impact', 25.5, .4)               # Haken + Punch
-hit(27.5); sfx('stamp', 27.5, .34)     # Endcard
+hit(27.0); sfx('stamp', 27.0, .34)     # Endcard (ab 27,0: dreizeilige Headline, Abnahme 24-1)
 print('LUFS', tr.write(OUT, lufs=-14.0, fade=(END - .15, END)))
 import wave, numpy as np                # 15-ms-Einblendung am Dateianfang (AAC-Überschwinger, Lehre R22)
 with wave.open(OUT, 'rb') as w: prm = w.getparams(); x = np.frombuffer(w.readframes(prm.nframes), dtype=np.int16).reshape(-1, prm.nchannels).astype(np.float64)

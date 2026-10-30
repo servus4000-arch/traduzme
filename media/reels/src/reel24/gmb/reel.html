@@ -22,7 +22,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
 .bar{position:absolute;height:14px;border-radius:7px;background:#D5DAD4}
 .obj{position:absolute;left:0;top:0;transform-origin:50% 50%}
 /* Text-Ebene */
-.hook{position:absolute;left:96px;top:316px;font-weight:800;font-size:96px;line-height:1.12;letter-spacing:-2.5px;color:#fff;white-space:nowrap}
+.hook{position:absolute;left:96px;top:316px;font-weight:800;font-size:96px; /* Ausnahme Hook-Bibliothek: 96 statt 104–108 px, weil „alguém de fora?“ bei 104 px bis x 930 reicht (Safe Zone x ≤ 900); Hook:Caption 1,45, voll lesbar (Abnahme R24) */ line-height:1.12;letter-spacing:-2.5px;color:#fff;white-space:nowrap}
 .mk{display:inline-block;background:var(--areia);color:var(--dark);border-radius:14px;padding:0 12px 8px;margin:0 -6px;line-height:1.02}
 .cap{position:absolute;left:90px;top:320px}
 .cap .ln{display:table;margin-bottom:8px;padding:6px 24px 10px;border-radius:24px;background:var(--dark);color:#fff;font-weight:800;font-size:66px;line-height:1.12;letter-spacing:-1px;white-space:nowrap;transform-origin:0 50%}
@@ -154,10 +154,10 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
 
   <!-- Endcard (Absender traduzme; Kopf an der Hook-Position) -->
   <div class="abs" id="end" style="left:0;top:0;width:1080px;height:1920px;opacity:0">
-    <div class="hook">Papéis de fora?<br><span class="mk">Juramentada.</span></div>
-    <div class="chip" id="eBio" style="top:576px;box-shadow:none">Preço na hora · link na bio</div>
-    <div class="big" id="eUrl" style="left:96px;top:696px;font-size:66px">traduzme.com.br</div>
-    <div class="big" id="eWa" style="left:96px;top:792px;font-size:66px;display:flex;align-items:center;gap:24px"><svg width="72" height="72" viewBox="0 0 32 32"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3z" fill="#EEDECE"/><path d="M11.6 9.6c.3-.6.6-.6 1-.6h.8c.3 0 .6.1.8.6l1.1 2.6c.1.3.1.6-.1.9l-.7.9c-.2.2-.2.5 0 .8a10 10 0 0 0 4.3 3.8c.3.1.6.1.8-.1l.9-1.1c.2-.3.6-.3.9-.2l2.6 1.2c.3.2.5.4.4.8-.2 1.3-1.3 2.4-2.7 2.5-1.2.1-3.6-.5-6.4-3.1-2.6-2.4-3.7-5-3.8-6.2 0-.8.3-1.6.8-2.3z" fill="#376259"/></svg>(61) 99803-8363</div>
+    <div class="hook">Papéis de fora?<br>Em geral,<br><span class="mk">juramentada.</span></div>
+    <div class="chip" id="eBio" style="top:684px;box-shadow:none">Preço na hora · link na bio</div>
+    <div class="big" id="eUrl" style="left:96px;top:804px;font-size:66px">traduzme.com.br</div>
+    <div class="big" id="eWa" style="left:96px;top:900px;font-size:66px;display:flex;align-items:center;gap:24px"><svg width="72" height="72" viewBox="0 0 32 32"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3z" fill="#EEDECE"/><path d="M11.6 9.6c.3-.6.6-.6 1-.6h.8c.3 0 .6.1.8.6l1.1 2.6c.1.3.1.6-.1.9l-.7.9c-.2.2-.2.5 0 .8a10 10 0 0 0 4.3 3.8c.3.1.6.1.8-.1l.9-1.1c.2-.3.6-.3.9-.2l2.6 1.2c.3.2.5.4.4.8-.2 1.3-1.3 2.4-2.7 2.5-1.2.1-3.6-.5-6.4-3.1-2.6-2.4-3.7-5-3.8-6.2 0-.8.3-1.6.8-2.3z" fill="#376259"/></svg>(61) 99803-8363</div>
   </div>
 </div>
 <script>
@@ -208,27 +208,27 @@ $('FIGB').innerHTML=figSVG('B',{hood:C.areia,skin:'#C99A74',hair:'#5A3B2A',long:
 
 // Posen [t, x, y, rot, scale, opacity, ease]  (Mittelpunkt in Bildkoordinaten); harte Schnitte = gleiche Zeit ±0,001
 const HA=[330,1044,-2,.85], HB=[680,1044,2,.85], HACT=[694,1116,6,.66], HRING=[512,780,0,1];   // Hook-Pose
-const EA=[330,1222,-2,.66], EB=[620,1222,2,.66], EACT=[728,1288,6,.5], ERING=[486,1020,0,.8];  // Endcard-Pose (unter WhatsApp-Zeile)
+const EA=[330,1272,-2,.58], EB=[600,1272,2,.58], EACT=[712,1330,6,.46], ERING=[466,1092,0,.6];  // Endcard-Pose (unter WhatsApp-Zeile)
 const P={
- FIGA:[[0,...HA,1],[2.998,...HA,1],[2.999,...HA,0,'l'],[23.999,330,1012,-2,.85,0],[24.0,330,1012,-2,.85,1,'l'],[27.499,330,1012,-2,.85,1],[27.5,...EA,1,'l'],[33.699,...EA,1],[33.7,...HA,1,'l']],
- FIGB:[[0,...HB,1],[2.998,...HB,1],[2.999,...HB,0,'l'],[23.999,720,1012,2,.85,0],[24.0,720,1012,2,.85,1,'l'],[27.499,720,1012,2,.85,1],[27.5,...EB,1,'l'],[33.699,...EB,1],[33.7,...HB,1,'l']],
- RINGS:[[0,...HRING,1],[2.998,...HRING,1],[2.999,...HRING,0,'l'],[27.499,...ERING,0],[27.5,...ERING,1,'l'],[33.699,...ERING,1],[33.7,...HRING,1,'l']],
+ FIGA:[[0,...HA,1],[2.998,...HA,1],[2.999,...HA,0,'l'],[23.999,330,1012,-2,.85,0],[24.0,330,1012,-2,.85,1,'l'],[26.999,330,1012,-2,.85,1],[27.0,...EA,1,'l'],[33.699,...EA,1],[33.7,...HA,1,'l']],
+ FIGB:[[0,...HB,1],[2.998,...HB,1],[2.999,...HB,0,'l'],[23.999,720,1012,2,.85,0],[24.0,720,1012,2,.85,1,'l'],[26.999,720,1012,2,.85,1],[27.0,...EB,1,'l'],[33.699,...EB,1],[33.7,...HB,1,'l']],
+ RINGS:[[0,...HRING,1],[2.998,...HRING,1],[2.999,...HRING,0,'l'],[26.999,...ERING,0],[27.0,...ERING,1,'l'],[33.699,...ERING,1],[33.7,...HRING,1,'l']],
  ACTE:[[0,...HACT,1],[2.998,...HACT,1],[2.999,290,1000,-3,.8,1,'l'],[5.999,290,1000,-3,.8,1],[6.0,290,1000,-3,.8,0,'l'],
        [14.999,470,1000,-2,1.0,0],[15.0,470,1000,-2,1.0,1,'l'],[17.999,470,1000,-2,1.0,1],[18.0,470,1000,-2,1.0,0,'l'],
-       [27.499,...EACT,0],[27.5,...EACT,1,'l'],[33.699,...EACT,1],[33.7,...HACT,1,'l']],
+       [26.999,...EACT,0],[27.0,...EACT,1,'l'],[33.699,...EACT,1],[33.7,...HACT,1,'l']],
  STMP:[[0,652,1132,-10,.84,0],[2.499,652,1132,-10,.84,0],[2.5,652,1132,-10,.84,1,"l"],[2.62,652,1132,-10,.7,1,"o"],[2.998,652,1132,-10,.7,1],[2.999,652,1132,-10,.7,0,"l"],
-       [27.499,724,1306,-10,.55,0],[27.5,724,1306,-10,.55,1,"l"],[33.699,724,1306,-10,.55,1],[33.7,652,1132,-10,.84,0,"l"]],
+       [26.999,712,1350,-10,.5,0],[27.0,712,1350,-10,.5,1,"l"],[33.699,712,1350,-10,.5,1],[33.7,652,1132,-10,.84,0,"l"]],
  TRAD:[[0,1100,1000,8,.8,0],[2.949,1100,1000,8,.8,0],[2.95,1100,1000,8,.8,1,'l'],[3.3,702,1000,3,.8,1,'q'],[5.999,702,1000,3,.8,1],[6.0,702,1000,3,.8,0,'l'],
        [20.999,540,1200,0,.74,0],[21.0,540,1200,0,.74,1,'l'],[23.999,540,1200,0,.74,1],[24.0,540,1200,0,.74,0,'l']],
  FOLD:[[0,540,1010,-2,1,0],[5.999,540,960,-2,.92,0],[6.0,540,960,-2,.92,1,'l'],[6.4,540,1010,-2,1,1,'o'],[11.999,540,1010,-2,1,1],[12.0,540,1010,-2,1,0,'l'],
-       [23.999,540,1230,-2,.62,0],[24.0,540,1230,-2,.62,1,'l'],[24.5,540,1200,-1,.62,1,'q'],[27.499,540,1200,-1,.62,1],[27.5,540,1200,-1,.62,0,'l']],
+       [23.999,540,1230,-2,.62,0],[24.0,540,1230,-2,.62,1,'l'],[24.5,540,1200,-1,.62,1,'q'],[26.999,540,1200,-1,.62,1],[27.0,540,1200,-1,.62,0,'l']],
  MINI:[[0,1200,800,20,1,0],[9.049,1200,800,20,1,0],[9.05,1200,800,20,1,1,'l'],[9.5,744,986,-2,1,1,'q'],[11.999,744,986,-2,1,1],[12.0,744,986,-2,1,0,'l'],
        [17.999,784,920,4,1.6,0],[18.0,784,920,4,1.6,1,'l'],[20.999,784,920,4,1.6,1],[21.0,784,920,4,1.6,0,'l']],
  LSP:[[0,296,1010,-4,.92,0],[11.999,296,1010,-4,.92,0],[12.0,296,1010,-4,.92,1,'l'],[14.999,296,1010,-4,.92,1],[15.0,296,1010,-4,.92,0,'l']],
  LPR:[[0,694,1010,4,.92,0],[11.999,694,1010,4,.92,0],[12.0,694,1010,4,.92,1,'l'],[14.999,694,1010,4,.92,1],[15.0,694,1010,4,.92,0,'l']],
  APO:[[0,1300,700,20,.95,0],[15.049,1300,700,20,.95,0],[15.05,1300,700,20,.95,1,'l'],[15.5,742,1086,8,.95,1,'q'],[17.999,742,1086,8,.95,1],[18.0,742,1086,8,.95,0,'l']],
  PDFB:[[0,540,1300,0,1,0],[21.249,600,1370,0,.6,0],[21.5,700,1350,0,1,1,'q'],[23.999,700,1350,0,1,1],[24.0,700,1350,0,1,0,'l']],
- COUNTER:[[0,540,1250,0,1,0],[23.999,540,1250,0,1,0],[24.0,540,1250,0,1,1,'l'],[27.499,540,1250,0,1,1],[27.5,540,1250,0,1,0,'l']]
+ COUNTER:[[0,540,1250,0,1,0],[23.999,540,1250,0,1,0],[24.0,540,1250,0,1,1,'l'],[26.999,540,1250,0,1,1],[27.0,540,1250,0,1,0,'l']]
 };
 const SIZE={FIGA:[300,741],FIGB:[300,741],RINGS:[200,120],ACTE:[440,580],STMP:[520,112],TRAD:[440,580],FOLD:[680,500],MINI:[124,164],LSP:[380,520],LPR:[380,520],APO:[260,340],PDFB:[150,80],COUNTER:[1000,200]};
 function pose(K,t){if(t<=K[0][0])return K[0].slice(1,6);for(let i=0;i<K.length-1;i++){const a=K[i],b=K[i+1];if(t<=b[0]){const p=(EZ[b[6]||'q'])(lin(t,a[0],b[0]));return a.slice(1,6).map((v,j)=>v+(b[j+1]-v)*p)}}return K[K.length-1].slice(1,6);}
@@ -250,12 +250,12 @@ function render(tn){
   // Figuren atmen (±4 px), Ringe pulsieren auf den Schlägen 1,0/1,5/2,0 (Hook) und in der Endcard
   const br=t<3.0?2*Math.sin(t*2*Math.PI/1.0):Math.sin(t*2*Math.PI/1.0);
   for(const id of Object.keys(SIZE)){ if(id==='FIGA')place(id,t,` translateY(${(4*br).toFixed(2)}px)`); else if(id==='FIGB')place(id,t,` translateY(${(-4*br).toFixed(2)}px)`); else place(id,t); }
-  {const k=[.25,.5,1.0,1.5,2.0].reduce((m,x)=>m+.08*Math.sin(Math.PI*lin(t,x,x+.22)),0)+(t>=27.5?.05*Math.sin(Math.PI*lin(t,28.5,28.72))+.05*Math.sin(Math.PI*lin(t,30.5,30.72)):0);
+  {const k=[.25,.5,1.0,1.5,2.0].reduce((m,x)=>m+.08*Math.sin(Math.PI*lin(t,x,x+.22)),0)+(t>=27.0?.05*Math.sin(Math.PI*lin(t,28.5,28.72))+.05*Math.sin(Math.PI*lin(t,30.5,30.72)):0);
    const R=$('RINGS'); R.style.transform+=` scale(${(1+k).toFixed(4)}) rotate(${(t<3.0?10*Math.sin(Math.PI*2*t/1.0):0).toFixed(2)}deg)`;}
   // Acte wackelt im Hook in der Hand (Ungereimtheit sichtbar machen)
   if(t<3.0){const A=$('ACTE'); A.style.transform=A.style.transform.replace(/rotate\(([-\d.]+)deg\)/,(m,v)=>`rotate(${(+v+5*Math.sin(Math.PI*2*t/1.0)).toFixed(2)}deg)`);}
   const z={COUNTER:7,FIGA:2,FIGB:3,RINGS:4,ACTE:5,STMP:9,TRAD:6,FOLD:8,MINI:10,LSP:5,LPR:6,APO:7,PDFB:11}; for(const k in z)$(k).style.zIndex=z[k];
-  if(t>=24&&t<27.5){$('FIGA').style.zIndex=2;$('FIGB').style.zIndex=3;$('COUNTER').style.zIndex=7;$('FOLD').style.zIndex=9;}
+  if(t>=24&&t<27.0){$('FIGA').style.zIndex=2;$('FIGB').style.zIndex=3;$('COUNTER').style.zIndex=7;$('FOLD').style.zIndex=9;}
   // Kamera: Hook-Push +5 % (0–2,4), Szenen-Push, Zoom-Punch 1→1,06→1 in 0,22 s
   let fx=540, fy=1000, push=1;
   if(t<3.0) push=1+.05*eo(lin(t,0,1.0))+.02*lin(t,1.0,2.4);
@@ -263,7 +263,7 @@ function render(tn){
   else if(t>=9&&t<12){ push=1+.06*quint(lin(t,9.0,9.5)); fx=540+70*quint(lin(t,9.0,9.5)); }
   else if(t>=12&&t<15) push=1+.02*lin(t,12,15);
   else if(t>=15&&t<18) push=1+.025*lin(t,15.5,18);
-  else if(t>=24&&t<27.5) push=1+.03*lin(t,24,27.5);
+  else if(t>=24&&t<27.0) push=1+.03*lin(t,24,27.0);
   const punch=PUNCH.reduce((m,p)=>m*(1+.06*Math.sin(Math.PI*lin(t,p,p+.22))),1);
   const s=(1+.008*Math.sin(tb*1.3))*push*punch, dy=5*Math.sin(tb*.9);
   $('world').style.transform=`translate(${(540-fx*s).toFixed(2)}px,${(1000-fy*s+dy).toFixed(2)}px) scale(${s.toFixed(5)})`;
@@ -271,7 +271,7 @@ function render(tn){
   $('tsigp').setAttribute('stroke-dashoffset',(t>=3&&t<6?320*(1-eo(lin(t,4.0,4.5))):0).toFixed(1));
   {const m=$('miniA'); const p=lin(t,6.5,6.75); m.style.opacity=t<6.5?0:Math.min(1,p*3); m.style.transform=`scale(${(.6+.4*back(p)).toFixed(3)})`;}
   {const sl=$('slotB'); sl.style.transform=`scale(${(1+.05*Math.sin(Math.PI*lin(t,7.5,7.75))+.05*Math.sin(Math.PI*lin(t,8.0,8.25))).toFixed(4)})`; sl.style.opacity=t>=9.5&&t<12?0:1;}
-  {const f=$('fCheck'); const p=lin(t,25.5,25.75); f.style.opacity=t>=25.5&&t<27.5?Math.min(1,p*3):0; f.style.transformOrigin='55px 55px'; f.style.transform=`scale(${(.4+.6*back(p)).toFixed(3)})`;}
+  {const f=$('fCheck'); const p=lin(t,25.5,25.75); f.style.opacity=t>=25.5&&t<27.0?Math.min(1,p*3):0; f.style.transformOrigin='55px 55px'; f.style.transform=`scale(${(.4+.6*back(p)).toFixed(3)})`;}
   pop($('sp0'),t,12.5); pop($('sp1'),t,12.5); pop($('sp3'),t,12.5);
   pop($('pr0'),t,13.5); pop($('pr2'),t,13.5); pop($('pr3'),t,13.5);
 
@@ -282,8 +282,8 @@ function render(tn){
    M.style.transform=`scale(${(1+.035*Math.sin(Math.PI*lin(t,.5,.72))+.035*Math.sin(Math.PI*lin(t,1.0,1.22))+.035*Math.sin(Math.PI*lin(t,2.0,2.22))).toFixed(4)})`;}
   // ---- Captions (Zeilen-Pillen ganz, gestaffelt 0,14 s) ----
   lines('c1',t,3.0,5.92); lines('c2',t,6.0,8.92); lines('c3',t,9.0,11.92); lines('c4',t,12.0,14.92);
-  lines('c5',t,15.0,17.92); lines('c6',t,18.0,20.92); lines('c7',t,21.0,23.92); lines('c8',t,24.0,27.42);
-  box('s1',t,3.5,5.92); box('s2',t,6.5,8.92); box('s3',t,10.0,11.92); box('s4',t,13.0,14.92); box('s5',t,16.0,17.92); box('s6',t,25.0,27.42);
+  lines('c5',t,15.0,17.92); lines('c6',t,18.0,20.92); lines('c7',t,21.0,23.92); lines('c8',t,24.0,26.92);
+  box('s1',t,3.5,5.92); box('s2',t,6.5,8.92); box('s3',t,10.0,11.92); box('s4',t,13.0,14.92); box('s5',t,16.0,17.92); box('s6',t,25.0,26.92);
   // ---- Formular (echte Ausschnitte) + Tipps ----
   {box('form',t,18.0,20.92,.15,.08,''); $('form').style.transform=`translateY(${((1-eo(lin(t,18.0,18.4)))*60).toFixed(1)}px)`;
    const t1=lin(t,19.0,19.15), t2=lin(t,20.0,20.15);
@@ -292,11 +292,11 @@ function render(tn){
   {box('flow',t,21.0,23.92,.15,.08,''); $('flow').style.transform=`translateY(${((1-eo(lin(t,21.0,21.4)))*60).toFixed(1)}px)`;}
   // ---- CTA-Chip (ab 3,0 s bis Endcard) ----
   {const Cp=$('chip'); $('chipT').textContent=GMB?'Preço na hora no site':'Preço na hora · link na bio';
-   const p=lin(t,3.0,3.2); const on=t>=3.0&&t<27.5; Cp.style.display=on?'flex':'none'; Cp.style.opacity=(Math.min(1,p*2)*(1-lin(t,27.42,27.5))).toFixed(3); Cp.style.transform=`scale(${(.94+.06*eo(p)).toFixed(4)})`;}
+   const p=lin(t,3.0,3.2); const on=t>=3.0&&t<27.0; Cp.style.display=on?'flex':'none'; Cp.style.opacity=(Math.min(1,p*2)*(1-lin(t,26.92,27.0))).toFixed(3); Cp.style.transform=`scale(${(.94+.06*eo(p)).toFixed(4)})`;}
   // ---- Endcard ----
-  {const E=$('end'); const o=t>=27.5&&!loop?lin(t,27.5,27.62):0; E.style.opacity=o.toFixed(3); E.style.display=o>0?'':'none';
+  {const E=$('end'); const o=t>=27.0&&!loop?lin(t,27.0,27.12):0; E.style.opacity=o.toFixed(3); E.style.display=o>0?'':'none';
    $('eBio').textContent=GMB?'Preço na hora no site':'Preço na hora · link na bio';
-   const b=lin(t,27.5,27.65); $('eBio').style.transform=`scale(${(.94+.06*eo(b)).toFixed(4)})`;}
+   const b=lin(t,27.0,27.15); $('eBio').style.transform=`scale(${(.94+.06*eo(b)).toFixed(4)})`;}
 }
 render(0);
 </script></body></html>

@@ -30,7 +30,7 @@ Text x 90–900, y 300–1500. Caption-Pillen ab y 320, CTA-Chip y 552, Objektzo
 | 15,0–18,0 | Tradução juramentada, Siegel 16,0, Punch 17,0 | „Se pedirem: tradutor / **juramentado.**“ · Beleg „Feito no Brasil · ex.: UFMG“ | Q3 | whoosh 15,0 · stamp 16,0 · impact 17,0 |
 | 18,0–21,0 | PDF mit Unterschrift + QR-Andeutung, Haken 19,5 | „PDF com assinatura / **digital? UFMG aceita.**“ · Beleg „Ex.: UFMG · assinatura verificável“ | Q3 | whoosh 18,0 · pop 19,5 |
 | 21,0–24,0 | **Echter Rechner-Ausschnitt** (harter Schnitt, sofort deckend) + Mini-Diplom → Pfeil → Mini-Tradução, Punch 22,0 | „Diploma em espanhol / **R$ 159**“ · Beleg „Para português · preço de tabela“ | Q4, Q5 | whoosh 21,0 · impact 22,0 |
-| 24,0–27,0 | Histórico-Seiten fächern auf (25,0 / 26,0, je „+“-Marke), Punch 26,0 | „Histórico: R$ 159 / **+ R$ 75/página**“ · Beleg „A partir da 2ª página · tabela“ | Q4 | whoosh 24,0 · pop 25,0 · impact 26,0 |
+| 24,0–27,0 | Histórico-Seiten fächern auf (25,0 / 26,0, je „+“-Marke), Punch 26,0 | „Histórico: R$ 159 / **+ R$ 75/página extra**“ · Beleg „Espanhol para português · tabela“ | Q4 | whoosh 24,0 · pop 25,0 · impact 26,0 |
 | 27,0–33,7 | **Endcard** (Absender traduzme), Mini-Diplom | „Diploma em / espanhol? / **Depende.**“ · Chip · traduzme.com.br · (61) 99803-8363 | – (CTA) | hit + stamp 27,0 |
 | 33,7–34,0 | harter Schnitt auf Frame 0 | Hook | Loop | – |
 

@@ -139,7 +139,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
   <div class="cap" id="c5"><div class="ln">Se pedirem: tradutor</div><div class="ln"><span class="mk">juramentado.</span></div></div>
   <div class="cap" id="c6"><div class="ln">PDF com assinatura</div><div class="ln"><span class="mk">digital? UFMG aceita.</span></div></div>
   <div class="cap" id="c7"><div class="ln">Diploma em espanhol</div><div class="ln"><span class="mk">R$ 159</span></div></div>
-  <div class="cap" id="c8"><div class="ln">Histórico: R$ 159</div><div class="ln"><span class="mk">+ R$ 75/página</span></div></div>
+  <div class="cap" id="c8"><div class="ln">Histórico: R$ 159</div><div class="ln"><span class="mk">+ R$ 75/página extra</span></div></div>
 
   <div class="src" id="s1" data-qa="beleg">Res. CNE/CES nº 2/2024, art. 4º</div>
   <div class="src" id="s2" data-qa="beleg">Confirme com a sua universidade</div>
@@ -148,7 +148,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
   <div class="src" id="s5" data-qa="beleg">Feito no Brasil · ex.: UFMG</div>
   <div class="src" id="s6" data-qa="beleg">Ex.: UFMG · assinatura verificável</div>
   <div class="src" id="s7" data-qa="beleg">Para português · preço de tabela</div>
-  <div class="src" id="s8" data-qa="beleg">A partir da 2ª página · tabela</div>
+  <div class="src" id="s8" data-qa="beleg">Espanhol para português · tabela</div>
 
   <div class="chip" id="chip"><span id="chipT">Preço na hora · link na bio</span></div>
 
@@ -179,7 +179,7 @@ const EZ={q:quint,o:eo,l:x=>x};
 const PUNCH=[2.5,7.5,12.5,17.0,22.0,26.0];
 
 // Posen [t, x, y, rot, scale, opacity, ease]  (Mittelpunkt in Bildkoordinaten); harte Schnitte = gleiche Zeit ±0,001
-const HDIP=[330,1180,-3,1], EDIP=[700,1290,-4,.5], HHIS=[372,1150,5,1];
+const HDIP=[340,1180,-3,.92], EDIP=[700,1290,-4,.5], HHIS=[372,1150,5,1];
 const P={
  DIP:[[0,...HDIP,1],[2.998,...HDIP,1],[2.999,540,1030,-2,1,1,'l'],[5.999,540,1030,-2,1,1],[6.0,540,1030,-2,1,0,'l'],
       [20.999,300,1190,-4,.5,0],[21.0,300,1190,-4,.5,1,'l'],[23.999,300,1190,-4,.5,1],[24.0,300,1190,-4,.5,0,'l'],
@@ -248,7 +248,7 @@ function render(tn){
    const kS=$('kSim'), kN=$('kNao'), kD=$('kDep'); const r=lin(t,2.5,2.62);
    for(const [k,x,y,rot,ph] of [[kS,752,1000,4,0],[kN,752,1160,-3,.33],[kD,752,1320,2,.66]]){
      k.style.display=on?'flex':'none'; k.style.opacity=o;
-     const bob=loop?0:6*Math.sin(Math.PI*2*(t/1.0+ph));
+     const bob=6*Math.sin(Math.PI*2*((loop?0:t)/1.0+ph));
      k.style.transform=`translate(${x-144}px,${(y-64+bob).toFixed(1)}px) rotate(${rot}deg)`;}
    kD.style.background=t>=2.5&&!loop?'#EEDECE':''; kD.style.borderColor=t>=2.5&&!loop?'#1F3B35':'';
    for(const k of [kS,kN]) k.style.opacity=on?(o*(1-.55*(loop?0:r))).toFixed(3):0;

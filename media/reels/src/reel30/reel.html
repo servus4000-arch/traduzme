@@ -1,0 +1,260 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<!-- Reel 30 · „CNH em espanhol: o verso paga à parte?“ · Preisbeispiel CNH espanhol → português R$ 129 + Frente e verso = 1 documento (Di 10.11.)
+     Format Objekt-Close-up (Licencia-Karte) + echter Rechner-Ausschnitt pc2 · Névoa #BDCBCB · funk 120 BPM · Variable: LinkedIn-Link in Zeile 1 (nur Text)
+     Quellen je Aussage: STORYBOARD.md (Q1 Supabase precos 03.11. es/to_pt/cnh 12900 · Q2 Rechner pc2 live ohne Mock · Q3 Rechner fl1 ·
+     Q4 Detran-GO Informações sobre CNH (03.11. selbst geöffnet) · Q5 Detran-PR/SC (R21-Präzedenz)). -->
+<link rel="stylesheet" href="fonts/os.css">
+<style>
+:root{--dark:#1F3B35;--pinho:#376259;--sal:#97B9A8;--nevoa:#BDCBCB;--areia:#EEDECE;--paper:#FBFAF6;--ink:#1F3B35}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',sans-serif;background:var(--nevoa)}
+.abs{position:absolute}
+#stage{position:absolute;inset:0;overflow:hidden;background:radial-gradient(1200px 1400px at 50% 55%,#C8D4D4 0%,#BDCBCB 55%,#B1C1C1 100%)}
+#world{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0}
+.doc{position:absolute;left:0;top:0;border-radius:18px;background:var(--paper);box-shadow:0 26px 50px rgba(31,59,53,.28);transform-origin:50% 50%;overflow:hidden}
+.hd{position:absolute;font-weight:800;color:var(--ink);letter-spacing:-.5px;line-height:1.18;white-space:nowrap}
+.bar{position:absolute;height:14px;border-radius:7px;background:#D5DAD4}
+.obj{position:absolute;left:0;top:0;transform-origin:50% 50%}
+/* Text-Ebene */
+.hook{position:absolute;left:96px;top:336px;font-weight:800;font-size:104px;line-height:1.06;letter-spacing:-2.5px;color:var(--dark);white-space:nowrap}
+.hook .mk{display:inline-block;background:var(--areia);color:var(--dark);border-radius:16px;padding:0 14px 10px;margin:0 -8px;line-height:1.02}
+.cap{position:absolute;left:90px;top:320px}
+.cap .ln{display:table;margin-bottom:8px;padding:6px 24px 10px;border-radius:24px;background:var(--dark);color:#fff;font-weight:800;font-size:66px;line-height:1.12;letter-spacing:-1px;white-space:nowrap;transform-origin:0 50%}
+.cap .ln .mk{display:inline-block;background:var(--areia);color:var(--dark);padding:0 8px 4px;margin:0;border-radius:10px;line-height:1.08}
+.chip{position:absolute;left:90px;top:552px;height:88px;padding:0 32px;border-radius:44px;font-size:54px;letter-spacing:-1px;font-weight:800;display:flex;align-items:center;white-space:nowrap;background:var(--areia);color:var(--dark);box-shadow:0 8px 20px rgba(31,59,53,.18);transform-origin:0 50%}
+.src{position:absolute;left:90px;top:1384px;height:64px;padding:0 24px;border-radius:32px;background:var(--areia);color:var(--dark);font-weight:700;font-size:44px;display:flex;align-items:center;white-space:nowrap}
+.big{position:absolute;font-weight:800;color:var(--dark);letter-spacing:-1px;white-space:nowrap}
+.card{position:absolute;left:0;top:0;width:288px;height:128px;border-radius:26px;background:var(--paper);border:6px solid var(--dark);box-shadow:0 18px 36px rgba(31,59,53,.22);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:60px;letter-spacing:-2px;color:var(--dark);transform-origin:50% 50%}
+#UI{position:absolute;left:108px;top:1060px;width:774px;height:233px;border-radius:32px;background:#fff;box-shadow:0 26px 50px rgba(31,59,53,.25);overflow:hidden}
+#UI img{position:absolute;left:24px;top:24px;width:726px}
+</style>
+<!-- qa-config: ignoreText „LICENCIA DE CONDUCIR“ = Titel der Karten-Requisite (Hook, Szene 15–18, Endcard). Sie steht ab Frame 0 neben Hook + Chip + Karten;
+     ohne Ausnahme zählt Frame 0 und die Loop-Naht 30,7 s (harter Schnitt auf Frame 0, Raster D6) 14 statt 12 „neue“ Wörter (Präzedenz R28 SIM/NÃO/ACTA).
+     SIM/NÃO = Antwort-Karten (Teil der Hook-Frage, Präzedenz R28). CNH/espanhol/português/R$ 129 = Zeilen des Preis-Etiketts (6–9 s), wiederholen
+     wörtlich Caption + Beleg derselben Szene (Präzedenz R28 Etikett-Zeilen). „traduzme“ = Standard. -->
+<script type="application/json" id="qa-config">{"ignoreText":"^(traduzme|LICENCIA DE CONDUCIR|SIM|NÃO|CNH|espanhol|português|R\\$ 129)$"}</script>
+</head>
+<body><div id="stage">
+  <div class="abs" id="bg1" style="left:-300px;top:1160px;width:760px;height:760px;border-radius:50%;background:rgba(238,222,206,.22)"></div>
+  <div class="abs" id="bg2" style="left:720px;top:120px;width:600px;height:600px;border-radius:50%;background:rgba(31,59,53,.06)"></div>
+
+  <div id="world">
+    <!-- Licencia (Requisite ohne Daten): Vorderseite. data-qa="object": Requisiten-Titel; Kerninfo steht in Hook/Caption -->
+    <div class="doc" id="LIC" data-qa="object" style="width:600px;height:380px;background:#F4E9DD;border-radius:28px;overflow:visible">
+      <!-- data-qa-allow="cut": Titel liegt ganz auf der Karte; bei ±10° Pendeln fallen Abtastpunkte des achsparallelen Zeilen-Rechtecks neben die gedrehte Schrift (Präzedenz R28 Etikett, Rotations-Bbox) -->
+      <div class="hd" data-qa-allow="cut" style="left:0;width:600px;top:0;height:84px;padding-top:16px;border-radius:28px 28px 0 0;background:#376259;text-align:center;font-size:42px;color:#fff;letter-spacing:0">LICENCIA DE CONDUCIR</div>
+      <div class="abs" style="left:36px;top:116px;width:160px;height:200px;border-radius:14px;background:#BDCBCB"></div>
+      <svg class="abs" style="left:56px;top:136px" width="120" height="180" viewBox="0 0 120 180"><circle cx="60" cy="58" r="34" fill="#97B9A8"/><path d="M8 180c4-50 26-72 52-72s48 22 52 72z" fill="#97B9A8"/></svg>
+      <div class="bar" style="left:232px;top:128px;width:320px;background:#DCCDB8"></div><div class="bar" style="left:232px;top:164px;width:260px;background:#DCCDB8"></div>
+      <div class="bar" style="left:232px;top:212px;width:320px;height:22px;background:#C9B79F"></div>
+      <div class="bar" style="left:232px;top:258px;width:220px;background:#DCCDB8"></div><div class="bar" style="left:232px;top:292px;width:290px;background:#DCCDB8"></div>
+      <svg class="abs" style="left:380px;top:310px" width="170" height="56" viewBox="0 0 170 60"><path d="M6 40c14-22 24-26 28-12s-4 20 4 14 18-28 24-20-2 22 8 16 16-20 24-14 4 16 14 12 24-14 52-10" fill="none" stroke="#1F3B35" stroke-width="4" stroke-linecap="round"/></svg>
+    </div>
+    <!-- Licencia: Rückseite (Tabelle ohne Text) -->
+    <div class="doc" id="LICB" style="width:600px;height:380px;background:#F4E9DD;border-radius:28px">
+      <div class="abs" style="left:0;top:0;width:600px;height:40px;background:#376259"></div>
+      <svg class="abs" style="left:36px;top:68px" width="528" height="280" viewBox="0 0 528 280"><g fill="none" stroke="#C9B79F" stroke-width="4"><rect x="2" y="2" width="524" height="276" rx="12"/><path d="M2 72H526M2 142H526M2 212H526M110 2V278M300 2V278"/></g>
+        <g fill="#376259"><rect x="26" y="26" width="60" height="22" rx="8"/><rect x="26" y="96" width="60" height="22" rx="8"/><rect x="26" y="166" width="60" height="22" rx="8"/><rect x="26" y="236" width="60" height="22" rx="8"/></g>
+        <g fill="#DCCDB8"><rect x="134" y="28" width="140" height="18" rx="9"/><rect x="134" y="98" width="120" height="18" rx="9"/><rect x="134" y="168" width="140" height="18" rx="9"/><rect x="324" y="28" width="170" height="18" rx="9"/><rect x="324" y="98" width="150" height="18" rx="9"/></g></svg>
+    </div>
+    <!-- Mini-Vorder-/Rückseite (Szene 3–6, ohne Schrift) -->
+    <svg class="obj" id="MF" width="300" height="190" viewBox="0 0 300 190"><rect x="2" y="2" width="296" height="186" rx="18" fill="#F4E9DD"/><rect x="2" y="2" width="296" height="40" rx="18" fill="#376259"/><rect x="2" y="24" width="296" height="18" fill="#376259"/><rect x="20" y="58" width="80" height="100" rx="8" fill="#BDCBCB"/><g fill="#DCCDB8"><rect x="120" y="64" width="150" height="12" rx="6"/><rect x="120" y="90" width="120" height="12" rx="6"/><rect x="120" y="116" width="150" height="16" rx="6" fill="#C9B79F"/><rect x="120" y="146" width="100" height="12" rx="6"/></g></svg>
+    <svg class="obj" id="MB" width="300" height="190" viewBox="0 0 300 190"><rect x="2" y="2" width="296" height="186" rx="18" fill="#F4E9DD"/><rect x="2" y="2" width="296" height="22" rx="10" fill="#376259"/><g fill="none" stroke="#C9B79F" stroke-width="3"><rect x="18" y="38" width="264" height="134" rx="8"/><path d="M18 82H282M18 128H282M80 38V172M180 38V172"/></g><g fill="#376259"><rect x="30" y="52" width="36" height="14" rx="5"/><rect x="30" y="98" width="36" height="14" rx="5"/><rect x="30" y="144" width="36" height="14" rx="5"/></g></svg>
+    <svg class="obj" id="ONE" width="150" height="150" viewBox="0 0 110 110"><circle cx="55" cy="55" r="50" fill="#EEDECE" stroke="#1F3B35" stroke-width="5"/><path d="M30 57l17 17 34-36" fill="none" stroke="#1F3B35" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <!-- Preis-Etikett (Szene 6–9). data-qa="object": Requisiten-Text; Kerninfo steht in Caption + Beleg -->
+    <div class="doc" id="TAG" data-qa="object" style="width:720px;height:440px;border-radius:32px;border:8px solid #1F3B35">
+      <div class="hd" style="left:48px;top:36px;font-size:72px">CNH</div>
+      <div class="hd" style="left:48px;top:136px;font-size:48px;display:flex;align-items:center;gap:20px">espanhol<svg width="64" height="40" viewBox="0 0 140 90"><path d="M10 45H110" stroke="#1F3B35" stroke-width="16" stroke-linecap="round"/><path d="M80 12l40 33-40 33" fill="none" stroke="#1F3B35" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/></svg>português</div>
+      <div class="abs" style="left:48px;top:228px;width:624px;height:6px;border-radius:3px;background:#97B9A8"></div>
+      <div class="hd" style="left:48px;top:250px;font-size:132px;letter-spacing:-3px">R$ 129</div>
+      <svg class="abs" style="left:560px;top:28px" width="120" height="120" viewBox="0 0 120 120"><circle cx="60" cy="60" r="22" fill="none" stroke="#1F3B35" stroke-width="10"/></svg>
+    </div>
+    <!-- Detran-Gebäude (Szene 9–12, 21–24) -->
+    <svg class="obj" id="DET" width="460" height="460" viewBox="0 0 440 440">
+      <path d="M20 150L220 30 420 150z" fill="#1F3B35"/>
+      <rect x="30" y="160" width="380" height="24" rx="6" fill="#1F3B35"/>
+      <g fill="#EEDECE"><rect x="60" y="200" width="44" height="190" rx="8"/><rect x="150" y="200" width="44" height="190" rx="8"/><rect x="246" y="200" width="44" height="190" rx="8"/><rect x="336" y="200" width="44" height="190" rx="8"/></g>
+      <rect x="10" y="396" width="420" height="34" rx="8" fill="#1F3B35"/>
+      <circle cx="220" cy="104" r="22" fill="#EEDECE"/>
+    </svg>
+    <!-- Tradução juramentada (Szene 9–12). data-qa="object": Requisiten-Titel -->
+    <div class="doc" id="TRD" data-qa="object" style="width:400px;height:480px">
+      <div class="hd" style="left:32px;top:30px;font-size:44px;line-height:1.2">TRADUÇÃO<br>JURAMENTADA</div>
+      <div class="abs" style="left:32px;top:150px;width:336px;height:6px;border-radius:3px;background:#376259"></div>
+      <div class="bar" style="left:32px;top:184px;width:336px"></div><div class="bar" style="left:32px;top:216px;width:280px"></div><div class="bar" style="left:32px;top:248px;width:320px"></div><div class="bar" style="left:32px;top:280px;width:220px"></div>
+      <svg class="abs" style="left:190px;top:350px" width="180" height="70" viewBox="0 0 170 60"><path d="M6 40c14-22 24-26 28-12s-4 20 4 14 18-28 24-20-2 22 8 16 16-20 24-14 4 16 14 12 24-14 52-10" fill="none" stroke="#376259" stroke-width="4" stroke-linecap="round"/></svg>
+    </div>
+    <svg class="obj" id="SEAL" width="200" height="200" viewBox="0 0 140 140"><circle cx="70" cy="70" r="62" fill="#EEDECE" stroke="#1F3B35" stroke-width="7"/><circle cx="70" cy="70" r="46" fill="none" stroke="#1F3B35" stroke-width="3" stroke-dasharray="6 6"/><path d="M70 36l9 19 21 2-16 14 5 21-19-10-19 10 5-21-16-14 21-2z" fill="#1F3B35"/></svg>
+    <!-- Register-Buch (Szene 12–15) -->
+    <svg class="obj" id="BOOK" width="660" height="480" viewBox="0 0 660 480">
+      <path d="M330 60C250 20 110 20 30 50v380c80-30 220-30 300 10z" fill="#FBFAF6"/>
+      <path d="M330 60c80-40 220-40 300-10v380c-80-30-220-30-300 10z" fill="#F4E9DD"/>
+      <path d="M330 60v380" stroke="#1F3B35" stroke-width="6"/>
+      <path d="M30 430c80-30 220-30 300 10 80-40 220-40 300-10v20c-80-30-220-30-300 10-80-40-220-40-300-10z" fill="#1F3B35"/>
+      <g fill="#D5DAD4"><rect x="70" y="100" width="210" height="16" rx="8"/><rect x="70" y="150" width="190" height="16" rx="8"/><rect x="70" y="200" width="210" height="16" rx="8"/><rect x="70" y="250" width="170" height="16" rx="8"/><rect x="70" y="300" width="200" height="16" rx="8"/><rect x="70" y="350" width="180" height="16" rx="8"/></g>
+      <g fill="#DCCDB8"><rect x="400" y="100" width="190" height="16" rx="8"/><rect x="400" y="150" width="200" height="16" rx="8"/><rect x="400" y="250" width="160" height="16" rx="8"/><rect x="400" y="300" width="200" height="16" rx="8"/><rect x="400" y="350" width="170" height="16" rx="8"/></g>
+      <rect id="bkRow" x="380" y="186" width="236" height="44" rx="12" fill="#97B9A8"/>
+      <rect x="400" y="200" width="150" height="16" rx="8" fill="#1F3B35"/>
+    </svg>
+    <svg class="obj" id="BCK" width="140" height="140" viewBox="0 0 110 110"><circle cx="55" cy="55" r="50" fill="#1F3B35"/><path d="M30 57l17 17 34-36" fill="none" stroke="#fff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <!-- Kalender + Kreuz (Szene 15–18) -->
+    <svg class="obj" id="CAL" width="300" height="300" viewBox="0 0 300 300"><rect x="10" y="40" width="280" height="250" rx="28" fill="#FBFAF6"/><path d="M10 68a28 28 0 0 1 28-28h224a28 28 0 0 1 28 28v42H10z" fill="#1F3B35"/><rect x="74" y="14" width="24" height="56" rx="12" fill="#376259"/><rect x="202" y="14" width="24" height="56" rx="12" fill="#376259"/><g fill="#D5DAD4"><rect x="40" y="140" width="44" height="36" rx="8"/><rect x="104" y="140" width="44" height="36" rx="8"/><rect x="168" y="140" width="44" height="36" rx="8"/><rect x="232" y="140" width="34" height="36" rx="8"/><rect x="40" y="196" width="44" height="36" rx="8"/><rect x="104" y="196" width="44" height="36" rx="8"/><rect x="168" y="196" width="44" height="36" rx="8" fill="#97B9A8"/></g></svg>
+    <svg class="obj" id="XX" width="150" height="150" viewBox="0 0 110 110"><circle cx="55" cy="55" r="50" fill="#1F3B35"/><path d="M36 36l38 38M74 36l-38 38" stroke="#EEDECE" stroke-width="11" stroke-linecap="round"/></svg>
+    <!-- Handy mit Frente/Verso (Szene 18–21) -->
+    <svg class="obj" id="PHN" width="400" height="660" viewBox="0 0 400 660"><rect x="6" y="6" width="388" height="648" rx="56" fill="#1F3B35"/><rect x="28" y="40" width="344" height="580" rx="36" fill="#FBFAF6"/><rect x="150" y="18" width="100" height="12" rx="6" fill="#376259"/>
+      <g transform="translate(62 96) scale(.92)"><rect x="2" y="2" width="296" height="186" rx="18" fill="#F4E9DD"/><rect x="2" y="2" width="296" height="40" rx="18" fill="#376259"/><rect x="2" y="24" width="296" height="18" fill="#376259"/><rect x="20" y="58" width="80" height="100" rx="8" fill="#BDCBCB"/><g fill="#DCCDB8"><rect x="120" y="64" width="150" height="12" rx="6"/><rect x="120" y="90" width="120" height="12" rx="6"/><rect x="120" y="116" width="150" height="16" rx="6" fill="#C9B79F"/></g></g>
+      <g transform="translate(62 316) scale(.92)"><rect x="2" y="2" width="296" height="186" rx="18" fill="#F4E9DD"/><rect x="2" y="2" width="296" height="22" rx="10" fill="#376259"/><g fill="none" stroke="#C9B79F" stroke-width="3"><rect x="18" y="38" width="264" height="134" rx="8"/><path d="M18 82H282M18 128H282M80 38V172M180 38V172"/></g></g>
+      <rect x="62" y="530" width="276" height="56" rx="28" fill="#97B9A8"/></svg>
+    <!-- Pin + Lupe (Szene 21–24) -->
+    <svg class="obj" id="PIN" width="180" height="240" viewBox="0 0 120 160"><path d="M60 156C60 156 8 92 8 58a52 52 0 0 1 104 0c0 34-52 98-52 98z" fill="#1F3B35"/><circle cx="60" cy="58" r="22" fill="#EEDECE"/></svg>
+    <svg class="obj" id="LUPE" width="220" height="220" viewBox="0 0 200 200"><circle cx="80" cy="80" r="58" fill="rgba(251,250,246,.55)" stroke="#1F3B35" stroke-width="16"/><path d="M124 124l56 56" stroke="#1F3B35" stroke-width="24" stroke-linecap="round"/></svg>
+  </div>
+
+  <!-- Antwort-Karten SIM / NÃO (Hook, ab Frame 0 sichtbar) -->
+  <div class="card" id="kSim">SIM</div>
+  <div class="card" id="kNao">NÃO<svg id="kCk" class="abs" style="left:226px;top:-40px" width="88" height="88" viewBox="0 0 110 110"><circle cx="55" cy="55" r="50" fill="#1F3B35"/><path d="M30 57l17 17 34-36" fill="none" stroke="#fff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+  <!-- Echter Rechner-Ausschnitt (live 03.11., ohne Mock): pc2 „Verso e Apostila … sem custo extra.“ -->
+  <div id="UI" data-qa="ui"><img src="shots/pc2_live.png"></div>
+
+  <!-- ===== Text-Ebene ===== -->
+  <div class="hook" id="hook">CNH em<br>espanhol:<br>o verso paga<br><span class="mk" id="mkh">à parte?</span></div>
+  <div class="chip" id="mit" style="top:800px">Comenta SIM ou NÃO</div>
+
+  <div class="cap" id="c1"><div class="ln">Frente e verso:</div><div class="ln"><span class="mk">um documento só.</span></div></div>
+  <div class="cap" id="c2"><div class="ln">CNH em espanhol</div><div class="ln"><span class="mk">R$ 129</span></div></div>
+  <div class="cap" id="c3"><div class="ln">Pro Detran, em geral:</div><div class="ln"><span class="mk">juramentada.</span></div></div>
+  <div class="cap" id="c4"><div class="ln">Tradutor registrado</div><div class="ln"><span class="mk">na Junta Comercial.</span></div></div>
+  <div class="cap" id="c5"><div class="ln">Carteira vencida?</div><div class="ln"><span class="mk">Em geral, não vale.</span></div></div>
+  <div class="cap" id="c6"><div class="ln">Envie os dois lados:</div><div class="ln"><span class="mk">foto ou PDF.</span></div></div>
+  <div class="cap" id="c7"><div class="ln">Confira no Detran</div><div class="ln"><span class="mk">do seu estado.</span></div></div>
+
+  <div class="src" id="s1" data-qa="beleg">No site: preço por documento</div>
+  <div class="src" id="s2" data-qa="beleg">Para português · preço de tabela</div>
+  <div class="src" id="s3" data-qa="beleg">Ex.: Detran-GO, PR e SC</div>
+  <div class="src" id="s4" data-qa="beleg">Ex.: Detran-GO e PR</div>
+  <div class="src" id="s5" data-qa="beleg">Detran-GO: dentro da validade</div>
+  <div class="src" id="s6" data-qa="beleg">No site: foto ou PDF</div>
+  <div class="src" id="s7" data-qa="beleg">As regras variam por estado</div>
+
+  <div class="chip" id="chip"><span id="chipT">Preço na hora · link na bio</span></div>
+
+  <!-- Endcard (Absender traduzme; Kopf an der Hook-Position) -->
+  <div class="abs" id="end" style="left:0;top:0;width:1080px;height:1920px;opacity:0">
+    <div class="hook" id="eHead" style="font-size:96px">CNH em<br>espanhol?<br><span class="mk">Verso incluído.</span></div>
+    <div class="chip" id="eBio" style="top:704px;box-shadow:none">Preço na hora · link na bio</div>
+    <div class="big" id="eUrl" style="left:96px;top:824px;font-size:66px">traduzme.com.br</div>
+    <div class="big" id="eWa" style="left:96px;top:920px;font-size:66px;display:flex;align-items:center;gap:24px"><svg width="72" height="72" viewBox="0 0 32 32"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3z" fill="#1F3B35"/><path d="M11.6 9.6c.3-.6.6-.6 1-.6h.8c.3 0 .6.1.8.6l1.1 2.6c.1.3.1.6-.1.9l-.7.9c-.2.2-.2.5 0 .8a10 10 0 0 0 4.3 3.8c.3.1.6.1.8-.1l.9-1.1c.2-.3.6-.3.9-.2l2.6 1.2c.3.2.5.4.4.8-.2 1.3-1.3 2.4-2.7 2.5-1.2.1-3.6-.5-6.4-3.1-2.6-2.4-3.7-5-3.8-6.2 0-.8.3-1.6.8-2.3z" fill="#EEDECE"/></svg>(61) 99803-8363</div>
+  </div>
+</div>
+<script>
+// GMB-Fassung (≤ 30 s, ohne 18,0–21,0 Foto ou PDF): gmb/reel.html setzt GMB=1, oder URL ?cut=gmb
+let GMB=0;
+if(new URLSearchParams(location.search).get('cut')==='gmb') GMB=1;
+const END=GMB?28.0:31.0;              // Echtzeit; Designzeit = Hauptfassung (Skip unten)
+const SKIP=GMB?[[18.0,3.0]]:[];
+function remap(tn){let t=tn;for(const [a,d] of SKIP){if(t>=a-1e-6)t+=d;}return t;}
+const LOOPD=30.7;                     // Designzeit: ab hier harter Schnitt auf Frame 0 (Loop)
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const lin=(t,a,b)=>cl((t-a)/(b-a));
+const eo=x=>1-Math.pow(1-x,3);
+const quint=x=>x<.5?16*x**5:1-Math.pow(-2*x+2,5)/2;
+const back=x=>{const c=1.6;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const EZ={q:quint,o:eo,l:x=>x};
+// 120 BPM: Schlag 0,5 s. Szenen: 0 Hook · 3 Frente/Verso + pc2 · 6 Preis · 9 Detran · 12 Junta · 15 Validade · 18 Foto/PDF · 21 Confira · 24 Endcard · 30,7 Loop
+const PUNCH=[2.5,7.0,12.5,17.0,22.0];
+
+// Posen [t, x, y, rot, scale, opacity, ease]  (Mittelpunkt in Bildkoordinaten); harte Schnitte = gleiche Zeit ±0,001
+const HLIC=[384,1150,-4,.74], ELIC=[740,1320,-6,.45];
+const P={
+ LIC:[[0,...HLIC,1],[2.998,...HLIC,1],[2.999,...HLIC,0,'l'],[14.999,420,1080,-5,.92,0],[15.0,420,1080,-5,.92,1,'l'],[17.999,420,1080,-5,.92,1],[18.0,420,1080,-5,.92,0,'l'],
+      [30.699,...HLIC,0],[30.7,...HLIC,1,'l']],
+ LICB:[[0,...HLIC,0],[2.998,...HLIC,0],[2.999,...HLIC,0,'l'],[23.999,...ELIC,0],[24.0,...ELIC,1,'l'],[30.699,...ELIC,1],[30.7,...ELIC,0,'l']],
+ MF:[[0,330,880,-3,1,0],[2.999,330,880,-3,1,0],[3.0,330,880,-3,1,1,'l'],[3.5,330,880,-3,1,1],[4.4,470,880,-2,1,1,'q'],[5.999,470,880,-2,1,1],[6.0,470,880,-2,1,0,'l']],
+ MB:[[0,750,880,3,1,0],[2.999,750,880,3,1,0],[3.0,750,880,3,1,1,'l'],[3.5,750,880,3,1,1],[4.4,610,895,2,1,1,'q'],[5.999,610,895,2,1,1],[6.0,610,895,2,1,0,'l']],
+ ONE:[[0,780,800,0,1.5,0],[4.499,780,800,0,1.5,0],[4.5,780,800,-8,1.5,1,'l'],[4.65,780,800,-8,1,1,'q'],[5.999,780,800,-8,1,1],[6.0,780,800,-8,1,0,'l']],
+ TAG:[[0,540,1030,-2,1,0],[5.999,540,1030,-2,1,0],[6.0,540,1030,-2,1,1,'l'],[8.999,540,1030,-2,1,1],[9.0,540,1030,-2,1,0,'l']],
+ DET:[[0,330,1060,0,1,0],[8.999,330,1060,0,1,0],[9.0,330,1060,0,1,1,'l'],[11.999,330,1060,0,1,1],[12.0,330,1060,0,1,0,'l'],
+      [20.999,400,1100,0,.9,0],[21.0,400,1100,0,.9,1,'l'],[23.999,400,1100,0,.9,1],[24.0,400,1100,0,.9,0,'l']],
+ TRD:[[0,700,1110,4,1,0],[8.999,700,1110,4,1,0],[9.0,700,1110,4,1,1,'l'],[11.999,700,1110,4,1,1],[12.0,700,1110,4,1,0,'l']],
+ SEAL:[[0,760,1270,0,1,0],[10.499,760,1270,0,1.6,0],[10.5,760,1270,-8,1.6,1,'l'],[10.65,760,1270,-8,1,1,'q'],[11.999,760,1270,-8,1,1],[12.0,760,1270,-8,1,0,'l']],
+ BOOK:[[0,540,1060,-2,1,0],[11.999,540,1060,-2,1,0],[12.0,540,1060,-2,1,1,'l'],[14.999,540,1060,-2,1,1],[15.0,540,1060,-2,1,0,'l']],
+ BCK:[[0,790,880,0,.4,0],[12.499,790,880,0,.4,0],[12.5,790,880,0,.4,1,'l'],[12.75,790,880,0,1,1,'q'],[14.999,790,880,0,1,1],[15.0,790,880,0,1,0,'l']],
+ CAL:[[0,730,1250,4,1,0],[14.999,730,1250,4,1,0],[15.0,730,1250,4,1,1,'l'],[17.999,730,1250,4,1,1],[18.0,730,1250,4,1,0,'l']],
+ XX:[[0,800,1180,0,.4,0],[15.999,800,1180,0,.4,0],[16.0,800,1180,0,.4,1,'l'],[16.25,800,1180,0,1,1,'q'],[17.999,800,1180,0,1,1],[18.0,800,1180,0,1,0,'l']],
+ PHN:[[0,540,1060,-2,1,0],[17.999,540,1060,-2,1,0],[18.0,540,1060,-2,1,1,'l'],[20.999,540,1060,-2,1,1],[21.0,540,1060,-2,1,0,'l']],
+ OK2:[[0,780,1240,0,.4,0],[19.499,780,1240,0,.4,0],[19.5,780,1240,0,.4,1,'l'],[19.75,780,1240,0,1,1,'q'],[20.999,780,1240,0,1,1],[21.0,780,1240,0,1,0,'l']],
+ PIN:[[0,760,860,0,1,0],[20.999,760,760,0,1,0],[21.0,760,760,0,1,1,'l'],[21.4,760,880,0,1,1,'o'],[23.999,760,880,0,1,1],[24.0,760,880,0,1,0,'l']],
+ LUPE:[[0,700,1250,0,.8,0],[20.999,700,1250,0,.8,0],[21.0,700,1250,0,.8,1,'l'],[22.0,640,1180,0,1,1,'q'],[23.999,640,1180,0,1,1],[24.0,640,1180,0,1,0,'l']]
+};
+const SIZE={LIC:[600,380],LICB:[600,380],MF:[300,190],MB:[300,190],ONE:[150,150],TAG:[720,440],DET:[460,460],TRD:[400,480],SEAL:[200,200],BOOK:[660,480],BCK:[140,140],CAL:[300,300],XX:[150,150],PHN:[400,660],OK2:[150,150],PIN:[180,240],LUPE:[220,220]};
+// OK2 = Kopie von ONE (Haken im Handy-Bild)
+document.getElementById('world').insertAdjacentHTML('beforeend', document.getElementById('ONE').outerHTML.replace('id="ONE"','id="OK2"'));
+function pose(K,t){if(t<=K[0][0])return K[0].slice(1,6);for(let i=0;i<K.length-1;i++){const a=K[i],b=K[i+1];if(t<=b[0]){const p=(EZ[b[6]||'q'])(lin(t,a[0],b[0]));return a.slice(1,6).map((v,j)=>v+(b[j+1]-v)*p)}}return K[K.length-1].slice(1,6);}
+function place(id,t,sx=1){const [x,y,r,k,o]=pose(P[id],t),[w,h]=SIZE[id],el=$(id);
+  el.style.transform=`translate(${(x-w/2).toFixed(2)}px,${(y-h/2).toFixed(2)}px) rotate(${r}deg) scale(${(k*sx).toFixed(4)},${k})`;
+  el.style.opacity=o; el.style.display=o>0.001?'':'none';}
+
+function lines(id,t,a,b,step=.14){const el=$(id); if(t<a||t>=b+.08){el.style.display='none';return;} el.style.display='';
+  const out=1-lin(t,b,b+.08);
+  el.querySelectorAll('.ln').forEach((l,i)=>{const p=lin(t,a+i*step,a+i*step+.12); l.style.opacity=(Math.min(p>0?1:0,1)*Math.min(1,p*1.6+.4)*out).toFixed(3); if(p<=0)l.style.opacity=0; l.style.transform=`scale(${(.94+.06*eo(p)).toFixed(4)})`;});}
+function box(id,t,a,b,dIn=.15,dOut=.08,disp='flex'){const e=$(id); const o=t>=a&&t<b+dOut?Math.min(lin(t,a,a+dIn),1-lin(t,b,b+dOut)):0; e.style.opacity=o.toFixed(3); e.style.display=o>0?disp:'none'; return o;}
+
+function render(tn){
+  let t=tn>=END-1e-6?LOOPD+.01:remap(tn);
+  const loop=t>=LOOPD; if(loop)t=0;            // Loop: exakt Frame 0
+  const tb=loop?0:tn;                           // Echtzeit für Hintergrund-Drift
+  $('bg1').style.transform=`translate(${Math.sin(tb*.4)*24}px,${-tb*4}px)`; $('bg2').style.transform=`translate(${-tb*3}px,${Math.cos(tb*.5)*18}px)`;
+  // Karte dreht im Payoff (2,5–2,8): Vorderseite schmal → Rückseite breit
+  const fp=loop?0:lin(t,2.5,2.8), fsx=Math.max(.02,Math.abs(Math.cos(Math.PI*fp)));
+  for(const id of Object.keys(SIZE)) place(id,t,(id==='LIC'||id==='LICB')&&t<3?fsx:1);
+  if(t<2.999&&!loop){ if(fp>=.5){$('LIC').style.display='none';$('LICB').style.display='';$('LICB').style.opacity=1;} }
+  const z={LIC:4,LICB:4,MF:3,MB:4,ONE:7,TAG:4,DET:2,TRD:4,SEAL:7,BOOK:3,BCK:7,CAL:5,XX:7,PHN:3,OK2:7,PIN:6,LUPE:7}; for(const k in z)$(k).style.zIndex=z[k];
+  // Karte pendelt im Hook, Bewegung ab Frame 1
+  {for(const id of ['LIC','LICB']){const D=$(id); const w=t<2.95&&!loop?6*Math.sin(Math.PI*2*t/1.0)*lin(t,0,.12):0;  /* Pendeln ±6° (YDIF 0–1 s ≥ 0,8) */
+   const fy=t<2.95&&!loop?14*Math.sin(Math.PI*2*(t/1.0+.25))*lin(t,0,.12):0;   /* Schweben ±14 px */
+   D.style.transform=D.style.transform.replace(/rotate\(([-\d.]+)deg\)/,(m,v)=>`translateY(${fy.toFixed(1)}px) rotate(${(+v+w).toFixed(2)}deg)`);}}
+  // Register: markierte Zeile pulsiert ab 12,5
+  {$('bkRow').setAttribute('fill',t>=12.5&&t<15?'#EEDECE':'#97B9A8');}
+  // Kamera: Push je Szene, Zoom-Punch 1→1,06→1 in 0,22 s (nur Welt)
+  let fx=540, fy=1000, push=1;
+  if(t<3.0) push=loop?1:1+.08*eo(lin(t,0,.6))+.025*lin(t,.6,2.6);   /* Hook-Push 8 % (YDIF 0–1 s ≥ 0,8) */
+  else if(t<24) {const s0=Math.floor(t/3)*3; push=1+.025*lin(t,s0+.2,s0+3);}
+  const punch=PUNCH.reduce((m,p)=>m*(1+.06*Math.sin(Math.PI*lin(t,p,p+.22))),1);
+  const s=(1+.006*Math.sin(tb*1.3))*push*punch, dy=loop?0:4*Math.sin(tb*.9);
+  $('world').style.transform=`translate(${(540-fx*s).toFixed(2)}px,${(1000-fy*s+dy).toFixed(2)}px) scale(${s.toFixed(5)})`;
+
+  // ---- Rechner-Ausschnitt pc2 (3,0–6,0): fester Rahmen, harter Schnitt, sofort deckend ----
+  {const U=$('UI'); const on=t>=3.0&&t<6.0; U.style.display=on?'':'none';
+   const pin=lin(t,3.0,3.3); const fl=loop?0:5*Math.sin(tb*2.2);
+   U.style.transformOrigin='50% 50%'; U.style.transform=`translateY(${fl.toFixed(1)}px) scale(${(.94+.06*eo(pin)).toFixed(4)})`; U.style.opacity=on?1:0;}
+
+  // ---- Hook + Mitmach + Antwort-Karten (Frame 0 fertig; Auflösung 2,5 s) ----
+  {const on=t<2.95; const H=$('hook'), M=$('mit'); H.style.display=on?'':'none'; M.style.display=on?'flex':'none';
+   const o=on?1-lin(t,2.9,2.95):0; H.style.opacity=o; M.style.opacity=o;
+   $('mkh').style.transformOrigin='0 50%'; $('mkh').style.transform=`scale(${1+(loop?0:.04*Math.sin(Math.PI*lin(t,1.0,1.3))+.04*Math.sin(Math.PI*lin(t,2.0,2.3)))})`;
+   M.style.transform=`scale(${(1+(loop?0:.035*Math.sin(Math.PI*lin(t,1.5,1.72)))).toFixed(4)})`;
+   const kS=$('kSim'), kN=$('kNao'); const r=lin(t,2.5,2.62);
+   for(const [k,x,y,rot,ph] of [[kS,752,1060,4,0],[kN,752,1230,-3,.5]]){
+     k.style.display=on?'flex':'none'; k.style.opacity=o;
+     const bob=10*Math.sin(Math.PI*2*((loop?0:t)/1.0+ph));
+     k.style.transform=`translate(${x-144}px,${(y-64+bob).toFixed(1)}px) rotate(${rot}deg)`;}
+   kN.style.background=t>=2.5&&!loop?'#EEDECE':'';
+   kS.style.opacity=on?(o*(1-.55*(loop?0:r))).toFixed(3):0;
+   const ck=$('kCk'); ck.style.opacity=t>=2.5&&!loop?Math.min(1,r*3):0; ck.style.transformOrigin='44px 44px'; ck.style.transform=`scale(${(.4+.6*back(r)).toFixed(3)})`;}
+  // ---- Captions (Zeilen-Pillen ganz, gestaffelt 0,14 s) ----
+  const C=[3,6,9,12,15,18,21];
+  C.forEach((a,i)=>lines('c'+(i+1),t,a,a+2.92));
+  C.forEach((a,i)=>box('s'+(i+1),t,a+(i===1?.3:.5),a+2.92));   // Preis-Beleg (Richtung) schon nach 0,3 s
+  // ---- CTA-Chip (ab 3,0 s bis Endcard) ----
+  {const Cp=$('chip'); $('chipT').textContent=GMB?'Preço na hora no site':'Preço na hora · link na bio';
+   const p=lin(t,3.0,3.2); const on=t>=3.0&&t<24.0; Cp.style.display=on?'flex':'none'; Cp.style.opacity=(Math.min(1,p*2)*(1-lin(t,23.92,24.0))).toFixed(3); Cp.style.transform=`scale(${(.94+.06*eo(p)).toFixed(4)})`;}
+  // ---- Endcard ----
+  {const E=$('end'); const o=t>=24.0&&!loop?1:0;  /* harter Schnitt auf dem Schlag (kein fast leeres Bild beim Einblenden) */ E.style.opacity=o.toFixed(3); E.style.display=o>0?'':'none';
+   $('eBio').textContent=GMB?'Preço na hora no site':'Preço na hora · link na bio';
+   const b=lin(t,24.0,24.15); $('eBio').style.transform=`scale(${(.94+.06*eo(b)).toFixed(4)})`;}
+}
+render(0);
+</script></body></html>

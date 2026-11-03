@@ -33,7 +33,7 @@ Text x 90–900, y 300–1500. Caption-Pillen ab y 320, CTA-Chip y 552, Objektzo
 | 13,5–17,0 | **Echter Rechner-Ausschnitt** pc2 (weiße Karte 800 px); Mini-Stapel Frente/Verso/Apostila schiebt sich zu einem Blatt (15,0) | „Verso e apostila: / **sem custo extra.**“ | Q3 | whoosh 13,5 · pop 15,0 · stamp 15,5 |
 | 17,0–20,5 | Drei Certidões (nur Linien) fallen nacheinander in einen Ordner/Upload-Tray (17,5 / 18,0 / 18,5), Haken 19,0 | „Mais de uma? / **Envie todas juntas.**“ · Beleg „Foto ou PDF, quantos precisar“ | Q4 | pop 17,5 · click 18,5 · impact 19,0 |
 | 20,5–24,0 | Órgão-Gebäude + Checkliste, Lupe 22,0 | „Confirme a lista / **com o órgão.**“ · Beleg „Ex.: cartório ou Polícia Federal“ | Q7 | whoosh 20,5 · pop 22,0 |
-| 24,0–30,7 | **Endcard** (Absender traduzme): Etikett klein mit „R$ 149“ | „Certidão em / espanhol? / **Preço no site.**“ · Chip „Preço na hora · link na bio“ · traduzme.com.br · (61) 99803-8363 | – | hit + stamp 24,0 |
+| 24,0–30,7 | **Endcard** (Absender traduzme): nur Text, **kein Preis-Etikett** (Abnahme R28: Endcard ohne Preis; Etikett erscheint erst mit dem Loop auf Frame 0 wieder) | „Certidão em / espanhol? / **Preço no site.**“ · Chip „Preço na hora · link na bio“ · traduzme.com.br · (61) 99803-8363 | – | hit + stamp 24,0 |
 | 30,7–31,0 | harter Schnitt auf Frame 0 | Hook | Loop | – |
 
 Szenenwechsel 3,0/6,5/10,0/13,5/17,0/20,5/24,0 (3,0–3,5 s). Punches 2,5 · 8,5 · 11,0 · 15,5 · 19,0. CTA-Chip 3,0–24,0. Endcard 6,7 s.

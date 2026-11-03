@@ -1,0 +1,269 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<!-- Reel 28 · „Certidão em espanhol: quanto custa?“ · ES → PT, Preisbeispiel (ersetzt R24, Fr 06.11.)
+     Pinho #376259 · pop 120 BPM · keine neue Test-Variable (Lehre 4) · Bildsprache: Preis-Etikett + echter Rechner-Ausschnitt
+     Quellen je Aussage: STORYBOARD.md (Q1 precos-SELECT 02.11.: es|to_pt|certidao de nascimento 14900 · Q2 preistabelle-live ·
+     Q3 Rechner pc2 live ohne Mock · Q4 fl1/fl2 · Q5 CC art. 224 · Q6 PF-FAQ · Q7 Liste je Órgão).
+     Preis immer mit Dokument + Richtung + „no site, na hora“; kein „a partir de“. ACTA = Requisite ohne Daten. -->
+<link rel="stylesheet" href="../fonts/os.css">
+<style>
+:root{--dark:#1F3B35;--pinho:#376259;--sal:#97B9A8;--nevoa:#BDCBCB;--areia:#EEDECE;--paper:#FBFAF6;--ink:#1F3B35}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',sans-serif;background:var(--pinho)}
+.abs{position:absolute}
+#stage{position:absolute;inset:0;overflow:hidden;background:radial-gradient(1200px 1400px at 50% 55%,#41705F 0%,#376259 55%,#2C5048 100%)}
+#world{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0}
+.doc{position:absolute;left:0;top:0;border-radius:18px;background:var(--paper);box-shadow:0 26px 50px rgba(0,0,0,.3);transform-origin:50% 50%;overflow:hidden}
+.hd{position:absolute;font-weight:800;color:var(--ink);letter-spacing:-.5px;line-height:1.2;white-space:nowrap}
+.bar{position:absolute;height:14px;border-radius:7px;background:#D5DAD4}
+.obj{position:absolute;left:0;top:0;transform-origin:50% 50%}
+/* Text-Ebene */
+.hook{position:absolute;left:96px;top:336px;font-weight:800;font-size:104px;line-height:1.06;letter-spacing:-2.5px;color:#fff;white-space:nowrap}
+.hook .mk{display:inline-block;background:var(--areia);color:var(--dark);border-radius:16px;padding:0 14px 10px;margin:0 -8px;line-height:1.02}
+.cap{position:absolute;left:90px;top:320px}
+.cap .ln{display:table;margin-bottom:8px;padding:6px 24px 10px;border-radius:24px;background:var(--areia);color:var(--dark);font-weight:800;font-size:66px;line-height:1.12;letter-spacing:-1px;white-space:nowrap;transform-origin:0 50%}
+.cap .ln .mk{display:inline-block;background:var(--pinho);color:#fff;padding:0 8px 4px;margin:0;border-radius:10px;line-height:1.08}
+.chip{position:absolute;left:90px;top:552px;height:88px;padding:0 32px;border-radius:44px;font-size:54px;letter-spacing:-1px;font-weight:800;display:flex;align-items:center;white-space:nowrap;background:var(--sal);color:var(--dark);box-shadow:0 8px 20px rgba(0,0,0,.25);transform-origin:0 50%}
+.src{position:absolute;left:90px;top:1384px;height:64px;padding:0 24px;border-radius:32px;background:var(--nevoa);color:var(--dark);font-weight:700;font-size:44px;display:flex;align-items:center;white-space:nowrap}
+.big{position:absolute;font-weight:800;color:#fff;letter-spacing:-1px;white-space:nowrap}
+.card{position:absolute;left:0;top:0;width:216px;height:136px;border-radius:26px;background:var(--paper);border:6px solid var(--sal);box-shadow:0 18px 36px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:76px;letter-spacing:-2px;color:var(--dark);transform-origin:50% 50%}
+/* Preis-Etikett: Rechteck 780 × 560, Loch oben mittig */
+#TAG .tg{position:absolute;left:0;top:40px;width:780px;height:520px;border-radius:40px;background:var(--areia);box-shadow:0 26px 50px rgba(0,0,0,.3)}
+#TAG .l1{position:absolute;left:0;width:780px;text-align:center;top:150px;font-weight:800;font-size:48px;letter-spacing:-.5px;color:var(--dark);white-space:nowrap}
+#TAG .l2{position:absolute;left:0;width:780px;text-align:center;top:214px;font-weight:600;font-size:48px;color:var(--dark);white-space:nowrap;display:flex;justify-content:center;align-items:center;gap:14px}
+#TAG .pr{position:absolute;left:0;width:780px;text-align:center;top:288px;font-weight:800;font-size:176px;line-height:1.1;letter-spacing:-4px;color:var(--pinho);white-space:nowrap;transform-origin:50% 50%}
+.sheet{position:absolute;left:0;top:0;width:220px;height:290px;border-radius:14px;background:var(--paper);box-shadow:0 14px 28px rgba(0,0,0,.28);transform-origin:50% 50%;overflow:hidden}
+.sheet .t{position:absolute;left:0;width:220px;top:26px;text-align:center;font-weight:800;font-size:40px;letter-spacing:-.5px;color:var(--dark)}
+#UIC{position:absolute;left:0;top:0;width:800px;height:244px;border-radius:32px;background:#fff;box-shadow:0 26px 50px rgba(0,0,0,.3);overflow:hidden}
+#UIC img{position:absolute;left:16px;top:24px;width:768px}
+</style>
+<!-- qa-config: ignoreText „traduzme“ = Marke (Beleg/URL). SIM/NÃO = Antwort-Karten zur Chip-Frage, „ACTA DE NACIMIENTO“ + „R$ ???“ = Requisiten-Beschriftung (alle gehören zur Hook seit Frame 0);
+     ohne Ausnahme zählt die Loop-Naht 30,7 s (harter Schnitt auf Frame 0, Raster D6) die Karten doppelt. -->
+<script type="application/json" id="qa-config">{"ignoreText":"^(traduzme|SIM|NÃO|ACTA DE|NACIMIENTO|R\\$ \\?\\?\\?)$"}</script>
+</head>
+<body><div id="stage">
+  <div class="abs" id="bg1" style="left:-300px;top:1160px;width:760px;height:760px;border-radius:50%;background:rgba(238,222,206,.06)"></div>
+  <div class="abs" id="bg2" style="left:720px;top:120px;width:600px;height:600px;border-radius:50%;background:rgba(255,255,255,.04)"></div>
+
+  <div id="world">
+    <!-- ACTA DE NACIMIENTO (Requisite ohne Daten; Hook, Szenen 3–10). data-qa="object": Kerninfo steht in Hook/Caption -->
+    <div class="doc" id="ACTA" data-qa="object" style="width:440px;height:560px;background:#F4E9DD">
+      <div class="hd" style="left:0;width:440px;top:36px;text-align:center;font-size:48px">ACTA DE<br>NACIMIENTO</div>
+      <div class="abs" style="left:40px;top:180px;width:360px;height:6px;border-radius:3px;background:#376259"></div>
+      <div class="bar" style="left:40px;top:216px;width:360px;background:#DCCDB8"></div><div class="bar" style="left:40px;top:248px;width:290px;background:#DCCDB8"></div>
+      <div class="bar" style="left:40px;top:280px;width:330px;background:#DCCDB8"></div><div class="bar" style="left:40px;top:328px;width:360px;background:#DCCDB8"></div>
+      <div class="bar" style="left:40px;top:360px;width:240px;background:#DCCDB8"></div>
+      <svg class="abs" style="left:250px;top:400px" width="140" height="140" viewBox="0 0 140 140"><circle cx="70" cy="70" r="60" fill="none" stroke="#376259" stroke-width="7"/><circle cx="70" cy="70" r="42" fill="none" stroke="#376259" stroke-width="3"/><path d="M70 40l8 17 19 2-14 12 4 19-17-9-17 9 4-19-14-12 19-2z" fill="#376259"/></svg>
+      <svg class="abs" style="left:40px;top:440px" width="170" height="60" viewBox="0 0 170 60"><path d="M6 40c14-22 24-26 28-12s-4 20 4 14 18-28 24-20-2 22 8 16 16-20 24-14 4 16 14 12 24-14 52-10" fill="none" stroke="#376259" stroke-width="4" stroke-linecap="round"/></svg>
+    </div>
+    <!-- Tradução juramentada (Szenen 3–10) -->
+    <div class="doc" id="TRAD" data-qa="object" style="width:440px;height:560px">
+      <div class="hd" style="left:40px;top:34px;font-size:46px;line-height:1.24">TRADUÇÃO<br>JURAMENTADA</div>
+      <div class="abs" style="left:40px;top:172px;width:360px;height:6px;border-radius:3px;background:#376259"></div>
+      <div class="bar" style="left:40px;top:208px;width:360px"></div><div class="bar" style="left:40px;top:240px;width:300px"></div><div class="bar" style="left:40px;top:272px;width:340px"></div>
+      <div class="bar" style="left:40px;top:320px;width:360px"></div><div class="bar" style="left:40px;top:352px;width:220px"></div>
+      <svg class="abs" style="left:40px;top:400px" width="140" height="140" viewBox="0 0 140 140"><circle cx="70" cy="70" r="60" fill="rgba(55,98,89,.08)" stroke="#376259" stroke-width="7"/><path d="M70 40l8 17 19 2-14 12 4 19-17-9-17 9 4-19-14-12 19-2z" fill="#376259"/></svg>
+      <svg class="abs" style="left:220px;top:460px" width="180" height="60" viewBox="0 0 170 60"><path d="M6 40c14-22 24-26 28-12s-4 20 4 14 18-28 24-20-2 22 8 16 16-20 24-14 4 16 14 12 24-14 52-10" fill="none" stroke="#376259" stroke-width="4" stroke-linecap="round"/></svg>
+    </div>
+    <!-- Apostille-Karte (Szene 6,5–10) -->
+    <div class="doc" id="APOST" data-qa="object" style="width:300px;height:190px;background:#E4ECEC">
+      <div class="hd" style="left:0;width:300px;top:22px;text-align:center;font-size:40px">APOSTILLE</div>
+      <div class="bar" style="left:30px;top:96px;width:240px;background:#BDCBCB"></div><div class="bar" style="left:30px;top:128px;width:180px;background:#BDCBCB"></div>
+    </div>
+    <svg class="obj" id="ARROW" width="160" height="100" viewBox="0 0 160 100"><path d="M10 50h120M96 16l38 34-38 34" fill="none" stroke="#EEDECE" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <svg class="obj" id="STAMP" width="200" height="200" viewBox="0 0 140 140"><circle cx="70" cy="70" r="62" fill="rgba(238,222,206,.85)" stroke="#1F3B35" stroke-width="7"/><circle cx="70" cy="70" r="46" fill="none" stroke="#1F3B35" stroke-width="3" stroke-dasharray="6 6"/><path d="M44 72l18 18 34-38" fill="none" stroke="#1F3B35" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <svg class="obj" id="CK" width="150" height="150" viewBox="0 0 110 110"><circle cx="55" cy="55" r="50" fill="#1F3B35"/><path d="M30 57l17 17 34-36" fill="none" stroke="#EEDECE" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+    <!-- Preis-Etikett (Hook klein, Szene 10–13,5 groß, Endcard klein). Werte: precos 02.11. (Q1) -->
+    <div class="obj" id="TAG" data-qa="object" style="width:780px;height:560px">
+      <svg class="abs" style="left:350px;top:-150px" width="80" height="250" viewBox="0 0 80 250"><path d="M40 0C40 60 30 120 40 210" fill="none" stroke="#EEDECE" stroke-width="6" stroke-linecap="round"/></svg>
+      <div class="tg"></div>
+      <div class="abs" style="left:360px;top:70px;width:60px;height:60px;border-radius:50%;background:#2C5048;box-shadow:inset 0 4px 8px rgba(0,0,0,.35)"></div>
+      <!-- qa-allow cut: Etikett pendelt (Rotation); die achsparallele Abtastbox des gedrehten Texts trifft an den Ecken die eigene Etikett-Fläche (.tg liegt UNTER dem Text). Tinte ganz sichtbar (Kontaktbogen). -->
+      <div class="l1" data-qa-allow="cut">CERTIDÃO DE NASCIMENTO</div>
+      <div class="l2" data-qa-allow="cut">espanhol<svg width="58" height="34" viewBox="0 0 58 34"><path d="M4 17h44M34 4l14 13-14 13" fill="none" stroke="#1F3B35" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>português</div>
+      <div class="pr" id="prQ">R$ ???</div>
+      <div class="pr" id="pr1">R$ 149</div>
+    </div>
+
+    <!-- Verso / Frente / Apostila (Szene 13,5–17) -->
+    <div class="sheet" id="SH1" data-qa="object"><div class="t">FRENTE</div><div class="bar" style="left:30px;top:110px;width:160px"></div><div class="bar" style="left:30px;top:142px;width:120px"></div><div class="bar" style="left:30px;top:174px;width:150px"></div></div>
+    <div class="sheet" id="SH2" data-qa="object"><div class="t">VERSO</div><div class="bar" style="left:30px;top:110px;width:160px"></div><div class="bar" style="left:30px;top:142px;width:140px"></div></div>
+    <div class="sheet" id="SH3" data-qa="object" style="background:#E4ECEC"><div class="t">APOSTILA</div><div class="bar" style="left:30px;top:110px;width:160px;background:#BDCBCB"></div><div class="bar" style="left:30px;top:142px;width:110px;background:#BDCBCB"></div></div>
+
+    <!-- Mehrere Certidões → Ablage (Szene 17–20,5); nur Linien, keine Schrift -->
+    <svg class="obj" id="TRAY" width="640" height="300" viewBox="0 0 640 300"><path d="M20 90h180l30 40h390v150H20z" fill="#EEDECE"/><path d="M20 130h600" stroke="#DCCDB8" stroke-width="6"/><rect x="250" y="190" width="140" height="22" rx="11" fill="#376259" opacity=".55"/></svg>
+    <div class="sheet" id="D1"><div class="abs" style="left:30px;top:30px;width:160px;height:18px;border-radius:9px;background:#376259"></div><div class="bar" style="left:30px;top:80px;width:160px"></div><div class="bar" style="left:30px;top:112px;width:120px"></div><div class="bar" style="left:30px;top:144px;width:150px"></div></div>
+    <div class="sheet" id="D2" style="background:#F4E9DD"><div class="abs" style="left:30px;top:30px;width:140px;height:18px;border-radius:9px;background:#376259"></div><div class="bar" style="left:30px;top:80px;width:160px;background:#DCCDB8"></div><div class="bar" style="left:30px;top:112px;width:100px;background:#DCCDB8"></div></div>
+    <div class="sheet" id="D3"><div class="abs" style="left:30px;top:30px;width:170px;height:18px;border-radius:9px;background:#376259"></div><div class="bar" style="left:30px;top:80px;width:150px"></div><div class="bar" style="left:30px;top:112px;width:160px"></div></div>
+
+    <!-- Órgão + Checkliste (Szene 20,5–24) -->
+    <svg class="obj" id="ORG" width="440" height="460" viewBox="0 0 440 460">
+      <path d="M20 150L220 30 420 150z" fill="#EEDECE"/>
+      <rect x="30" y="160" width="380" height="24" rx="6" fill="#EEDECE"/>
+      <g fill="#BDCBCB"><rect x="60" y="200" width="44" height="200" rx="8"/><rect x="150" y="200" width="44" height="200" rx="8"/><rect x="246" y="200" width="44" height="200" rx="8"/><rect x="336" y="200" width="44" height="200" rx="8"/></g>
+      <rect x="10" y="410" width="420" height="34" rx="8" fill="#EEDECE"/>
+    </svg>
+    <svg class="obj" id="LIST" width="280" height="380" viewBox="0 0 280 380">
+      <rect x="6" y="6" width="268" height="368" rx="22" fill="#FBFAF6"/>
+      <g fill="none" stroke="#376259" stroke-width="7"><rect x="32" y="56" width="40" height="40" rx="8"/><rect x="32" y="146" width="40" height="40" rx="8"/><rect x="32" y="236" width="40" height="40" rx="8"/></g>
+      <g fill="#D5DAD4"><rect x="92" y="66" width="150" height="18" rx="9"/><rect x="92" y="156" width="120" height="18" rx="9"/><rect x="92" y="246" width="140" height="18" rx="9"/><rect x="32" y="316" width="200" height="18" rx="9"/></g>
+      <g id="lck" fill="none" stroke="#1F3B35" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"><path d="M40 76l10 10 20-24"/><path d="M40 166l10 10 20-24"/></g>
+    </svg>
+    <svg class="obj" id="LUPE" width="200" height="200" viewBox="0 0 200 200"><circle cx="80" cy="80" r="58" fill="rgba(238,222,206,.25)" stroke="#EEDECE" stroke-width="16"/><path d="M124 124l56 56" stroke="#EEDECE" stroke-width="24" stroke-linecap="round"/></svg>
+  </div>
+
+  <!-- Echter Rechner-Ausschnitt (live 02.11., ohne Mock): „Como o preço é calculado“ pc2, ganzes Listenelement -->
+  <div id="UIC" data-qa="ui"><img src="../shots/pc2_live.png"></div>
+
+  <!-- Antwort-Karten SIM / NÃO (Hook, ab Frame 0 sichtbar) -->
+  <div class="big" id="kLbl" style="font-size:46px">Comenta:</div>
+  <div class="card" id="kSim">SIM</div>
+  <div class="card" id="kNao">NÃO<svg id="kCk" class="abs" style="left:-52px;top:-52px" width="88" height="88" viewBox="0 0 110 110"><circle cx="55" cy="55" r="50" fill="#1F3B35"/><path d="M30 57l17 17 34-36" fill="none" stroke="#EEDECE" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+  <!-- ===== Text-Ebene ===== -->
+  <div class="hook" id="hook">Certidão em<br>espanhol:<br><span class="mk" id="mkh">quanto custa?</span></div>
+  <div class="chip" id="mit" style="top:704px">Passa de R$ 200?</div>
+
+  <div class="cap" id="c1"><div class="ln">No Brasil, em geral,</div><div class="ln"><span class="mk">juramentada.</span></div></div>
+  <div class="cap" id="c2"><div class="ln">Tradução feita</div><div class="ln"><span class="mk">no Brasil.</span></div></div>
+  <div class="cap" id="c3"><div class="ln">Tabela traduzme:</div><div class="ln"><span class="mk">R$ 149.</span></div></div>
+  <div class="cap" id="c4"><div class="ln">Verso e apostila:</div><div class="ln"><span class="mk">sem custo extra.</span></div></div>
+  <div class="cap" id="c5"><div class="ln">Mais de uma?</div><div class="ln"><span class="mk">Envie todas juntas.</span></div></div>
+  <div class="cap" id="c6"><div class="ln">Confirme a lista</div><div class="ln"><span class="mk">com o órgão.</span></div></div>
+
+  <div class="src" id="s1" data-qa="beleg">Regra geral: CC art. 224</div>
+  <div class="src" id="s2" data-qa="beleg">Em geral, mesmo apostilada · PF</div>
+  <div class="src" id="s3" data-qa="beleg">Preço final: no site, na hora</div>
+  <div class="src" id="s5" data-qa="beleg">Foto ou PDF, quantos precisar</div>
+  <div class="src" id="s6" data-qa="beleg">Ex.: cartório ou Polícia Federal</div>
+
+  <div class="chip" id="chip"><span id="chipT">Preço na hora · link na bio</span></div>
+
+  <!-- Endcard (Absender traduzme; Kopf an der Hook-Position) -->
+  <div class="abs" id="end" style="left:0;top:0;width:1080px;height:1920px;opacity:0">
+    <div class="hook" id="eHead" style="font-size:96px">Certidão em<br>espanhol?<br><span class="mk">Preço no site.</span></div>
+    <div class="chip" id="eBio" style="top:704px;box-shadow:none">Preço na hora · link na bio</div>
+    <div class="big" id="eUrl" style="left:96px;top:824px;font-size:66px">traduzme.com.br</div>
+    <div class="big" id="eWa" style="left:96px;top:920px;font-size:66px;display:flex;align-items:center;gap:24px"><svg width="72" height="72" viewBox="0 0 32 32"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3z" fill="#EEDECE"/><path d="M11.6 9.6c.3-.6.6-.6 1-.6h.8c.3 0 .6.1.8.6l1.1 2.6c.1.3.1.6-.1.9l-.7.9c-.2.2-.2.5 0 .8a10 10 0 0 0 4.3 3.8c.3.1.6.1.8-.1l.9-1.1c.2-.3.6-.3.9-.2l2.6 1.2c.3.2.5.4.4.8-.2 1.3-1.3 2.4-2.7 2.5-1.2.1-3.6-.5-6.4-3.1-2.6-2.4-3.7-5-3.8-6.2 0-.8.3-1.6.8-2.3z" fill="#1F3B35"/></svg>(61) 99803-8363</div>
+  </div>
+</div>
+<script>
+// GMB-Fassung (≤ 30 s, ohne 17,0–20,5 „Mais de uma?“): gmb/reel.html setzt GMB=1, oder URL ?cut=gmb
+let GMB=1;
+if(new URLSearchParams(location.search).get('cut')==='gmb') GMB=1;
+const END=GMB?27.5:31.0;              // Echtzeit; Designzeit = Hauptfassung (Skip unten)
+const SKIP=GMB?[[17.0,3.5]]:[];
+function remap(tn){let t=tn;for(const [a,d] of SKIP){if(t>=a-1e-6)t+=d;}return t;}
+const LOOPD=30.7;                     // Designzeit: ab hier harter Schnitt auf Frame 0 (Loop)
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const lin=(t,a,b)=>cl((t-a)/(b-a));
+const eo=x=>1-Math.pow(1-x,3);
+const quint=x=>x<.5?16*x**5:1-Math.pow(-2*x+2,5)/2;
+const back=x=>{const c=1.6;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const EZ={q:quint,o:eo,l:x=>x};
+// 120 BPM: Schlag 0,5 s. Szenen: 0 Hook · 3 Juramentada · 6,5 No Brasil · 10 Preis · 13,5 Verso/Apostila · 17 Várias · 20,5 Órgão · 24 Endcard · 30,7 Loop
+const PUNCH=[2.5,8.5,11.0,15.5,19.0];
+
+// Posen [t, x, y, rot, scale, opacity, ease]  (Mittelpunkt in Bildkoordinaten); harte Schnitte = gleiche Zeit ±0,001
+const HACTA=[300,1110,-4,.86], HTAG=[400,1296,3,.62], ETAG=[690,1300,5,.5];
+const P={
+ ACTA:[[0,...HACTA,1],[2.998,...HACTA,1],[2.999,262,1080,-4,.76,1,'l'],[6.499,262,1080,-4,.76,1],[6.5,300,1040,-3,.8,1,'l'],[9.999,300,1040,-3,.8,1],[10.0,300,1040,-3,.8,0,'l'],
+       [30.699,...HACTA,0],[30.7,...HACTA,1,'l']],
+ TRAD:[[0,728,1080,3,.76,0],[2.999,860,1080,6,.76,0],[3.0,860,1080,6,.76,1,'l'],[3.2,728,1080,3,.76,1,'o'],[6.499,728,1080,3,.76,1],[6.5,700,1060,2,.86,1,'l'],[9.999,700,1060,2,.86,1],[10.0,700,1060,2,.86,0,'l']],
+ ARROW:[[0,495,1080,0,.5,0],[5.499,495,1080,0,.5,0],[5.5,495,1080,0,.5,1,'l'],[5.75,495,1080,0,.8,1,'q'],[6.499,495,1080,0,.8,1],[6.5,495,1080,0,.8,0,'l']],
+ STAMP:[[0,770,1250,0,1,0],[4.499,770,1250,0,1.6,0],[4.5,770,1250,-10,1.6,1,'l'],[4.65,770,1250,-10,1,1,'q'],[6.499,770,1250,-10,1,1],[6.5,770,1250,-10,1,0,'l']],
+ APOST:[[0,300,1250,-8,.9,0],[6.999,200,1250,-16,.9,0],[7.0,200,1250,-16,.9,1,'l'],[7.25,300,1250,-8,.9,1,'o'],[9.999,300,1250,-8,.9,1],[10.0,300,1250,-8,.9,0,'l']],
+ CK:[[0,800,1330,0,.4,0],[8.499,800,1330,0,.4,0],[8.5,800,1330,0,.4,1,'l'],[8.7,800,1330,0,1,1,'q'],[9.999,800,1330,0,1,1],[10.0,800,1330,0,1,0,
+       'l'],[18.999,540,1000,0,.4,0],[19.0,540,1000,0,.4,1,'l'],[19.2,540,1000,0,1,1,'q'],[20.499,540,1000,0,1,1],[20.5,540,1000,0,1,0,'l']],
+ TAG:[[0,...HTAG,1],[2.998,...HTAG,1],[2.999,...HTAG,0,'l'],[9.999,495,1180,-6,.86,0],[10.0,495,1180,-6,.86,1,'l'],[10.4,495,1100,-1,1,1,'q'],[13.499,495,1100,-1,1,1],[13.5,495,1100,-1,1,0,'l'],
+      [23.999,...ETAG,0],[24.0,...ETAG,1,'l'],[30.699,...ETAG,1],[30.7,...HTAG,1,'l']],
+ SH1:[[0,230,1230,-4,1.15,0],[13.499,230,1230,-4,1.15,0],[13.5,230,1230,-4,1.15,1,'l'],[14.999,230,1230,-4,1.15,1],[15.4,470,1240,-3,1.15,1,'q'],[16.999,470,1240,-3,1.15,1],[17.0,470,1240,-3,1.15,0,'l']],
+ SH2:[[0,500,1230,2,1.15,0],[13.499,500,1230,2,1.15,0],[13.5,500,1230,2,1.15,1,'l'],[14.999,500,1230,2,1.15,1],[15.4,500,1230,1,1.15,1,'q'],[16.999,500,1230,1,1.15,1],[17.0,500,1230,1,1.15,0,'l']],
+ SH3:[[0,770,1230,5,1.15,0],[13.499,770,1230,5,1.15,0],[13.5,770,1230,5,1.15,1,'l'],[14.999,770,1230,5,1.15,1],[15.4,530,1220,4,1.15,1,'q'],[16.999,530,1220,4,1.15,1],[17.0,530,1220,4,1.15,0,'l']],
+ TRAY:[[0,540,1200,0,1.1,0],[16.999,540,1200,0,1.1,0],[17.0,540,1200,0,1.1,1,'l'],[20.499,540,1200,0,1.1,1],[20.5,540,1200,0,1.1,0,'l']],
+ D1:[[0,380,700,-12,1,0],[16.999,380,700,-12,1,0],[17.0,380,700,-12,1,1,'l'],[17.35,420,1060,-6,1,1,'q'],[20.499,420,1060,-6,1,1],[20.5,420,1060,-6,1,0,'l']],
+ D2:[[0,540,690,4,1,0],[17.499,540,690,4,1,0],[17.5,540,690,4,1,1,'l'],[17.85,540,1050,1,1,1,'q'],[20.499,540,1050,1,1,1],[20.5,540,1050,1,1,0,'l']],
+ D3:[[0,700,700,12,1,0],[17.999,700,700,12,1,0],[18.0,700,700,12,1,1,'l'],[18.35,660,1060,7,1,1,'q'],[20.499,660,1060,7,1,1],[20.5,660,1060,7,1,0,'l']],
+ ORG:[[0,370,1110,0,1,0],[20.499,370,1110,0,1,0],[20.5,370,1110,0,1,1,'l'],[23.999,370,1110,0,1,1],[24.0,370,1110,0,1,0,'l']],
+ LIST:[[0,750,1110,4,1,0],[20.499,750,1110,4,1,0],[20.5,750,1110,4,1,1,'l'],[23.999,750,1110,4,1,1],[24.0,750,1110,4,1,0,'l']],
+ LUPE:[[0,820,1250,0,.8,0],[21.999,820,1250,0,.8,0],[22.0,820,1250,0,.8,1,'l'],[22.25,790,1200,0,1,1,'q'],[23.999,790,1200,0,1,1],[24.0,790,1200,0,1,0,'l']]
+};
+const SIZE={ACTA:[440,560],TRAD:[440,560],ARROW:[160,100],STAMP:[200,200],APOST:[300,190],CK:[150,150],TAG:[780,560],SH1:[220,290],SH2:[220,290],SH3:[220,290],
+            TRAY:[640,300],D1:[220,290],D2:[220,290],D3:[220,290],ORG:[440,460],LIST:[280,380],LUPE:[200,200]};
+function pose(K,t){if(t<=K[0][0])return K[0].slice(1,6);for(let i=0;i<K.length-1;i++){const a=K[i],b=K[i+1];if(t<=b[0]){const p=(EZ[b[6]||'q'])(lin(t,a[0],b[0]));return a.slice(1,6).map((v,j)=>v+(b[j+1]-v)*p)}}return K[K.length-1].slice(1,6);}
+function place(id,t){const [x,y,r,k,o]=pose(P[id],t),[w,h]=SIZE[id],el=$(id);
+  el.style.transform=`translate(${(x-w/2).toFixed(2)}px,${(y-h/2).toFixed(2)}px) rotate(${r}deg) scale(${k})`;
+  el.style.opacity=o; el.style.display=o>0.001?'':'none';}
+
+function lines(id,t,a,b,step=.14){const el=$(id); if(t<a||t>=b+.08){el.style.display='none';return;} el.style.display='';
+  const out=1-lin(t,b,b+.08);
+  el.querySelectorAll('.ln').forEach((l,i)=>{const p=lin(t,a+i*step,a+i*step+.12); l.style.opacity=(Math.min(p>0?1:0,1)*Math.min(1,p*1.6+.4)*out).toFixed(3); if(p<=0)l.style.opacity=0; l.style.transform=`scale(${(.94+.06*eo(p)).toFixed(4)})`;});}
+function box(id,t,a,b,dIn=.15,dOut=.08,disp='flex'){const e=$(id); const o=t>=a&&t<b+dOut?Math.min(lin(t,a,a+dIn),1-lin(t,b,b+dOut)):0; e.style.opacity=o.toFixed(3); e.style.display=o>0?disp:'none'; return o;}
+
+function render(tn){
+  let t=tn>=END-1e-6?LOOPD+.01:remap(tn);
+  const loop=t>=LOOPD; if(loop)t=0;            // Loop: exakt Frame 0
+  const tb=loop?0:tn;                           // Echtzeit für Hintergrund-Drift
+  $('bg1').style.transform=`translate(${Math.sin(tb*.4)*24}px,${-tb*4}px)`; $('bg2').style.transform=`translate(${-tb*3}px,${Math.cos(tb*.5)*18}px)`;
+  for(const id of Object.keys(SIZE)) place(id,t);
+  const z={ACTA:2,TRAD:3,APOST:4,ARROW:3,STAMP:6,CK:7,TAG:5,SH1:3,SH2:4,SH3:5,TRAY:2,D1:3,D2:4,D3:3,ORG:2,LIST:3,LUPE:6}; for(const k in z)$(k).style.zIndex=z[k];
+  // Etikett pendelt im Hook (Preis unbekannt) und in der Endcard; Bewegung ab Frame 1
+  {const E=$('TAG'); let w=0;
+   if(t<3.0&&!loop) w=7*Math.sin(Math.PI*2*t/1.0)*lin(t,0,.2)*(t<2.5?1:1-lin(t,2.5,2.9));
+   if(t>=10.4&&t<13.5) w=1.2*Math.sin(Math.PI*2*(t-10.4)/2.0);
+   if(t>=24.0&&t<LOOPD) w=2*Math.sin(Math.PI*2*(t-24)/2.0);
+   E.style.transform=E.style.transform.replace(/rotate\(([-\d.]+)deg\)/,(m,v)=>`rotate(${(+v+w).toFixed(2)}deg)`);
+   // Preis: „R$ ???“ bis 2,5 s, dann Dreh auf „R$ 149“ (Payoff); ab Szene 10 und in der Endcard „R$ 149“
+   const f=lin(t,2.5,2.7);
+   const sq=t>=2.5&&t<2.7&&!loop?Math.abs(Math.cos(Math.PI*f)):1;
+   $('prQ').style.display=(loop||t<2.6)?'':'none'; $('pr1').style.display=(loop||t<2.6)?'none':'';
+   $('prQ').style.transform=$('pr1').style.transform=`scaleX(${sq.toFixed(3)})`;}
+  // Kamera: Push je Szene, Zoom-Punch 1→1,06→1 in 0,22 s
+  let fx=540, fy=1000, push=1;
+  if(t<3.0) push=loop?1:1+.05*eo(lin(t,0,.6))+.025*lin(t,.6,2.6);
+  else if(t<6.5) push=1+.025*lin(t,3.2,6.5);
+  else if(t<10) push=1+.025*lin(t,6.7,10);
+  else if(t<13.5) push=1+.02*lin(t,10.4,13.5);
+  else if(t<17) push=1+.02*lin(t,13.7,17);
+  else if(t<20.5) push=1+.025*lin(t,17.2,20.5);
+  else if(t<24) push=1+.025*lin(t,20.7,24);
+  const punch=PUNCH.reduce((m,p)=>m*(1+.06*Math.sin(Math.PI*lin(t,p,p+.22))),1);
+  const s=(1+.006*Math.sin(tb*1.3))*push*punch, dy=loop?0:4*Math.sin(tb*.9);
+  $('world').style.transform=`translate(${(540-fx*s).toFixed(2)}px,${(1000-fy*s+dy).toFixed(2)}px) scale(${s.toFixed(5)})`;
+  // Checkliste: Haken 22,5
+  $('lck').setAttribute('opacity',t>=22.5?1:0);
+
+  // ---- Rechner-Ausschnitt (13,5–17,0): steigt ein, schwebt ----
+  {const U=$('UIC'); const on=t>=13.5&&t<17.0; U.style.display=on?'':'none';
+   const pin=lin(t,13.5,13.85), py=(1-eo(pin))*80, fl=loop?0:5*Math.sin(tb*2.2);
+   U.style.transform=`translate(100px,${(760+py+fl).toFixed(1)}px)`; U.style.opacity=on?Math.min(1,pin*4):0;}
+
+  // ---- Hook + Mitmach + Antwort-Karten (Frame 0 fertig; Auflösung 2,5 s) ----
+  {const on=t<2.95; const H=$('hook'), M=$('mit'), L=$('kLbl'); H.style.display=on?'':'none'; M.style.display=on?'flex':'none'; L.style.display=on?'':'none';
+   const o=on?1-lin(t,2.9,2.95):0; H.style.opacity=o; M.style.opacity=o; L.style.opacity=o;
+   L.style.transform='translate(672px,850px)';
+   $('mkh').style.transformOrigin='0 50%'; $('mkh').style.transform=`scale(${1+(loop?0:.04*Math.sin(Math.PI*lin(t,1.0,1.3))+.04*Math.sin(Math.PI*lin(t,2.0,2.3)))})`;
+   M.style.transform=`scale(${(1+(loop?0:.035*Math.sin(Math.PI*lin(t,1.5,1.72)))).toFixed(4)})`;
+   const kS=$('kSim'), kN=$('kNao'); const r=lin(t,2.5,2.62);
+   for(const [k,x,y,rot,ph] of [[kS,784,1010,4,0],[kN,784,1196,-3,.5]]){
+     k.style.display=on?'flex':'none'; k.style.opacity=o;
+     const bob=loop?0:10*Math.sin(Math.PI*2*(t/1.0+ph))*lin(t,0,.2);
+     k.style.transform=`translate(${x-108}px,${(y-68+bob).toFixed(1)}px) rotate(${rot}deg)`;}
+   kN.style.background=t>=2.5&&!loop?'#EEDECE':''; kN.style.borderColor=t>=2.5&&!loop?'#EEDECE':'';
+   kS.style.opacity=on?(o*(1-.55*(loop?0:r))).toFixed(3):0;
+   const ck=$('kCk'); ck.style.opacity=t>=2.5&&!loop?Math.min(1,r*3):0; ck.style.transformOrigin='44px 44px'; ck.style.transform=`scale(${(.4+.6*back(r)).toFixed(3)})`;}
+  // ---- Captions (Zeilen-Pillen ganz, gestaffelt 0,14 s) ----
+  lines('c1',t,3.0,6.42); lines('c2',t,6.5,9.92); lines('c3',t,10.0,13.42); lines('c4',t,13.5,16.92); lines('c5',t,17.0,20.42); lines('c6',t,20.5,23.92);
+  box('s1',t,3.5,6.42); box('s2',t,7.0,9.92); box('s3',t,10.5,13.42); box('s5',t,17.5,20.42); box('s6',t,21.0,23.92);
+  // ---- CTA-Chip (ab 3,0 s bis Endcard) ----
+  {const Cp=$('chip'); $('chipT').textContent=GMB?'Preço na hora no site':'Preço na hora · link na bio';
+   const p=lin(t,3.0,3.2); const on=t>=3.0&&t<24.0; Cp.style.display=on?'flex':'none'; Cp.style.opacity=(Math.min(1,p*2)*(1-lin(t,23.92,24.0))).toFixed(3); Cp.style.transform=`scale(${(.94+.06*eo(p)).toFixed(4)})`;}
+  // ---- Endcard ----
+  {const E=$('end'); const o=t>=24.0&&!loop?lin(t,24.0,24.12):0; E.style.opacity=o.toFixed(3); E.style.display=o>0?'':'none';
+   $('eBio').textContent=GMB?'Preço na hora no site':'Preço na hora · link na bio';
+   const b=lin(t,24.0,24.15); $('eBio').style.transform=`scale(${(.94+.06*eo(b)).toFixed(4)})`;}
+}
+render(0);
+</script></body></html>

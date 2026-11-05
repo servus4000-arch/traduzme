@@ -83,10 +83,10 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
     </div>
 
     <!-- Preis-Etikett (15–18). data-qa="object": Etikett-Zeilen wiederholen Caption + Beleg -->
-    <div class="doc" id="TAG" data-qa="object" style="width:720px;height:440px;border:8px solid #97B9A8">
+    <div class="doc" id="TAG" data-qa="object" style="width:680px;height:440px;border:8px solid #97B9A8">
       <div class="hd" style="left:48px;top:36px;font-size:60px">CNH</div>
       <div class="hd" style="left:48px;top:124px;font-size:50px;display:flex;align-items:center;gap:20px">espanhol<svg width="64" height="40" viewBox="0 0 140 90"><path d="M10 45H110" stroke="#1F3B35" stroke-width="16" stroke-linecap="round"/><path d="M80 12l40 33-40 33" fill="none" stroke="#1F3B35" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/></svg>português</div>
-      <div class="abs" style="left:48px;top:220px;width:608px;height:6px;border-radius:3px;background:#97B9A8"></div>
+      <div class="abs" style="left:48px;top:220px;width:568px;height:6px;border-radius:3px;background:#97B9A8"></div>
       <div class="hd" style="left:48px;top:244px;font-size:132px;letter-spacing:-3px">R$ 129</div>
     </div>
     <!-- Handy fotografiert die Carteira (18–21), ohne UI-Text -->
@@ -118,7 +118,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
 
   <div class="src" id="s1" data-qa="beleg">Acordo com a Argentina · PF</div>
   <div class="src" id="s2" data-qa="beleg">Em geral · ex.: Detran-PR</div>
-  <div class="src" id="s3" data-qa="beleg">Ex.: Detran-GO</div>
+  <div class="src" id="s3" data-qa="beleg">Em geral · ex.: Detran-GO</div>
   <div class="src" id="s4" data-qa="beleg">Vencida não vale · ex.: Detran-GO</div>
   <div class="src" id="s5" data-qa="beleg">Para português · preço de tabela</div>
   <div class="src" id="s6" data-qa="beleg">No site, antes de pagar</div>
@@ -158,9 +158,9 @@ function act(t){if(t<3)return 'B'; if(t<6)return 'L'; if(t<21)return 'R'; return
 function show(id,on,o=1){const e=$(id); e.style.display=on?'':'none'; e.style.opacity=on?o:0;}
 function pop(id,t,a,base,s0=.4){const e=$(id); const p=lin(t,a,a+.25); const k=t<a?0:(s0+(1-s0)*back(p)); e.style.transform=base+` scale(${k.toFixed(3)})`;}
 
-const SIZE={TAG:[720,440],PHN:[420,700],OK2:[140,140],ECNH:[300,196]};
+const SIZE={TAG:[680,440],PHN:[420,700],OK2:[140,140],ECNH:[300,196]};
 const P={
- TAG:[[0,540,1020,-2,1,0],[14.999,540,1020,-2,1,0],[15.0,540,1020,-2,1,1,'l'],[17.999,540,1020,-2,1,1],[18.0,540,1020,-2,1,0,'l']],
+ TAG:[[0,530,1000,-2,1,0],[14.999,530,1000,-2,1,0],[15.0,530,1000,-2,1,1,'l'],[17.999,530,1000,-2,1,1],[18.0,530,1000,-2,1,0,'l']],
  PHN:[[0,540,1040,-3,1,0],[17.999,540,1040,-3,1,0],[18.0,540,1040,-3,1,1,'l'],[20.999,540,1040,-3,1,1],[21.0,540,1040,-3,1,0,'l']],
  OK2:[[0,700,1260,0,.4,0],[19.499,700,1260,0,.4,0],[19.5,700,1260,-6,.4,1,'l'],[19.75,700,1260,-6,1,1,'q'],[20.999,700,1260,-6,1,1],[21.0,700,1260,-6,1,0,'l']],
  ECNH:[[0,740,1290,6,1,0],[23.999,740,1290,6,1,0],[24.0,740,1290,6,1,1,'l'],[30.699,740,1290,6,1,1],[30.7,740,1290,6,1,0,'l']]

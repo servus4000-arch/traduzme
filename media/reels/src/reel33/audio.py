@@ -39,7 +39,7 @@ sfx('impact', 2.5, .6)              # Stempel POR PÁGINA + Punch (Payoff)
 sfx('whoosh', 3.0, .45, d=.4)      # Seiten fächern auf
 sfx('pop', 3.5, 1.2, f=700)         # Seitenzahlen 1–3
 sfx('whoosh', 6.5, 1.2, d=.4)       # Documento padrão
-sfx('impact', 7.0, .2)              # Haken + Punch
+sfx('impact', 7.0, .15)             # Haken + Punch
 sfx('whoosh', 10.0, 1.2, d=.4)      # Contrato
 sfx('pop', 10.5, 1.2, f=640)        # Seite 1
 sfx('pop', 11.5, 1.4, f=760)        # Seite 3
@@ -47,11 +47,11 @@ sfx('impact', 12.0, .4)             # Seite 4 + Punch
 sfx('whoosh', 13.5, 1.3, d=.4)      # Preis-Etikett
 sfx('stamp', 14.0, .5)              # Etikett steht
 sfx('whoosh', 17.0, .6, d=.4)      # Handy
-sfx('click', 18.5, 1.2)             # Foto + Haken
+sfx('click', 18.5, 1.6)             # Foto + Haken
 sfx('whoosh', 20.5, .6, d=.4)      # Órgão
 sfx('pop', 21.5, 1.4, f=820)        # Frage → Haken
 sfx('impact', 22.0, .7)             # Punch
-hit(24.0); sfx('stamp', 24.0, .7)   # Endcard
+hit(24.0); sfx('stamp', 24.0, 1.0)   # Endcard
 print('LUFS', tr.write(OUT, lufs=-14.0, fade=(END - .15, END)))
 import wave, numpy as np                 # 15-ms-Einblendung am Dateianfang (AAC-Überschwinger, Lehre R22)
 with wave.open(OUT, 'rb') as w: prm = w.getparams(); x = np.frombuffer(w.readframes(prm.nframes), dtype=np.int16).reshape(-1, prm.nchannels).astype(np.float64)

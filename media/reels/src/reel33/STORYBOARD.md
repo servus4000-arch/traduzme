@@ -1,6 +1,6 @@
 # Reel 33 – „Seu laudo em inglês: fixo ou por página?“ (Fr 13.11.2026)
 
-Thema nach marketing/ENTSCHEIDEN.md (Lauf 06.11., Zeile in marketing/lernen/social.md): **Laudo/Texto em inglês → português = preço por página; Documento padrão = preço fixo; Preisbeispiel Texto comum inglês → português a partir de R$ 119 por página (Tabelle)**.
+Thema nach marketing/ENTSCHEIDEN.md (Lauf 06.11., Zeile in marketing/lernen/social.md): **Laudo/Texto em inglês → português = preço por página; Documento padrão = preço fixo; Preisbeispiel Laudo = Texto especial inglês → português a partir de R$ 139 por página (Tabelle)** (korrigiert nach Abnahme 33-A).
 Kaufnachweis (nur intern, nie öffentlich): pedidos 30 T. ohne Tests und ohne interne Adressen: EN→PT Carta clínica (2 S., als Text/Lauda berechnet) 1× bezahlt am 03.11.; analises 30 T. en/outro 11 Uploads (Texte ohne Dokumenttyp). Score **20** (K3 N1 E1 B2 L3), Kandidaten siehe lernen/social.md.
 - **Abgrenzung:** kein CNH-Thema (R21/R30/R32), kein Certidão-de-nascimento-ES (R28), kein Diploma/Histórico ES (R29), keine Certidão FR (R31), keine „já apostilada“ (R23). Neu: **Preislogik Text vs. Documento padrão** – erstes Reel zu Laudos/Contratos (pc3).
 - **Format (Pflicht-Wechsel):** **Kinetic-Type + Papier-Seiten**: Seiten fächern auf und bekommen Seitenzahlen (1–3, 1–4), Stempel „POR PÁGINA“, Anhänger „R$ ?“. Kein Split-Screen (R32), kein Dark-Objekt-Close-up mit Antwortkarten (R31), kein pc2-Rechnerausschnitt (R30/R31). Der Formatwechsel ist Regelpflicht, **nicht** die Test-Variable.
@@ -11,14 +11,15 @@ Kaufnachweis (nur intern, nie öffentlich): pedidos 30 T. ohne Tests und ohne in
 ## Quellen (nur was die Quelle trägt)
 | Q | Quelle | Wortlaut / Inhalt | Geöffnet |
 |---|---|---|---|
-| Q1 | Supabase `precos` (ypdvpytpajgkzglbzxwg) `WHERE ativo AND NOT placeholder` | `en / to_pt / comum` **11900** (niedrigster EN→PT-Wert, Text) · `en / to_pt / tecnica` 13900 (nur YT/LinkedIn) · Documentos padrão EN→PT ab 12900 | SQL read-only 06.11.2026 = Memory preistabelle-live („Lauda comum EN 119 … técnica 139“; „EN 119 nur als Lauda-Preis für Texte“) |
+| Q1 | Supabase `precos` (ypdvpytpajgkzglbzxwg) `WHERE ativo AND NOT placeholder` | `en / to_pt / tecnica` **13900** (Laudo/Contrato = texto especial) · `en / to_pt / comum` 11900 (nur texto comum wie Cartas/E-Mails, nur YT/LinkedIn als Gegenbeispiel) · Documentos padrão EN→PT ab 12900 | SQL read-only 06.11.2026 |
+| Q1b | Einstufung comum/técnica | Edge-Function `analisar` (Prompt v29+): técnico = „jurídico/judicial (contrato, sentença …), médico (laudo, exame, receita, prontuário, relatório médico) …“; Rechner `precoItem` `k = tec ? "tecnica" : "comum"`; Rechner-Info „laudos periciais … texto especial“ | Abnahme 33-A 06.11.2026; analises en/outro 60 T.: 9 von 11 técnico, bezahlter EN-Text ebenfalls técnico |
 | Q2 | Rechner live /orcamento-app/?lang=pt, Box „Como o preço é calculado“ pc3 | „**Textos longos e várias páginas** (contratos, laudos…): preço por página.“ | curl 06.11.2026 (HTTP 200) |
 | Q3 | ebd. pc1 | „**Documentos padrão** (certidões, diplomas, CNH…): preço fixo por documento.“ | curl 06.11.2026 |
 | Q4 | ebd. fl1/fl2 (+ fl3/fl4 nur LinkedIn) | „Foto ou PDF, quantos precisar.“ · „Valor e data de entrega na hora.“ · „Pague por Pix“ · „PDF juramentado com assinatura digital.“ | curl 06.11.2026 |
 | Q5 | ebd. Info-Text Via física | „… na dúvida, confirme antes com quem vai receber.“ | curl 06.11.2026 |
 | Q6 | Supabase `pedidos`/`analises` (nur intern) | EN→PT Carta clínica 1× bezahlt (03.11.), en/outro 11 Uploads | SQL read-only 06.11.2026, Tests/interne Adressen ausgeschlossen |
 
-Nicht verwendet: Lauda-Definition (Zeichenzahl, nicht öffentlich in der UI), Einstufung comum/técnica (im Bild nur „Texto comum · preço de tabela“), Rabatte, Fristen, Eil-Option, Papier-Versand, Verso/Apostila (R23/R30), Behördenlisten, Gesundheitsdaten, Kundenfälle, Zertifikats-Infrastruktur der Signatur, Sprachlisten.
+Nicht verwendet: Lauda-Definition (Zeichenzahl, nicht öffentlich in der UI), Einstufung comum/técnica (im Bild nur „Texto especial · preço de tabela“), Rabatte, Fristen, Eil-Option, Papier-Versand, Verso/Apostila (R23/R30), Behördenlisten, Gesundheitsdaten, Kundenfälle, Zertifikats-Infrastruktur der Signatur, Sprachlisten.
 
 ## Zeitachse Hauptfassung (31,0 s, 120 BPM, Schlag 0,5 s)
 Text x 90–900, y 300–1500. Caption-Pillen ab y 320, CTA-Chip y 552, Objekte y 780–1380, Beleg y 1384.
@@ -29,7 +30,7 @@ Text x 90–900, y 300–1500. Caption-Pillen ab y 320, CTA-Chip y 552, Objekte 
 | 3,0–6,5 | Seiten fächern auf, Seitenzahlen 1–3 (3,5) | „Laudo é texto: / **preço por página.**“ · Beleg „Textos longos: preço por página“ | Q2 | whoosh 3,0 · pop 3,5 |
 | 6,5–10,0 | Certidão · Diploma · CNH (Requisiten ohne Schrift), je Haken 7,0, Punch | „Certidão, diploma, / CNH: **preço fixo.**“ · Beleg „Documento padrão: preço fixo“ | Q3 | whoosh 6,5 · impact 7,0 |
 | 10,0–13,5 | Contrato, 4 Seiten, Zahlen 1–4 nacheinander (10,5/11,0/11,5/12,0), Punch 12,0 | „Contrato também: / **por página.**“ · Beleg „Contratos, laudos: por página“ | Q2 | whoosh 10,0 · pop 10,5 · pop 11,5 · impact 12,0 |
-| 13,5–17,0 | 13,5 Laudo-Seite groß · 14,0 Preis-Etikett „inglês → português · R$ 119 · por página“ | „Laudo em inglês: / **a partir de R$ 119**“ · Beleg ab 14,5 „Texto comum · preço de tabela“ | Q1 | whoosh 13,5 · stamp 14,0 |
+| 13,5–17,0 | 13,5 Laudo-Seite groß · 14,0 Preis-Etikett „inglês → português · R$ 139 · por página“ | „Laudo em inglês: / **a partir de R$ 139**“ · Beleg ab 14,5 „Texto especial · preço de tabela“ | Q1, Q1b | whoosh 13,5 · stamp 14,0 |
 | 17,0–20,5 | Handy fotografiert eine Seite, Haken 18,5 (keine UI-Schrift) | „Foto ou PDF: / **preço na hora.**“ · Beleg „No site, antes de pagar“ | Q4 | whoosh 17,0 · click 18,5 |
 | 20,5–24,0 | Gebäude (Órgão) + Laudo, „?“ → Haken 21,5, Punch 22,0 | „Pede juramentada? / **Confirme no órgão.**“ · Beleg „Na dúvida, confirme antes“ | Q5 (Handlungsempfehlung) | whoosh 20,5 · pop 21,5 · impact 22,0 |
 | 24,0–30,7 | **Endcard** (Absender traduzme), Laudo klein | „Laudo em / inglês? / **Envie a foto:** / **preço na hora.**“ · Chip „link na bio“ · traduzme.com.br · (61) 99803-8363 | Q4 | hit + stamp 24,0 |
@@ -54,3 +55,10 @@ Ohne 17,0–20,5 (Foto ou PDF). Chip „Preço na hora no site“, Endcard-Chip 
 - V5 Ton: Spitze Mix gegenüber Musik im selben 0,2-s-Fenster (Stems): impact 7,0 lag +11 dB über der Musik (leiser Takt im lofi) → Gains gesenkt (impact 2,5 .6 · 7,0 .2 · 12,0 .4; whoosh 3,0 .45 · 17,0/20,5 .6; pop 3,5/10,5 1,2). Danach alle SFX ≤ +3,8 dB (Haupt) / ≤ +3,7 dB (GMB). LRA 3,3 / 3,1.
 - V6 Loop: letzter Frame = Frame 0 pixelgleich (beide Fassungen), SSIM 0,996 / 0,997.
 - V7 Kontaktbögen der Endfassung: Haupt 0–31 s alle 16 Bögen, GMB 02/16/20/26 (0–17 s identisch mit Haupt bis auf Chip-Text). Keine offenen Mängel.
+
+## Abnahme-Fix 06.11. (33-A, 33-1, 33-2, 33-3)
+
+- **33-A (blockierend):** Runde-1-Entscheidung F2 war falsch: Laudo und Contrato laufen im Rechner als texto especial (lauda técnica, R$ 139), nicht als texto comum (R$ 119). Bild (beide HTML): „a partir de R$ 139“, Etikett „R$ 139“, Beleg „Texto especial · preço de tabela“; Texte in reel33-texte.md nachgezogen. Lehre: Preis-Einstufung vor dem Bau im analisar-Prompt und in precos prüfen.
+- **33-2:** SFX stamp 24,0 → 1.0, impact 7,0 → .15, click 18,5 → 1.6 (mit 1.8 lag True Peak nach AAC bei genau −1,0 dBTP an der K.-o.-Grenze; 1.6 → −1,8 dBTP); nachgemessen (Spitze Mix vs. Musik, 0,2-s-Fenster): click +2,5 dB, stamp 24 +1,6 dB, impact 7 +2,6 dB, max. +3,7 dB (impact 12,0).
+- **33-3:** Quellen-Tabelle Q1 → `tecnica` 13900 + Q1b Einstufung.
+- **33-1:** Länge einheitlich: Datei 31,0 s, Loop-Punkt/Endcard-Ende 30,7 s (GMB Datei 27,5 s, Loop-Punkt 27,2 s).

@@ -24,7 +24,7 @@ Vorhersage: TikTok Ø Sehdauer +20 % gegenüber Median R28–R34 (72 h). Messung
 | 3,0–6,5 | Whip: Foto-Karte + PDF-Karte, Haken 3,5 / 4,5; Etikett bleibt | „Pra traduzir: / foto ou PDF.“ · Beleg „No site: foto ou PDF“ · CTA-Chip ab 3,0 | Q3 |
 | 6,5–10,0 | Handy steigt (Etikett aus), 4 Seiten 7,0 / 8,0 | „Envie o histórico / completo.“ · Beleg „Todas as páginas“ | Q4, Q2 |
 | 10,0–13,5 | Seite 1 mit Ring (11,0), Seiten 2–4 mit Plus (12,0) | „Histórico: R$ 149 / + R$ 49/pág. extra“ · Beleg „Português → inglês · tabela“ (gleichzeitig) | Q1, Q2 |
-| 13,5–17,0 | Original + Übersetzung, je ein Siegel (14,0 / 15,0) | „Apostila: em geral, / original e tradução.“ · Beleg „Opção no orçamento“ | Q5 |
+| 13,5–17,0 | Original + Übersetzung, je ein Siegel (14,0 / 15,0) | „Apostila: em geral, / original e tradução.“ · Beleg „Original em papel: no cartório“ | Q5 |
 | 17,0–20,5 | PDF wird unterschrieben, Haken-Siegel 19,0 | „Chega em PDF com / assinatura digital.“ · Beleg „PDF juramentado“ | Q6 |
 | 20,5–24,0 | Globus – Universität, Lupe prüft (22,0) | „A universidade aceita / PDF assinado?“ · Beleg „Confirme antes com o destino“ | Q7 |
 | 24,0–27,5 | Beleg (Balken unscharf, keine Zahl) + Kalender | „Preço e data / na hora.“ · Beleg „No site, antes de pagar“ | Q8 |
@@ -38,7 +38,7 @@ GMB (27,5 s): ohne 10,0–17,0 (Preis je Seite + Apostila; der Preis steht im Et
 - **Q2** analisar-Prompt (Edge-Function, nucleo.ts): Histórico „cobrado POR PÁGINA (cada página conta)“.
 - **Q3** Rechner fl1 „Foto ou PDF, quantos precisar.“ (curl /orcamento-app/?lang=pt 09.11., HTTP 200)
 - **Q4** Rechner-Info „Diploma“: „… tradução juramentada do diploma e do histórico escolar completo …“ (curl 09.11.); absolut formuliert → im Video nur „Envie o histórico completo“ (Handlungsempfehlung), in Texten „em geral“.
-- **Q5** Rechner-Info Apostila: „Apostilar o original ou a tradução? Em geral, os dois …“ + „Documento brasileiro para usar no exterior: … apostilar o original, fazer a tradução juramentada e, por fim, apostilar também a tradução.“ + Optionen im Orçamento „Apostila no documento original (digital)“ / „Apostila na tradução (digital)“ (curl 09.11.).
+- **Q5** Rechner-Info Apostila: „Apostilar o original ou a tradução? Em geral, os dois …“ + „Documento brasileiro para usar no exterior: … apostilar o original, fazer a tradução juramentada e, por fim, apostilar também a tradução.“ + Optionen im Orçamento „Apostila no documento original (digital)“ / „Apostila na tradução (digital)“ (curl 09.11.). `apo_hint_o`: „Só para documento brasileiro emitido em formato digital, com assinatura digital (ex.: certidão digital). Documento em papel deve ser apostilado em cartório antes do pedido.“
 - **Q6** Rechner fl4 „PDF juramentado com assinatura digital.“ (curl 09.11.)
 - **Q7** REELS-REGELN-v2 #12 (Ziel im Ausland: „confirme se aceitam PDF assinado“) + Rechner-Info „a aceitação da apostila digital varia conforme o país e o órgão de destino“ (curl 09.11.). Handlungsempfehlung, keine Tatsachenbehauptung.
 - **Q8** Rechner fl2 „Valor e data de entrega na hora.“ (curl 09.11.)
@@ -60,3 +60,6 @@ GMB (27,5 s): ohne 10,0–17,0 (Preis je Seite + Apostila; der Preis steht im Et
 - V2 qa_frames: einziger Block `words` an der Loop-Naht 33,7–34,3 (21 Wörter Frame 0 mit 0,3 s Rest-Standzeit, Messartefakt der Pflicht-Variable) → schriftliche Ausnahme `maxNewWords: 22` mit Grund im Kommentar von reel.html; sonst 0 Blocks.
 - V3 Ton: Pops −7…−10 dB RMS unter Musik → Gain 1,6 → 2,0; Klick GMB Spitze +5,1 dB → Gain 2,4 → 2,0 (+3,5 dB). Danach alle SFX Spitze ≤ +3,5 dB über Musik.
 - V4 Kontaktbögen: alle Haupt- und GMB-Bögen angesehen (Ergebnis in reel35-texte.md).
+
+## Abnahme 09.11. – Fix 35-A
+- Beleg s4 „Opção no orçamento“ → „Original em papel: no cartório“ (Rechner `apo_hint_o`: Apostila im Original über das Orçamento nur bei digital ausgestelltem Dokument mit assinatura digital; Papier-Dokument vorher im Cartório). Nur Hauptfassung neu gerendert; Ton unverändert (audio.py identisch); GMB nicht betroffen (Szene 10,0–17,0 fehlt dort), gmb/reel.html nur textgleich gehalten.

@@ -1,0 +1,251 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<!-- Reel 35 · „Seu histórico pro exterior: precisa do original?“ · Histórico escolar português → inglês, R$ 149 + R$ 49 por página extra (tabela) · Post Mo 16.11.2026
+     Format Handy-Close-up (Held-Objekt Handy, Bildschirm-Inhalte wechseln per Whip auf dem Schlag), Grund Névoa #BDCBCB · pop 120 BPM (R34 Dokument-Tisch/Pinho/funk, R33 Kinetic-Type/Sálvia/lofi)
+     Variable (Wochenfazit KW45): Dokument + Richtung + Preis schon in Frame 0 als Etikett im Hook-Bild; Hook-Frage ist NICHT die Preisfrage.
+     Quellen je Aussage: STORYBOARD.md (Q1 precos en/from_pt historico escolar 14900 + 4900 · Q2 analisar-Prompt „cobrado POR PÁGINA“ · Q3 Rechner fl1 · Q4 Rechner-Info Diploma · Q5 Rechner-Info Apostila + Optionen · Q6 fl4 · Q7 Regel v2 #12 · Q8 fl2). -->
+<link rel="stylesheet" href="fonts/os.css">
+<style>
+:root{--dark:#1F3B35;--pinho:#376259;--sal:#97B9A8;--areia:#EEDECE;--nevoa:#BDCBCB;--paper:#FBFAF6}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',sans-serif;background:var(--nevoa)}
+.abs{position:absolute}
+#stage{position:absolute;inset:0;overflow:hidden;background:radial-gradient(1100px 1300px at 50% 38%,#C8D4D4 0%,#BDCBCB 58%,#AFBFBF 100%)}
+#world{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0}
+.obj{position:absolute;left:0;top:0;transform-origin:50% 50%}
+.hook{position:absolute;left:104px;top:336px;font-weight:800;font-size:104px;line-height:1.06;letter-spacing:-2.5px;color:var(--dark);white-space:nowrap}
+.hook .mk{display:inline-block;background:var(--areia);color:var(--dark);border-radius:16px;padding:0 14px 10px;margin:0 -8px;line-height:1.02}
+.cap{position:absolute;left:90px;top:320px}
+.cap .ln{display:table;margin-bottom:8px;padding:6px 24px 10px;border-radius:24px;background:var(--dark);color:#fff;font-weight:800;font-size:66px;line-height:1.12;letter-spacing:-1px;white-space:nowrap;transform-origin:0 50%}
+.cap .ln .mk{display:inline-block;background:var(--areia);color:var(--dark);padding:0 8px 4px;border-radius:10px;line-height:1.08}
+.chip{position:absolute;left:90px;top:552px;height:88px;padding:0 32px;border-radius:44px;font-size:54px;letter-spacing:-1px;font-weight:800;display:flex;align-items:center;white-space:nowrap;background:var(--areia);color:var(--dark);transform-origin:0 50%}
+.src{position:absolute;left:90px;top:672px;height:64px;padding:0 24px;border-radius:32px;background:var(--paper);color:var(--dark);font-weight:700;font-size:44px;display:flex;align-items:center;gap:12px;white-space:nowrap}
+.big{position:absolute;font-weight:800;color:var(--dark);letter-spacing:-1px;white-space:nowrap}
+.hd{position:absolute;font-weight:800;color:var(--dark);letter-spacing:-.5px;line-height:1.18;white-space:nowrap}
+#PHN{width:760px;height:1500px;border-radius:84px;background:#0F201C;border:6px solid #2C5048;box-shadow:0 30px 60px rgba(31,59,53,.35)}
+#SCR{position:absolute;left:30px;top:64px;width:688px;height:1400px;border-radius:56px;overflow:hidden;background:#2C5048}
+.pane{position:absolute;left:0;top:0;width:688px;height:1400px}
+</style>
+<!-- qa: Bildschirm-Inhalte und Requisiten tragen keine Schrift (nur Formen). Einziger Text im Objekt-Layer: Etikett #TAG (Dokument + Richtung + Preis),
+     voll geprüft von qa_frames (safe/cut/font), kein ignoreText dafür. ignoreText nur „traduzme“ (Standard). -->
+<!-- qa-Ausnahme maxNewWords 22 (Grund): Die Pflicht-Variable R35 (Etikett Dokument + Richtung + Preis in Frame 0) bringt Frame 0 auf 21 Wörter
+     (Hook 6 + Mitmach 4 + Etikett 11). An der Loop-Naht (34,2 s, harter Schnitt auf Frame 0, Raster D6) misst qa_frames sie als „neu“ mit nur 0,3 s
+     Standzeit, weil das Video dort endet; im echten Loop stehen sie 2,95 s wie in Frame 0. Lauf ohne Ausnahme (Default 12): einziger Block = Loop-Naht 33,7–34,3. -->
+<script type="application/json" id="qa-config">{"ignoreText":"^(traduzme)$","maxNewWords":22}</script>
+</head>
+<body><div id="stage">
+  <div class="abs" id="bg1" style="left:-260px;top:120px;width:620px;height:620px;border-radius:50%;background:rgba(151,185,168,.22)"></div>
+  <div class="abs" id="bg2" style="left:760px;top:560px;width:520px;height:520px;border-radius:50%;background:rgba(238,222,206,.30)"></div>
+
+  <div id="world">
+    <!-- Held-Objekt: Handy (760 px = 70 % Bildbreite) -->
+    <div class="obj" id="PHN" data-qa="object">
+      <div class="abs" style="left:300px;top:22px;width:148px;height:16px;border-radius:8px;background:#2C5048"></div>
+      <div id="SCR"></div>
+    </div>
+    <!-- Etikett (Variable R35): Dokument + Richtung + Preis ab Frame 0; Kerninfo → x 128–872 / y 932–1212 (mit Punch ≤ 900 / ≤ 1250) -->
+    <div class="obj" id="TAG" data-qa="object" style="width:744px;height:280px;border-radius:28px;background:var(--paper);border:8px solid #376259;box-shadow:0 18px 36px rgba(31,59,53,.28)">
+      <div class="hd" style="left:36px;top:14px;font-size:52px">Histórico escolar</div>
+      <div class="hd" style="left:36px;top:74px;font-size:52px;display:flex;align-items:center;gap:16px">português<svg width="64" height="40" viewBox="0 0 140 90"><path d="M10 45H110" stroke="#1F3B35" stroke-width="16" stroke-linecap="round"/><path d="M80 12l40 33-40 33" fill="none" stroke="#1F3B35" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/></svg>inglês</div>
+      <div class="abs" style="left:36px;top:146px;width:656px;height:6px;border-radius:3px;background:#97B9A8"></div>
+      <div class="hd" style="left:32px;top:140px;font-size:104px;letter-spacing:-3px">R$ 149</div>
+      <div class="hd" style="left:392px;top:168px;font-size:44px;line-height:1.1">+ R$ 49 por<br>página extra</div>
+    </div>
+  </div>
+
+  <!-- ===== Text-Ebene ===== -->
+  <div class="hook" id="hook">Seu histórico<br>pro exterior:<br>precisa do<br><span class="mk" id="mkh">original?</span></div>
+  <div class="chip" id="mit" style="top:808px;background:#1F3B35;color:#fff">Comenta SIM ou NÃO</div>
+
+  <div class="cap" id="c1"><div class="ln">Pra traduzir:</div><div class="ln"><span class="mk">foto ou PDF.</span></div></div>
+  <div class="cap" id="c2"><div class="ln">Envie o histórico</div><div class="ln"><span class="mk">completo.</span></div></div>
+  <div class="cap" id="c3"><div class="ln">Histórico: R$ 149</div><div class="ln"><span class="mk">+ R$ 49/pág. extra</span></div></div>
+  <div class="cap" id="c4"><div class="ln">Apostila: em geral,</div><div class="ln"><span class="mk">original e tradução.</span></div></div>
+  <div class="cap" id="c5"><div class="ln">Chega em PDF com</div><div class="ln"><span class="mk">assinatura digital.</span></div></div>
+  <div class="cap" id="c6"><div class="ln">A universidade aceita</div><div class="ln"><span class="mk">PDF assinado?</span></div></div>
+  <div class="cap" id="c7"><div class="ln">Preço e data</div><div class="ln"><span class="mk">na hora.</span></div></div>
+
+  <div class="src" id="s1" data-qa="beleg">No site: foto ou PDF</div>
+  <div class="src" id="s2" data-qa="beleg">Todas as páginas</div>
+  <div class="src" id="s3" data-qa="beleg">Português<svg width="48" height="30" viewBox="0 0 140 90"><path d="M10 45H110" stroke="#1F3B35" stroke-width="16" stroke-linecap="round"/><path d="M80 12l40 33-40 33" fill="none" stroke="#1F3B35" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/></svg>inglês · tabela</div>
+  <div class="src" id="s4" data-qa="beleg">Opção no orçamento</div>
+  <div class="src" id="s5" data-qa="beleg">PDF juramentado</div>
+  <div class="src" id="s6" data-qa="beleg">Confirme antes com o destino</div>
+  <div class="src" id="s7" data-qa="beleg">No site, antes de pagar</div>
+
+  <div class="chip" id="chip"><span id="chipT">Preço na hora · link na bio</span></div>
+
+  <!-- Endcard (Absender traduzme; Kopf an der Hook-Position; Handlungsaufforderung; kein Preis) -->
+  <div class="abs" id="end" style="left:0;top:0;width:1080px;height:1920px;opacity:0">
+    <div class="hook" id="eHead" style="font-size:96px;line-height:1.16">Histórico pro<br>exterior?<br><span class="mk">Envie a foto:</span><br><span class="mk">preço na hora.</span></div>
+    <div class="chip" id="eBio" style="top:816px;background:#1F3B35;color:#fff">link na bio</div>
+    <div class="big" id="eUrl" style="left:104px;top:944px;font-size:66px">traduzme.com.br</div>
+    <div class="big" id="eWa" style="left:104px;top:1040px;font-size:66px;display:flex;align-items:center;gap:24px"><svg width="72" height="72" viewBox="0 0 32 32"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3z" fill="#1F3B35"/><path d="M11.6 9.6c.3-.6.6-.6 1-.6h.8c.3 0 .6.1.8.6l1.1 2.6c.1.3.1.6-.1.9l-.7.9c-.2.2-.2.5 0 .8a10 10 0 0 0 4.3 3.8c.3.1.6.1.8-.1l.9-1.1c.2-.3.6-.3.9-.2l2.6 1.2c.3.2.5.4.4.8-.2 1.3-1.3 2.4-2.7 2.5-1.2.1-3.6-.5-6.4-3.1-2.6-2.4-3.7-5-3.8-6.2 0-.8.3-1.6.8-2.3z" fill="#EEDECE"/></svg>(61) 99803-8363</div>
+  </div>
+</div>
+<script>
+// GMB-Fassung (≤ 30 s, ohne 10,0–17,0 Preis-Szene + Apostila): gmb/reel.html setzt GMB=1, oder URL ?cut=gmb
+let GMB=0;
+if(new URLSearchParams(location.search).get('cut')==='gmb') GMB=1;
+const END=GMB?27.5:34.5;
+const SKIP=GMB?[[10.0,7.0]]:[];
+function remap(tn){let t=tn;for(const [a,d] of SKIP){if(t>=a-1e-6)t+=d;}return t;}
+const LOOPD=34.2;
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const lin=(t,a,b)=>cl((t-a)/(b-a));
+const eo=x=>1-Math.pow(1-x,3);
+const quint=x=>x<.5?16*x**5:1-Math.pow(-2*x+2,5)/2;
+const back=x=>{const c=1.6;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+// 120 BPM: Schlag 0,5 s. Szenen: 0 Hook · 3,0 Foto/PDF · 6,5 completo · 10,0 Preis/Seite · 13,5 Apostila · 17,0 PDF assinado · 20,5 Destino · 24,0 Preço na hora · 27,5 Endcard · 34,2 Loop
+const SC=[3.0,6.5,10.0,13.5,17.0,20.5,24.0];
+const ENDC=27.5;
+const PUNCH=[2.5,7.0,11.0,15.0,19.0,25.0];
+const PANE={0:0,3.0:1,6.5:2,10.0:3,13.5:4,17.0:5,20.5:6,24.0:7};
+const WHIP=.22;
+
+// ---- Bildschirm-Inhalte (eigene SVG, nur Formen, keine Schrift, keine Daten) ----
+function rows(x,y,w,n,step,box){let s='';const L=[.92,.7,.84,.6,.78,.66,.88,.55,.74,.8];
+  for(let i=0;i<n;i++){const yy=y+i*step; s+=`<rect x="${x}" y="${yy}" width="${(w-(box?box+24:0))*L[i%10]}" height="${Math.max(8,step*.3)}" rx="${Math.max(4,step*.15)}" fill="#C9D3CE"/>`;
+    if(box) s+=`<rect x="${x+w-box}" y="${yy-step*.18}" width="${box}" height="${step*.66}" rx="6" fill="none" stroke="#97B9A8" stroke-width="3"/><rect x="${x+w-box*.7}" y="${yy}" width="${box*.4}" height="${Math.max(8,step*.3)}" rx="4" fill="#1F3B35"/>`;}
+  return s;}
+function hist(x,y,w,h,extra=''){ // Histórico: Kopf + Tabelle (Zeile + Notenfeld), ohne Buchstaben
+  return `<g ${extra}><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${w*.04}" fill="#FBFAF6"/>
+  <rect x="${x+w*.05}" y="${y+h*.04}" width="${w*.9}" height="${h*.92}" rx="${w*.025}" fill="none" stroke="#97B9A8" stroke-width="3"/>
+  <circle cx="${x+w*.16}" cy="${y+h*.11}" r="${w*.06}" fill="#97B9A8" stroke="#376259" stroke-width="3"/>
+  <rect x="${x+w*.28}" y="${y+h*.085}" width="${w*.46}" height="${h*.035}" rx="${h*.017}" fill="#1F3B35"/>
+  <rect x="${x+w*.1}" y="${y+h*.19}" width="${w*.8}" height="${h*.03}" rx="${h*.015}" fill="#376259"/>
+  ${rows(x+w*.1,y+h*.28,w*.8,9,h*.075,w*.14)}</g>`;}
+const OK=(cx,cy,r,id)=>`<g id="${id}" data-c="${cx},${cy}"><circle cx="${cx}" cy="${cy}" r="${r}" fill="#EEDECE" stroke="#376259" stroke-width="${r*.1}"/><path d="M${cx-r*.45} ${cy+r*.03}l${r*.3} ${r*.3} ${r*.6}-${r*.62}" fill="none" stroke="#1F3B35" stroke-width="${r*.2}" stroke-linecap="round" stroke-linejoin="round"/></g>`;
+const SEAL=(cx,cy,r,id)=>`<g id="${id}" data-c="${cx},${cy}"><circle cx="${cx}" cy="${cy}" r="${r}" fill="#EEDECE" stroke="#376259" stroke-width="${r*.11}"/><circle cx="${cx}" cy="${cy}" r="${r*.72}" fill="none" stroke="#376259" stroke-width="${r*.06}" stroke-dasharray="${r*.13} ${r*.1}"/><path d="M${cx} ${cy-r*.45}l${r*.13} ${r*.28} ${r*.31} ${r*.04}-${r*.23} ${r*.21} ${r*.06} ${r*.31}-${r*.27}-${r*.16}-${r*.27} ${r*.16} ${r*.06}-${r*.31}-${r*.23}-${r*.21} ${r*.31}-${r*.04}z" fill="#376259"/></g>`;
+const P=[];
+// P0 Sucher: Histórico im Bild, Ecken pulsieren, Blitz 2,5
+P[0]=`<svg width="688" height="1400" viewBox="0 0 688 1400"><rect width="688" height="1400" fill="#2C5048"/>
+  ${hist(94,60,500,690,'transform="rotate(-2 344 405)"')}
+  <g id="brk" data-c="344,405" fill="none" stroke="#EEDECE" stroke-width="10" stroke-linecap="round"><path d="M64 110V40h70M624 110V40h-70M64 700v70h70M624 700v70h-70"/></g>
+  ${OK(560,120,58,'ok0')}
+  <circle cx="344" cy="1250" r="64" fill="#EEDECE" stroke="#97B9A8" stroke-width="10"/>
+  <rect id="fl" width="688" height="1400" fill="#FFFFFF" opacity="0"/></svg>`;
+// P1 Foto + PDF (Handy noch unten: Inhalt in Pane-y 40–520)
+P[1]=`<svg width="688" height="1400" viewBox="0 0 688 1400"><rect width="688" height="1400" fill="#2C5048"/>
+  <g id="cph" data-c="194,250"><rect x="54" y="60" width="280" height="380" rx="24" fill="#FBFAF6"/><rect x="78" y="84" width="232" height="232" rx="14" fill="#97B9A8"/><circle cx="250" cy="140" r="26" fill="#EEDECE"/><path d="M78 300l70-90 50 60 34-40 78 86v0H78z" fill="#376259"/><rect x="78" y="344" width="180" height="20" rx="10" fill="#C9D3CE"/><rect x="78" y="384" width="130" height="20" rx="10" fill="#C9D3CE"/></g>
+  <g id="cpd" data-c="494,250"><path d="M354 84a24 24 0 0 1 24-24h176l80 80v276a24 24 0 0 1-24 24H378a24 24 0 0 1-24-24z" fill="#FBFAF6"/><path d="M554 60v56a24 24 0 0 0 24 24h56" fill="#C9D3CE"/><rect x="384" y="170" width="150" height="56" rx="28" fill="#1F3B35"/>${rows(384,268,220,4,40,0)}</g>
+  ${OK(300,92,46,'ok1a')}${OK(604,92,46,'ok1b')}</svg>`;
+// P2 Histórico completo: 4 Seiten
+P[2]=`<svg width="688" height="1400" viewBox="0 0 688 1400"><rect width="688" height="1400" fill="#2C5048"/>
+  ${[[54,48],[364,48],[54,470],[364,470]].map(([x,y],i)=>`<g id="pg${i}" data-c="${x+135},${y+180}">${hist(x,y,270,360)}</g>`).join('')}
+  <g id="dots">${[0,1,2,3].map(i=>`<circle id="dt${i}" cx="${254+i*60}" cy="900" r="16" fill="#97B9A8"/>`).join('')}</g></svg>`;
+// P3 Preis je Seite: Seite 1 groß (Ring), Seiten 2–4 mit Plus
+P[3]=`<svg width="688" height="1400" viewBox="0 0 688 1400"><rect width="688" height="1400" fill="#2C5048"/>
+  <g id="rng" data-c="214,300"><rect x="34" y="40" width="360" height="520" rx="30" fill="none" stroke="#EEDECE" stroke-width="12"/></g>
+  ${hist(54,60,320,480)}
+  ${[0,1,2].map(i=>`<g id="sp${i}">${hist(430,60+i*240,200,210)}</g>`).join('')}
+  ${[0,1,2].map(i=>`<g id="pl${i}" data-c="430,${165+i*240}"><circle cx="430" cy="${165+i*240}" r="36" fill="#EEDECE" stroke="#376259" stroke-width="4"/><path d="M412 ${165+i*240}h36M430 ${147+i*240}v36" stroke="#1F3B35" stroke-width="9" stroke-linecap="round"/></g>`).join('')}</svg>`;
+// P4 Apostila: Original + Übersetzung, je ein Siegel
+P[4]=`<svg width="688" height="1400" viewBox="0 0 688 1400"><rect width="688" height="1400" fill="#2C5048"/>
+  ${hist(40,90,290,420)}
+  <g><rect x="358" y="90" width="290" height="420" rx="12" fill="#FBFAF6"/><rect x="384" y="124" width="150" height="16" rx="8" fill="#1F3B35"/>${rows(384,176,238,7,36,0)}<path d="M388 470c16-24 28 12 42-5s22-22 34 0 20 10 32-5" fill="none" stroke="#1F3B35" stroke-width="5" stroke-linecap="round"/></g>
+  ${SEAL(250,440,76,'se0')}${SEAL(566,440,76,'se1')}</svg>`;
+// P5 PDF mit Unterschrift + Siegel
+P[5]=`<svg width="688" height="1400" viewBox="0 0 688 1400"><rect width="688" height="1400" fill="#2C5048"/>
+  <path d="M124 84a24 24 0 0 1 24-24h296l96 96v540a24 24 0 0 1-24 24H148a24 24 0 0 1-24-24z" fill="#FBFAF6"/><path d="M444 60v72a24 24 0 0 0 24 24h72" fill="#C9D3CE"/>
+  <rect x="164" y="100" width="190" height="64" rx="32" fill="#1F3B35"/>${rows(164,220,340,8,40,0)}
+  <path id="sig" d="M170 600c22-34 38 16 58-6s32-32 48 0 26 14 44-6 22-22 34 4" fill="none" stroke="#1F3B35" stroke-width="7" stroke-linecap="round" stroke-dasharray="320" stroke-dashoffset="320"/>
+  <rect x="166" y="628" width="230" height="7" rx="3" fill="#1F3B35"/>
+  ${OK(470,610,74,'ok5')}</svg>`;
+// P6 Ziel im Ausland: Globus – Universität, prüfende Lupe
+P[6]=`<svg width="688" height="1400" viewBox="0 0 688 1400"><rect width="688" height="1400" fill="#2C5048"/>
+  <g transform="translate(180 260)"><circle r="132" fill="#97B9A8" stroke="#EEDECE" stroke-width="10"/><ellipse rx="56" ry="132" fill="none" stroke="#1F3B35" stroke-width="8"/><path d="M-132 0h264M-112-66h224M-112 66h224" stroke="#1F3B35" stroke-width="8"/></g>
+  <path d="M330 260h70" stroke="#EEDECE" stroke-width="10" stroke-linecap="round" stroke-dasharray="4 22"/>
+  <g transform="translate(424 120)"><path d="M0 92L110 20l110 72z" fill="#EEDECE"/><rect x="0" y="96" width="220" height="20" fill="#EEDECE"/>${[0,1,2,3].map(i=>`<rect x="${18+i*52}" y="128" width="28" height="140" fill="#EEDECE"/>`).join('')}<rect x="-10" y="276" width="240" height="24" rx="6" fill="#EEDECE"/></g>
+  <g transform="translate(250 560)"><rect x="-150" y="-110" width="300" height="400" rx="18" fill="#FBFAF6"/>${rows(-120,-60,240,7,40,0)}</g>
+  <g id="lp" data-c="430,720"><circle cx="410" cy="700" r="80" fill="rgba(238,222,206,.25)" stroke="#EEDECE" stroke-width="16"/><path d="M466 756l70 70" stroke="#EEDECE" stroke-width="24" stroke-linecap="round"/></g>
+  ${OK(410,700,52,'ok6')}</svg>`;
+// P7 Preis + Datum na hora (Balken unscharf, keine Zahl)
+P[7]=`<svg width="688" height="1400" viewBox="0 0 688 1400"><rect width="688" height="1400" fill="#2C5048"/>
+  <g id="rc" data-c="214,380"><path d="M64 80h300v600l-30-20-30 20-30-20-30 20-30-20-30 20-30-20-30 20-30-20-30 20z" fill="#FBFAF6"/>${rows(94,130,240,4,48,0)}<rect x="94" y="400" width="240" height="6" rx="3" fill="#97B9A8"/><g filter="url(#bl)"><rect x="94" y="450" width="180" height="56" rx="12" fill="#1F3B35"/></g></g>
+  <g id="cal" data-c="514,380"><rect x="404" y="200" width="220" height="230" rx="24" fill="#FBFAF6"/><rect x="404" y="200" width="220" height="62" rx="24" fill="#376259"/><rect x="404" y="232" width="220" height="30" fill="#376259"/><rect x="452" y="180" width="18" height="50" rx="9" fill="#EEDECE"/><rect x="558" y="180" width="18" height="50" rx="9" fill="#EEDECE"/>
+    ${[0,1,2].map(r=>[0,1,2,3].map(c=>`<rect x="${428+c*46}" y="${286+r*44}" width="30" height="26" rx="6" fill="${r===1&&c===2?'#1F3B35':'#C9D3CE'}"/>`).join('')).join('')}</g>
+  ${OK(330,470,44,'ok7')}
+  <defs><filter id="bl"><feGaussianBlur stdDeviation="9"/></filter></defs></svg>`;
+{const S=$('SCR'); P.forEach((svg,i)=>{const d=document.createElement('div'); d.className='pane'; d.id='pane'+i; d.innerHTML=svg; S.appendChild(d);});}
+
+const SIZE={PHN:[760,1500],TAG:[744,280]};
+function put(id,x,y,r=0,k=1,o=1){const [w,h]=SIZE[id],el=$(id);
+  el.style.transform=`translate(${(x-w/2).toFixed(2)}px,${(y-h/2).toFixed(2)}px) rotate(${r.toFixed(2)}deg) scale(${k.toFixed(4)})`;
+  el.style.opacity=o; el.style.display=o>0.001?'':'none';}
+function pk(t,a,s0=.4){if(t<a)return 0; return s0+(1-s0)*back(lin(t,a,a+.25));}   // Pop-Skala (0 vor a)
+function drop(t,a){if(t<a)return 0; const p=lin(t,a,a+.18); return 1+.35*(1-eo(p));}  // Stempel fällt (1,35 → 1)
+function g(id,k,o=1){const e=document.getElementById(id); if(!e)return; const [cx,cy]=(e.dataset.c||'0,0').split(',').map(Number);
+  e.setAttribute('transform',`translate(${cx} ${cy}) scale(${k.toFixed(4)}) translate(${-cx} ${-cy})`); e.setAttribute('opacity',(k>0?o:0).toFixed(3));}
+
+function lines(id,t,a,b,step=.14){const el=$(id); if(t<a||t>=b+.08){el.style.display='none';return;} el.style.display='';
+  const out=1-lin(t,b,b+.08);
+  el.querySelectorAll('.ln').forEach((l,i)=>{const a0=a+i*step, p=lin(t,a0,a0+.12); l.style.opacity=(Math.min(1,p*1.4+.6)*out).toFixed(3); if(t<a0)l.style.opacity=0; l.style.transform=`scale(${(.94+.06*eo(p)).toFixed(4)})`;});}
+function box(id,t,a,b,dIn=.15,dOut=.08,disp='flex'){const e=$(id); const o=t>=a&&t<b+dOut?Math.min(lin(t,a,a+dIn),1-lin(t,b,b+dOut)):0; e.style.opacity=o.toFixed(3); e.style.display=o>0?disp:'none'; return o;}
+
+// Szenenfolge (GMB ohne 10,0 und 13,5)
+const SEQ=[0,...SC].filter(a=>!(GMB&&(a===10.0||a===13.5)));
+function paneState(t){ // [aktuelles Pane, vorheriges Pane, Whip-Fortschritt]
+  let i=0; for(let k=0;k<SEQ.length;k++) if(t>=SEQ[k]) i=k;
+  const a=SEQ[i], cur=PANE[a], prev=i>0?PANE[SEQ[i-1]]:cur, p=i>0?lin(t,a,a+WHIP):1;
+  return [cur,prev,quint(p)];}
+
+function paneAnim(n,t,tb,loop){ // Bildschirm-Animation je Pane (t = Designzeit)
+  if(n===0){const b=loop?1:1+.05*Math.sin(Math.PI*2*tb/1.0); g('brk',b);
+    $('fl').setAttribute('opacity',(t>=2.5&&t<3.0?1-lin(t,2.5,2.85):0).toFixed(3)); g('ok0',pk(t,2.5,.4)*(t<ENDC?1:0));}
+  if(n===1){g('ok1a',pk(t,3.5,.4)); g('ok1b',pk(t,4.5,.4)); g('cph',1); g('cpd',1);}
+  if(n===2){for(let i=0;i<4;i++){const a=i<2?7.0:8.0; g('pg'+i,pk(t,a,.5)); $('dt'+i).setAttribute('fill',t>=a?'#EEDECE':'#4E6E66');}}
+  if(n===3){g('rng',pk(t,11.0,.6)); for(let i=0;i<3;i++) g('pl'+i,pk(t,12.0+i*.12,.4));}
+  if(n===4){g('se0',drop(t,14.0)); g('se1',drop(t,15.0));}
+  if(n===5){const ps=lin(t,17.5,18.6); $('sig').setAttribute('stroke-dashoffset',(320*(1-ps)).toFixed(1)); g('ok5',drop(t,19.0));}
+  if(n===6){g('ok6',pk(t,22.0,.4)); const k=1+.04*Math.sin(Math.PI*2*(t-20.5)/2.0); g('lp',k);}
+  if(n===7){g('rc',1); g('ok7',pk(t,24.5,.4)); g('cal',pk(t,25.0,.5));}
+}
+
+function render(tn){
+  let t=tn>=END-1e-6?LOOPD+.01:remap(tn);
+  const loop=t>=LOOPD; if(loop)t=0;
+  const tb=loop?0:tn;
+  $('bg1').style.transform=`translate(${Math.sin(tb*.4)*24}px,${-tb*3}px)`; $('bg2').style.transform=`translate(${-tb*3}px,${Math.cos(tb*.5)*18}px)`;
+
+  // Handy: unten (Hook, Foto-Szene, Endcard), steigt 6,5–7,0 nach oben (Oberkante 792)
+  const bob=loop?0:16*Math.sin(Math.PI*2*tb/1.0);   // Hook-Bewegung ab Frame 1 (YDIF 0–1 s ≥ 0,8)
+  let top;
+  if(t>=ENDC) top=1290+bob;
+  else {const r=eo(lin(t,6.5,7.0)); top=1290+(792-1290)*r+bob*(1-r)+(t>=7.0?6*Math.sin((tb-7.0)*1.6):0);}
+  put('PHN',540,top+750,0);
+  // Bildschirm
+  for(let i=0;i<P.length;i++) $('pane'+i).style.display='none';
+  if(t>=ENDC){$('pane0').style.display=''; $('pane0').style.transform='translateX(0)'; paneAnim(0,t,tb,true);}
+  else {const [cur,prev,w]=paneState(t);
+    $('pane'+cur).style.display=''; $('pane'+cur).style.transform=`translateX(${(688*(1-w)).toFixed(1)}px)`; paneAnim(cur,t,tb,loop);
+    if(w<1&&prev!==cur){$('pane'+prev).style.display=''; $('pane'+prev).style.transform=`translateX(${(-688*w).toFixed(1)}px)`; paneAnim(prev,t,tb,loop);}}
+  // Etikett: Frame 0 bis 6,5 (Hook + Foto-Szene), danach aus (Handy steigt)
+  if(t<6.5) put('TAG',500,1072,-1.5+(loop?0:.8*Math.sin(Math.PI*2*tb/1.0)),1,1-lin(t,6.42,6.5)); else put('TAG',500,1072,0,1,0);
+
+  // Kamera: leichter Push je Szene + Zoom-Punch 1→1,05→1 in 0,22 s (um 540/1000)
+  let push=1;
+  if(t<3.0) push=loop?1:1+.012*lin(t,0,2.6);
+  else if(t<ENDC){let s0=3.0; for(const a of SC) if(t>=a) s0=a; push=1+.012*lin(t,s0+.5,s0+3.5);}
+  const punch=PUNCH.reduce((m,p)=>m*(1+.05*Math.sin(Math.PI*lin(t,p,p+.22))),1);
+  const s=(1+(loop?0:.004*Math.sin(tb*1.3)))*push*punch, dy=loop?0:4*Math.sin(tb*.9);
+  $('world').style.transform=`translate(${(540-540*s).toFixed(2)}px,${(1000-1000*s+dy).toFixed(2)}px) scale(${s.toFixed(5)})`;
+
+  // ---- Hook + Mitmach (Frame 0 fertig) ----
+  {const on=t<2.95; const H=$('hook'), M=$('mit'); H.style.display=on?'':'none'; M.style.display=on?'flex':'none';
+   const o=on?1-lin(t,2.9,2.95):0; H.style.opacity=o; M.style.opacity=o;
+   $('mkh').style.transformOrigin='0 50%'; $('mkh').style.transform=`scale(${1+(loop?0:.05*Math.sin(Math.PI*lin(t,1.0,1.3))+.05*Math.sin(Math.PI*lin(t,2.0,2.3)))})`;
+   M.style.transform=`scale(${(1+(loop?0:.035*Math.sin(Math.PI*lin(t,1.5,1.72)))).toFixed(4)})`;}
+  // ---- Captions + Belege (Beleg gleichzeitig mit der Caption, Lehre 29-N2) ----
+  SC.forEach((a,i)=>{lines('c'+(i+1),t,a,a+3.42); box('s'+(i+1),t,a,a+3.42);});
+  // ---- CTA-Chip ----
+  {const Cp=$('chip'); $('chipT').textContent=GMB?'Preço na hora no site':'Preço na hora · link na bio';
+   const p=lin(t,3.0,3.2); const on=t>=3.0&&t<ENDC; Cp.style.display=on?'flex':'none'; Cp.style.opacity=(Math.min(1,.6+p*2)*(1-lin(t,ENDC-.08,ENDC))).toFixed(3); Cp.style.transform=`scale(${(.94+.06*eo(p)).toFixed(4)})`;}
+  // ---- Endcard ----
+  {const E=$('end'); const o=t>=ENDC&&!loop?1:0; E.style.opacity=o.toFixed(3); E.style.display=o>0?'':'none';
+   $('eBio').textContent=GMB?'no site':'link na bio';
+   const b=lin(t,ENDC,ENDC+.15); $('eBio').style.transform=`scale(${(.94+.06*eo(b)).toFixed(4)})`;}
+}
+render(0);
+</script></body></html>

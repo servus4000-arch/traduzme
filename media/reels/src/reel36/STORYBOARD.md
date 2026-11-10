@@ -3,7 +3,7 @@
 Thema nach ENTSCHEIDEN (Lauf 10.11., marketing/lernen/social.md): **Certidão de nascimento português → espanhol**, Preisbeispiel **R$ 149 (breve relato) / R$ 169 (inteiro teor), tabela**. Score 17 (K2 N2 E1 B1 L3).
 Format (Pflicht-Wechsel): **Dokument-Duell** – Held-Objekt Bühne 960 × 1080 mit zwei Certidões nebeneinander (Breve relato | Inteiro teor), Inhalt wechselt je Szene per Whip auf dem Schlag · Grund **Dark #1F3B35** · Musik `music.py` **lofi 120 BPM** (Raster E2: Erklär-Tisch/Dokumente → lofi).
 R35 = Handy-Close-up / Névoa / pop · R34 = Dokument-Tisch / Pinho / funk · R33 = Kinetic-Type / Sálvia / lofi → Bildsprache, Grund und Musik anders als R35.
-**Variable (Wochenfazit KW45, zweite Messung, gleich wie R35):** Dokument + Richtung + Preis in **Frame 0** als Etikett („Certidão de nascimento · português → espanhol · R$ 149 · breve relato“, 9 Wörter statt 11 bei R35, Lehre 35-1). Hook-Frage ist **nicht** die Preisfrage, sondern ein Kauf-Zweifel (welches Modell bestellen/übersetzen). Cover 1,0 s zeigt das Etikett.
+**Variable (Wochenfazit KW45, zweite Messung, gleich wie R35):** Dokument + Richtung + Preis in **Frame 0** als Etikett („Certidão de nascimento · português → espanhol · R$ 169 / 149“, 8 Wörter statt 11 bei R35, Lehre 35-1). Hook-Frage ist **nicht** die Preisfrage, sondern ein Kauf-Zweifel (welches Modell bestellen/übersetzen). Cover 1,0 s zeigt das Etikett.
 Vorhersage: TikTok Ø Sehdauer +20 % gegenüber Median R28–R34 (72 h). Messung Fr 20.11. (Feiertag, ohne Post) bzw. Sa 21.11.2026.
 
 ## Preis-Einstufung (Lehre 33-5, vor dem Bau geprüft 10.11.2026)
@@ -19,7 +19,7 @@ Vorhersage: TikTok Ø Sehdauer +20 % gegenüber Median R28–R34 (72 h). Messung
 ## Ablauf (120 BPM, Schlag 0,5 s; Szenen je 3,5 s)
 | Zeit | Bild | Text (Bild) | Quelle |
 |---|---|---|---|
-| 0,0–2,95 | Bühne unten (Breve 1 Blatt | Inteiro teor Stapel, Fragezeichen pulsiert ab Frame 1), Etikett darüber | Hook „Certidão pro / exterior: / **inteiro teor** ou / **breve relato?**“ (8 W.) + Mitmach „Comenta INTEIRO ou BREVE“ + **Etikett** „Certidão de nascimento · português → espanhol · R$ 149 · breve relato“ | Q1 |
+| 0,0–2,95 | Bühne unten (Breve 1 Blatt | Inteiro teor Stapel, Fragezeichen pulsiert ab Frame 1), Etikett darüber | Hook „Certidão pro / exterior: / **inteiro teor** ou / **breve relato?**“ (8 W.) + Mitmach „Comenta INTEIRO ou BREVE“ + **Etikett** „Certidão de nascimento · português → espanhol · R$ 169 / 149“ | Q1 |
 | 2,5 | Fragezeichen → Haken, Punch | – | – |
 | 3,0–6,5 | Bühne steigt; beide Certidões mit Titel-Pillen „Breve relato“ / „Inteiro teor“, darunter Órgão (Säulen) mit Pfeilen, Haken 4,0 | „Quem pede define: / **pergunte antes.**“ · Beleg „Consulado, universidade, cartório“ · CTA-Chip ab 3,0 | Q6, Q3 |
 | 6,5–10,0 | Breve relato groß, Ring 7,0, Kästen leuchten 8,0 | „Breve relato: / **o modelo resumido.**“ · Beleg „Campos em quadros“ | Q3 |

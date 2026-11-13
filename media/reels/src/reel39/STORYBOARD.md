@@ -2,7 +2,7 @@
 
 **Thema (ENTSCHEIDEN, Score 22):** Certidão de nascimento português → inglês + Apostila na tradução. Kaufnachweis: bezahlter Auftrag 11.11.2026 im Rechner (Certidão inteiro teor PT→EN R$ 139 + Apostila na tradução R$ 119 = R$ 258, intern, keine Kundendaten öffentlich). Kauf-Zweifel: Muss ich mit der Übersetzung selbst zum Cartório, um sie apostilieren zu lassen? Antwort im Video: NÃO – die Apostila der Übersetzung ist eine Option im Pedido (digital).
 **Etikett Frame 0 (Standard seit R35, keine Variable):** „Certidão de nascimento · português → inglês · R$ 139 na tabela“. Ein Preis (Certidão breve relato und inteiro teor beide 13900), nennt weder Apostila noch Cartório noch SIM/NÃO → legt die Antwort nicht nahe. Hook-Frage = Kauf-Zweifel, nicht die Preisfrage.
-**Eine neue Variable (berührt Etikett/Frame 0, LinkedIn-Einstieg und Szenenlänge nicht):** Endcard-Handlungsaufforderung nennt den konkreten Schritt im Rechner, den das Video erklärt hat: „Pro exterior? / Marque a apostila: / preço na hora.“ statt „<Dokument>? / Envie a foto: / preço na hora.“ (R31–R38). Szenen zurück auf 3,5 s (Standard), damit R38 (3,0 s) allein misst. Hook, Etikett, Mitmach SIM/NÃO, LinkedIn-Einstieg (Frage + UTM in Zeile 1 wie R37/R38) bleiben.
+**Eine neue Variable (berührt Etikett/Frame 0, LinkedIn-Einstieg und Szenenlänge nicht):** Endcard-Handlungsaufforderung nennt den konkreten Schritt im Rechner, den das Video erklärt hat: „Pedem apostila? / Marque no / pedido: / preço na hora.“ (Fix 39-A, vorher „Pro exterior? / Marque a / apostila:“) statt „<Dokument>? / Envie a foto: / preço na hora.“ (R31–R38). Szenen zurück auf 3,5 s (Standard), damit R38 (3,0 s) allein misst. Hook, Etikett, Mitmach SIM/NÃO, LinkedIn-Einstieg (Frage + UTM in Zeile 1 wie R37/R38) bleiben.
 **Pflichtwechsel (keine Variable):** Format „Trilho do pedido“ – Held-Objekt Papier-Tafel 960 × 1080 mit Stations-Leiste oben (8 Punkte, Marker wandert), Szenenwechsel als horizontaler Whip-Pan (0,22 s, alte Station fährt links raus, neue von rechts rein) statt Zeugnis-Close-up mit Wisch-Maske (R38) / Quiz em 3 cartas (R37). Grund **Pinho #376259** (R38 Sálvia, R37 Areia; Pinho zuletzt R34). Musik `music.py` **pop 120 BPM**, Tonart D, seed 39 (R38 funk, R37 bossa).
 
 ## Ablauf (Designzeit, 120 BPM, Schlag 0,5 s; Szenen 3,5 s)
@@ -13,14 +13,14 @@
 | 3,0–6,5 | Tafel steigt; Bestell-Liste: Zeile Dokument (Haken) · Zeile Siegel mit Kästchen, Haken 4,0 · Pfeil „ab“ 5,5 | „NÃO: vai junto / no pedido.“ | Opção: Apostila na tradução | Q4 |
 | 6,5–10,0 | Original und Übersetzung nebeneinander, Siegel auf dem Original 7,0 (Punch), Siegel auf der Übersetzung 8,0, Haken 9,0 | „Original e tradução: / uma apostila cada.“ | Em geral · são separadas | Q5 |
 | 10,0–13,5 | Papier-Certidão → Cartório-Gebäude (Pfeil zeichnet 10,5) → Siegel 11,5, Haken 12,5 | „Original em papel: / cartório antes.“ | Antes do pedido | Q6 |
-| 13,5–17,0 | Certidão + Apostila-Blatt fächern zusammen (14,5 Punch), Klammer = 1 Dokument, Haken 15,5 | „Folha da apostila: / vai junto.“ | Sem custo extra · documento padrão | Q7 |
+| 13,5–17,0 | Certidão + Apostila-Blatt fächern zusammen (14,5 Punch), Klammer = 1 Dokument, Haken 15,5 | „Apostila do original: / traduzida junto.“ | Sem custo extra na tradução | Q7 |
 | 17,0–20,5 | Globus mit drei Zielnadeln, Lupe fährt (18,0), Haken auf einer Nadel, „?“ auf einer anderen (19,0) | „Apostila digital: / confirme no destino.“ | Aceitação varia por país | Q8 |
 | 20,5–24,0 | Certidão + Siegel, Pluszeichen, zwei Preisschilder ohne Zahl, Klammer (21,5 Punch), Haken 22,5 | „Certidão: R$ 139, / apostila: R$ 119.“ | Português → inglês · tabela | Q1, Q2, Q3 |
 | 24,0–27,5 | PDF, Unterschrift zeichnet sich (24,5–25,5), Siegel heftet sich an (25,5), Lupe 26,5 | „Chega em PDF com / assinatura digital.“ | Apostila acompanha o PDF | Q9 |
-| 27,5–34,2 | Endcard (harter Schnitt), Tafel in Hook-Pose (Loop-Reim) | „Pro exterior? / Marque a / apostila: / preço na hora.“ · link na bio · traduzme.com.br · (61) 99803-8363 | – | Q4, Q10 |
+| 27,5–34,2 | Endcard (harter Schnitt), Tafel in Hook-Pose (Loop-Reim) | „Pedem apostila? / Marque no / pedido: / preço na hora.“ · link na bio · traduzme.com.br · (61) 99803-8363 | – | Q4, Q10 |
 | 34,2–34,5 | Loop: Frame 0 | – | – | – |
 
-GMB (≤ 30 s): ohne 13,5–17,0 („Folha da apostila“) und 24,0–27,5 („PDF“), harte Schnitte, Chip „Preço na hora no site“, Endcard-Chip „no site“ → 27,5 s Datei (Loop-Punkt 27,2 s, Endcard 20,5–27,2 = 6,7 s).
+GMB (≤ 30 s): ohne 13,5–17,0 („Apostila do original“), harter Schnitt, PDF-Szene bleibt, Chip „Preço na hora no site“, Endcard-Chip „no site“ → 29,3 s Datei (Loop-Punkt 29,0 s, Endcard 24,0–29,0 = 5,0 s; Fix 39-1).
 Kauf-/Preis-Szenen vor der Endcard: 3,0–6,5 (Option im Pedido = Antwort auf die Hook-Frage) + 20,5–24,0 = 7,0 s von 27,5 s = 25 % (≤ 30 %). Ausnahme „frühestens ab 6 s“: die Antwort selbst ist der Schritt im Pedido (wie R30 „verso paga à parte? NÃO“ bei 3 s), bewusst.
 Captions je 3,42 s ≥ max(1,8; 0,4 × Wörter); ≤ 4 Wörter je Zeile.
 
@@ -31,10 +31,10 @@ Captions je 3,42 s ≥ max(1,8; 0,4 × Wörter); ≤ 4 Wörter je Zeile.
 | Q1 | Certidão de nascimento português → inglês R$ 139 (Etikett, Preis-Szene, Texte) | Supabase `precos` (ypdvpytpajgkzglbzxwg) `WHERE ativo AND NOT placeholder`: `en / from_pt / certidao de nascimento` 13900 und `en / from_pt / certidao inteiro teor` 13900, extra_pag_cents null | SELECT 13.11.2026 (read-only) |
 | Q2 | Apostila na tradução R$ 119 (Preis-Szene, YT/LinkedIn) | `precos` `*|*|apostila` (categoria opcao) 11900; Rechner `apo_por` „por documento“ | SELECT + curl /orcamento-app/?lang=pt 13.11.2026 (HTTP 200) |
 | Q3 | Einstufung: Certidão PT mit Apostila-Blatt = 1 Dokument zum Festpreis | Edge-Function `analisar` v40: „Averbações, verso de registro e Apostila são peças do mesmo documento“; „certidao inteiro teor: SOMENTE certidão BRASILEIRA … 2-3 páginas“; bezahlter Auftrag 11.11.2026 tabela = final 13900 + Option apostila 11900 = 25800 (intern) | get_edge_function + SELECT 13.11.2026 |
-| Q4 | NÃO: vai junto no pedido · Beleg „Opção: Apostila na tradução“; Endcard „Marque a apostila“ | Rechner-Option `opt_apostila` „Apostila na tradução (digital)“ (Optionsliste nach dem Preis), FAQ „Preciso de Apostila de Haia?“: „a tradução juramentada recebe uma apostila própria, que você pode incluir direto no orçamento“ | curl 13.11.2026 |
+| Q4 | NÃO: vai junto no pedido · Beleg „Opção: Apostila na tradução“; Endcard „Pedem apostila? Marque no pedido“ | Rechner-Option `opt_apostila` „Apostila na tradução (digital)“ (Optionsliste nach dem Preis), FAQ „Preciso de Apostila de Haia?“: „a tradução juramentada recebe uma apostila própria, que você pode incluir direto no orçamento“ | curl 13.11.2026 |
 | Q5 | Original e tradução: uma apostila cada · „Em geral · são separadas“ (Bild gekürzt; Wortlaut „apostilados separadamente“) | Rechner Info-Pop-up „Apostila de Haia“: „Apostilar o original ou a tradução? Em geral, os dois: o documento original e a tradução juramentada são apostilados separadamente, por serem documentos independentes.“ | curl 13.11.2026 |
 | Q6 | Original em papel: cartório antes · „Antes do pedido“ | Rechner `apo_hint_o`: „Só para documento brasileiro emitido em formato digital, com assinatura digital (ex.: certidão digital). Documento em papel deve ser apostilado em cartório antes do pedido.“ | curl 13.11.2026 |
-| Q7 | Folha da apostila vai junto · „Sem custo extra · documento padrão“ | Rechner pc2: „Verso e Apostila (foto ou página) contam como parte do documento: sem custo extra.“ (Whitelist pc1–pc3); analisar v40 (Q3) | curl 13.11.2026 |
+| Q7 | Apostila do original: traduzida junto · „Sem custo extra na tradução“ | Rechner pc2: „Verso e Apostila (foto ou página) contam como parte do documento: sem custo extra.“ (Whitelist pc1–pc3); analisar v40 (Q3) | curl 13.11.2026 |
 | Q8 | Apostila digital: confirme no destino · „Aceitação varia por país“ | Rechner Info-Pop-up „Apostila de Haia“, Absatz „Atenção: a aceitação da apostila digital varia conforme o país e o órgão de destino. Antes de pedir, confirme com quem vai receber …“ | curl 13.11.2026 |
 | Q9 | Chega em PDF com assinatura digital · „Apostila acompanha o PDF“ | Rechner fl4_d „PDF juramentado com assinatura digital.“; `apo_ambas` erster Satz „As duas apostilas são digitais e acompanham o PDF.“ (Rest des Satzes nicht verwendet) | curl 13.11.2026 |
 | Q10 | Preço na hora (Chip, Endcard) | Rechner fl2_d „Valor e data de entrega na hora.“, fl1_d „Foto ou PDF, quantos precisar.“ | curl 13.11.2026 |
@@ -52,8 +52,14 @@ Bewusst **nicht** verwendet: Apostila no documento original (digital) als Option
 
 **Runde 2**
 - Fakten: Preis-Szene „Certidão: R$ 139, apostila: R$ 119.“ braucht Richtung → Beleg „Português → inglês · tabela“. Etikett nennt „na tabela“. Keine Aussage zu Fristen/Zusatztagen (Sperre). OK.
-- Design: Endcard „Pro exterior? / Marque a / apostila: / preço na hora.“ 96 px, längste Zeile 14 Zeichen ≈ 770 px → x ≤ 900. OK.
+- Design: Endcard „Pedem apostila? / Marque no / pedido: / preço na hora.“ 96 px, längste Zeile 15 Zeichen ≈ 780 px → x ≤ 900. OK.
 - Hook/Tempo: Frame 0 Wörter ≈ 7 + 4 + 8 = 19 → qa-Ausnahme maxNewWords 22 (Loop-Naht, wie R35–R38). OK.
 - Conversion: GMB ohne „link na bio“, Endcard-Chip „no site“. OK.
 
 **Runde 3 (getrennt):** keine offenen Mängel.
+
+## Abnahme 13.11. – Fixes
+- **39-A** (blockierend): Endcard qualifiziert „Pedem apostila? / Marque no / pedido: / preço na hora.“ (Variable bleibt: konkreter Schritt im Rechner); Texte IG/TikTok je ein Punkt „Apostila vale pra países da Convenção da Apostila; fora dela, o caminho é a legalização: confirme no destino.“, YT Pkt. 1/4, LinkedIn Z1/Pkt. 1/4 eingeschränkt. Quelle Q11: Rechner Info-Pop-up „Para países fora da Convenção de Haia, é preciso legalização no consulado; fale conosco nesse caso.“ (curl 13.11.2026).
+- **39-B** (blockierend): Szene 13,5–17,0 „Apostila do original: / traduzida junto.“ + Beleg „Sem custo extra na tradução“ (vorher „Folha da apostila: vai junto.“ / „Certidão: sem custo extra“ widersprach „apostila: R$ 119“).
+- **39-1**: GMB-Endcard 5,0 s statt 6,7 s, PDF-Szene wieder drin → 29,3 s.
+- **39-2**: Hook, Mitmach und Etikett voll bis 2,97 s, dann harter Schnitt (vorher Ausblendung 2,90–2,95).

@@ -4,7 +4,7 @@
      Format „Trilho do pedido“ (Held-Objekt: Papier-Tafel 960 × 1080 auf Pinho mit Stations-Leiste oben; Szenenwechsel als horizontaler Whip-Pan 0,22 s innerhalb der Tafel),
      Grund Pinho #376259 · pop 120 BPM (R38 Zeugnis-Wisch/Sálvia/funk · R37 Quiz em 3 cartas/Areia/bossa)
      Etikett Dokument + Richtung + Preis in Frame 0 = Standard seit R35; Hook-Frage ist NICHT die Preisfrage. Szenen 3,5 s (Standard).
-     Neue Variable: Endcard-Handlungsaufforderung nennt den Schritt im Rechner („Marque a apostila: preço na hora.“) statt „Envie a foto: preço na hora.“ (R31–R38).
+     Neue Variable: Endcard-Handlungsaufforderung nennt den Schritt im Rechner („Pedem apostila? Marque no pedido: preço na hora.“, Fix 39-A: nur wenn das Ziel Apostila verlangt) statt „Envie a foto: preço na hora.“ (R31–R38).
      Quellen je Aussage: STORYBOARD.md (Q1 precos en/from_pt · Q2 precos opcao apostila · Q3 analisar v40 · Q4 opt_apostila + FAQ · Q5/Q8 Info-Pop-up Apostila
      · Q6 apo_hint_o · Q7 pc2 · Q9 fl4 + apo_ambas · Q10 fl1/fl2). -->
 <link rel="stylesheet" href="fonts/os.css">
@@ -62,7 +62,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
   <div class="cap" id="c1"><div class="ln">NÃO: vai junto</div><div class="ln"><span class="mk">no pedido.</span></div></div>
   <div class="cap" id="c2"><div class="ln">Original e tradução:</div><div class="ln"><span class="mk">uma apostila cada.</span></div></div>
   <div class="cap" id="c3"><div class="ln">Original em papel:</div><div class="ln"><span class="mk">cartório antes.</span></div></div>
-  <div class="cap" id="c4"><div class="ln">Folha da apostila:</div><div class="ln"><span class="mk">vai junto.</span></div></div>
+  <div class="cap" id="c4"><div class="ln">Apostila do original:</div><div class="ln"><span class="mk">traduzida junto.</span></div></div>
   <div class="cap" id="c5"><div class="ln">Apostila digital:</div><div class="ln"><span class="mk">confirme no destino.</span></div></div>
   <div class="cap" id="c6"><div class="ln">Certidão: R$ 139,</div><div class="ln"><span class="mk">apostila: R$ 119.</span></div></div>
   <div class="cap" id="c7"><div class="ln">Chega em PDF com</div><div class="ln"><span class="mk">assinatura digital.</span></div></div>
@@ -70,7 +70,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
   <div class="src" id="s1" data-qa="beleg">Opção: Apostila na tradução</div>
   <div class="src" id="s2" data-qa="beleg">Em geral · são separadas</div>
   <div class="src" id="s3" data-qa="beleg">Antes do pedido</div>
-  <div class="src" id="s4" data-qa="beleg">Certidão: sem custo extra</div>
+  <div class="src" id="s4" data-qa="beleg">Sem custo extra na tradução</div>
   <div class="src" id="s5" data-qa="beleg">Aceitação varia por país</div>
   <div class="src" id="s6" data-qa="beleg">Português<svg width="48" height="30" viewBox="0 0 140 90"><path d="M10 45H110" stroke="#1F3B35" stroke-width="16" stroke-linecap="round"/><path d="M80 12l40 33-40 33" fill="none" stroke="#1F3B35" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/></svg>inglês · tabela</div>
   <div class="src" id="s7" data-qa="beleg">Apostila acompanha o PDF</div>
@@ -79,20 +79,20 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
 
   <!-- Endcard (Absender traduzme; Kopf an der Hook-Position; Variable: Handlungsaufforderung = Schritt im Rechner; kein Preis) -->
   <div class="abs" id="end" style="left:0;top:0;width:1080px;height:1920px;opacity:0">
-    <div class="hook" id="eHead" style="top:336px;font-size:96px;line-height:1.16">Pro exterior?<br>Marque a<br><span class="mk">apostila:</span><br><span class="mk">preço na hora.</span></div>
+    <div class="hook" id="eHead" style="top:336px;font-size:96px;line-height:1.16">Pedem apostila?<br>Marque no<br><span class="mk">pedido:</span><br><span class="mk">preço na hora.</span></div>
     <div class="chip" id="eBio" style="top:816px">link na bio</div>
     <div class="big" id="eUrl" style="left:104px;top:944px;font-size:66px">traduzme.com.br</div>
     <div class="big" id="eWa" style="left:104px;top:1040px;font-size:66px;display:flex;align-items:center;gap:24px"><svg width="72" height="72" viewBox="0 0 32 32"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3z" fill="#EEDECE"/><path d="M11.6 9.6c.3-.6.6-.6 1-.6h.8c.3 0 .6.1.8.6l1.1 2.6c.1.3.1.6-.1.9l-.7.9c-.2.2-.2.5 0 .8a10 10 0 0 0 4.3 3.8c.3.1.6.1.8-.1l.9-1.1c.2-.3.6-.3.9-.2l2.6 1.2c.3.2.5.4.4.8-.2 1.3-1.3 2.4-2.7 2.5-1.2.1-3.6-.5-6.4-3.1-2.6-2.4-3.7-5-3.8-6.2 0-.8.3-1.6.8-2.3z" fill="#1F3B35"/></svg>(61) 99803-8363</div>
   </div>
 </div>
 <script>
-// GMB-Fassung (≤ 30 s, ohne 13,5–17,0 „Folha da apostila“ und 24,0–27,5 „PDF“): gmb/reel.html setzt GMB=1, oder URL ?cut=gmb
+// GMB-Fassung (≤ 30 s, ohne 13,5–17,0 „Apostila do original“, Endcard 5,0 s statt 6,7 s; Fix 39-1): gmb/reel.html setzt GMB=1, oder URL ?cut=gmb
 let GMB=0;
 if(new URLSearchParams(location.search).get('cut')==='gmb') GMB=1;
-const END=GMB?27.5:34.5;
-const SKIP=GMB?[[13.5,3.5],[24.0,3.5]]:[];   // Designzeit: 13,5–17,0 und 24,0–27,5
+const END=GMB?29.3:34.5;
+const SKIP=GMB?[[13.5,3.5]]:[];   // Designzeit: 13,5–17,0
 function remap(tn){let t=tn;for(const [a,d] of SKIP){if(t>=a-1e-6)t+=d;}return t;}
-const LOOPD=34.2;
+const LOOPD=GMB?32.5:34.2;   // GMB: Endcard 27,5–32,5 (5,0 s)
 const $=id=>document.getElementById(id);
 const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
 const lin=(t,a,b)=>cl((t-a)/(b-a));
@@ -215,7 +215,7 @@ function lns(id,t,a,b,step=.14){const el=$(id); if(t<a||t>=b+.08){el.style.displ
   el.querySelectorAll('.ln').forEach((l,i)=>{const a0=a+i*step, p=lin(t,a0,a0+.12); l.style.opacity=(Math.min(1,p*1.4+.6)*out).toFixed(3); if(t<a0)l.style.opacity=0; l.style.transform=`scale(${(.94+.06*eo(p)).toFixed(4)})`;});}
 function box(id,t,a,b,dIn=.15,dOut=.08,disp='flex'){const e=$(id); const o=t>=a&&t<b+dOut?Math.min(lin(t,a,a+dIn),1-lin(t,b,b+dOut)):0; e.style.opacity=o.toFixed(3); e.style.display=o>0?disp:'none'; return o;}
 
-const SEQ=[0,...SC].filter(a=>!(GMB&&(a===13.5||a===24.0)));
+const SEQ=[0,...SC].filter(a=>!(GMB&&a===13.5));
 function paneState(t){
   let i=0; for(let k=0;k<SEQ.length;k++) if(t>=SEQ[k]-PAN0) i=k;
   const a=SEQ[i], cur=PANE[a], prev=i>0?PANE[SEQ[i-1]]:cur, p=i>0?lin(t,a-PAN0,a-PAN0+PAND):1;
@@ -261,7 +261,7 @@ function render(tn){
       $('pane'+cur).style.transform=`translateX(${(W*(1-w)).toFixed(1)}px)`;
       $('pane'+prev).style.display=''; $('pane'+prev).style.transform=`translateX(${(-W*w).toFixed(1)}px)`; paneAnim(prev,t,tb,loop);}}
   // Etikett: Frame 0 bis 2,95 (danach steigt die Tafel)
-  if(t<2.95) put('TAG',500,1048,-1.5+(loop?0:.8*Math.sin(Math.PI*2*tb/1.0)),1,1); else put('TAG',500,1048,0,1,0);
+  if(t<2.97) put('TAG',500,1048,-1.5+(loop?0:.8*Math.sin(Math.PI*2*tb/1.0)),1,1); else put('TAG',500,1048,0,1,0);
 
   // Kamera: leichter Push je Szene + Zoom-Punch 1→1,05→1 in 0,22 s (um 540/1000)
   let push=1;
@@ -272,8 +272,8 @@ function render(tn){
   $('world').style.transform=`translate(${(540-540*s).toFixed(2)}px,${(1000-1000*s+dy).toFixed(2)}px) scale(${s.toFixed(5)})`;
 
   // ---- Hook + Mitmach (Frame 0 fertig) ----
-  {const on=t<2.95; const Hk=$('hook'), M=$('mit'); Hk.style.display=on?'':'none'; M.style.display=on?'flex':'none';
-   const o=on?1-lin(t,2.9,2.95):0; Hk.style.opacity=o; M.style.opacity=o;
+  {const on=t<2.97; const Hk=$('hook'), M=$('mit'); Hk.style.display=on?'':'none'; M.style.display=on?'flex':'none';
+   const o=on?1:0;   // Fix 39-2: voll bis 2,97 s, harter Schnitt Hk.style.opacity=o; M.style.opacity=o;
    ['mk1','mk2'].forEach((id,i)=>{$(id).style.transformOrigin='0 50%'; $(id).style.transform=`scale(${1+(loop?0:.05*Math.sin(Math.PI*lin(t,1.0+i*.5,1.3+i*.5)))})`;});
    M.style.transform=`scale(${(1+(loop?0:.012*Math.sin(Math.PI*lin(t,2.0,2.22)))).toFixed(4)})`;}
   // ---- Captions + Belege (gleichzeitig) ----

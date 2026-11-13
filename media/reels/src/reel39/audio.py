@@ -7,7 +7,7 @@ Lib (Lehre 38-7): gebraucht wird music.py aus origin/reels-pipeline-v2 a9df053 (
 SFX-Grammatik (Design-Regeln v3): impact = Payoff/Punch 2,5 · 7,0 · 14,5 · 21,5 · stamp = Siegel/Urteil 8,0 · 11,5 · 25,5 · Endcard 27,5 ·
 whoosh = Whip-Pan 3,0 · 6,5 · 10,0 · 13,5 · 17,0 · 20,5 · 24,0 · pop = Fragezeichen 0,03 / Haken 4,0 / 9,0 / 12,5 / 15,5 / 19,0 / 22,5 ·
 click = Pfeil 5,5 / Pfeil zeichnet 10,5 / Lupe 18,0 / Unterschrift 24,5 / Lupe 26,5.
-Höchstens 1 SFX je Bildereignis, gleiche SFX nie innerhalb 1 s. Zeiten = Designzeit wie reel.html; GMB lässt 13,5–17,0 und 24,0–27,5 weg.
+Höchstens 1 SFX je Bildereignis, gleiche SFX nie innerhalb 1 s. Zeiten = Designzeit wie reel.html; GMB lässt 13,5–17,0 weg (Endcard 5,0 s, Fix 39-1).
 """
 import os, sys, subprocess, tempfile, inspect
 
@@ -41,8 +41,8 @@ from music import Track
 assert 'master' in inspect.signature(Track.__init__).parameters, f'music.py in {LIB} kennt master= nicht'
 
 OUT = sys.argv[1]; GMB = len(sys.argv) > 2 and sys.argv[2] == 'gmb'
-END = 27.5 if GMB else 34.5
-SKIP = [(13.5, 17.0), (24.0, 27.5)] if GMB else []
+END = 29.3 if GMB else 34.5
+SKIP = [(13.5, 17.0)] if GMB else []
 def T(t):
     for a, b in SKIP:
         if a <= t < b: return None
@@ -51,7 +51,7 @@ def T(t):
 G = float(os.environ.get('SFXG', '1.0'))
 tr = Track(style='pop', dur=END, key='D', seed=39, bpm=120, master='v2')
 tr.keep_stems = True
-tr.v2['ceiling'] = -2.0                  # AAC-Überschwinger (Lehre R26)
+tr.v2['ceiling'] = -3.0 if GMB else -2.0   # AAC-Überschwinger (Lehre R26; GMB 29,3 s: AAC +1,4 dB über WAV)
 EVENTS = []
 def sfx(kind, t, g, **kw):
     if T(t) is not None:
@@ -73,7 +73,7 @@ sfx('whoosh', 10.0, 1.8, d=.4)       # Pan papel
 sfx('click', 10.5, 2.8)             # Pfeil zeichnet
 sfx('stamp', 11.5, .75)             # Siegel Cartório
 sfx('pop', 12.5, 2.2, f=700)        # Haken
-sfx('whoosh', 13.5, 1.8, d=.4)       # Pan folha
+sfx('whoosh', 13.5, 1.8, d=.4)       # Pan Apostila do original
 sfx('impact', 14.5, .6)             # Blätter fahren zusammen + Punch
 sfx('pop', 15.5, 2.2, f=760)        # Haken
 sfx('whoosh', 17.0, 1.8, d=.4)       # Pan destino

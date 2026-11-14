@@ -1,0 +1,294 @@
+{
+ "html": "/tmp/claude-0/-home-user/64e8724d-debd-5b6d-878d-46a52273fb18/scratchpad/wt31/media/reels/src/reel31/gmb/reel.html",
+ "query": "",
+ "END": 28,
+ "fps": 10,
+ "from": 0,
+ "to": 28,
+ "frames": 281,
+ "scanSec": 1.7,
+ "pageErrors": [],
+ "summary": {
+  "block": 0,
+  "warn": 9,
+  "blockBy": {},
+  "warnBy": {
+   "font": 6,
+   "notext": 1,
+   "cut": 1,
+   "safe": 1
+  }
+ },
+ "befunde": [
+  {
+   "c": "font",
+   "sev": "warn",
+   "from": 0,
+   "to": 3,
+   "dur": 3,
+   "d": "33 px < 44 (Text auf Objekt)",
+   "txt": "ACTE DE NAISSANCE",
+   "tWorst": 0,
+   "rect": [
+    363,
+    908,
+    698,
+    958
+   ],
+   "items": [
+    {
+     "k": "#ACTE>div.hd:1~1/0",
+     "txt": "ACTE DE NAISSANCE",
+     "from": 0,
+     "to": 3,
+     "dur": 3,
+     "d": "33 px < 44 (Text auf Objekt)"
+    }
+   ]
+  },
+  {
+   "c": "notext",
+   "sev": "warn",
+   "from": 3,
+   "to": 3.1,
+   "dur": 0.1,
+   "d": "kein lesbarer Text",
+   "txt": "",
+   "tWorst": 3,
+   "rect": null,
+   "items": [
+    {
+     "k": "frame",
+     "txt": "",
+     "from": 3,
+     "to": 3.1,
+     "dur": 0.1,
+     "d": "kein lesbarer Text"
+    }
+   ]
+  },
+  {
+   "c": "font",
+   "sev": "warn",
+   "from": 4.5,
+   "to": 6,
+   "dur": 1.5,
+   "d": "32 px < 44 (Text auf Objekt)",
+   "txt": "TRADUÇÃO",
+   "tWorst": 4.5,
+   "rect": [
+    522,
+    911,
+    699,
+    961
+   ],
+   "items": [
+    {
+     "k": "#TRD>div.hd:0~14/0",
+     "txt": "TRADUÇÃO",
+     "from": 4.5,
+     "to": 6,
+     "dur": 1.5,
+     "d": "32 px < 44 (Text auf Objekt)"
+    }
+   ]
+  },
+  {
+   "c": "font",
+   "sev": "warn",
+   "from": 4.5,
+   "to": 6,
+   "dur": 1.5,
+   "d": "32 px < 44 (Text auf Objekt)",
+   "txt": "JURAMENTADA",
+   "tWorst": 4.5,
+   "rect": [
+    520,
+    955,
+    757,
+    996
+   ],
+   "items": [
+    {
+     "k": "#TRD>div.hd:0~14/2",
+     "txt": "JURAMENTADA",
+     "from": 4.5,
+     "to": 6,
+     "dur": 1.5,
+     "d": "32 px < 44 (Text auf Objekt)"
+    }
+   ]
+  },
+  {
+   "c": "font",
+   "sev": "warn",
+   "from": 9,
+   "to": 12,
+   "dur": 3,
+   "d": "31 px < 44 (Text auf Objekt)",
+   "txt": "ACTE DE NAISSANCE",
+   "tWorst": 9,
+   "rect": [
+    163,
+    870,
+    480,
+    917
+   ],
+   "items": [
+    {
+     "k": "#ACTE>div.hd:1~1/0",
+     "txt": "ACTE DE NAISSANCE",
+     "from": 9,
+     "to": 12,
+     "dur": 3,
+     "d": "31 px < 44 (Text auf Objekt)"
+    }
+   ]
+  },
+  {
+   "c": "cut",
+   "sev": "warn",
+   "from": 9.2,
+   "to": 9.3,
+   "dur": 0.1,
+   "d": "20 % sichtbar (Bildrand)",
+   "txt": "APOSTILLE",
+   "tWorst": 9.2,
+   "rect": [
+    1059,
+    853,
+    1263,
+    899
+   ],
+   "items": [
+    {
+     "k": "#APO>div.hd:1~25/0",
+     "txt": "APOSTILLE",
+     "from": 9.2,
+     "to": 9.3,
+     "dur": 0.1,
+     "d": "20 % sichtbar (Bildrand)"
+    }
+   ]
+  },
+  {
+   "c": "font",
+   "sev": "warn",
+   "from": 9.3,
+   "to": 12,
+   "dur": 2.7,
+   "d": "36 px < 44 (Text auf Objekt)",
+   "txt": "APOSTILLE",
+   "tWorst": 9.3,
+   "rect": [
+    852,
+    852,
+    1056,
+    898
+   ],
+   "items": [
+    {
+     "k": "#APO>div.hd:1~25/0",
+     "txt": "APOSTILLE",
+     "from": 9.3,
+     "to": 12,
+     "dur": 2.7,
+     "d": "36 px < 44 (Text auf Objekt)"
+    }
+   ]
+  },
+  {
+   "c": "safe",
+   "sev": "warn",
+   "from": 9.3,
+   "to": 9.4,
+   "dur": 0.1,
+   "d": "Text auf Objekt x1=1056",
+   "txt": "APOSTILLE",
+   "tWorst": 9.3,
+   "rect": [
+    852,
+    852,
+    1056,
+    898
+   ],
+   "items": [
+    {
+     "k": "#APO~28/txt",
+     "txt": "APOSTILLE",
+     "from": 9.3,
+     "to": 9.4,
+     "dur": 0.1,
+     "d": "Text auf Objekt x1=1056"
+    }
+   ]
+  },
+  {
+   "c": "font",
+   "sev": "warn",
+   "from": 27.7,
+   "to": 28.1,
+   "dur": 0.4,
+   "d": "33 px < 44 (Text auf Objekt)",
+   "txt": "ACTE DE NAISSANCE",
+   "tWorst": 27.7,
+   "rect": [
+    363,
+    908,
+    698,
+    958
+   ],
+   "items": [
+    {
+     "k": "#ACTE>div.hd:1~1/0",
+     "txt": "ACTE DE NAISSANCE",
+     "from": 27.7,
+     "to": 28.1,
+     "dur": 0.4,
+     "d": "33 px < 44 (Text auf Objekt)"
+    }
+   ]
+  }
+ ],
+ "config": {
+  "fps": 10,
+  "safe": {
+   "x0": 90,
+   "x1": 900,
+   "y0": 300,
+   "y1": 1500,
+   "tol": 2
+  },
+  "uiSides": [
+   "left",
+   "right",
+   "top"
+  ],
+  "minFont": 44,
+  "minFontSmall": 36,
+  "minReadable": 40,
+  "maxNewWords": 12,
+  "secPerWord": 0.4,
+  "secPerWordBlock": 0.2,
+  "semi": [
+   0.05,
+   0.95
+  ],
+  "except": [],
+  "noTextOk": [],
+  "ignore": [],
+  "ignoreText": "^(traduzme|ACTE DE NAISSANCE|APOSTILLE|TRADUÇÃO|JURAMENTADA|TRADUÇÃOJURAMENTADA|AQUI|FRANÇA|CERTIDÃO DE NASCIMENTO|francês|português|R\\$ 119)$",
+  "uiSoftPx": 100,
+  "block": {
+   "safe": 0.3,
+   "ui": 0.3,
+   "cut": 0.3,
+   "double": 0.1,
+   "empty": 0.1,
+   "notext": 0.3,
+   "font": 0.5,
+   "emoji": 0,
+   "words": 0
+  }
+ }
+}

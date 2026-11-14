@@ -1,0 +1,248 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<!-- Reel 31 · „Certidão francesa: traduz aqui ou na França?“ · Preisbeispiel Certidão em francês → português R$ 119 + Apostila na França, tradução aqui (Mi 11.11.)
+     Format Dokument-Reise (Route + Flugzeug, Acte/Apostille) + echter Rechner-Ausschnitt pc2 · Grund Dark #1F3B35 · bossa 120 BPM
+     Variable: Endcard-Kopf = Handlungsaufforderung „Envie a foto: preço na hora.“
+     Quellen je Aussage: STORYBOARD.md (Q1 precos fr/to_pt 11900 · Q2 PF Dúvidas frequentes · Q3 Decreto 8.660/2016 art. 3º · Q4 HCCH ·
+     Q5 Rechner pc2 live ohne Mock 04.11. · Q6 Rechner fl1/fl2 · Q7 CC art. 224). -->
+<link rel="stylesheet" href="fonts/os.css">
+<style>
+:root{--dark:#1F3B35;--pinho:#376259;--sal:#97B9A8;--areia:#EEDECE;--paper:#FBFAF6;--ink:#1F3B35}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',sans-serif;background:var(--dark)}
+.abs{position:absolute}
+#stage{position:absolute;inset:0;overflow:hidden;background:radial-gradient(1200px 1400px at 50% 55%,#26483F 0%,#1F3B35 60%,#1B342F 100%)}
+#world{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0}
+.doc{position:absolute;left:0;top:0;border-radius:18px;background:var(--paper);box-shadow:0 26px 50px rgba(0,0,0,.35);transform-origin:50% 50%;overflow:hidden}
+.hd{position:absolute;font-weight:800;color:var(--ink);letter-spacing:-.5px;line-height:1.18;white-space:nowrap}
+.bar{position:absolute;height:14px;border-radius:7px;background:#DCD8CC}
+.obj{position:absolute;left:0;top:0;transform-origin:50% 50%}
+.hook{position:absolute;left:96px;top:336px;font-weight:800;font-size:104px;line-height:1.06;letter-spacing:-2.5px;color:#fff;white-space:nowrap}
+.hook .mk{display:inline-block;background:var(--areia);color:var(--dark);border-radius:16px;padding:0 14px 10px;margin:0 -8px;line-height:1.02}
+.cap{position:absolute;left:90px;top:320px}
+.cap .ln{display:table;margin-bottom:8px;padding:6px 24px 10px;border-radius:24px;background:var(--pinho);color:#fff;font-weight:800;font-size:66px;line-height:1.12;letter-spacing:-1px;white-space:nowrap;transform-origin:0 50%}
+.cap .ln .mk{display:inline-block;background:var(--areia);color:var(--dark);padding:0 8px 4px;margin:0;border-radius:10px;line-height:1.08}
+.chip{position:absolute;left:90px;top:552px;height:88px;padding:0 32px;border-radius:44px;font-size:54px;letter-spacing:-1px;font-weight:800;display:flex;align-items:center;white-space:nowrap;background:var(--areia);color:var(--dark);box-shadow:0 8px 20px rgba(0,0,0,.25);transform-origin:0 50%}
+.src{position:absolute;left:90px;top:1384px;height:64px;padding:0 24px;border-radius:32px;background:var(--areia);color:var(--dark);font-weight:700;font-size:44px;display:flex;align-items:center;white-space:nowrap}
+.big{position:absolute;font-weight:800;color:#fff;letter-spacing:-1px;white-space:nowrap}
+.card{position:absolute;left:0;top:0;width:300px;height:128px;border-radius:26px;background:var(--paper);border:6px solid var(--sal);box-shadow:0 18px 36px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:60px;letter-spacing:-2px;color:var(--dark);transform-origin:50% 50%}
+#UI{position:absolute;left:108px;top:1060px;width:774px;height:233px;border-radius:32px;background:#fff;box-shadow:0 26px 50px rgba(0,0,0,.35);overflow:hidden}
+#UI img{position:absolute;left:24px;top:24px;width:726px}
+</style>
+<!-- qa-config: ignoreText „ACTE DE NAISSANCE“/„APOSTILLE“/„TRADUÇÃO JURAMENTADA“ = Titel der Requisiten; AQUI/FRANÇA = Antwort-Karten (Teil der Hook-Frage).
+     Ohne Ausnahme zählt Frame 0 und die Loop-Naht 30,7 s (harter Schnitt auf Frame 0, Raster D6) mehr als 12 „neue“ Wörter (Präzedenz R28 SIM/NÃO/ACTA, R30 LICENCIA).
+     CERTIDÃO DE NASCIMENTO/francês/português/R$ 119 = Zeilen des Preis-Etiketts (6–9 s), wiederholen Caption + Beleg derselben Szene (Präzedenz R28/R30). „traduzme“ = Standard. -->
+<script type="application/json" id="qa-config">{"ignoreText":"^(traduzme|ACTE DE NAISSANCE|APOSTILLE|TRADUÇÃO|JURAMENTADA|TRADUÇÃOJURAMENTADA|AQUI|FRANÇA|CERTIDÃO DE NASCIMENTO|francês|português|R\\$ 119)$"}</script>
+</head>
+<body><div id="stage">
+  <div class="abs" id="bg1" style="left:-300px;top:1160px;width:760px;height:760px;border-radius:50%;background:rgba(238,222,206,.06)"></div>
+  <div class="abs" id="bg2" style="left:720px;top:120px;width:600px;height:600px;border-radius:50%;background:rgba(151,185,168,.08)"></div>
+
+  <div id="world">
+    <!-- Route-Bogen (Szene 3–6): zwei Punkte + gestrichelte Bahn, ohne Schrift -->
+    <svg class="obj" id="RTE" width="900" height="560" viewBox="0 0 900 560">
+      <path id="rtePath" d="M120 470C260 150 560 90 700 150" fill="none" stroke="#EEDECE" stroke-width="8" stroke-dasharray="4 22" stroke-linecap="round" opacity=".75"/>
+      <circle cx="120" cy="470" r="30" fill="#97B9A8"/><circle cx="120" cy="470" r="12" fill="#1F3B35"/>
+      <circle cx="700" cy="150" r="30" fill="#EEDECE"/><circle cx="700" cy="150" r="12" fill="#1F3B35"/>
+    </svg>
+    <svg class="obj" id="PLANE" width="150" height="150" viewBox="0 0 100 100"><path d="M50 6c4 0 6 5 6 12v20l34 18v10L56 56v18l10 8v8L50 86 34 90v-8l10-8V56L10 66V56l34-18V18c0-7 2-12 6-12z" fill="#EEDECE"/></svg>
+    <!-- Acte de naissance (Requisite ohne Daten). data-qa="object": Requisiten-Titel; Kerninfo steht in Hook/Caption -->
+    <div class="doc" id="ACTE" data-qa="object" style="width:560px;height:420px">
+      <div class="abs" style="left:0;width:560px;top:0;height:84px;background:#376259"></div><div class="hd tt" style="left:0;width:560px;top:0;height:84px;padding-top:18px;text-align:center;font-size:44px;color:#fff;letter-spacing:-.5px">ACTE DE NAISSANCE</div>
+      <div class="bar" style="left:40px;top:122px;width:480px"></div><div class="bar" style="left:40px;top:160px;width:420px"></div>
+      <div class="bar" style="left:40px;top:198px;width:470px"></div><div class="bar" style="left:40px;top:236px;width:360px"></div>
+      <div class="bar" style="left:40px;top:274px;width:440px"></div><div class="bar" style="left:40px;top:312px;width:300px"></div>
+      <svg class="abs" style="left:420px;top:296px" width="104" height="104" viewBox="0 0 104 104"><circle cx="52" cy="52" r="44" fill="none" stroke="#97B9A8" stroke-width="6"/><circle cx="52" cy="52" r="30" fill="none" stroke="#97B9A8" stroke-width="3" stroke-dasharray="5 5"/></svg>
+    </div>
+    <!-- Apostille (Requisite ohne Daten), Szene 9–15 -->
+    <div class="doc" id="APO" data-qa="object" style="width:400px;height:500px">
+      <div class="abs" style="left:0;width:400px;top:0;height:84px;background:#1F3B35"></div><div class="hd tt" style="left:0;width:400px;top:0;height:84px;padding-top:18px;text-align:center;font-size:44px;color:#fff;letter-spacing:1px">APOSTILLE</div>
+      <svg class="abs" style="left:32px;top:112px" width="336" height="300" viewBox="0 0 336 300"><g fill="#97B9A8"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="58" r="10"/><circle cx="12" cy="104" r="10"/><circle cx="12" cy="150" r="10"/><circle cx="12" cy="196" r="10"/><circle cx="12" cy="242" r="10"/></g>
+        <g fill="#DCD8CC"><rect x="40" y="5" width="260" height="14" rx="7"/><rect x="40" y="51" width="220" height="14" rx="7"/><rect x="40" y="97" width="280" height="14" rx="7"/><rect x="40" y="143" width="200" height="14" rx="7"/><rect x="40" y="189" width="250" height="14" rx="7"/><rect x="40" y="235" width="180" height="14" rx="7"/></g></svg>
+      <svg class="abs" style="left:250px;top:388px" width="120" height="90" viewBox="0 0 170 60"><path d="M6 40c14-22 24-26 28-12s-4 20 4 14 18-28 24-20-2 22 8 16 16-20 24-14 4 16 14 12 24-14 52-10" fill="none" stroke="#1F3B35" stroke-width="4" stroke-linecap="round"/></svg>
+    </div>
+    <svg class="obj" id="STMP" width="200" height="200" viewBox="0 0 140 140"><circle cx="70" cy="70" r="62" fill="#EEDECE" stroke="#376259" stroke-width="7"/><circle cx="70" cy="70" r="46" fill="none" stroke="#376259" stroke-width="3" stroke-dasharray="6 6"/><path d="M70 36l9 19 21 2-16 14 5 21-19-10-19 10 5-21-16-14 21-2z" fill="#376259"/></svg>
+    <!-- Tradução juramentada (Szene 3–6). data-qa="object": Requisiten-Titel -->
+    <div class="doc" id="TRD" data-qa="object" style="width:400px;height:480px">
+      <div class="hd tt" style="left:32px;top:30px;font-size:42px;line-height:1.2;letter-spacing:-1px">TRADUÇÃO<br>JURAMENTADA</div>
+      <div class="abs" style="left:32px;top:150px;width:336px;height:6px;border-radius:3px;background:#376259"></div>
+      <div class="bar" style="left:32px;top:184px;width:336px"></div><div class="bar" style="left:32px;top:216px;width:280px"></div><div class="bar" style="left:32px;top:248px;width:320px"></div><div class="bar" style="left:32px;top:280px;width:220px"></div>
+      <svg class="abs" style="left:190px;top:350px" width="180" height="70" viewBox="0 0 170 60"><path d="M6 40c14-22 24-26 28-12s-4 20 4 14 18-28 24-20-2 22 8 16 16-20 24-14 4 16 14 12 24-14 52-10" fill="none" stroke="#376259" stroke-width="4" stroke-linecap="round"/></svg>
+    </div>
+    <svg class="obj" id="SEAL" width="190" height="190" viewBox="0 0 140 140"><circle cx="70" cy="70" r="62" fill="#EEDECE" stroke="#376259" stroke-width="7"/><circle cx="70" cy="70" r="46" fill="none" stroke="#376259" stroke-width="3" stroke-dasharray="6 6"/><path d="M70 36l9 19 21 2-16 14 5 21-19-10-19 10 5-21-16-14 21-2z" fill="#376259"/></svg>
+    <!-- Preis-Etikett (Szene 6–9). data-qa="object": Requisiten-Text; Kerninfo steht in Caption + Beleg -->
+    <div class="doc" id="TAG" data-qa="object" style="width:720px;height:440px;border-radius:32px;border:8px solid #97B9A8">
+      <div class="hd" style="left:48px;top:40px;font-size:46px">CERTIDÃO DE NASCIMENTO</div>
+      <div class="hd" style="left:48px;top:124px;font-size:50px;display:flex;align-items:center;gap:20px">francês<svg width="64" height="40" viewBox="0 0 140 90"><path d="M10 45H110" stroke="#1F3B35" stroke-width="16" stroke-linecap="round"/><path d="M80 12l40 33-40 33" fill="none" stroke="#1F3B35" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/></svg>português</div>
+      <div class="abs" style="left:48px;top:220px;width:608px;height:6px;border-radius:3px;background:#97B9A8"></div>
+      <div class="hd" style="left:48px;top:244px;font-size:132px;letter-spacing:-3px">R$ 119</div>
+    </div>
+    <!-- Gebäude (Szene 15–18, 21–24) -->
+    <svg class="obj" id="BLD" width="440" height="440" viewBox="0 0 440 440">
+      <path d="M20 150L220 30 420 150z" fill="#97B9A8"/>
+      <rect x="30" y="160" width="380" height="24" rx="6" fill="#97B9A8"/>
+      <g fill="#EEDECE"><rect x="60" y="200" width="44" height="190" rx="8"/><rect x="150" y="200" width="44" height="190" rx="8"/><rect x="246" y="200" width="44" height="190" rx="8"/><rect x="336" y="200" width="44" height="190" rx="8"/></g>
+      <rect x="10" y="396" width="420" height="34" rx="8" fill="#97B9A8"/>
+      <circle cx="220" cy="104" r="22" fill="#1F3B35"/>
+    </svg>
+    <svg class="obj" id="ONE" width="150" height="150" viewBox="0 0 110 110"><circle cx="55" cy="55" r="50" fill="#EEDECE" stroke="#376259" stroke-width="5"/><path d="M30 57l17 17 34-36" fill="none" stroke="#1F3B35" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <!-- Handy mit Acte/Apostille (Szene 18–21) -->
+    <svg class="obj" id="PHN" width="400" height="660" viewBox="0 0 400 660"><rect x="6" y="6" width="388" height="648" rx="56" fill="#376259"/><rect x="28" y="40" width="344" height="580" rx="36" fill="#FBFAF6"/><rect x="150" y="18" width="100" height="12" rx="6" fill="#97B9A8"/>
+      <g transform="translate(62 84)"><rect width="276" height="210" rx="14" fill="#F2EFE6"/><rect width="276" height="44" rx="14" fill="#376259"/><rect y="22" width="276" height="22" fill="#376259"/><g fill="#DCD8CC"><rect x="20" y="66" width="230" height="12" rx="6"/><rect x="20" y="94" width="200" height="12" rx="6"/><rect x="20" y="122" width="236" height="12" rx="6"/><rect x="20" y="150" width="160" height="12" rx="6"/></g></g>
+      <g transform="translate(92 316)"><rect width="216" height="250" rx="14" fill="#F2EFE6"/><rect width="216" height="44" rx="14" fill="#1F3B35"/><rect y="22" width="216" height="22" fill="#1F3B35"/><g fill="#97B9A8"><circle cx="26" cy="76" r="8"/><circle cx="26" cy="110" r="8"/><circle cx="26" cy="144" r="8"/><circle cx="26" cy="178" r="8"/></g><g fill="#DCD8CC"><rect x="44" y="70" width="150" height="12" rx="6"/><rect x="44" y="104" width="120" height="12" rx="6"/><rect x="44" y="138" width="150" height="12" rx="6"/><rect x="44" y="172" width="100" height="12" rx="6"/></g></g>
+    </svg>
+    <!-- Pin + Lupe (Szene 21–24) -->
+    <svg class="obj" id="PIN" width="180" height="240" viewBox="0 0 120 160"><path d="M60 156C60 156 8 92 8 58a52 52 0 0 1 104 0c0 34-52 98-52 98z" fill="#EEDECE"/><circle cx="60" cy="58" r="22" fill="#1F3B35"/></svg>
+    <svg class="obj" id="LUPE" width="220" height="220" viewBox="0 0 200 200"><circle cx="80" cy="80" r="58" fill="rgba(251,250,246,.25)" stroke="#EEDECE" stroke-width="16"/><path d="M124 124l56 56" stroke="#EEDECE" stroke-width="24" stroke-linecap="round"/></svg>
+  </div>
+
+  <!-- Antwort-Karten AQUI / FRANÇA (Hook, ab Frame 0 sichtbar) -->
+  <div class="card" id="kA">AQUI<svg id="kCk" class="abs" style="left:232px;top:-44px" width="88" height="88" viewBox="0 0 110 110"><circle cx="55" cy="55" r="50" fill="#EEDECE" stroke="#1F3B35" stroke-width="5"/><path d="M30 57l17 17 34-36" fill="none" stroke="#1F3B35" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <div class="card" id="kF">FRANÇA</div>
+
+  <!-- Echter Rechner-Ausschnitt (live 04.11., ohne Mock): pc2 „Verso e Apostila … sem custo extra.“ -->
+  <div id="UI" data-qa="ui"><img src="shots/pc2_live.png"></div>
+
+  <!-- ===== Text-Ebene ===== -->
+  <div class="hook" id="hook">Certidão<br>francesa:<br>traduz aqui<br><span class="mk" id="mkh">ou na França?</span></div>
+  <div class="chip" id="mit" style="top:800px">Comenta AQUI ou FRANÇA</div>
+
+  <div class="cap" id="c1"><div class="ln">Juramentada:</div><div class="ln"><span class="mk">feita no Brasil.</span></div></div>
+  <div class="cap" id="c2"><div class="ln">Certidão em francês</div><div class="ln"><span class="mk">R$ 119</span></div></div>
+  <div class="cap" id="c3"><div class="ln">Apostila:</div><div class="ln"><span class="mk">feita na França.</span></div></div>
+  <div class="cap" id="c4"><div class="ln">Página da apostila:</div><div class="ln"><span class="mk">sem custo extra.</span></div></div>
+  <div class="cap" id="c5"><div class="ln">Pra valer no Brasil:</div><div class="ln"><span class="mk">em português.</span></div></div>
+  <div class="cap" id="c6"><div class="ln">Envie tudo junto:</div><div class="ln"><span class="mk">foto ou PDF.</span></div></div>
+  <div class="cap" id="c7"><div class="ln">Confirme a lista</div><div class="ln"><span class="mk">com o órgão.</span></div></div>
+
+  <div class="src" id="s1" data-qa="beleg">Em geral, mesmo apostilada · PF</div>
+  <div class="src" id="s2" data-qa="beleg">Para português · preço de tabela</div>
+  <div class="src" id="s3" data-qa="beleg">Convenção da Apostila, art. 3º</div>
+  <div class="src" id="s4" data-qa="beleg">Na traduzme: documento padrão</div>
+  <div class="src" id="s5" data-qa="beleg">Código Civil, art. 224</div>
+  <div class="src" id="s6" data-qa="beleg">Certidão e apostila</div>
+  <div class="src" id="s7" data-qa="beleg">Ex.: cartório ou PF</div>
+
+  <div class="chip" id="chip"><span id="chipT">Preço na hora · link na bio</span></div>
+
+  <!-- Endcard (Absender traduzme; Kopf an der Hook-Position). Variable R31: Kopf = Handlungsaufforderung -->
+  <div class="abs" id="end" style="left:0;top:0;width:1080px;height:1920px;opacity:0">
+    <div class="hook" id="eHead" style="font-size:96px;line-height:1.16">Certidão<br>francesa?<br><span class="mk">Envie a foto:</span><br><span class="mk">preço na hora.</span></div>
+    <div class="chip" id="eBio" style="top:840px;box-shadow:none;background:#97B9A8">link na bio</div>
+    <div class="big" id="eUrl" style="left:96px;top:952px;font-size:66px">traduzme.com.br</div>
+    <div class="big" id="eWa" style="left:96px;top:1048px;font-size:66px;display:flex;align-items:center;gap:24px"><svg width="72" height="72" viewBox="0 0 32 32"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3z" fill="#EEDECE"/><path d="M11.6 9.6c.3-.6.6-.6 1-.6h.8c.3 0 .6.1.8.6l1.1 2.6c.1.3.1.6-.1.9l-.7.9c-.2.2-.2.5 0 .8a10 10 0 0 0 4.3 3.8c.3.1.6.1.8-.1l.9-1.1c.2-.3.6-.3.9-.2l2.6 1.2c.3.2.5.4.4.8-.2 1.3-1.3 2.4-2.7 2.5-1.2.1-3.6-.5-6.4-3.1-2.6-2.4-3.7-5-3.8-6.2 0-.8.3-1.6.8-2.3z" fill="#1F3B35"/></svg>(61) 99803-8363</div>
+  </div>
+</div>
+<script>
+// GMB-Fassung (≤ 30 s, ohne 18,0–21,0 Foto ou PDF): gmb/reel.html setzt GMB=1, oder URL ?cut=gmb
+let GMB=0;
+if(new URLSearchParams(location.search).get('cut')==='gmb') GMB=1;
+const END=GMB?28.0:31.0;              // Echtzeit; Designzeit = Hauptfassung (Skip unten)
+const SKIP=GMB?[[18.0,3.0]]:[];
+function remap(tn){let t=tn;for(const [a,d] of SKIP){if(t>=a-1e-6)t+=d;}return t;}
+const LOOPD=30.7;                     // Designzeit: ab hier harter Schnitt auf Frame 0 (Loop)
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const lin=(t,a,b)=>cl((t-a)/(b-a));
+const eo=x=>1-Math.pow(1-x,3);
+const quint=x=>x<.5?16*x**5:1-Math.pow(-2*x+2,5)/2;
+const back=x=>{const c=1.6;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const EZ={q:quint,o:eo,l:x=>x};
+// 120 BPM: Schlag 0,5 s. Szenen: 0 Hook · 3 Route/Tradução · 6 Preis · 9 Apostila · 12 pc2 · 15 CC 224 · 18 Foto/PDF · 21 Confirme · 24 Endcard · 30,7 Loop
+const PUNCH=[2.5,7.0,12.5,17.0,22.0];
+
+// Posen [t, x, y, rot, scale, opacity, ease]  (Mittelpunkt in Bildkoordinaten); harte Schnitte = gleiche Zeit ±0,001
+const HACT=[540,1070,-4,.82], EACT=[760,1330,-6,.42];
+const P={
+ ACTE:[[0,...HACT,1],[2.998,...HACT,1],[2.999,...HACT,0,'l'],
+       [8.999,330,1020,-4,.78,0],[9.0,330,1020,-4,.78,1,'l'],[11.999,330,1020,-4,.78,1],[12.0,380,850,-4,.46,0,'l'],[12.001,380,850,-4,.46,1,'l'],[14.999,380,850,-4,.46,1],[15.0,380,850,-4,.46,0,'l'],
+       [15.001,640,1130,3,.6,0],[15.002,640,1130,3,.6,1,'l'],[17.999,640,1130,3,.6,1],[18.0,640,1130,3,.6,0,'l'],
+       [23.999,...EACT,0],[24.0,...EACT,1,'l'],[30.699,...EACT,1],[30.7,...HACT,1,'l']],
+ APO:[[0,700,1040,5,.82,0],[8.999,700,1040,5,.6,0],[9.0,700,1040,5,.6,1,'l'],[9.25,700,1040,5,.82,1,'o'],[11.999,700,1040,5,.82,1],[12.0,640,860,5,.46,0,'l'],[12.001,640,860,5,.46,1,'l'],[14.999,640,860,5,.46,1],[15.0,640,860,5,.46,0,'l']],
+ STMP:[[0,700,1220,0,1.6,0],[10.499,700,1220,0,1.6,0],[10.5,700,1220,-10,1.6,1,'l'],[10.65,700,1220,-10,1,1,'q'],[11.999,700,1220,-10,1,1],[12.0,700,1220,-10,1,0,'l']],
+ RTE:[[0,540,1060,0,1,0],[2.999,540,1060,0,1,0],[3.0,540,1060,0,1,1,'l'],[5.999,540,1060,0,1,1],[6.0,540,1060,0,1,0,'l']],
+ TRD:[[0,640,1080,4,.95,0],[4.499,640,1080,4,.95,0],[4.5,640,1080,4,.75,1,'l'],[4.7,640,1080,4,.95,1,'q'],[5.999,640,1080,4,.95,1],[6.0,640,1080,4,.95,0,'l']],
+ SEAL:[[0,790,1250,0,1.4,0],[4.599,790,1250,0,1.4,0],[4.6,790,1250,-8,1.4,1,'l'],[4.75,790,1250,-8,.8,1,'q'],[5.999,790,1250,-8,.8,1],[6.0,790,1250,-8,.8,0,'l']],
+ TAG:[[0,540,1030,-2,1,0],[5.999,540,1030,-2,1,0],[6.0,540,1030,-2,1,1,'l'],[8.999,540,1030,-2,1,1],[9.0,540,1030,-2,1,0,'l']],
+ BLD:[[0,360,1080,0,.9,0],[14.999,360,1080,0,.9,0],[15.0,360,1080,0,.9,1,'l'],[17.999,360,1080,0,.9,1],[18.0,360,1080,0,.9,0,'l'],
+      [20.999,400,1100,0,.9,0],[21.0,400,1100,0,.9,1,'l'],[23.999,400,1100,0,.9,1],[24.0,400,1100,0,.9,0,'l']],
+ ONE:[[0,800,760,0,1.5,0],[12.499,800,760,0,1.5,0],[12.5,800,760,-8,1.5,1,'l'],[12.65,800,760,-8,1,1,'q'],[14.999,800,760,-8,1,1],[15.0,800,760,-8,1,0,'l']],
+ OK3:[[0,800,1000,0,1.5,0],[15.999,800,1000,0,1.5,0],[16.0,800,1000,-8,1.5,1,'l'],[16.15,800,1000,-8,1,1,'q'],[17.999,800,1000,-8,1,1],[18.0,800,1000,-8,1,0,'l']],
+ PHN:[[0,540,1060,-2,1,0],[17.999,540,1060,-2,1,0],[18.0,540,1060,-2,1,1,'l'],[20.999,540,1060,-2,1,1],[21.0,540,1060,-2,1,0,'l']],
+ OK2:[[0,780,1240,0,.4,0],[19.499,780,1240,0,.4,0],[19.5,780,1240,0,.4,1,'l'],[19.75,780,1240,0,1,1,'q'],[20.999,780,1240,0,1,1],[21.0,780,1240,0,1,0,'l']],
+ PIN:[[0,760,860,0,1,0],[20.999,760,760,0,1,0],[21.0,760,760,0,1,1,'l'],[21.4,760,880,0,1,1,'o'],[23.999,760,880,0,1,1],[24.0,760,880,0,1,0,'l']],
+ LUPE:[[0,700,1250,0,.8,0],[20.999,700,1250,0,.8,0],[21.0,700,1250,0,.8,1,'l'],[22.0,640,1180,0,1,1,'q'],[23.999,640,1180,0,1,1],[24.0,640,1180,0,1,0,'l']]
+};
+const SIZE={RTE:[900,560],PLANE:[150,150],ACTE:[560,420],APO:[400,500],STMP:[200,200],TRD:[400,480],SEAL:[190,190],TAG:[720,440],BLD:[440,440],ONE:[150,150],OK2:[150,150],OK3:[150,150],PHN:[400,660],PIN:[180,240],LUPE:[220,220]};
+// OK2/OK3 = Kopien von ONE (Haken im Handy-Bild / am Dokument)
+for(const k of ['OK2','OK3']) document.getElementById('world').insertAdjacentHTML('beforeend', document.getElementById('ONE').outerHTML.replace('id="ONE"',`id="${k}"`));
+function pose(K,t){if(t<=K[0][0])return K[0].slice(1,6);for(let i=0;i<K.length-1;i++){const a=K[i],b=K[i+1];if(t<=b[0]){const p=(EZ[b[6]||'q'])(lin(t,a[0],b[0]));return a.slice(1,6).map((v,j)=>v+(b[j+1]-v)*p)}}return K[K.length-1].slice(1,6);}
+function place(id,t){const [x,y,r,k,o]=pose(P[id],t),[w,h]=SIZE[id],el=$(id);
+  el.style.transform=`translate(${(x-w/2).toFixed(2)}px,${(y-h/2).toFixed(2)}px) rotate(${r}deg) scale(${k.toFixed(4)})`;
+  el.style.opacity=o; el.style.display=o>0.001?'':'none';
+  const tt=el.querySelector('.tt'); if(tt){if(tt.dataset.h===undefined)tt.dataset.h=tt.innerHTML; tt.innerHTML=k<.7?'':tt.dataset.h;}}   /* Mini-Requisiten ohne Titelschrift (keine 20-px-Schrift) */
+
+// Flugzeug entlang der Route (3,0–4,4), danach am Ziel
+const RT=document.getElementById('rtePath');
+function plane(t){const el=$('PLANE'); const on=t>=3.0&&t<4.5; el.style.display=on?'':'none'; if(!on)return;   /* landet 4,5: Blatt erscheint am Ziel */
+  const L=RT.getTotalLength(); const p=quint(lin(t,3.0,4.4)); const a=RT.getPointAtLength(L*p), b=RT.getPointAtLength(Math.min(L,L*p+4));
+  const ang=Math.atan2(b.y-a.y,b.x-a.x)*180/Math.PI+90; const ox=540-450, oy=1060-280;   /* RTE-Ursprung in Weltkoordinaten */
+  el.style.transform=`translate(${(ox+a.x-75).toFixed(1)}px,${(oy+a.y-75).toFixed(1)}px) rotate(${ang.toFixed(1)}deg) scale(${(.8+.2*Math.sin(Math.PI*p)).toFixed(3)})`;
+  el.style.opacity=1;}
+
+function lines(id,t,a,b,step=.14){const el=$(id); if(t<a||t>=b+.08){el.style.display='none';return;} el.style.display='';
+  const out=1-lin(t,b,b+.08);
+  el.querySelectorAll('.ln').forEach((l,i)=>{const a0=a+i*step, p=lin(t,a0,a0+.12); l.style.opacity=(Math.min(1,p*1.4+.6)*out).toFixed(3); if(t<a0)l.style.opacity=0;   /* ab dem Schlag sofort ≥ 60 % deckend (D4) */ l.style.transform=`scale(${(.94+.06*eo(p)).toFixed(4)})`;});}
+function box(id,t,a,b,dIn=.15,dOut=.08,disp='flex'){const e=$(id); const o=t>=a&&t<b+dOut?Math.min(lin(t,a,a+dIn),1-lin(t,b,b+dOut)):0; e.style.opacity=o.toFixed(3); e.style.display=o>0?disp:'none'; return o;}
+
+function render(tn){
+  let t=tn>=END-1e-6?LOOPD+.01:remap(tn);
+  const loop=t>=LOOPD; if(loop)t=0;            // Loop: exakt Frame 0
+  const tb=loop?0:tn;                           // Echtzeit für Hintergrund-Drift
+  $('bg1').style.transform=`translate(${Math.sin(tb*.4)*24}px,${-tb*4}px)`; $('bg2').style.transform=`translate(${-tb*3}px,${Math.cos(tb*.5)*18}px)`;
+  for(const id of Object.keys(P)) place(id,t);
+  plane(t);
+  const z={RTE:2,PLANE:6,ACTE:4,APO:5,STMP:7,TRD:4,SEAL:7,TAG:4,BLD:2,ONE:7,OK2:7,OK3:7,PHN:3,PIN:6,LUPE:7}; for(const k in z)$(k).style.zIndex=z[k];
+  // Acte schwebt/pendelt im Hook, Bewegung ab Frame 1
+  if(t<2.95&&!loop){const D=$('ACTE'); const w=6*Math.sin(Math.PI*2*t/1.0)*lin(t,0,.12), fy=14*Math.sin(Math.PI*2*(t/1.0+.25))*lin(t,0,.12);
+    D.style.transform=D.style.transform.replace(/rotate\(([-\d.]+)deg\)/,(m,v)=>`translateY(${fy.toFixed(1)}px) rotate(${(+v+w).toFixed(2)}deg)`);}
+  // Kamera: Push je Szene, Zoom-Punch 1→1,06→1 in 0,22 s (nur Welt)
+  let fx=540, fy=1000, push=1;
+  if(t<3.0) push=loop?1:1+.08*eo(lin(t,0,.6))+.025*lin(t,.6,2.6);
+  else if(t<24) {const s0=Math.floor(t/3)*3; push=1+.025*lin(t,s0+.2,s0+3);}
+  const punch=PUNCH.reduce((m,p)=>m*(1+.06*Math.sin(Math.PI*lin(t,p,p+.22))),1);
+  const s=(1+.006*Math.sin(tb*1.3))*push*punch, dy=loop?0:4*Math.sin(tb*.9);
+  $('world').style.transform=`translate(${(540-fx*s).toFixed(2)}px,${(1000-fy*s+dy).toFixed(2)}px) scale(${s.toFixed(5)})`;
+
+  // ---- Rechner-Ausschnitt pc2 (12,0–15,0): fester Rahmen, harter Schnitt ----
+  {const U=$('UI'); const on=t>=12.0&&t<15.0; U.style.display=on?'':'none';
+   const pin=lin(t,12.0,12.3); const fl=loop?0:5*Math.sin(tb*2.2);
+   U.style.transformOrigin='50% 50%'; U.style.transform=`translateY(${fl.toFixed(1)}px) scale(${(.94+.06*eo(pin)).toFixed(4)})`; U.style.opacity=on?1:0;}
+
+  // ---- Hook + Mitmach + Antwort-Karten (Frame 0 fertig; Auflösung 2,5 s) ----
+  {const on=t<2.95; const H=$('hook'), M=$('mit'); H.style.display=on?'':'none'; M.style.display=on?'flex':'none';
+   const o=on?1-lin(t,2.9,2.95):0; H.style.opacity=o; M.style.opacity=o;
+   $('mkh').style.transformOrigin='0 50%'; $('mkh').style.transform=`scale(${1+(loop?0:.04*Math.sin(Math.PI*lin(t,1.0,1.3))+.04*Math.sin(Math.PI*lin(t,2.0,2.3)))})`;
+   M.style.transform=`scale(${(1+(loop?0:.035*Math.sin(Math.PI*lin(t,1.5,1.72)))).toFixed(4)})`;
+   const kA=$('kA'), kF=$('kF'); const r=lin(t,2.5,2.62);
+   for(const [k,x,y,rot,ph] of [[kA,262,1336,-3,0],[kF,724,1336,3,.5]]){
+     k.style.display=on?'flex':'none'; k.style.opacity=o;
+     const bob=8*Math.sin(Math.PI*2*((loop?0:t)/1.0+ph));
+     k.style.transform=`translate(${x-150}px,${(y-64+bob).toFixed(1)}px) rotate(${rot}deg)`;}
+   kA.style.background=t>=2.5&&!loop?'#EEDECE':'';
+   kF.style.opacity=on?(o*(1-.55*(loop?0:r))).toFixed(3):0;
+   const ck=$('kCk'); ck.style.opacity=t>=2.5&&!loop?Math.min(1,r*3):0; ck.style.transformOrigin='44px 44px'; ck.style.transform=`scale(${(.4+.6*back(r)).toFixed(3)})`;}
+  // ---- Captions (Zeilen-Pillen ganz, gestaffelt 0,14 s) ----
+  const C=[3,6,9,12,15,18,21];
+  C.forEach((a,i)=>lines('c'+(i+1),t,a,a+2.92));
+  C.forEach((a,i)=>box('s'+(i+1),t,a+(i===1?0:.5),a+2.92));   // Preis-Beleg (Richtung) gleichzeitig mit der Caption, sonst +0,5 (Wortzähler C5)
+  // ---- CTA-Chip (ab 3,0 s bis Endcard) ----
+  {const Cp=$('chip'); $('chipT').textContent=GMB?'Preço na hora no site':'Preço na hora · link na bio';
+   const p=lin(t,3.0,3.2); const on=t>=3.0&&t<24.0; Cp.style.display=on?'flex':'none'; Cp.style.opacity=(Math.min(1,.6+p*2)*(1-lin(t,23.92,24.0))).toFixed(3); Cp.style.transform=`scale(${(.94+.06*eo(p)).toFixed(4)})`;}
+  // ---- Endcard ----
+  {const E=$('end'); const o=t>=24.0&&!loop?1:0;  /* harter Schnitt auf dem Schlag */ E.style.opacity=o.toFixed(3); E.style.display=o>0?'':'none';
+   $('eBio').textContent=GMB?'no site':'link na bio';
+   const b=lin(t,24.0,24.15); $('eBio').style.transform=`scale(${(.94+.06*eo(b)).toFixed(4)})`;}
+}
+render(0);
+</script></body></html>

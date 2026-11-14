@@ -1,0 +1,269 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<!-- Reel 29 · „Diploma em espanhol: precisa traduzir?“ · Revalidação/Reconhecimento ES→PT + Preço (ersetzt R27 am Mo 09.11.)
+     Format Dokument-Tisch + echter Rechner-Ausschnitt · Pinho #376259 · lofi 120 BPM · keine neue Test-Variable (Lehre 4)
+     Quellen je Aussage: STORYBOARD.md (Q1 Res. CNE/CES nº 2/2024 art. 4º §§ 6º–7º · Q2 UFSC Relação de documentos Medicina v05 ·
+     Q3 UFMG Revalidação · Q4 Supabase precos 02.11. = preistabelle-live · Q5 Rechner live „Como o preço é calculado“ ohne Mock). -->
+<link rel="stylesheet" href="fonts/os.css">
+<style>
+:root{--dark:#1F3B35;--pinho:#376259;--sal:#97B9A8;--nevoa:#BDCBCB;--areia:#EEDECE;--paper:#FBFAF6;--ink:#1F3B35}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',sans-serif;background:var(--pinho)}
+.abs{position:absolute}
+#stage{position:absolute;inset:0;overflow:hidden;background:radial-gradient(1200px 1400px at 50% 55%,#41705F 0%,#376259 55%,#2C5048 100%)}
+#world{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0}
+.doc{position:absolute;left:0;top:0;border-radius:18px;background:var(--paper);box-shadow:0 26px 50px rgba(0,0,0,.3);transform-origin:50% 50%;overflow:hidden}
+.hd{position:absolute;font-weight:800;color:var(--ink);letter-spacing:-.5px;line-height:1.18;white-space:nowrap}
+.bar{position:absolute;height:14px;border-radius:7px;background:#D5DAD4}
+.obj{position:absolute;left:0;top:0;transform-origin:50% 50%}
+/* Text-Ebene */
+.hook{position:absolute;left:96px;top:336px;font-weight:800;font-size:104px;line-height:1.06;letter-spacing:-2.5px;color:#fff;white-space:nowrap}
+.hook .mk{display:inline-block;background:var(--areia);color:var(--dark);border-radius:16px;padding:0 14px 10px;margin:0 -8px;line-height:1.02}
+.cap{position:absolute;left:90px;top:320px}
+.cap .ln{display:table;margin-bottom:8px;padding:6px 24px 10px;border-radius:24px;background:var(--areia);color:var(--dark);font-weight:800;font-size:66px;line-height:1.12;letter-spacing:-1px;white-space:nowrap;transform-origin:0 50%}
+.cap .ln .mk{display:inline-block;background:var(--dark);color:#fff;padding:0 8px 4px;margin:0;border-radius:10px;line-height:1.08}
+.chip{position:absolute;left:90px;top:552px;height:88px;padding:0 32px;border-radius:44px;font-size:54px;letter-spacing:-1px;font-weight:800;display:flex;align-items:center;white-space:nowrap;background:var(--sal);color:var(--dark);box-shadow:0 8px 20px rgba(0,0,0,.2);transform-origin:0 50%}
+.src{position:absolute;left:90px;top:1384px;height:64px;padding:0 24px;border-radius:32px;background:var(--nevoa);color:var(--dark);font-weight:700;font-size:44px;display:flex;align-items:center;white-space:nowrap}
+.big{position:absolute;font-weight:800;color:#fff;letter-spacing:-1px;white-space:nowrap}
+.card{position:absolute;left:0;top:0;width:288px;height:128px;border-radius:26px;background:var(--paper);border:6px solid var(--sal);box-shadow:0 18px 36px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:56px;letter-spacing:-2px;color:var(--dark);transform-origin:50% 50%}
+#UI{position:absolute;left:108px;top:696px;width:774px;height:330px;border-radius:32px;background:#fff;box-shadow:0 26px 50px rgba(0,0,0,.3);overflow:hidden}
+#UI img{position:absolute;left:24px;top:24px;width:726px}
+</style>
+<!-- qa-config: ignoreText „TÍTULO“ = Titel der Diplom-Requisite (Hook, Szenen, Endcard). Die Requisite steht ab Frame 0 neben Hook + Karten;
+     ohne Ausnahme zählt der Frame 0 und die Loop-Naht 33,7 s (harter Schnitt, Raster D6) 13 statt 12 „neue“ Wörter. „traduzme“ = Standard. -->
+<script type="application/json" id="qa-config">{"ignoreText":"^(traduzme|TÍTULO)$"}</script>
+</head>
+<body><div id="stage">
+  <div class="abs" id="bg1" style="left:-300px;top:1160px;width:760px;height:760px;border-radius:50%;background:rgba(238,222,206,.06)"></div>
+  <div class="abs" id="bg2" style="left:720px;top:120px;width:600px;height:600px;border-radius:50%;background:rgba(31,59,53,.18)"></div>
+
+  <div id="world">
+    <!-- Diploma em espanhol (Requisite ohne Daten). data-qa="object": Requisiten-Titel; Kerninfo steht in Hook/Caption -->
+    <div class="doc" id="DIP" data-qa="object" style="width:480px;height:560px;background:#F4E9DD">
+      <div class="abs" style="left:16px;top:16px;width:448px;height:528px;border-radius:12px;border:5px solid #376259"></div>
+      <div class="abs" style="left:28px;top:28px;width:424px;height:504px;border-radius:8px;border:2px solid rgba(55,98,89,.5)"></div>
+      <div class="hd" style="left:0;width:480px;top:64px;text-align:center;font-size:64px;letter-spacing:2px">TÍTULO</div>
+      <div class="abs" style="left:110px;top:160px;width:260px;height:6px;border-radius:3px;background:#376259"></div>
+      <div class="bar" style="left:70px;top:204px;width:340px;background:#DCCDB8"></div><div class="bar" style="left:100px;top:238px;width:280px;background:#DCCDB8"></div>
+      <div class="bar" style="left:70px;top:290px;width:340px;height:22px;background:#C9B79F"></div>
+      <div class="bar" style="left:90px;top:340px;width:300px;background:#DCCDB8"></div><div class="bar" style="left:120px;top:372px;width:240px;background:#DCCDB8"></div>
+      <svg class="abs" style="left:60px;top:410px" width="120" height="120" viewBox="0 0 140 140"><circle cx="70" cy="70" r="62" fill="rgba(55,98,89,.1)" stroke="#376259" stroke-width="7"/><circle cx="70" cy="70" r="44" fill="none" stroke="#376259" stroke-width="3"/><path d="M70 40l8 17 19 2-14 12 4 19-17-9-17 9 4-19-14-12 19-2z" fill="#376259"/></svg>
+      <svg class="abs" style="left:240px;top:448px" width="190" height="64" viewBox="0 0 170 60"><path d="M6 40c14-22 24-26 28-12s-4 20 4 14 18-28 24-20-2 22 8 16 16-20 24-14 4 16 14 12 24-14 52-10" fill="none" stroke="#1F3B35" stroke-width="4" stroke-linecap="round"/></svg>
+    </div>
+    <!-- Histórico hinter dem Diplom (Hook) -->
+    <div class="doc" id="HIS0" style="width:440px;height:540px">
+      <div class="abs" style="left:32px;top:36px;width:220px;height:20px;border-radius:10px;background:#376259"></div>
+      <div class="bar" style="left:32px;top:90px;width:376px"></div><div class="bar" style="left:32px;top:122px;width:376px"></div><div class="bar" style="left:32px;top:154px;width:376px"></div><div class="bar" style="left:32px;top:186px;width:376px"></div>
+    </div>
+    <!-- Stempel „dispensa“ (Szene 3–6) -->
+    <svg class="obj" id="STAMP" width="220" height="220" viewBox="0 0 140 140"><circle cx="70" cy="70" r="62" fill="rgba(238,222,206,.85)" stroke="#1F3B35" stroke-width="7"/><circle cx="70" cy="70" r="46" fill="none" stroke="#1F3B35" stroke-width="3" stroke-dasharray="6 6"/><path d="M44 72l18 18 34-38" fill="none" stroke="#1F3B35" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <!-- Universidade (Szene 6–9) -->
+    <svg class="obj" id="UNI" width="520" height="520" viewBox="0 0 440 440">
+      <path d="M20 150L220 30 420 150z" fill="#EEDECE"/>
+      <rect x="30" y="160" width="380" height="24" rx="6" fill="#EEDECE"/>
+      <g fill="#BDCBCB"><rect x="60" y="200" width="44" height="190" rx="8"/><rect x="150" y="200" width="44" height="190" rx="8"/><rect x="246" y="200" width="44" height="190" rx="8"/><rect x="336" y="200" width="44" height="190" rx="8"/></g>
+      <rect x="10" y="396" width="420" height="34" rx="8" fill="#EEDECE"/>
+      <circle cx="220" cy="104" r="22" fill="#376259"/>
+    </svg>
+    <!-- Sprechblase mit Mini-Übersetzung (Szene 6–9 und 9–12) -->
+    <svg class="obj" id="BUB" width="260" height="230" viewBox="0 0 260 230"><path d="M24 12h212a16 16 0 0 1 16 16v130a16 16 0 0 1-16 16H110l-48 46 8-46H24a16 16 0 0 1-16-16V28a16 16 0 0 1 16-16z" fill="#FBFAF6"/><rect x="92" y="34" width="76" height="104" rx="8" fill="#EEDECE" stroke="#1F3B35" stroke-width="5"/><rect x="104" y="52" width="40" height="9" rx="4" fill="#376259"/><g fill="#1F3B35" opacity=".45"><rect x="104" y="72" width="52" height="7" rx="3"/><rect x="104" y="88" width="44" height="7" rx="3"/><rect x="104" y="104" width="50" height="7" rx="3"/></g><circle cx="190" cy="40" r="22" fill="#376259"/><path d="M183 33a8 8 0 1 1 9 9v5" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/><circle cx="192" cy="54" r="3.5" fill="#fff"/></svg>
+    <!-- Processo (Pasta + Etapas, Szene 9–12) -->
+    <svg class="obj" id="PROC" width="680" height="480" viewBox="0 0 680 480">
+      <path d="M20 70a20 20 0 0 1 20-20h190l40 44h370a20 20 0 0 1 20 20v330a20 20 0 0 1-20 20H40a20 20 0 0 1-20-20z" fill="#EEDECE"/>
+      <rect x="20" y="130" width="640" height="330" rx="20" fill="#F4E9DD"/>
+      <path d="M110 300H570" stroke="#97B9A8" stroke-width="12" stroke-linecap="round"/>
+      <path id="pBar" d="M110 300H340" stroke="#1F3B35" stroke-width="12" stroke-linecap="round"/>
+      <circle cx="110" cy="300" r="40" fill="#1F3B35"/><path d="M92 302l12 12 22-24" fill="none" stroke="#EEDECE" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="340" cy="300" r="40" fill="#1F3B35"/><circle cx="340" cy="300" r="14" fill="#EEDECE"/>
+      <circle cx="570" cy="300" r="40" fill="#BDCBCB" stroke="#97B9A8" stroke-width="6"/>
+    </svg>
+    <!-- Edital / Checkliste (Szene 12–15) -->
+    <svg class="obj" id="CLIP" width="500" height="620" viewBox="0 0 500 620">
+      <rect x="20" y="40" width="460" height="560" rx="28" fill="#1F3B35"/>
+      <rect x="44" y="70" width="412" height="510" rx="16" fill="#FBFAF6"/>
+      <rect x="170" y="16" width="160" height="64" rx="18" fill="#97B9A8"/>
+      <g id="rows"><rect x="80" y="140" width="56" height="56" rx="12" fill="none" stroke="#376259" stroke-width="7"/><rect x="160" y="156" width="250" height="22" rx="11" fill="#D5DAD4"/>
+      <rect x="80" y="250" width="56" height="56" rx="12" fill="none" stroke="#376259" stroke-width="7"/><rect x="160" y="266" width="210" height="22" rx="11" fill="#D5DAD4"/>
+      <rect x="80" y="360" width="56" height="56" rx="12" fill="none" stroke="#376259" stroke-width="7"/><rect x="160" y="376" width="240" height="22" rx="11" fill="#D5DAD4"/>
+      <rect x="80" y="470" width="56" height="56" rx="12" fill="none" stroke="#376259" stroke-width="7"/><rect x="160" y="486" width="190" height="22" rx="11" fill="#D5DAD4"/></g>
+      <path id="cOk" d="M88 168l18 18 34-40" fill="none" stroke="#376259" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" opacity="0"/>
+      <path id="cOk2" d="M88 388l18 18 34-40" fill="none" stroke="#376259" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" opacity="0"/>
+    </svg>
+    <svg class="obj" id="LUPE" width="220" height="220" viewBox="0 0 200 200"><circle cx="80" cy="80" r="58" fill="rgba(238,222,206,.35)" stroke="#EEDECE" stroke-width="16"/><path d="M124 124l56 56" stroke="#EEDECE" stroke-width="24" stroke-linecap="round"/></svg>
+    <!-- Tradução juramentada (Szene 15–18, Mini in 21–24) -->
+    <div class="doc" id="TRD" data-qa="object" style="width:580px;height:560px">
+      <div class="hd" style="left:40px;top:34px;font-size:48px;line-height:1.2">TRADUÇÃO<br>JURAMENTADA</div>
+      <div class="abs" style="left:40px;top:168px;width:500px;height:6px;border-radius:3px;background:#376259"></div>
+      <div class="bar" style="left:40px;top:204px;width:500px"></div><div class="bar" style="left:40px;top:236px;width:420px"></div><div class="bar" style="left:40px;top:268px;width:470px"></div>
+      <div class="bar" style="left:40px;top:316px;width:500px"></div><div class="bar" style="left:40px;top:348px;width:330px"></div>
+      <svg class="abs" style="left:300px;top:420px" width="220" height="80" viewBox="0 0 170 60"><path d="M6 40c14-22 24-26 28-12s-4 20 4 14 18-28 24-20-2 22 8 16 16-20 24-14 4 16 14 12 24-14 52-10" fill="none" stroke="#376259" stroke-width="4" stroke-linecap="round"/></svg>
+      <svg class="abs" style="left:40px;top:396px" width="140" height="140" viewBox="0 0 140 140"><circle cx="70" cy="70" r="62" fill="rgba(55,98,89,.08)" stroke="#376259" stroke-width="7"/><circle cx="70" cy="70" r="44" fill="none" stroke="#376259" stroke-width="3"/><path d="M70 40l8 17 19 2-14 12 4 19-17-9-17 9 4-19-14-12 19-2z" fill="#376259"/></svg>
+    </div>
+    <!-- Siegel (Szene 15–18) -->
+    <svg class="obj" id="SEAL" width="220" height="220" viewBox="0 0 140 140"><circle cx="70" cy="70" r="62" fill="#EEDECE" stroke="#1F3B35" stroke-width="7"/><circle cx="70" cy="70" r="46" fill="none" stroke="#1F3B35" stroke-width="3" stroke-dasharray="6 6"/><path d="M70 36l9 19 21 2-16 14 5 21-19-10-19 10 5-21-16-14 21-2z" fill="#1F3B35"/></svg>
+    <!-- PDF assinado (Szene 18–21) -->
+    <div class="doc" id="PDFD" data-qa="object" style="width:400px;height:520px">
+      <div class="abs" style="left:28px;top:28px;height:84px;padding:0 24px;border-radius:16px;background:#376259;color:#fff;font-weight:800;font-size:62px;display:flex;align-items:center">PDF</div>
+      <div class="bar" style="left:28px;top:144px;width:344px"></div><div class="bar" style="left:28px;top:178px;width:280px"></div><div class="bar" style="left:28px;top:212px;width:320px"></div><div class="bar" style="left:28px;top:246px;width:220px"></div>
+      <svg class="abs" style="left:28px;top:300px" width="190" height="70" viewBox="0 0 170 60"><path d="M6 40c14-22 24-26 28-12s-4 20 4 14 18-28 24-20-2 22 8 16 16-20 24-14 4 16 14 12 24-14 52-10" fill="none" stroke="#1F3B35" stroke-width="4" stroke-linecap="round"/></svg>
+      <svg class="abs" style="left:240px;top:350px" width="132" height="132" viewBox="0 0 120 120"><g fill="#1F3B35"><rect x="0" y="0" width="44" height="44" rx="6"/><rect x="76" y="0" width="44" height="44" rx="6"/><rect x="0" y="76" width="44" height="44" rx="6"/><rect x="58" y="58" width="16" height="16"/><rect x="84" y="62" width="16" height="16"/><rect x="62" y="96" width="16" height="16"/><rect x="100" y="96" width="20" height="20"/></g><g fill="#FBFAF6"><rect x="12" y="12" width="20" height="20" rx="3"/><rect x="88" y="12" width="20" height="20" rx="3"/><rect x="12" y="88" width="20" height="20" rx="3"/></g></svg>
+    </div>
+    <svg class="obj" id="OK" width="160" height="160" viewBox="0 0 110 110"><circle cx="55" cy="55" r="50" fill="#EEDECE" stroke="#1F3B35" stroke-width="5"/><path d="M30 57l17 17 34-36" fill="none" stroke="#1F3B35" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <!-- Pfeil espanhol → português (Szene 21–24) -->
+    <svg class="obj" id="ARR" width="140" height="90" viewBox="0 0 140 90"><path d="M10 45H110" stroke="#EEDECE" stroke-width="16" stroke-linecap="round"/><path d="M80 12l40 33-40 33" fill="none" stroke="#EEDECE" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <!-- Histórico: Seiten fächern auf (Szene 24–27) -->
+    <div class="doc" id="H1" style="width:420px;height:540px"><div class="abs" style="left:30px;top:34px;width:200px;height:20px;border-radius:10px;background:#376259"></div>
+      <div class="bar" style="left:30px;top:84px;width:360px"></div><div class="bar" style="left:30px;top:116px;width:360px"></div><div class="bar" style="left:30px;top:148px;width:360px"></div><div class="bar" style="left:30px;top:180px;width:360px"></div><div class="bar" style="left:30px;top:212px;width:360px"></div><div class="bar" style="left:30px;top:244px;width:300px"></div><div class="bar" style="left:30px;top:276px;width:360px"></div><div class="bar" style="left:30px;top:308px;width:340px"></div></div>
+    <div class="doc" id="H2" style="width:420px;height:540px"><div class="bar" style="left:30px;top:44px;width:360px"></div><div class="bar" style="left:30px;top:76px;width:360px"></div><div class="bar" style="left:30px;top:108px;width:320px"></div><div class="bar" style="left:30px;top:140px;width:360px"></div><div class="bar" style="left:30px;top:172px;width:360px"></div><div class="bar" style="left:30px;top:204px;width:280px"></div>
+      <svg class="abs" style="left:300px;top:420px" width="96" height="96" viewBox="0 0 96 96"><circle cx="48" cy="48" r="44" fill="#97B9A8"/><path d="M48 26v44M26 48h44" stroke="#1F3B35" stroke-width="10" stroke-linecap="round"/></svg></div>
+    <div class="doc" id="H3" style="width:420px;height:540px"><div class="bar" style="left:30px;top:44px;width:360px"></div><div class="bar" style="left:30px;top:76px;width:300px"></div><div class="bar" style="left:30px;top:108px;width:360px"></div><div class="bar" style="left:30px;top:140px;width:340px"></div>
+      <svg class="abs" style="left:300px;top:420px" width="96" height="96" viewBox="0 0 96 96"><circle cx="48" cy="48" r="44" fill="#97B9A8"/><path d="M48 26v44M26 48h44" stroke="#1F3B35" stroke-width="10" stroke-linecap="round"/></svg></div>
+  </div>
+
+  <!-- Antwort-Karten SIM / NÃO / DEPENDE (Hook, ab Frame 0 sichtbar) -->
+  <div class="card" id="kSim">SIM</div>
+  <div class="card" id="kNao">NÃO</div>
+  <div class="card" id="kDep">DEPENDE<svg id="kCk" class="abs" style="left:226px;top:-40px" width="88" height="88" viewBox="0 0 110 110"><circle cx="55" cy="55" r="50" fill="#1F3B35"/><path d="M30 57l17 17 34-36" fill="none" stroke="#fff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+  <!-- Echter Rechner-Ausschnitt (live 02.11., ohne Mock): „Como o preço é calculado“ -->
+  <div id="UI" data-qa="ui"><img src="shots/ui_preco.png"></div>
+
+  <!-- ===== Text-Ebene ===== -->
+  <div class="hook" id="hook">Diploma em<br>espanhol:<br>precisa<br><span class="mk" id="mkh">traduzir?</span></div>
+  <div class="chip" id="mit" style="top:800px">Comenta a sua resposta</div>
+
+  <div class="cap" id="c1"><div class="ln">Revalidação: em geral,</div><div class="ln"><span class="mk">espanhol dispensa.</span></div></div>
+  <div class="cap" id="c2"><div class="ln">Mas a universidade</div><div class="ln"><span class="mk">pode exigir.</span></div></div>
+  <div class="cap" id="c3"><div class="ln">Ex.: UFSC, a comissão</div><div class="ln"><span class="mk">pode pedir depois.</span></div></div>
+  <div class="cap" id="c4"><div class="ln">Concurso ou conselho?</div><div class="ln"><span class="mk">Confirme a regra.</span></div></div>
+  <div class="cap" id="c5"><div class="ln">Se pedirem: tradutor</div><div class="ln"><span class="mk">juramentado.</span></div></div>
+  <div class="cap" id="c6"><div class="ln">PDF com assinatura</div><div class="ln"><span class="mk">digital? UFMG aceita.</span></div></div>
+  <div class="cap" id="c7"><div class="ln">Diploma em espanhol</div><div class="ln"><span class="mk">R$ 159</span></div></div>
+  <div class="cap" id="c8"><div class="ln">Histórico: R$ 159</div><div class="ln"><span class="mk">+ R$ 75/página extra</span></div></div>
+
+  <div class="src" id="s1" data-qa="beleg">Res. CNE/CES nº 2/2024, art. 4º</div>
+  <div class="src" id="s2" data-qa="beleg">Confirme com a sua universidade</div>
+  <div class="src" id="s3" data-qa="beleg">Ex.: UFSC · Medicina</div>
+  <div class="src" id="s4" data-qa="beleg">No edital ou no órgão</div>
+  <div class="src" id="s5" data-qa="beleg">Feito no Brasil · ex.: UFMG</div>
+  <div class="src" id="s6" data-qa="beleg">Ex.: UFMG · assinatura verificável</div>
+  <div class="src" id="s7" data-qa="beleg">Para português · preço de tabela</div>
+  <div class="src" id="s8" data-qa="beleg">Espanhol para português · tabela</div>
+
+  <div class="chip" id="chip"><span id="chipT">Preço na hora · link na bio</span></div>
+
+  <!-- Endcard (Absender traduzme; Kopf an der Hook-Position) -->
+  <div class="abs" id="end" style="left:0;top:0;width:1080px;height:1920px;opacity:0">
+    <div class="hook" id="eHead" style="font-size:96px">Diploma em<br>espanhol?<br><span class="mk">Depende.</span></div>
+    <div class="chip" id="eBio" style="top:704px;box-shadow:none">Preço na hora · link na bio</div>
+    <div class="big" id="eUrl" style="left:96px;top:824px;font-size:66px">traduzme.com.br</div>
+    <div class="big" id="eWa" style="left:96px;top:920px;font-size:66px;display:flex;align-items:center;gap:24px"><svg width="72" height="72" viewBox="0 0 32 32"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3z" fill="#EEDECE"/><path d="M11.6 9.6c.3-.6.6-.6 1-.6h.8c.3 0 .6.1.8.6l1.1 2.6c.1.3.1.6-.1.9l-.7.9c-.2.2-.2.5 0 .8a10 10 0 0 0 4.3 3.8c.3.1.6.1.8-.1l.9-1.1c.2-.3.6-.3.9-.2l2.6 1.2c.3.2.5.4.4.8-.2 1.3-1.3 2.4-2.7 2.5-1.2.1-3.6-.5-6.4-3.1-2.6-2.4-3.7-5-3.8-6.2 0-.8.3-1.6.8-2.3z" fill="#1F3B35"/></svg>(61) 99803-8363</div>
+  </div>
+</div>
+<script>
+// GMB-Fassung (≤ 30 s, ohne 9,0–12,0 UFSC und 18,0–21,0 PDF): gmb/reel.html setzt GMB=1, oder URL ?cut=gmb
+let GMB=0;
+if(new URLSearchParams(location.search).get('cut')==='gmb') GMB=1;
+const END=GMB?28.0:34.0;              // Echtzeit; Designzeit = Hauptfassung (Skip unten, Schwellen in Designzeit)
+const SKIP=GMB?[[9.0,3.0],[18.0,3.0]]:[];
+function remap(tn){let t=tn;for(const [a,d] of SKIP){if(t>=a-1e-6)t+=d;}return t;}
+const LOOPD=33.7;                     // Designzeit: ab hier harter Schnitt auf Frame 0 (Loop)
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const lin=(t,a,b)=>cl((t-a)/(b-a));
+const eo=x=>1-Math.pow(1-x,3);
+const quint=x=>x<.5?16*x**5:1-Math.pow(-2*x+2,5)/2;
+const back=x=>{const c=1.6;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const EZ={q:quint,o:eo,l:x=>x};
+// 120 BPM: Schlag 0,5 s. Szenen: 0 Hook · 3 Revalidação · 6 Universidade · 9 UFSC · 12 Concurso · 15 Tradutor · 18 PDF · 21 Diploma-Preis · 24 Histórico · 27 Endcard · 33,7 Loop
+const PUNCH=[2.5,7.5,12.5,17.0,22.0,26.0];
+
+// Posen [t, x, y, rot, scale, opacity, ease]  (Mittelpunkt in Bildkoordinaten); harte Schnitte = gleiche Zeit ±0,001
+const HDIP=[340,1180,-3,.92], EDIP=[700,1290,-4,.5], HHIS=[372,1150,5,1];
+const P={
+ DIP:[[0,...HDIP,1],[2.998,...HDIP,1],[2.999,540,1030,-2,1,1,'l'],[5.999,540,1030,-2,1,1],[6.0,540,1030,-2,1,0,'l'],
+      [20.999,300,1190,-4,.5,0],[21.0,300,1190,-4,.5,1,'l'],[23.999,300,1190,-4,.5,1],[24.0,300,1190,-4,.5,0,'l'],
+      [26.999,...EDIP,0],[27.0,...EDIP,1,'l'],[33.699,...EDIP,1],[33.7,...HDIP,1,'l']],
+ HIS0:[[0,...HHIS,1],[2.998,...HHIS,1],[2.999,...HHIS,0,'l'],[33.699,...HHIS,0],[33.7,...HHIS,1,'l']],
+ STAMP:[[0,700,1180,0,1,0],[4.449,700,1180,0,1.6,0],[4.45,700,1180,-10,1.6,1,'l'],[4.6,700,1180,-10,1,1,'q'],[5.999,700,1180,-10,1,1],[6.0,700,1180,-10,1,0,'l']],
+ UNI:[[0,440,1060,0,1,0],[5.999,440,1060,0,1,0],[6.0,440,1060,0,1,1,'l'],[8.999,440,1060,0,1,1],[9.0,440,1060,0,1,0,'l']],
+ BUB:[[0,740,800,0,.6,0],[7.499,740,800,0,.6,0],[7.5,740,800,0,.6,1,'l'],[7.75,740,800,0,1,1,'q'],[8.999,740,800,0,1,1],[9.0,740,800,0,1,0,'l'],
+      [10.499,700,850,0,.6,0],[10.5,700,850,0,.6,1,'l'],[10.75,700,850,0,1,1,'q'],[11.999,700,850,0,1,1],[12.0,700,850,0,1,0,'l']],
+ PROC:[[0,540,1120,0,1,0],[8.999,540,1120,0,1,0],[9.0,540,1120,0,1,1,'l'],[11.999,540,1120,0,1,1],[12.0,540,1120,0,1,0,'l']],
+ CLIP:[[0,470,1060,-2,1,0],[11.999,470,1060,-2,1,0],[12.0,470,1060,-2,1,1,'l'],[14.999,470,1060,-2,1,1],[15.0,470,1060,-2,1,0,'l']],
+ LUPE:[[0,780,900,0,.8,0],[11.999,780,900,0,.8,0],[12.0,780,900,0,.8,1,'l'],[12.4,560,990,0,1,1,'q'],[13.6,560,990,0,1,1],[14.0,600,1200,0,1,1,'q'],[14.999,600,1200,0,1,1],[15.0,600,1200,0,1,0,'l']],
+ TRD:[[0,540,1030,-2,1,0],[14.999,540,1030,-2,1,0],[15.0,540,1030,-2,1,1,'l'],[17.999,540,1030,-2,1,1],[18.0,540,1030,-2,1,0,'l'],
+      [20.999,740,1190,3,.5,0],[21.0,740,1190,3,.5,1,'l'],[23.999,740,1190,3,.5,1],[24.0,740,1190,3,.5,0,'l']],
+ SEAL:[[0,720,1230,0,1,0],[15.999,720,1230,0,1.6,0],[16.0,720,1230,-8,1.6,1,'l'],[16.15,720,1230,-8,1,1,'q'],[17.999,720,1230,-8,1,1],[18.0,720,1230,-8,1,0,'l']],
+ PDFD:[[0,500,1060,-3,1,0],[17.999,500,1060,-3,1,0],[18.0,500,1060,-3,1,1,'l'],[20.999,500,1060,-3,1,1],[21.0,500,1060,-3,1,0,'l']],
+ OK:[[0,740,1250,0,.4,0],[19.499,740,1250,0,.4,0],[19.5,740,1250,0,.4,1,'l'],[19.75,740,1250,0,1,1,'q'],[20.999,740,1250,0,1,1],[21.0,740,1250,0,1,0,'l']],
+ ARR:[[0,520,1190,0,1,0],[20.999,520,1190,0,1,0],[21.0,500,1190,0,1,1,'l'],[21.5,520,1190,0,1,1,'q'],[23.999,520,1190,0,1,1],[24.0,520,1190,0,1,0,'l']],
+ H1:[[0,500,1040,-3,1,0],[23.999,500,1040,-3,1,0],[24.0,500,1040,-3,1,1,'l'],[26.999,500,1040,-3,1,1],[27.0,500,1040,-3,1,0,'l']],
+ H2:[[0,500,1040,-3,1,0],[24.999,500,1040,-3,1,0],[25.0,500,1040,-3,1,1,'l'],[25.3,560,1080,2,1,1,'q'],[26.999,560,1080,2,1,1],[27.0,560,1080,2,1,0,'l']],
+ H3:[[0,500,1040,-3,1,0],[25.999,500,1040,-3,1,0],[26.0,500,1040,-3,1,1,'l'],[26.3,620,1120,6,1,1,'q'],[26.999,620,1120,6,1,1],[27.0,620,1120,6,1,0,'l']]
+};
+const SIZE={DIP:[480,560],HIS0:[440,540],STAMP:[220,220],UNI:[520,520],BUB:[260,230],PROC:[680,480],CLIP:[500,620],LUPE:[220,220],TRD:[580,560],SEAL:[220,220],PDFD:[400,520],OK:[160,160],ARR:[140,90],H1:[420,540],H2:[420,540],H3:[420,540]};
+function pose(K,t){if(t<=K[0][0])return K[0].slice(1,6);for(let i=0;i<K.length-1;i++){const a=K[i],b=K[i+1];if(t<=b[0]){const p=(EZ[b[6]||'q'])(lin(t,a[0],b[0]));return a.slice(1,6).map((v,j)=>v+(b[j+1]-v)*p)}}return K[K.length-1].slice(1,6);}
+function place(id,t){const [x,y,r,k,o]=pose(P[id],t),[w,h]=SIZE[id],el=$(id);
+  el.style.transform=`translate(${(x-w/2).toFixed(2)}px,${(y-h/2).toFixed(2)}px) rotate(${r}deg) scale(${k})`;
+  el.style.opacity=o; el.style.display=o>0.001?'':'none';}
+
+function lines(id,t,a,b,step=.14){const el=$(id); if(t<a||t>=b+.08){el.style.display='none';return;} el.style.display='';
+  const out=1-lin(t,b,b+.08);
+  el.querySelectorAll('.ln').forEach((l,i)=>{const p=lin(t,a+i*step,a+i*step+.12); l.style.opacity=(Math.min(p>0?1:0,1)*Math.min(1,p*1.6+.4)*out).toFixed(3); if(p<=0)l.style.opacity=0; l.style.transform=`scale(${(.94+.06*eo(p)).toFixed(4)})`;});}
+function box(id,t,a,b,dIn=.15,dOut=.08,disp='flex'){const e=$(id); const o=t>=a&&t<b+dOut?Math.min(lin(t,a,a+dIn),1-lin(t,b,b+dOut)):0; e.style.opacity=o.toFixed(3); e.style.display=o>0?disp:'none'; return o;}
+
+function render(tn){
+  let t=tn>=END-1e-6?LOOPD+.01:remap(tn);
+  const loop=t>=LOOPD; if(loop)t=0;            // Loop: exakt Frame 0
+  const tb=loop?0:tn;                           // Echtzeit für Hintergrund-Drift
+  $('bg1').style.transform=`translate(${Math.sin(tb*.4)*24}px,${-tb*4}px)`; $('bg2').style.transform=`translate(${-tb*3}px,${Math.cos(tb*.5)*18}px)`;
+  for(const id of Object.keys(SIZE)) place(id,t);
+  const z={HIS0:1,DIP:4,STAMP:7,UNI:2,BUB:7,PROC:2,CLIP:2,LUPE:8,TRD:4,SEAL:7,PDFD:4,OK:7,ARR:5,H1:3,H2:4,H3:5}; for(const k in z)$(k).style.zIndex=z[k];
+  // Diplom wackelt im Hook (Ungereimtheit: Sprache), Bewegung ab Frame 1
+  {const D=$('DIP'); const w=t<2.95&&!loop?3*Math.sin(Math.PI*2*t/1.0)*lin(t,0,.25):0;
+   D.style.transform=D.style.transform.replace(/rotate\(([-\d.]+)deg\)/,(m,v)=>`rotate(${(+v+w).toFixed(2)}deg)`);}
+  // Processo: Fortschritt 9,0–10,5, Etappe 2 wartet
+  {const p=eo(lin(t,9.0,10.4)); $('pBar').setAttribute('d',`M110 300H${(110+230*p).toFixed(1)}`);}
+  // Checkliste: Haken 12,5 (Zeile 1) und 13,5 (Zeile 3)
+  {$('cOk').setAttribute('opacity',t>=12.5&&t<15?Math.min(1,lin(t,12.5,12.65)*3):0); $('cOk2').setAttribute('opacity',t>=13.5&&t<15?Math.min(1,lin(t,13.5,13.65)*3):0);}
+  // Kamera: Push je Szene, Zoom-Punch 1→1,06→1 in 0,22 s (nur Welt)
+  let fx=540, fy=1000, push=1;
+  if(t<3.0) push=loop?1:1+.05*eo(lin(t,0,.6))+.025*lin(t,.6,2.6);
+  else if(t<27) {const s0=Math.floor(t/3)*3; push=1+.025*lin(t,s0+.2,s0+3);}
+  const punch=PUNCH.reduce((m,p)=>m*(1+.06*Math.sin(Math.PI*lin(t,p,p+.22))),1);
+  const s=(1+.006*Math.sin(tb*1.3))*push*punch, dy=loop?0:4*Math.sin(tb*.9);
+  $('world').style.transform=`translate(${(540-fx*s).toFixed(2)}px,${(1000-fy*s+dy).toFixed(2)}px) scale(${s.toFixed(5)})`;
+
+  // ---- Rechner-Ausschnitt (21,0–24,0): fester Rahmen, steigt ein ----
+  {const U=$('UI'); const on=t>=21.0&&t<24.0; U.style.display=on?'':'none';
+   const pin=lin(t,21.0,21.3); const fl=loop?0:5*Math.sin(tb*2.2);   // harter Schnitt auf dem Beat, sofort deckend (keine Halbtransparenz über den Mini-Dokumenten)
+   U.style.transformOrigin='50% 50%'; U.style.transform=`translateY(${fl.toFixed(1)}px) scale(${(.94+.06*eo(pin)).toFixed(4)})`; U.style.opacity=on?1:0;}
+
+  // ---- Hook + Mitmach + Antwort-Karten (Frame 0 fertig; Auflösung 2,5 s) ----
+  {const on=t<2.95; const H=$('hook'), M=$('mit'); H.style.display=on?'':'none'; M.style.display=on?'flex':'none';
+   const o=on?1-lin(t,2.9,2.95):0; H.style.opacity=o; M.style.opacity=o;
+   $('mkh').style.transformOrigin='0 50%'; $('mkh').style.transform=`scale(${1+(loop?0:.04*Math.sin(Math.PI*lin(t,1.0,1.3))+.04*Math.sin(Math.PI*lin(t,2.0,2.3)))})`;
+   M.style.transform=`scale(${(1+(loop?0:.035*Math.sin(Math.PI*lin(t,1.5,1.72)))).toFixed(4)})`;
+   const kS=$('kSim'), kN=$('kNao'), kD=$('kDep'); const r=lin(t,2.5,2.62);
+   for(const [k,x,y,rot,ph] of [[kS,752,1000,4,0],[kN,752,1160,-3,.33],[kD,752,1320,2,.66]]){
+     k.style.display=on?'flex':'none'; k.style.opacity=o;
+     const bob=6*Math.sin(Math.PI*2*((loop?0:t)/1.0+ph));
+     k.style.transform=`translate(${x-144}px,${(y-64+bob).toFixed(1)}px) rotate(${rot}deg)`;}
+   kD.style.background=t>=2.5&&!loop?'#EEDECE':''; kD.style.borderColor=t>=2.5&&!loop?'#1F3B35':'';
+   for(const k of [kS,kN]) k.style.opacity=on?(o*(1-.55*(loop?0:r))).toFixed(3):0;
+   const ck=$('kCk'); ck.style.opacity=t>=2.5&&!loop?Math.min(1,r*3):0; ck.style.transformOrigin='44px 44px'; ck.style.transform=`scale(${(.4+.6*back(r)).toFixed(3)})`;}
+  // ---- Captions (Zeilen-Pillen ganz, gestaffelt 0,14 s) ----
+  const C=[3,6,9,12,15,18,21,24];
+  C.forEach((a,i)=>lines('c'+(i+1),t,a,a+2.92));
+  C.forEach((a,i)=>box('s'+(i+1),t,a+.5,a+2.92));
+  // ---- CTA-Chip (ab 3,0 s bis Endcard) ----
+  {const Cp=$('chip'); $('chipT').textContent=GMB?'Preço na hora no site':'Preço na hora · link na bio';
+   const p=lin(t,3.0,3.2); const on=t>=3.0&&t<27.0; Cp.style.display=on?'flex':'none'; Cp.style.opacity=(Math.min(1,p*2)*(1-lin(t,26.92,27.0))).toFixed(3); Cp.style.transform=`scale(${(.94+.06*eo(p)).toFixed(4)})`;}
+  // ---- Endcard ----
+  {const E=$('end'); const o=t>=27.0&&!loop?lin(t,27.0,27.12):0; E.style.opacity=o.toFixed(3); E.style.display=o>0?'':'none';
+   $('eBio').textContent=GMB?'Preço na hora no site':'Preço na hora · link na bio';
+   const b=lin(t,27.0,27.15); $('eBio').style.transform=`scale(${(.94+.06*eo(b)).toFixed(4)})`;}
+}
+render(0);
+</script></body></html>

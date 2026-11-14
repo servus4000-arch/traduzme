@@ -1,0 +1,334 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<!-- Reel 21 · Sua carteira de motorista é de fora? · Figur-Story + UI-Close-up · Areia · lofi 120 BPM
+     Quellen je Aussage: STORYBOARD.md (Res. CONTRAN 933/2022 art. 2; Detran-GO, Detran-PR, Detran-SC Portaria 1108/2025 art. 8; Rechner live pc1/pc2/fl2–fl4) -->
+<link rel="stylesheet" href="fonts/os.css">
+<style>
+@font-face{font-family:'Inter Tight';font-weight:100 900;font-style:normal;src:url(fonts/intertight-latin.woff2)}
+:root{--areia:#EEDECE;--dark:#1F3B35;--pinho:#376259;--sal:#97B9A8;--nev:#BDCBCB;--paper:#FBFAF6}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',sans-serif;background:var(--areia)}
+.abs{position:absolute}
+#stage{position:absolute;inset:0;overflow:hidden;background:radial-gradient(1300px 1200px at 50% 60%,#F5EBE0 0%,#EEDECE 55%,#E6D3C0 100%)}
+.lucas .ol{stroke:#1F3B35;stroke-width:6;stroke-linejoin:round;stroke-linecap:round}
+/* Karte (dreht sich) */
+.card{position:absolute;left:0;top:0;width:620px;height:390px;transform-origin:50% 50%}
+.cin{position:absolute;inset:0;transform-origin:50% 50%}
+.face{position:absolute;inset:0;border-radius:26px;overflow:hidden;box-shadow:0 26px 50px rgba(31,59,53,.26),0 2px 0 rgba(31,59,53,.08)}
+.band{position:absolute;left:0;top:0;width:620px;height:128px;padding:14px 34px;font-weight:800;font-size:46px;line-height:1.02;letter-spacing:-.5px}
+.bar{position:absolute;height:18px;border-radius:9px}
+.ph{position:absolute;left:34px;top:156px;width:150px;height:196px;border-radius:14px;overflow:hidden}
+/* Text-Ebene */
+.hl{position:absolute;left:90px;top:400px;width:810px;font-weight:800;font-size:108px;line-height:1.02;letter-spacing:-2px;color:var(--dark)}
+.mk{position:relative;display:inline-block;z-index:0}
+.mk b{position:absolute;left:-12px;right:-12px;top:18px;bottom:0;background:var(--sal);border-radius:14px;z-index:-1;transform-origin:0 50%}
+.cap{position:absolute;left:90px;top:300px;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.cap .ln{display:flex;gap:16px;align-items:center;background:var(--dark);color:#fff;font-weight:800;font-size:66px;line-height:1;padding:20px 32px 24px;border-radius:24px;letter-spacing:-1px;box-shadow:0 14px 30px rgba(31,59,53,.18);white-space:nowrap;transform-origin:0 50%}
+.w{display:inline-block}
+.cap .hi{color:var(--dark);background:var(--areia);border-radius:12px;padding:0 12px}
+.chip{position:absolute;height:88px;padding:0 28px;border-radius:44px;font-size:50px;font-weight:800;display:flex;align-items:center;white-space:nowrap;background:var(--dark);color:#fff;box-shadow:0 10px 24px rgba(31,59,53,.18);transform-origin:0 50%}
+.row{position:absolute;left:105px;width:770px;height:140px;border-radius:28px;background:#FBF6F0;box-shadow:0 12px 26px rgba(31,59,53,.14);transform-origin:50% 50%}
+.row .ic{position:absolute;left:24px;top:24px;width:92px;height:92px;border-radius:50%;background:var(--pinho);display:flex;align-items:center;justify-content:center}
+.row .tx{position:absolute;left:140px;top:0;width:610px;height:140px;display:flex;align-items:center;font-weight:800;font-size:48px;line-height:1.06;letter-spacing:-.5px;color:var(--dark)}
+.pill{transform-origin:0 50%;height:120px;padding:0 50px;border-radius:60px;background:var(--dark);color:#fff;font-weight:800;font-size:66px;display:flex;align-items:center}
+.big{position:absolute;font-weight:800;color:var(--dark);letter-spacing:-1px}
+</style></head>
+<body><div id="stage">
+  <div class="abs" id="bg1" style="left:-320px;top:1260px;width:720px;height:720px;border-radius:50%;background:rgba(151,185,168,.30)"></div>
+  <div class="abs" id="bg2" style="left:770px;top:150px;width:520px;height:520px;border-radius:50%;background:rgba(255,255,255,.30)"></div>
+
+  <!-- ===== Bühne ===== -->
+  <div class="abs" id="fig" style="left:0;top:0"></div>
+
+  <!-- Karte mit 3 Seiten: Licencia (ES) → Tradução juramentada → CNH (Vektor, keine echten Daten) -->
+  <div class="card" id="CARD"><div class="cin" id="CIN">
+    <div class="face" id="fLIC" style="background:#E4ECEC">
+      <div class="band" style="background:#1F3B35;color:#fff">LICENCIA DE<br>CONDUCCIÓN</div>
+      <div class="ph" style="background:#BDCBCB"><svg width="150" height="196" viewBox="0 0 150 196"><circle cx="75" cy="78" r="38" fill="#97B9A8"/><path d="M10 196c4-52 30-74 65-74s61 22 65 74z" fill="#97B9A8"/></svg></div>
+      <div class="bar" style="left:214px;top:170px;width:360px;background:#C3D0D0"></div><div class="bar" style="left:214px;top:212px;width:300px;background:#C3D0D0"></div>
+      <div class="bar" style="left:214px;top:254px;width:340px;background:#C3D0D0"></div><div class="bar" style="left:214px;top:296px;width:240px;background:#C3D0D0"></div>
+      <svg class="abs" style="left:476px;top:276px" width="110" height="80" viewBox="0 0 110 80"><rect x="4" y="4" width="102" height="72" rx="10" fill="#D8C9A6"/><path d="M20 22h70M20 40h70M20 58h70M38 10v60M72 10v60" stroke="#BFAE86" stroke-width="5"/></svg>
+    </div>
+    <div class="face" id="fTRAD" style="background:#FBFAF6">
+      <div class="band" style="color:#1F3B35;font-size:50px;padding-top:22px">TRADUÇÃO<br>JURAMENTADA</div>
+      <div class="abs" style="left:34px;top:150px;width:552px;height:7px;border-radius:4px;background:#376259"></div>
+      <div class="bar" style="left:34px;top:190px;width:380px;background:#D8DCD6"></div><div class="bar" style="left:34px;top:232px;width:330px;background:#D8DCD6"></div>
+      <div class="bar" style="left:34px;top:274px;width:360px;background:#D8DCD6"></div><div class="bar" style="left:34px;top:316px;width:250px;background:#D8DCD6"></div>
+      <svg class="abs" style="left:440px;top:176px" width="150" height="150" viewBox="0 0 140 140"><circle cx="70" cy="70" r="62" fill="none" stroke="#376259" stroke-width="7"/><circle cx="70" cy="70" r="46" fill="none" stroke="#376259" stroke-width="3" stroke-dasharray="6 6"/><path d="M48 72l15 15 30-34" fill="none" stroke="#376259" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="face" id="fCNH" style="background:#EAF1EC">
+      <div class="band" style="background:#376259;color:#fff;display:flex;align-items:center;gap:24px"><span style="font-size:92px;letter-spacing:-2px">CNH</span><span style="font-size:44px;font-weight:700;opacity:.9">brasileira</span></div>
+      <div class="ph" style="background:#97B9A8"><svg width="150" height="196" viewBox="0 0 150 196"><circle cx="75" cy="78" r="38" fill="#EAF1EC"/><path d="M10 196c4-52 30-74 65-74s61 22 65 74z" fill="#EAF1EC"/></svg></div>
+      <div class="bar" style="left:214px;top:170px;width:360px;background:#C9DACF"></div><div class="bar" style="left:214px;top:212px;width:300px;background:#C9DACF"></div>
+      <div class="bar" style="left:214px;top:254px;width:340px;background:#C9DACF"></div><div class="bar" style="left:214px;top:296px;width:240px;background:#C9DACF"></div>
+    </div>
+  </div></div>
+
+  <!-- Kalender 180 dias -->
+  <div class="abs" id="CAL" style="left:0;top:0;width:470px;height:460px;border-radius:34px;background:#FBF6F0;box-shadow:0 26px 50px rgba(31,59,53,.22);overflow:hidden;transform-origin:50% 50%">
+    <div class="abs" style="left:0;top:0;width:470px;height:96px;background:#376259"></div>
+    <div class="abs" style="left:90px;top:-22px;width:22px;height:70px;border-radius:11px;background:#1F3B35"></div><div class="abs" style="left:358px;top:-22px;width:22px;height:70px;border-radius:11px;background:#1F3B35"></div>
+    <div class="abs" id="calN" style="left:0;top:110px;width:470px;text-align:center;font-weight:800;font-size:200px;line-height:1;letter-spacing:-6px;color:#1F3B35">0</div>
+    <div class="abs" style="left:0;top:330px;width:470px;text-align:center;font-weight:800;font-size:66px;color:#376259">dias</div>
+  </div>
+  <div class="abs" id="calR" style="left:0;top:0;width:560px;height:560px;border-radius:50%;border:10px solid #97B9A8;opacity:0"></div>
+
+  <!-- Detran: 4 Zeilen -->
+  <div id="rows">
+    <div class="row" id="r0" style="top:790px"><div class="ic"><svg width="58" height="40" viewBox="0 0 58 40"><rect x="3" y="3" width="52" height="34" rx="6" fill="none" stroke="#EEDECE" stroke-width="5"/><circle cx="17" cy="18" r="6" fill="#EEDECE"/><path d="M30 14h17M30 24h12" stroke="#EEDECE" stroke-width="5" stroke-linecap="round"/></svg></div><div class="tx">Carteira original e válida</div></div>
+    <div class="row" id="r1" style="top:955px"><div class="ic"><svg width="50" height="54" viewBox="0 0 50 54"><circle cx="25" cy="16" r="11" fill="none" stroke="#EEDECE" stroke-width="5"/><path d="M5 50c2-14 10-21 20-21s18 7 20 21" fill="none" stroke="#EEDECE" stroke-width="5" stroke-linecap="round"/></svg></div><div class="tx">Documento de identidade e CPF</div></div>
+    <div class="row" id="r2" style="top:1120px"><div class="ic"><svg width="56" height="52" viewBox="0 0 56 52"><path d="M5 25L28 5l23 20M11 21v26h34V21" fill="none" stroke="#EEDECE" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><rect x="22" y="31" width="12" height="16" fill="#EEDECE"/></svg></div><div class="tx">Comprovante de residência</div></div>
+    <div class="row" id="r3" style="top:1285px;background:#1F3B35"><div class="ic" style="background:#EEDECE"><svg width="50" height="58" viewBox="0 0 50 58"><path d="M6 4h26l12 12v38H6z" fill="none" stroke="#1F3B35" stroke-width="5" stroke-linejoin="round"/><circle cx="25" cy="36" r="9" fill="none" stroke="#1F3B35" stroke-width="4"/><path d="M21 36l3 3 6-7" fill="none" stroke="#1F3B35" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="tx" style="color:#fff">Tradução juramentada</div></div>
+  </div>
+
+  <!-- Carta de condução (PT) + Haken -->
+  <div class="card" id="PTC"><div class="face" style="background:#F2EEE6">
+      <div class="band" style="background:#97B9A8;color:#1F3B35">CARTA DE<br>CONDUÇÃO</div>
+      <div class="ph" style="background:#DCD3C3"><svg width="150" height="196" viewBox="0 0 150 196"><circle cx="75" cy="78" r="38" fill="#EEDECE"/><path d="M10 196c4-52 30-74 65-74s61 22 65 74z" fill="#EEDECE"/></svg></div>
+      <div class="bar" style="left:214px;top:170px;width:360px;background:#DDD4C6"></div><div class="bar" style="left:214px;top:212px;width:300px;background:#DDD4C6"></div>
+      <div class="bar" style="left:214px;top:254px;width:340px;background:#DDD4C6"></div><div class="bar" style="left:214px;top:296px;width:240px;background:#DDD4C6"></div>
+  </div></div>
+  <div class="abs" id="ptok" style="left:0;top:0;width:132px;height:132px;border-radius:50%;background:#1F3B35;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 26px rgba(31,59,53,.25)"><svg width="74" height="60" viewBox="0 0 74 60"><path d="M8 32l20 20L66 8" fill="none" stroke="#EEDECE" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+  <!-- Detran-Gebäude + Pin -->
+  <div class="abs" id="DET" style="left:0;top:0;width:600px;height:600px;transform-origin:50% 100%">
+    <svg width="600" height="600" viewBox="0 0 600 600">
+      <path d="M40 230L300 110l260 120z" fill="#376259"/>
+      <rect x="60" y="230" width="480" height="40" fill="#1F3B35"/>
+      <g fill="#FBF6F0"><rect x="90" y="270" width="54" height="230"/><rect x="190" y="270" width="54" height="230"/><rect x="356" y="270" width="54" height="230"/><rect x="456" y="270" width="54" height="230"/></g>
+      <rect x="250" y="370" width="100" height="130" rx="10" fill="#97B9A8"/>
+      <rect x="30" y="500" width="540" height="44" rx="8" fill="#1F3B35"/><rect x="0" y="544" width="600" height="40" rx="8" fill="#376259"/>
+    </svg>
+    <div class="abs" style="left:150px;top:282px;width:300px;height:80px;border-radius:14px;background:#EEDECE;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:56px;color:#1F3B35;letter-spacing:1px;box-shadow:0 6px 14px rgba(31,59,53,.2)">DETRAN</div>
+  </div>
+  <svg class="abs" id="pin" style="left:0;top:0" width="120" height="160" viewBox="0 0 120 160"><path d="M60 156C60 156 10 92 10 56a50 50 0 0 1 100 0c0 36-50 100-50 100z" fill="#1F3B35"/><circle cx="60" cy="56" r="20" fill="#EEDECE"/></svg>
+
+  <!-- Echter Rechner: Panel A (Upload + Idiomas + Calcular) -->
+  <div class="abs" id="PA" style="left:70px;top:780px;width:850px;height:656px;border-radius:30px;background:#fbfaf7;box-shadow:0 34px 70px rgba(31,59,53,.28);overflow:hidden;transform-origin:50% 0">
+    <img id="imgA" src="shots/panelA.png" style="position:absolute;left:20px;top:20px;width:810px">
+    <div class="abs" id="fr1" style="left:24px;top:36px;width:802px;height:146px;border:7px solid #376259;border-radius:20px;opacity:0"></div>
+    <div class="abs" id="fr2" style="left:24px;top:250px;width:802px;height:222px;border:7px solid #376259;border-radius:20px;opacity:0"></div>
+    <!-- Ergebnis im Site-Stil (Nachbau mit echten UI-Strings „Seu orçamento“, „Total“, „Entrega até“; Werte nur als unscharfe Balken, nie Zahlen) -->
+    <div class="abs" id="RES" style="inset:0;background:#fbfaf7;display:none;font-family:'Inter Tight','Open Sans',sans-serif;color:#13233a">
+      <div class="abs" style="left:56px;top:56px;font-weight:700;font-size:64px;letter-spacing:-1.5px">Seu orçamento</div>
+      <div class="abs" style="left:56px;top:150px;width:738px;height:4px;background:#e7e3d9"></div>
+      <div class="abs" style="left:56px;top:210px;font-weight:600;font-size:52px">Total</div>
+      <div class="abs rb" style="left:470px;top:206px;width:324px;height:70px;border-radius:16px;background:#1a7a5e;opacity:.55;filter:blur(9px)"></div>
+      <div class="abs" style="left:56px;top:340px;font-weight:600;font-size:52px">Entrega até</div>
+      <div class="abs rb" style="left:470px;top:336px;width:324px;height:70px;border-radius:16px;background:#13233a;opacity:.3;filter:blur(9px)"></div>
+      <div class="abs" style="left:56px;top:480px;width:738px;height:110px;border-radius:22px;background:#1a7a5e;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:52px">Continuar</div>
+    </div>
+  </div>
+  <div class="abs" id="tap" style="left:0;top:0;width:110px;height:110px;border-radius:50%;background:rgba(31,59,53,.28);border:6px solid #EEDECE;opacity:0"></div>
+  <!-- Echter Rechner: Panel B (Como o preço é calculado) -->
+  <div class="abs" id="PB" style="left:60px;top:860px;width:870px;height:236px;border-radius:30px;background:#fbfaf7;box-shadow:0 34px 70px rgba(31,59,53,.28);overflow:hidden">
+    <div id="hlB" class="abs" style="left:30px;top:30px;width:810px;height:173px"></div>
+    <img src="shots/panelB2.png" style="position:absolute;left:30px;top:30px;width:810px;mix-blend-mode:multiply">
+  </div>
+  <!-- Match-Cut-Fläche -->
+  <!-- Button-Zustand nach dem Tipp (UI-Farbe nur im Button, keine Vollfläche: Raster B7) -->
+  <div class="abs" id="GRN" data-qa="object" style="left:102px;top:1268px;width:787px;height:125px;border-radius:22px;background:#1a7a5e;display:none;align-items:center;justify-content:center;gap:24px;color:#fff;font-family:'Inter Tight','Open Sans',sans-serif">
+      <svg id="spin" width="64" height="64" viewBox="0 0 120 120"><circle cx="60" cy="60" r="46" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="14"/><path d="M60 14a46 46 0 0 1 46 46" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round"/></svg>
+      <div style="font-weight:700;font-size:52px;letter-spacing:-1px">Calculando…</div>
+  </div>
+
+  <!-- ===== Text-Ebene ===== -->
+  <div class="abs" id="wm" style="left:90px;top:300px;height:76px;display:flex;align-items:center;font-weight:800;font-size:50px;color:#1F3B35;letter-spacing:-1px">traduzme</div>
+  <div class="hl" id="hook">Sua carteira<br>de motorista<br><span class="mk"><b id="mkb"></b>é de fora?</span></div>
+
+  <div class="cap" id="cap1"><div class="ln"><span class="w">Pro</span><span class="w">Detran,</span><span class="w">em</span><span class="w">geral:</span></div><div class="ln"><span class="w hi">juramentada.</span></div></div>
+  <div class="cap" id="cap2"><div class="ln"><span class="w">Mais</span><span class="w">de</span><span class="w hi">180 dias</span></div><div class="ln"><span class="w">no</span><span class="w">Brasil?</span></div></div>
+  <div class="cap" id="cap3"><div class="ln"><span class="w">Pra</span><span class="w">seguir</span><span class="w">dirigindo:</span></div><div class="ln"><span class="w hi">CNH brasileira.</span></div></div>
+  <div class="cap" id="cap4"><div class="ln"><span class="w">No</span><span class="w">Detran,</span><span class="w hi">em geral:</span></div></div>
+  <div class="cap" id="cap5"><div class="ln"><span class="w">Em</span><span class="w">português?</span></div><div class="ln" style="font-size:60px"><span class="w hi">Em geral, sem tradução.</span></div></div>
+  <div class="cap" id="cap6"><div class="ln"><span class="w">Confira</span><span class="w">no</span><span class="w">Detran</span></div><div class="ln"><span class="w hi">do seu estado.</span></div></div>
+  <div class="cap" id="cap7"><div class="ln"><span class="w">Foto</span><span class="w">da</span><span class="w">carteira,</span></div><div class="ln"><span class="w hi">frente e verso.</span></div></div>
+  <div class="cap" id="cap8"><div class="ln"><span class="w">Documento</span><span class="w">padrão:</span></div><div class="ln"><span class="w hi">preço fixo.</span></div></div>
+  <div class="cap" id="cap9"><div class="ln"><span class="w">Preço</span><span class="w">e</span><span class="w">data</span></div><div class="ln"><span class="w hi">na hora.</span></div></div>
+
+
+  <div class="abs" id="mit" style="left:0;top:0;width:1080px;height:1920px;display:none">
+    <div class="hl" style="font-size:100px"><span class="w">Sua</span> <span class="w">carteira</span> <span class="w">é</span><br><span class="w">de</span> <span class="mk w"><b id="mkm"></b>qual país?</span></div>
+    <div class="big w" style="left:90px;top:800px;font-size:66px">Comenta só o país:</div>
+    <div class="abs" style="left:90px;top:920px;display:flex;gap:30px"><div class="pill w" id="p0">Colômbia</div><div class="pill w" id="p1">EUA</div></div>
+    <div class="abs" style="left:90px;top:1070px;display:flex;gap:30px"><div class="pill w" id="p2">Espanha</div></div>
+  </div>
+
+  <div class="chip" id="chip"><svg width="48" height="48" viewBox="0 0 24 24" style="margin-right:14px"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1" stroke="#EEDECE" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg><span id="chipT">Preço na hora · link na bio</span></div>
+
+  <!-- Endcard (Bild-Reim auf den Hook) -->
+  <div class="abs" id="end" style="left:0;top:0;width:1080px;height:1920px;opacity:0">
+    <div class="hl">Juramentada,<br><span class="mk"><b id="mke"></b>preço na hora.</span></div>
+    <div class="chip" id="eBio" style="left:90px;top:672px;height:96px;font-size:56px;padding:0 40px;border-radius:48px"><svg width="56" height="56" viewBox="0 0 24 24" style="margin-right:16px"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1" stroke="#EEDECE" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg>link na bio</div>
+    <div class="big" id="eUrl" style="left:90px;top:816px;font-size:66px">traduzme.com.br</div>
+    <div class="big" id="eWa" style="left:90px;top:920px;font-size:66px;display:flex;align-items:center;gap:20px"><svg width="70" height="70" viewBox="0 0 32 32"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3z" fill="#1F3B35"/><path d="M11.6 9.6c.3-.6.6-.6 1-.6h.8c.3 0 .6.1.8.6l1.1 2.6c.1.3.1.6-.1.9l-.7.9c-.2.2-.2.5 0 .8a10 10 0 0 0 4.3 3.8c.3.1.6.1.8-.1l.9-1.1c.2-.3.6-.3.9-.2l2.6 1.2c.3.2.5.4.4.8-.2 1.3-1.3 2.4-2.7 2.5-1.2.1-3.6-.5-6.4-3.1-2.6-2.4-3.7-5-3.8-6.2 0-.8.3-1.6.8-2.3z" fill="#EEDECE"/></svg>(61) 99803-8363</div>
+  </div>
+</div>
+<script>
+const GMB=/cut=gmb/.test(location.search)?1:0;   // GMB-Fassung (≤ 30 s): reel.html?cut=gmb bzw. gmb/reel.html
+const END=GMB?29.5:37.0;
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const lin=(t,a,b)=>cl((t-a)/(b-a));
+const eo=x=>1-Math.pow(1-x,3);
+const expo=x=>x>=1?1:1-Math.pow(2,-10*x);
+const quint=x=>x<.5?16*x**5:1-Math.pow(-2*x+2,5)/2;
+const back=x=>{const c=1.6;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const ein=x=>x*x*x;
+const EZ={q:quint,x:expo,o:eo,l:x=>x,i:ein};
+// Interne Zeitachse = Bauzeit (40,5 s; Abnahme 21-1: Endcard +1,0 s). Design-Regeln v3: Detran-Liste 1 s kürzer (ab 14,5 +1,0) und Pix/PDF-Kacheln (29,5–32,0) entfernt → 36,0 s.
+// GMB zusätzlich: ohne 180-dias/CNH (5,0–10,0) und ohne Mitmach (Bauzeit 32,0–34,5) → 28,5 s. Schwellen jeweils in der schon verschobenen Zeit.
+const SKIP=GMB?[[5.0,5.0],[14.5,1.0],[29.5,2.5],[32.0,2.5]]:[[14.5,1.0],[29.5,2.5]];
+function remap(tn){let t=tn;for(const [a,d] of SKIP){if(t>=a-1e-9)t+=d;}return t;}
+
+// ---------- Figur Sofía (figSVG aus Reel 15) ----------
+const C={pinho:'#376259',salvia:'#97B9A8',nevoa:'#BDCBCB',areia:'#EEDECE',dark:'#1F3B35',w:'#fff'};
+function figSVG(o={}){
+  const id='S'; const hood=o.hood||C.salvia, skin='#E9C9A8', hair=o.hair||C.dark, pants=C.dark;
+  const longHair=`<path class="ol" d="M58 110 Q40 250 70 300 L230 300 Q262 250 242 110 Z" fill="${hair}"/>`;
+  const fringe=`<path class="ol" d="M62 108 Q56 18 150 14 Q246 16 240 108 Q200 50 150 56 Q100 50 62 108 Z" fill="${hair}"/>`;
+  return `<svg class="lucas" id="${id}" viewBox="-20 -20 340 840" width="300" style="overflow:visible">
+  <g>${longHair}</g>
+  <g><rect class="ol" x="88" y="470" width="62" height="280" rx="26" fill="${pants}"/><rect class="ol" x="150" y="470" width="62" height="280" rx="26" fill="${pants}"/>
+  <ellipse class="ol" cx="115" cy="772" rx="42" ry="22" fill="${C.w}"/><ellipse class="ol" cx="186" cy="772" rx="42" ry="22" fill="${C.w}"/></g>
+  <g id="${id}armL" style="transform-origin:78px 235px"><rect class="ol" x="52" y="225" width="46" height="215" rx="23" fill="${hood}"/><circle class="ol" cx="75" cy="450" r="26" fill="${skin}"/></g>
+  <path class="ol" d="M70 250 Q70 200 150 196 Q230 200 230 250 L236 480 Q150 496 64 480 Z" fill="${hood}"/>
+  <path class="ol" d="M118 200 Q150 236 182 200" fill="none"/>
+  <g id="${id}head" style="transform-origin:150px 190px">
+   <rect class="ol" x="132" y="170" width="36" height="34" fill="${skin}"/>
+   <circle class="ol" cx="150" cy="105" r="88" fill="${skin}"/>
+   ${fringe}
+   <circle class="ol" cx="62" cy="112" r="14" fill="${skin}"/><circle class="ol" cx="238" cy="112" r="14" fill="${skin}"/>
+   <g id="${id}eyes" style="transform-origin:150px 108px"><ellipse cx="118" cy="108" rx="10" ry="13" fill="${C.dark}"/><ellipse cx="182" cy="108" rx="10" ry="13" fill="${C.dark}"/></g>
+   <path id="${id}m_smile" d="M118 142 Q150 168 182 142" stroke="${C.dark}" stroke-width="7" fill="none" stroke-linecap="round"/>
+   <path id="${id}m_grin" d="M112 136 Q150 136 188 136 Q184 178 150 180 Q116 178 112 136 Z" fill="${C.dark}" style="display:none"/>
+   <ellipse id="${id}m_o" cx="150" cy="150" rx="14" ry="18" fill="${C.dark}" style="display:none"/>
+  </g>
+  <g id="${id}armR" style="transform-origin:222px 235px"><rect class="ol" x="202" y="225" width="46" height="215" rx="23" fill="${hood}"/><circle class="ol" cx="225" cy="450" r="26" fill="${skin}"/></g>
+  </svg>`;
+}
+$('fig').innerHTML=figSVG();
+function mouth(m){['smile','grin','o'].forEach(k=>{$('Sm_'+k).style.display=(k===m?'block':'none')})}
+function blink(t){const p=(t%3.1);const s=p<.12?1-Math.sin(p/.12*Math.PI)*.92:1;$('Seyes').style.transform=`scaleY(${s})`}
+
+// ---------- Posen [t, x, y, rot, scale, opacity, ease] (Mittelpunkt) ----------
+const HOOK_F=[195,1160], HOOK_C=[550,1150,-6], END_F=[180,1288];
+const P={
+ fig:[[0,...HOOK_F,0,1,1],[10.0,...HOOK_F,0,1,1],[10.45,-260,1160,-8,1,1,'i'],[34.5,-260,1288,-8,.58,1],[35.0,...END_F,0,.58,1,'x'],[40.0,...END_F,0,.58,1],[40.3,...HOOK_F,0,1,1,'q']],
+ CARD:[[0,...HOOK_C,1,1],[5.0,...HOOK_C,1,1],[5.25,620,1230,4,.6,0,'i'],[7.5,600,1150,-12,.6,0],[7.85,...HOOK_C,1,1,'x'],[10.0,...HOOK_C,1,1],[10.3,620,1230,4,.6,0,'i'],[40.0,600,1150,-12,.6,0],[40.3,...HOOK_C,1,1,'q']],
+ CAL:[[0,640,1120,-8,.6,0],[5.3,640,1120,-8,.6,0],[5.65,640,1120,-2,1,1,'x'],[7.3,640,1120,-2,1,1],[7.5,640,1120,4,.7,0,'i']],
+ PTC:[[0,520,1130,10,.6,0],[15.55,520,1130,10,.6,0],[15.95,520,1130,3,1,1,'x'],[18.25,520,1130,3,1,1],[18.45,520,1130,3,.9,0,'l']],
+ DET:[[0,500,1150,0,.3,0],[18.55,500,1150,0,.3,0],[18.95,500,1150,0,1,1,'x'],[20.75,500,1150,0,1,1],[20.95,500,1150,0,.92,0,'l']]
+};
+function pose(K,t){if(t<=K[0][0])return K[0].slice(1,6);for(let i=0;i<K.length-1;i++){const a=K[i],b=K[i+1];if(t<=b[0]){const p=(EZ[b[6]||'q'])(lin(t,a[0],b[0]));return a.slice(1,6).map((v,j)=>v+(b[j+1]-v)*p)}}return K[K.length-1].slice(1,6);}
+const SIZE={fig:[300,741],CARD:[620,390],CAL:[470,460],PTC:[620,390],DET:[600,600]};
+function place(id,t,extra=''){const [x,y,r,k,o]=pose(P[id],t),[w,h]=SIZE[id],el=$(id);el.style.transform=`translate(${x-w/2}px,${y-h/2}px) rotate(${r}deg) scale(${k})${extra}`;el.style.opacity=o;el.style.display=o>0.001&&y<2200?'':'none';return [x,y,r,k,o];}
+
+// Wort-Pop: Wort erscheint erst, wenn es dran ist (Pille wächst mit), Skala ≥ 0,9
+function words(id,t,a,step=.09){const el=$(id); const on=t>=a; el.style.display=on?'':'none'; if(!on)return;
+  // ganze Zeile auf einmal (keine Pille mit halben Wörtern), Zeilen gestaffelt; Skala ≥ 0,9
+  el.querySelectorAll('.ln').forEach((l,li)=>{const s=a+li*.14; const p=lin(t,s,s+.2); const v=t>=s; l.style.display=v?'flex':'none';
+    l.style.opacity=.4+.6*eo(p); l.style.transform=`translateY(${(1-eo(p))*12}px) scale(${.92+.08*eo(p)})`;
+    l.querySelectorAll('.w').forEach(w=>{w.style.display='inline-block';w.style.opacity=1;w.style.transform='none'});});}
+function show(id,t,a,b,step=.09,d=.15){const el=$(id); if(t<a||t>=b+d){el.style.display='none';return;} words(id,t,a,step); el.style.opacity=1-lin(t,b,b+d); el.style.transform='none';}
+const pop=(el,t,a,d=.3)=>{const p=lin(t,a,a+d); el.style.opacity=p>0?Math.min(1,p*3):0; return p<=0?.85:.85+.15*back(p);};
+const cssr=(c)=>[c[0]*3,c[1]*3,c[2]*3,c[3]*3];
+
+// Marker Panel B: CSS-Rechtecke relativ zum <li> (Live-Seite, cap4.js, Viewport 320) → Panel-Koordinaten (Skala 810/260)
+{const k=810/260, R=[[76.61,19.45,37.13,16],[123.92,19.45,76.69,16],[20,37.91,67,16]]; let h='';
+ R.forEach((r,i)=>{const x=r[0]*k, y=r[1]*k, w=r[2]*k, hh=r[3]*k; h+=`<div class="abs mkB" style="left:${x-6}px;top:${y-2}px;width:${w+12}px;height:${hh+6}px;border-radius:8px;background:#EEDECE;transform-origin:0 50%;transform:scaleX(0)"></div>`});
+ $('hlB').innerHTML=h;}
+
+function render(tn){let t=remap(tn); if(t>=40.3-1e-6) t=0;          // letzte Frames = exakt Frame 0 (Loop)
+  const env=t<39.8?1:1-lin(t,39.8,40.3);                              // Idle-Bewegung läuft zur Loop-Naht auf 0
+  $('bg1').style.transform=`translate(${Math.sin(t*.4)*24*env}px,${Math.sin(t*.23)*40*env}px)`; $('bg2').style.transform=`translate(${Math.sin(t*.31)*-30*env}px,${Math.sin(t*.5)*18*env}px)`;
+  // ---------- Figur + Karte ----------
+  const breath=Math.sin(t*2.1)*4*env;
+  place('fig',t,` translateY(${breath}px)`);
+  blink(t+.3);
+  mouth(t<2.4?'o':(t<7.9?'smile':(t<10?'grin':(t>=34.3&&t<40.0?'grin':'o'))));
+  // Arm hält die Karte
+  {const wv=lin(t,34.5,34.9)*(1-lin(t,40.0,40.3)); $('SarmR').style.transform=`rotate(${(-62+Math.sin(t*2.1)*3*env)*(1-wv)+(-150+14*Math.sin(t*7))*wv}deg)`;} $('SarmL').style.transform=`rotate(${8+Math.sin(t*1.7)*3*env}deg)`;
+  $('Shead').style.transform=`rotate(${t<2.4?-4+Math.sin(t*3)*2:(t<10?3:(t<39.8?-2+Math.sin(t*2)*2:-4+(2+Math.sin(t*2)*2)*env))}deg)`;
+  {const bob=Math.sin(t*2.6)*6*env, hk=t<2.4?1-lin(t,1.9,2.4):0, sw=(Math.sin(t*1.3)*1.2+3*Math.sin(t*6.5)*hk)*env, zm=t<2.4?1+.03*Math.sin(lin(t,0,2.4)*Math.PI):1;
+   place('CARD',t,` translateY(${bob}px) rotate(${sw}deg) scale(${zm})`);
+   // Drehung: 2,5–2,9 Licencia→Tradução; 8,0–8,4 Licencia→CNH (nur Haupt)
+   let sx=1, face='LIC';
+   const f1=lin(t,2.5,2.9), f2=lin(t,8.0,8.4);
+   if(t<2.5) face='LIC'; else if(t<5.4){face=f1<.5?'LIC':'TRAD'; sx=Math.abs(Math.cos(quint(f1)*Math.PI));}
+   else if(t<10.5){ if(GMB){face='TRAD';} else {face=t<8.0?'LIC':(f2<.5?'LIC':'CNH'); sx=t<8.0?1:Math.abs(Math.cos(quint(f2)*Math.PI));} }
+   else face='LIC';
+   sx=Math.max(sx,.02);
+   $('CIN').style.transform=`scaleX(${sx}) scaleY(${1+.04*(1-sx)})`;
+   for(const k of ['LIC','TRAD','CNH']) $('f'+k).style.display=face===k?'':'none';}
+  // ---------- Kalender ----------
+  {const c=place('CAL',t); const n=Math.round(180*quint(lin(t,5.6,6.95))); $('calN').textContent=n;
+   const s=lin(t,7.0,7.3); $('CAL').style.transform+=` scale(${t>=7.0&&t<7.3?1+.08*Math.sin(s*Math.PI):1})`;
+   const R=$('calR'); R.style.opacity=t>=7.0&&t<7.45?(1-lin(t,7.0,7.45))*.9:0; R.style.transform=`translate(${c[0]-280}px,${c[1]-280}px) scale(${.8+.5*eo(lin(t,7.0,7.45))})`;}
+  // ---------- Detran-Zeilen ----------
+  const RT=[10.5,11.0,11.5,12.0];
+  RT.forEach((a,i)=>{const r=$('r'+i); if(t<a||t>=14.5){r.style.display='none';return;} r.style.display='';
+    const p=lin(t,a,a+.35), q=lin(t,14.3,14.45);
+    let s=p<=0?.85:.85+.15*back(p); if(i===3){const d=t-12.0; if(d>=0&&d<.3) s*=1+.025*Math.sin(d/.3*Math.PI);}
+    r.style.opacity=Math.min(1,p*3)*(1-q); r.style.transform=`translateY(${(1-eo(p))*40+Math.sin(t*2.6+i)*4}px) scale(${s*(1-.05*q)})`;});
+  // ---------- Carta de condução (PT) ----------
+  {const c=place('PTC',t,` translateY(${Math.sin(t*2.4)*7}px) rotate(${Math.sin(t*1.7)*1.2}deg)`); const o=$('ptok'); const p=lin(t,16.0,16.3); const on=t>=16.0&&t<18.5;
+   o.style.display=on?'flex':'none'; o.style.opacity=on?Math.min(1,p*3)*(1-lin(t,18.25,18.5)):0;
+   o.style.transform=`translate(${c[0]+250-66}px,${c[1]-195-50}px) scale(${p<=0?.5:back(p)})`;}
+  // ---------- Detran-Gebäude ----------
+  {const c=place('DET',t,` scale(${1+.015*Math.sin(t*2.2)})`); const pn=$('pin'); const p=lin(t,19.0,19.4); const on=t>=19.0&&t<21.0;
+   pn.style.display=on?'':'none'; pn.style.opacity=Math.min(1,p*3)*(1-lin(t,20.75,20.95));
+   pn.style.transform=`translate(${c[0]+250}px,${c[1]-330+(1-expo(p))*-60+Math.sin(t*4)*6}px)`;}
+  // ---------- Panel A (echter Screenshot) ----------
+  {const A=$('PA'); const a=lin(t,21.0,21.5); const out=lin(t,23.5,23.7), back2=lin(t,25.95,26.2), exit=lin(t,26.7,27.0);
+   let o=0; if(t>=21.0&&t<23.5) o=Math.min(1,a*2); else if(t>=26.0&&t<29.5) o=1;   // harte Schnitte auf 22,5 / 25,0 (Abnahme 21-4), Ergebnis bis zum Schnitt 28,5 (21-7)
+   A.style.display=o>0?'':'none'; A.style.opacity=o;
+   A.style.transform=`translateY(${t<23.5?(1-expo(a))*700:0}px) scale(${t<23.5?1+.02*lin(t,21.5,23.5):1+.02*lin(t,26.0,29.3)+.03*Math.sin(lin(t,27.0,27.25)*Math.PI)})`;
+   $('fr1').style.opacity=t>=21.5&&t<22.5?eo(lin(t,21.5,21.7))*(1-lin(t,22.35,22.5)):0;
+   $('fr2').style.opacity=t>=22.5&&t<23.5?eo(lin(t,22.5,22.7)):0;
+   // Tipp auf "Calcular preço" (Button-Mitte im Panel: x 70+20+ (585..1077 crop) …)
+   const T=$('tap'); const tp=lin(t,26.3,26.5); const ton=t>=26.3&&t<26.9;
+   T.style.opacity=ton?Math.min(1,tp*3)*(1-lin(t,26.75,26.9)):0; T.style.transform=`translate(${486-55}px,${1330-55+(1-eo(tp))*90}px) scale(${t>=26.5&&t<26.65?.82:1})`;}
+  // ---------- Panel B (echter Screenshot pc1/pc2) ----------
+  {const B=$('PB'); const a=lin(t,23.5,23.8); const on=t>=23.5&&t<26.0;   // harter Schnitt rein/raus, kein Schieben aus der Safe Zone
+   B.style.display=on?'':'none'; B.style.opacity=on?1:0;
+   B.style.transform=`translateY(${Math.sin(t*2.2)*5}px) scale(${.96+.04*eo(a)})`;
+   document.querySelectorAll('.mkB').forEach((e,i)=>{const s0=[24.0,24.5,24.65][i]; e.style.transform=`scaleX(${eo(lin(t,s0,s0+.3))})`});}
+  // ---------- Button „Calculando…“ (im echten Panel) ----------
+  {const G=$('GRN'); const on=t>=26.6&&t<27.5; G.style.display=on?'flex':'none';
+   G.style.opacity=on?1:0;   // harter Schnitt (Zustand des echten Buttons), keine Überblendung über den Screenshot
+   G.style.transform=`scale(${1+.03*Math.sin(lin(t,26.6,26.85)*Math.PI)})`;
+   $('spin').style.transform=`rotate(${t*540}deg)`;}
+  {const R=$('RES'); const on=t>=27.5&&t<29.5; R.style.display=on?'':'none'; $('imgA').style.display=on?'none':'';   // harter Schnitt auf dem Schlag (neu 26,5)
+   R.querySelectorAll('.rb').forEach((b,i)=>{b.style.transform=`scaleX(${.6+.4*eo(lin(t,27.5+i*.1,27.9+i*.1))})`;b.style.transformOrigin='0 50%'});}
+  // ---------- Hook (Frame 0 fertig) + Loop-Rückkehr ----------
+  {const H=$('hook'); const hOut=lin(t,2.2,2.4), loopIn=lin(t,40.15,40.3);
+   const vis=t<2.4||t>=40.15; H.style.display=vis?'':'none';
+   H.style.opacity=t<2.4?1-hOut:1;
+   H.style.transformOrigin='0 0'; H.style.transform=`scale(${1+.03*Math.sin(lin(t,0,.4)*Math.PI)})`;
+   $('mkb').style.transform=`scale(${1+.1*Math.sin(lin(t,.05,.45)*Math.PI)+.04*Math.sin(lin(t,1.2,1.6)*Math.PI)})`;
+   const W=$('wm'); W.style.opacity=t<2.4?1-hOut:(t>=40.15?1:0); W.style.display=W.style.opacity>0?'flex':'none';}
+  // ---------- Captions ----------
+  show('cap1',t,2.4,4.8);
+  if(!GMB){show('cap2',t,4.95,7.35); show('cap3',t,7.55,9.8);} else {$('cap2').style.display='none';$('cap3').style.display='none';}
+  show('cap4',t,10.05,14.3); show('cap5',t,15.55,18.3,.1); show('cap6',t,18.55,20.8,.08);
+  show('cap7',t,21.05,23.3); show('cap8',t,23.55,25.8); show('cap9',t,27.45,29.49,.09,.01);
+  // ---------- Mitmach ----------
+  {const M=$('mit'); const on=!GMB&&t>=32.0&&t<34.5; M.style.display=on?'':'none';
+   if(on){M.style.opacity=1;   /* harter Schnitt auf die Endcard (34,5) */ M.querySelectorAll('.w').forEach((w,i)=>{const s=32.0+(i<5?0:.1); const p=lin(t,s,s+.15); w.style.opacity=t>=s?.8+.2*eo(p):0;   /* ganze Zeilen ab dem Schnitt (21-7) */ w.style.transform=`translateY(${(1-eo(p))*14}px) scale(${.9+.1*eo(p)})`});
+    $('mkm').style.transform=`scaleX(${expo(lin(t,32.3,32.6))})`;
+    ['p0','p1','p2'].forEach((id,i)=>{const a=32.5+i*.5; const p=lin(t,a,a+.3); const e=$(id); e.style.opacity=t>=a?1:0; e.style.transform=`scale(${t<a?.85:.85+.15*back(p)})`;});}}
+  // ---------- CTA-Chip (3,0 s bis Endcard) ----------
+  {const Cp=$('chip'); $('chipT').textContent=GMB?'Preço na hora no site':'Preço na hora · link na bio';
+   const p=lin(t,3.0,3.3), q=0; const on=t>=3.0&&t<32.0;   /* Abnahme 21-2: kein Chip im Mitmach-Block (wirkt sonst wie 4. Antwort) */ Cp.style.display=on?'flex':'none';
+   Cp.style.left='90px'; Cp.style.top='648px'; Cp.style.opacity=on?Math.min(1,p*3)*(1-q):0;
+   Cp.style.transform=`scale(${p<=0?.85:.85+.15*back(p)})`;}
+  // ---------- Endcard ----------
+  {const E=$('end'); const p=lin(t,34.5,34.65); const o=t<34.5?0:(t>=40.15?0:.6+.4*p); E.style.opacity=o;   /* Kontakt voll 34,65–40,15 = 5,5 s (21-1); harter Schnitt zurück auf den Hook */ E.style.display=o>0?'':'none';
+   E.style.transform=`translateY(${(1-eo(p))*30}px)`;
+   $('mke').style.transform=`scaleX(${expo(lin(t,34.7,35.0))})`;
+   const b=lin(t,35.0,35.3); $('eBio').style.transform=`scale(${b<=0?.85:.85+.15*back(b)})`; $('eBio').style.opacity=t>=35.0?1:0;
+   $('eBio').style.display=GMB?'none':'flex'; if(GMB){$('eUrl').style.top='688px';$('eWa').style.top='792px';}}
+}
+render(0);
+</script></body></html>

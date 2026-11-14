@@ -1,0 +1,353 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/os.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',sans-serif;background:#EEDECE}
+#stage{position:absolute;inset:0;overflow:hidden}
+.scene{position:absolute;inset:0;display:none;overflow:hidden}
+.abs{position:absolute}
+.hl{position:absolute;left:90px;width:860px;font-weight:800;line-height:1.08;letter-spacing:-1px}
+.sl{position:absolute;left:90px;width:840px;font-size:54px;font-weight:600;line-height:1.2}
+.shape{position:absolute;border-radius:50%}
+.lucas .ol{stroke:var(--lo,#1F3B35);stroke-width:6;stroke-linejoin:round;stroke-linecap:round}
+.kick{position:absolute;left:90px;font-size:44px;font-weight:800;letter-spacing:3px}
+#trk{position:absolute;left:60px;top:150px;width:880px;height:180px;border-radius:40px;background:#fff;box-shadow:0 10px 0 rgba(31,59,53,.18);z-index:50;display:none}
+.st{position:absolute;top:30px;width:80px;height:80px;border-radius:50%;background:#BDCBCB;border:6px solid #1F3B35}
+.stl{position:absolute;top:122px;width:240px;margin-left:-120px;text-align:center;font-size:34px;font-weight:800;color:#1F3B35}
+.phone{position:absolute;border-radius:56px;background:#1F3B35;padding:22px}
+.screen{position:relative;width:100%;height:100%;border-radius:38px;background:#fff;overflow:hidden}
+.push{position:absolute;left:18px;right:18px;border-radius:26px;background:#EEDECE;border:4px solid #1F3B35;display:flex;align-items:center;gap:16px;padding:16px 18px;font-size:30px;font-weight:800;color:#1F3B35;line-height:1.1}
+.conf{position:absolute;width:16px;height:26px;border-radius:4px;opacity:0}
+.cardx{position:absolute;width:400px;height:360px;border-radius:30px;background:#fff;border:6px solid #1F3B35;box-shadow:0 12px 0 rgba(31,59,53,.2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;font-size:40px;font-weight:800;color:#1F3B35;text-align:center;line-height:1.1}
+.day{position:absolute;top:0;width:150px;height:150px;border-radius:24px;background:#fff;border:5px solid #1F3B35;font-size:34px;font-weight:800;color:#1F3B35;text-align:center;padding-top:14px}
+</style></head>
+<body><div id="stage"></div>
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const lin=(t,a,b)=>cl((t-a)/(b-a));
+const eo=x=>1-Math.pow(1-x,3);
+const eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const back=x=>{const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const C={pinho:'#376259',salvia:'#97B9A8',nevoa:'#BDCBCB',areia:'#EEDECE',dark:'#1F3B35',w:'#fff'};
+const S=[['s1',0],['s2',4.4],['e1',8.0],['e2',15.8],['e2b',23.6],['e3',28.0],['e4',34.4],['bon',41.2],['rec',45.8],['end',50.6]];
+const END=57.8; const ST=Object.fromEntries(S);
+const SX=[110,330,550,770]; // Stationsmitte relativ zur Leiste
+const TR={s2:{k:'top'},e1:{k:'circle',x:60+SX[0],y:220},e2:{k:'circle',x:60+SX[1],y:220},e2b:{k:'left'},e3:{k:'circle',x:60+SX[2],y:220},e4:{k:'circle',x:60+SX[3],y:220},bon:{k:'top'},rec:{k:'circle',x:540,y:900},end:{k:'top'}};
+const TD=0.5;
+
+// ---------- Figuren ----------
+let LID=0;
+function figSVG(o={}){
+  const id='L'+(LID++); const hood=o.hood||C.salvia, skin=C.areia, hair=o.hair||C.dark, pants=C.dark;
+  const longHair=o.long?`<path class="ol" d="M58 110 Q40 250 70 300 L230 300 Q262 250 242 110 Z" fill="${hair}"/>`:'';
+  const fringe=o.long?`<path class="ol" d="M62 108 Q56 18 150 14 Q246 16 240 108 Q200 50 150 56 Q100 50 62 108 Z" fill="${hair}"/>`
+                     :`<path class="ol" d="M64 100 Q60 20 150 16 Q246 18 238 104 Q214 70 182 66 Q170 92 120 70 Q92 74 64 100 Z" fill="${hair}"/>`;
+  const tie=o.tie?`<path class="ol" d="M140 206 L160 206 L166 300 L150 322 L134 300 Z" fill="${C.pinho}"/>`:'';
+  return {id,html:`<svg class="lucas" id="${id}" viewBox="-20 -20 340 840" width="${o.w||300}" style="overflow:visible;--lo:${o.lo||C.dark}">
+  <g>${longHair}</g>
+  <g><rect class="ol" x="88" y="470" width="62" height="280" rx="26" fill="${pants}"/><rect class="ol" x="150" y="470" width="62" height="280" rx="26" fill="${pants}"/>
+  <ellipse class="ol" cx="115" cy="772" rx="42" ry="22" fill="${C.w}"/><ellipse class="ol" cx="186" cy="772" rx="42" ry="22" fill="${C.w}"/></g>
+  <g id="${id}armL" style="transform-origin:78px 235px"><rect class="ol" x="52" y="225" width="46" height="215" rx="23" fill="${hood}"/><circle class="ol" cx="75" cy="450" r="26" fill="${skin}"/></g>
+  <path class="ol" d="M70 250 Q70 200 150 196 Q230 200 230 250 L236 480 Q150 496 64 480 Z" fill="${hood}"/>
+  ${tie}
+  <path class="ol" d="M118 200 Q150 236 182 200" fill="none"/>
+  <g id="${id}head" style="transform-origin:150px 190px">
+   <rect class="ol" x="132" y="170" width="36" height="34" fill="${skin}"/>
+   <circle class="ol" cx="150" cy="105" r="88" fill="${skin}"/>
+   ${fringe}
+   <circle class="ol" cx="62" cy="112" r="14" fill="${skin}"/><circle class="ol" cx="238" cy="112" r="14" fill="${skin}"/>
+   <g id="${id}eyes" style="transform-origin:150px 108px"><g id="${id}pup"><ellipse cx="118" cy="108" rx="10" ry="13" fill="${C.dark}"/><ellipse cx="182" cy="108" rx="10" ry="13" fill="${C.dark}"/></g></g>
+   <path id="${id}m_smile" d="M118 142 Q150 168 182 142" stroke="${C.dark}" stroke-width="7" fill="none" stroke-linecap="round"/>
+   <path id="${id}m_grin" d="M112 136 Q150 136 188 136 Q184 178 150 180 Q116 178 112 136 Z" fill="${C.dark}" style="display:none"/>
+   <ellipse id="${id}m_o" cx="150" cy="150" rx="14" ry="18" fill="${C.dark}" style="display:none"/>
+   <path id="${id}m_flat" d="M126 152 Q150 144 174 152" stroke="${C.dark}" stroke-width="7" fill="none" stroke-linecap="round" style="display:none"/>
+  </g>
+  <g id="${id}armR" style="transform-origin:222px 235px"><rect class="ol" x="202" y="225" width="46" height="215" rx="23" fill="${hood}"/><circle class="ol" cx="225" cy="450" r="26" fill="${skin}"/></g>
+  </svg>`};
+}
+function mouth(id,m){['smile','grin','o','flat'].forEach(k=>{const e=$(id+'m_'+k);if(e)e.style.display=(k===m?'block':'none')})}
+function blink(id,t,seed=0){const p=((t+seed)%3.1);const s=p<.12?1-Math.sin(p/.12*Math.PI)*.92:1;$(id+'eyes').style.transform=`scaleY(${s})`}
+const FIG={}; FIG.e1=null;
+function bia(key,w,hood){const F=figSVG({w,long:true,hood:hood||C.salvia}); FIG[key]=F; return F.html}
+// ---------- Bausteine ----------
+function txtIn(el,t,a,dur=.4){if(!el)return;const p=eo(lin(t,a,a+dur));el.style.opacity=p;el.style.transform=`translateY(${(1-p)*24}px)`}
+function popIn(el,t,a,dur=.35,base=''){const p=lin(t,a,a+dur);el.style.opacity=p>0?1:0;const s=p<=0?0:back(p);el.style.transform=base+` scale(${s})`}
+function drift(el,t,ax,ay,ph){el.style.transform=`translate(${Math.sin(t/6*2*Math.PI+ph)*ax}px,${Math.cos(t/6*2*Math.PI+ph)*ay}px)`}
+function shapes(col,arr){return arr.map((s,i)=>`<div class="shape sh" data-ph="${i*1.7}" style="left:${s[0]}px;top:${s[1]}px;width:${s[2]}px;height:${s[2]}px;background:${col}"></div>`).join('')}
+function sh(sc,t){document.querySelectorAll('#'+sc+' .sh').forEach(e=>drift(e,t,30,30,+e.dataset.ph))}
+function check(col,size,stroke='#fff'){return `<svg width="${size}" height="${size}" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="${col}"/><path d="M6.5 12.5 L10.5 16.5 L17.5 8" stroke="${stroke}" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`}
+function docIcon(w=56){return `<svg width="${w}" height="${w*1.2}" viewBox="0 0 50 60"><path d="M4 4 H34 L46 16 V56 H4 Z" fill="#fff" stroke="${C.dark}" stroke-width="4" stroke-linejoin="round"/><path d="M34 4 V16 H46" fill="${C.nevoa}" stroke="${C.dark}" stroke-width="4" stroke-linejoin="round"/><path d="M12 26 H38 M12 35 H38 M12 44 H28" stroke="${C.pinho}" stroke-width="4" stroke-linecap="round"/></svg>`}
+function envelope(w=120){return `<svg width="${w}" height="${w*.72}" viewBox="0 0 100 72"><rect x="3" y="3" width="94" height="66" rx="8" fill="#fff" stroke="${C.dark}" stroke-width="5"/><path d="M5 8 L50 42 L95 8" fill="none" stroke="${C.dark}" stroke-width="5" stroke-linejoin="round"/></svg>`}
+function confetti(n,x,y){let h='';for(let i=0;i<n;i++)h+=`<div class="conf" data-i="${i}" style="left:${x}px;top:${y}px"></div>`;return h}
+function confAt(sc,t,a){document.querySelectorAll('#'+sc+' .conf').forEach(e=>{const i=+e.dataset.i;const p=t-a;if(p<0||p>1.5){e.style.opacity=0;return}
+  const ang=(sc==='rec'?(15+i*10):(-160+i*(140/14)))*Math.PI/180, v=560+((i*37)%5)*70; const x=Math.cos(ang)*v*p, y=Math.sin(ang)*v*p+950*p*p;
+  e.style.opacity=1-lin(p,1.1,1.5); e.style.transform=`translate(${x}px,${y}px) rotate(${p*720+i*40}deg)`; e.style.background=i%3?C.pinho:(i%2?C.areia:C.salvia);})}
+
+// ---------- Tracker (global) ----------
+const LBL=['Pix','Conferência','Tradução','Entrega'];
+function trackerHTML(){
+ return `<div id="trk"><div class="abs" style="left:${SX[0]}px;top:66px;width:${SX[3]-SX[0]}px;height:10px;border-radius:5px;background:${C.nevoa}"></div>
+  <div class="abs" id="tfill" style="left:${SX[0]}px;top:66px;width:0;height:10px;border-radius:5px;background:${C.pinho}"></div>
+  ${SX.map((x,i)=>`<div class="st" id="st${i}" style="left:${x-40}px"><div class="abs" id="sr${i}" style="left:-22px;top:-22px;width:112px;height:112px;border-radius:50%;border:6px solid ${C.salvia};opacity:0"></div>
+     <div class="abs" id="sc${i}" style="left:-6px;top:-6px;opacity:0">${check(C.pinho,80)}</div>
+     <div class="abs" id="sx${i}" style="left:-6px;top:-6px;width:80px;height:80px;border-radius:50%;background:${C.areia};border:6px solid ${C.dark};display:flex;align-items:center;justify-content:center;font-size:48px;font-weight:800;color:${C.dark};opacity:0">!</div></div>
+     <div class="stl" id="sl${i}" style="left:${x}px">${LBL[i]}</div>`).join('')}
+  <div class="abs" id="tdoc" style="left:0;top:-70px">${docIcon(52)}</div></div>`;}
+// Ankunftszeiten der Doku-Marke an den Stationen (global) und Häkchen
+const ARR=[ST.e1+.25,ST.e2+.25,ST.e3+.25,ST.e4+.25];
+const CHK=[ST.e1+1.2,ST.e2b+2.9,ST.e3+4.7,ST.e4+3.0];
+function trackerAt(t){
+  const tk=$('trk'); const sc=S[sceneAt(t)][0];
+  if(!(t>=ST.s2+.15 && t<ST.end)){tk.style.display='none';return}
+  tk.style.display='block';
+  // Position: s2 groß in der Mitte, fliegt hoch; rec wieder in die Mitte
+  let y=150, s=1;
+  const Y0=390;
+  if(t<ST.e1){const p=eio(lin(t,ST.s2+2.6,ST.s2+3.3)); y=Y0-(Y0-150)*p; s=1.0;
+    const pin=eo(lin(t,ST.s2+.15,ST.s2+.55)); tk.style.opacity=pin;}
+  else tk.style.opacity=1;
+  if(t>=ST.rec){const p=eio(lin(t,ST.rec,ST.rec+.6)); y=150+(700-150)*p;}
+  tk.style.transformOrigin='50% 50%';
+  tk.style.transform=`translateY(${y-150}px) scale(${s})`;
+  // Doku-Marke
+  let pos=SX[0]-26, bob=Math.sin(t*5)*4;
+  if(t<ARR[0]-.25){pos=SX[0]-26; bob=Math.abs(Math.sin(t*4))*-14;}
+  for(let i=0;i<4;i++){const a=ARR[i]-.25; if(t>=a){const from=i?SX[i-1]:SX[0]; const p=eo(lin(t,a,a+.5)); pos=from+(SX[i]-from)*p-26;}}
+  if(t>=ST.rec){pos=SX[3]-26}
+  $('tdoc').style.transform=`translate(${pos}px,${bob}px)`;
+  // Füllung bis zur letzten erreichten Station
+  let fw=0; for(let i=1;i<4;i++){const a=ARR[i]-.25; if(t>=a)fw=(SX[i]-SX[0])*eo(lin(t,a,a+.5))+ (i>1?0:0); }
+  if(t>=ARR[1]-.25){const k=ARR.filter(a=>t>=a-.25).length-1; const a=ARR[k]-.25; fw=(SX[k-1]-SX[0])+(SX[k]-SX[k-1])*eo(lin(t,a,a+.5));}
+  $('tfill').style.width=fw+'px';
+  for(let i=0;i<4;i++){
+    const active=t>=ARR[i]-.05 && (i==3?true:t<ARR[i+1]-.25);
+    const st=$('st'+i); st.style.background=t>=ARR[i]-.05?C.areia:C.nevoa;
+    const rp=(t-ARR[i]); $('sr'+i).style.opacity=active&&rp>0?.4+.6*Math.abs(Math.sin(rp*3)):0; $('sr'+i).style.transform=`scale(${1+.08*Math.sin(rp*6)})`;
+    const ck=t>=ST.rec? ST.rec+.7+i*.4 : CHK[i]; popIn($('sc'+i),t,ck,.35);
+    $('sl'+i).style.color=active?C.pinho:C.dark; $('sl'+i).style.opacity=active||t<ST.e1||t>=ST.rec?1:.55;
+  }
+  // "!" an Station 2 (Fund einer Seite) 14.4+4.4 .. Häkchen
+  const xa=ST.e2+3.3; const xv=t>=xa&&t<CHK[1]; $('sx1').style.opacity=xv?1:0; $('sx1').style.transform=xv?`scale(${1+.12*Math.abs(Math.sin((t-xa)*5))})`:'none';
+  if(t>=ST.rec){for(let i=0;i<4;i++)$('sr'+i).style.opacity=0; $('sx1').style.opacity=0;}
+}
+
+// ---------- Szenen ----------
+const stage=$('stage');
+stage.innerHTML=`
+<div class="scene" id="s1" style="background:${C.areia}">
+  ${shapes('rgba(151,185,168,.35)',[[760,80,380],[-220,1300,460]])}
+  <div class="hl" id="s1h" style="top:200px;font-size:92px;color:${C.dark}">Pagou o Pix<br>da tradução…</div>
+  <div class="hl" id="s1q" style="top:420px;font-size:150px;color:${C.pinho}">E agora?</div>
+  <div class="phone" id="s1p" style="left:110px;top:640px;width:430px;height:820px"><div class="screen" style="background:${C.w}">
+    <div class="abs" style="left:30px;top:40px;font-size:30px;font-weight:800;color:${C.pinho}">traduzme</div>
+    <div class="abs" style="left:30px;top:100px;width:326px;height:300px;border-radius:24px;background:${C.areia};display:flex;align-items:center;justify-content:center">
+      <svg width="210" height="210" viewBox="0 0 21 21">${(()=>{let r='';for(let y=0;y<21;y++)for(let x=0;x<21;x++){const f=(x<7&&y<7)||(x>13&&y<7)||(x<7&&y>13);const fin=f&&((x%6==0||y%6==0)||(x>1&&x<5&&y>1&&y<5)||(x>15&&x<19&&y>1&&y<5)||(x>1&&x<5&&y>15&&y<19));const rnd=!f&&((x*7+y*13+x*y)%3==0);if(fin||rnd)r+=`<rect x="${x}" y="${y}" width="1" height="1" fill="${C.dark}"/>`}return r})()}</svg></div>
+    <div class="abs" style="left:30px;top:428px;width:340px;font-size:25px;font-weight:700;color:${C.dark};line-height:1.25">Certidão de nascimento<br>Tradução juramentada</div>
+    <div class="abs" id="s1b" style="left:30px;top:560px;width:326px;height:110px;border-radius:55px;background:${C.pinho};color:#fff;font-size:38px;font-weight:800;display:flex;align-items:center;justify-content:center">Pagar com Pix</div>
+    <div class="abs" id="s1d" style="left:150px;top:690px;font-size:60px;font-weight:800;color:${C.pinho};letter-spacing:6px;opacity:0">• • •</div>
+    <div class="abs" id="s1f" style="left:230px;top:600px;width:90px;height:90px;border-radius:50%;background:rgba(31,59,53,.35);border:5px solid ${C.dark}"></div>
+  </div></div>
+  <div class="abs" style="left:560px;top:1040px;width:420px;height:420px;border-radius:50%;background:${C.salvia}"></div>
+  <div class="abs" id="s1B" style="left:640px;top:840px;width:280px;height:600px;overflow:visible">${bia('s1',270)}</div>
+  ${[0,1,2].map(i=>`<div class="abs s1qm" id="s1m${i}" style="left:${640+i*95}px;top:${780-(i%2)*50}px;font-size:110px;font-weight:800;color:${C.pinho};opacity:0">?</div>`).join('')}
+</div>
+<div class="scene" id="s2" style="background:${C.nevoa}">
+  ${shapes('rgba(255,255,255,.35)',[[700,1100,440],[-200,500,380]])}
+  <div class="kick" id="s2k" style="top:730px;color:${C.pinho}">RASTREIO DA TRADUÇÃO</div>
+  <div class="hl" id="s2h" style="top:800px;font-size:84px;color:${C.dark}">Acompanhe<br>as 4 etapas.</div>
+  <div class="abs" id="s2c" style="left:30px;top:300px;width:940px;height:360px;border-radius:44px;background:${C.areia}"></div>
+  <div class="abs" id="s2B" style="left:700px;top:950px;width:240px;height:350px;overflow:visible">${bia('s2',220)}</div>
+</div>
+<div class="scene" id="e1" style="background:${C.areia}">
+  ${shapes('rgba(151,185,168,.3)',[[780,1250,380]])}
+  <div class="hl" id="e1h" style="top:390px;width:920px;font-size:72px;color:${C.dark}">1. Pix confirmado<br>automaticamente</div>
+  <div class="sl" id="e1s" style="top:590px;width:900px;font-size:48px;color:${C.pinho};font-weight:700">Prazo em dias úteis. Pix até 16h<br>em dia útil conta no mesmo dia.</div>
+  <div class="phone" id="e1p" style="left:100px;top:800px;width:400px;height:680px"><div class="screen" style="background:${C.nevoa}">
+    <div class="abs" style="left:0;top:220px;width:356px;text-align:center;font-size:96px;font-weight:300;color:${C.dark}">14:32</div>
+    <div class="push" id="e1n" style="top:30px">${check(C.pinho,56)}<div>Pagamento<br>confirmado!</div></div>
+    <div class="abs" id="e1m" style="left:118px;top:400px;opacity:0">${envelope(120)}</div>
+  </div></div>
+  <div class="abs" id="e1c" style="left:590px;top:830px;width:330px;height:330px;border-radius:50%;background:#fff;border:8px solid ${C.dark}">
+    ${[...Array(12)].map((_,i)=>`<div class="abs" style="left:157px;top:10px;width:8px;height:26px;background:${C.dark};transform-origin:4px 147px;transform:rotate(${i*30}deg)"></div>`).join('')}
+    <div class="abs" style="left:110px;top:200px;width:110px;text-align:center;font-size:44px;font-weight:800;color:${C.pinho}">16h</div>
+    <div class="abs" id="e1hh" style="left:153px;top:80px;width:12px;height:85px;border-radius:6px;background:${C.dark};transform-origin:6px 85px"></div>
+    <div class="abs" id="e1mh" style="left:155px;top:40px;width:8px;height:125px;border-radius:4px;background:${C.pinho};transform-origin:4px 125px"></div>
+    <div class="abs" style="left:145px;top:145px;width:30px;height:30px;border-radius:50%;background:${C.dark}"></div></div>
+  <div class="abs" id="e1t" style="left:600px;top:1190px;width:310px;height:84px;border-radius:42px;background:${C.pinho};color:#fff;font-size:40px;font-weight:800;display:flex;align-items:center;justify-content:center;opacity:0">mesmo dia</div>
+</div>
+<div class="scene" id="e2" style="background:${C.nevoa}">
+  ${shapes('rgba(255,255,255,.35)',[[-180,1240,400]])}
+  <div class="hl" id="e2h" style="top:390px;width:920px;font-size:70px;color:${C.dark}">2. Primeiro, o tradutor<br>confere tudo</div>
+  <div class="sl" id="e2s" style="top:600px;color:${C.pinho};font-weight:700">Algo não bate?<br>Avisamos em 1 dia útil.</div>
+  <div class="abs" style="left:60px;top:1060px;width:400px;height:400px;border-radius:50%;background:${C.areia}"></div>
+  <div class="abs" id="e2T" style="left:110px;top:790px;width:300px;height:650px;overflow:visible">${(()=>{const F=figSVG({w:290,hood:C.pinho,tie:false});FIG.e2=F;return F.html})()}</div>
+  ${[0,1,2,3].map(i=>`<div class="abs e2pg" id="e2p${i}" style="left:${400+i*82}px;top:${860+i*36}px;width:225px;height:300px;border-radius:14px;background:#fff;border:5px solid ${C.dark};box-shadow:0 8px 0 rgba(31,59,53,.15)">
+    ${[0,1,2,3,4,5].map(k=>`<div class="abs" style="left:28px;top:${40+k*42}px;width:${k%3==2?120:190}px;height:12px;border-radius:6px;background:${C.nevoa}"></div>`).join('')}
+    <div class="abs" id="e2n${i}" style="left:180px;top:-34px;width:84px;height:84px;border-radius:50%;background:${i==3?C.areia:C.pinho};border:5px solid ${C.dark};color:${i==3?C.dark:'#fff'};font-size:${i==3?36:44}px;font-weight:800;display:flex;align-items:center;justify-content:center;opacity:0">${i==3?'+1':i+1}</div></div>`).join('')}
+  <div class="abs" id="e2L" style="left:520px;top:900px"><svg width="170" height="170" viewBox="0 0 170 170"><circle cx="66" cy="66" r="52" fill="rgba(255,255,255,.35)" stroke="${C.dark}" stroke-width="12"/><path d="M104 104 L156 156" stroke="${C.dark}" stroke-width="22" stroke-linecap="round"/></svg></div>
+  <div class="abs" id="e2m" style="left:740px;top:1300px;width:170px;height:170px;border-radius:40px;background:${C.pinho};display:flex;align-items:center;justify-content:center;opacity:0">${envelope(110)}</div>
+</div>
+<div class="scene" id="e2b" style="background:${C.areia}">
+  ${shapes('rgba(151,185,168,.3)',[[760,1250,400]])}
+  <div class="hl" id="e2bh" style="top:390px;font-size:84px;color:${C.dark}">Você escolhe.</div>
+  <div class="sl" id="e2bs" style="top:500px;color:${C.pinho};font-weight:700;font-size:58px">Nada a mais sem<br>sua aprovação.</div>
+  <div class="cardx" id="e2bA" style="left:90px;top:780px;width:380px;height:340px">${docIcon(110)}<div>Orçamento<br>corrigido</div></div>
+  <div class="cardx" id="e2bR" style="left:530px;top:780px;width:380px;height:340px"><svg width="120" height="120" viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="${C.salvia}" stroke="${C.dark}" stroke-width="6"/><path d="M40 62 A22 22 0 1 0 50 42" fill="none" stroke="${C.dark}" stroke-width="7" stroke-linecap="round"/><path d="M36 34 L50 42 L40 56" fill="none" stroke="${C.dark}" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg><div>Reembolso</div></div>
+  <div class="abs" id="e2bP" style="left:300px;top:1180px"><svg width="110" height="150" viewBox="0 0 110 150"><path d="M40 10 Q40 0 50 0 Q60 0 60 10 V70 L94 76 Q108 80 104 96 L94 140 H34 L8 96 Q2 84 14 80 L40 90 Z" fill="${C.areia}" stroke="${C.dark}" stroke-width="6" stroke-linejoin="round"/></svg></div>
+  <div class="abs" id="e2bS" style="left:340px;top:1240px;width:400px;height:200px;opacity:0"><svg width="400" height="200" viewBox="0 0 400 200"><circle cx="200" cy="100" r="90" fill="none" stroke="${C.pinho}" stroke-width="10"/><circle cx="200" cy="100" r="70" fill="${C.pinho}"/><path d="M168 102 L192 126 L236 78" stroke="#fff" stroke-width="14" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+</div>
+<div class="scene" id="e3" style="background:${C.nevoa}">
+  ${shapes('rgba(255,255,255,.35)',[[780,1260,360]])}
+  <div class="hl" id="e3h" style="top:390px;width:920px;font-size:70px;color:${C.dark}">3. Assinada por<br>tradutor juramentado</div>
+  <div class="sl" id="e3s" style="top:600px;color:${C.pinho};font-weight:700">Confira pelo QR Code.</div>
+  <div class="abs" id="e3d" style="left:120px;top:740px;width:620px;height:640px;border-radius:18px;background:#fff;border:6px solid ${C.dark};box-shadow:0 12px 0 rgba(31,59,53,.18)">
+    <div class="abs" style="left:40px;top:36px;font-size:30px;font-weight:800;color:${C.pinho};letter-spacing:2px">TRADUÇÃO JURAMENTADA</div>
+    ${[0,1,2,3,4,5,6].map(k=>`<div class="abs e3l" id="e3l${k}" style="left:40px;top:${110+k*48}px;width:${[520,480,530,300,500,420,250][k]}px;height:14px;border-radius:7px;background:${C.nevoa};transform-origin:0 0;transform:scaleX(0)"></div>`).join('')}
+    <svg class="abs" style="left:40px;top:430px" width="300" height="140" viewBox="0 0 300 140"><path id="e3sig" d="M10 100 C40 20 60 20 70 80 C78 120 90 120 110 60 C126 20 140 40 140 90 C140 110 160 110 180 70 C200 40 220 50 230 90 L290 90" fill="none" stroke="${C.pinho}" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="900" stroke-dashoffset="900"/></svg>
+    <div class="abs" style="left:40px;top:562px;width:260px;height:6px;background:${C.dark}"></div>
+    <div class="abs" style="left:40px;top:576px;font-size:24px;font-weight:700;color:${C.dark}">Tradutor público</div>
+    <svg class="abs" id="e3q" style="left:390px;top:410px" width="190" height="190" viewBox="0 0 19 19">${(()=>{let r='';let k=0;for(let y=0;y<19;y++)for(let x=0;x<19;x++){const f=(x<6&&y<6)||(x>12&&y<6)||(x<6&&y>12);const fin=f&&(x%5==0||y%5==0||((x%13)>1&&(x%13)<4&&(y%13)>1&&(y%13)<4)||(x>14&&x<17&&y>1&&y<4));const rnd=!f&&((x*5+y*11+x*y)%3!=1);if(fin||rnd){r+=`<rect class="qp" data-k="${(x*7+y*3)%23}" x="${x}" y="${y}" width="1" height="1" fill="${C.dark}" opacity="0"/>`}}return r})()}</svg>
+  </div>
+  <div class="phone" id="e3p" style="left:720px;top:900px;width:220px;height:440px;padding:14px"><div class="screen" style="background:${C.dark}">
+    <div class="abs" style="left:16px;top:100px;width:160px;height:160px;border:6px dashed ${C.areia};border-radius:16px"></div>
+    <div class="abs" id="e3mq" style="left:36px;top:120px;width:120px;height:120px;background:#fff;padding:8px;opacity:0"><svg width="104" height="104" viewBox="0 0 13 13">${(()=>{let r="";for(let y=0;y<13;y++)for(let x=0;x<13;x++){const fx=x<5?x:x-8, fy=y<5?y:y-8; const f=(x<5&&y<5)||(x>7&&y<5)||(x<5&&y>7); const on=f?(fx==0||fx==4||fy==0||fy==4||(fx==2&&fy==2)):((x*3+y*5)%3==0&&x!=5&&y!=5&&x!=7&&y!=7);if(on)r+=`<rect x="${x}" y="${y}" width="1" height="1" fill="${C.dark}"/>`}return r})()}</svg></div>
+    <div class="abs" id="e3scan" style="left:14px;top:100px;width:164px;height:8px;background:${C.salvia}"></div>
+  </div></div>
+  <div class="abs" id="e3v" style="left:160px;top:1400px;width:440px;height:96px;border-radius:48px;background:${C.pinho};color:#fff;font-size:40px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:14px;opacity:0">${check(C.w,54,C.pinho)}Assinatura válida</div>
+</div>
+<div class="scene" id="e4" style="background:${C.areia}">
+  ${shapes('rgba(151,185,168,.3)',[[-160,1200,380]])}
+  ${confetti(14,760,960)}
+  <div class="hl" id="e4h" style="top:390px;font-size:84px;color:${C.dark}">4. PDF no seu e-mail</div>
+  <div class="sl" id="e4s" style="top:500px;color:${C.pinho};font-weight:700">Em 4 dias úteis.<br>A data já vem no orçamento.</div>
+  <div class="phone" id="e4p" style="left:90px;top:720px;width:420px;height:560px"><div class="screen">
+    <div class="abs" style="left:28px;top:30px;font-size:32px;font-weight:800;color:${C.dark}">Caixa de entrada</div>
+    <div class="abs" id="e4r" style="left:16px;top:100px;width:344px;height:200px;border-radius:22px;background:${C.areia};border:4px solid ${C.pinho};padding:18px">
+      <div style="font-size:28px;font-weight:800;color:${C.dark};line-height:1.15">Sua tradução<br>chegou</div>
+      <div class="abs" style="left:18px;top:120px;width:150px;height:56px;border-radius:14px;background:${C.pinho};color:#fff;font-size:30px;font-weight:800;display:flex;align-items:center;justify-content:center">PDF</div></div>
+    ${[0,1].map(k=>`<div class="abs" style="left:16px;top:${320+k*80}px;width:344px;height:60px;border-radius:16px;background:${C.nevoa};opacity:.6"></div>`).join('')}
+  </div></div>
+  <div class="abs" style="left:560px;top:820px;width:400px;height:400px;border-radius:50%;background:${C.salvia}"></div>
+  <div class="abs" id="e4B" style="left:620px;top:720px;width:300px;height:560px;overflow:visible">${bia('e4',290)}</div>
+  <div class="abs" id="e4cal" style="left:90px;top:1310px;width:900px;height:160px">
+    ${['Seg','Ter','Qua','Qui','Sex'].map((d,i)=>`<div class="day" id="e4d${i}" style="left:${i*176}px;background:${i==0||i==4?C.pinho:'#fff'};color:${i==0||i==4?'#fff':C.dark}">${d}<div style="font-size:30px;margin-top:6px">${i==0?'Pix':i==4?'PDF':''}</div>
+      ${i>0&&i<4?`<div class="abs" id="e4k${i}" style="left:43px;top:62px;opacity:0">${check(C.salvia,60,C.dark)}</div>`:''}</div>`).join('')}
+  </div>
+</div>
+<div class="scene" id="bon" style="background:${C.dark}">
+  ${shapes('rgba(55,98,89,.6)',[[740,1180,420],[-200,500,360]])}
+  <div class="kick" id="bk" style="top:390px;color:${C.salvia}">BÔNUS</div>
+  <div class="hl" id="bh" style="top:460px;font-size:72px;color:${C.areia}">Seus arquivos são apagados 7 dias após a entrega.</div>
+  <div class="abs" id="bF" style="left:300px;top:880px;width:360px;height:280px">
+    <svg width="360" height="280" viewBox="0 0 360 280"><path d="M10 40 Q10 20 30 20 H130 L160 50 H330 Q350 50 350 70 V250 Q350 270 330 270 H30 Q10 270 10 250 Z" fill="${C.salvia}" stroke="${C.areia}" stroke-width="8" stroke-linejoin="round"/>
+    <rect x="140" y="130" width="80" height="70" rx="10" fill="${C.areia}"/><path d="M155 132 V110 Q155 86 180 86 Q205 86 205 110 V132" fill="none" stroke="${C.areia}" stroke-width="12"/></svg></div>
+  <div class="abs" id="bC" style="left:720px;top:820px;width:200px;height:200px;border-radius:30px;background:${C.areia};border:6px solid ${C.salvia};font-size:90px;font-weight:800;color:${C.dark};display:flex;align-items:center;justify-content:center;opacity:0">+7</div>
+  <div class="abs" id="bT" style="left:380px;top:1230px"><svg width="200" height="240" viewBox="0 0 200 240"><path d="M30 60 H170 L156 230 H44 Z" fill="${C.pinho}" stroke="${C.areia}" stroke-width="8" stroke-linejoin="round"/><rect id="bLid" x="16" y="30" width="168" height="26" rx="10" fill="${C.areia}"/><path d="M76 90 V200 M100 90 V200 M124 90 V200" stroke="${C.areia}" stroke-width="8" stroke-linecap="round"/></svg></div>
+</div>
+<div class="scene" id="rec" style="background:${C.salvia}">
+  ${confetti(16,540,1000)}
+  <div class="abs" id="rb" style="left:90px;top:300px;height:96px;padding:0 44px;border-radius:48px;background:${C.dark};color:${C.areia};font-size:46px;font-weight:800;display:flex;align-items:center">Salve pra lembrar</div>
+  <div class="hl" id="rh" style="top:440px;font-size:92px;color:${C.dark}">Pagou? É só<br>acompanhar.</div>
+  <div class="abs" style="left:300px;top:1110px;width:400px;height:400px;border-radius:50%;background:${C.pinho}"></div>
+  <div class="abs" id="rB" style="left:385px;top:935px;width:240px;height:560px;overflow:visible">${bia('rec',230,C.areia)}</div>
+</div>
+<div class="scene" id="end" style="background:${C.pinho}">
+  ${shapes('rgba(31,59,53,.28)',[[-160,180,400],[760,1300,420]])}
+  <div class="abs e7" style="left:90px;top:300px;font-size:48px;font-weight:700;color:${C.areia};letter-spacing:1px">Tradução juramentada</div>
+  <div class="hl e7" style="top:370px;font-size:80px;color:#fff">Preço na hora<br>no site.</div>
+  <div class="abs e7" style="left:90px;top:600px;width:640px;height:132px;border-radius:66px;background:${C.areia};display:flex;align-items:center;justify-content:center;font-size:66px;font-weight:800;color:${C.dark};letter-spacing:-1px">traduzme.com.br</div>
+  <div class="abs e7" style="left:90px;top:800px"><div style="font-size:32px;font-weight:700;color:${C.areia};letter-spacing:4px">WHATSAPP</div><div style="font-size:60px;font-weight:700;color:#fff;margin-top:4px">(61) 99803-8363</div></div>
+  <div class="abs" id="endg" style="left:0;top:0;width:1080px;height:1920px">
+   <div class="abs" style="left:505px;top:960px;width:420px;height:420px;border-radius:50%;background:${C.salvia}"></div>
+   <div class="abs" style="left:590px;top:885px;width:280px;height:560px;overflow:visible">${bia('end',250,C.areia)}</div>
+  </div>
+</div>
+${trackerHTML()}`;
+
+// ---------- Renderer ----------
+const R={};
+function idle(key,t,ph=0){const F=FIG[key]; blink(F.id,t,ph); }
+function arms(key,l,r){const F=FIG[key]; $(F.id+'armL').style.transform=`rotate(${l}deg)`; $(F.id+'armR').style.transform=`rotate(${r}deg)`}
+function rise(el,t,a=0,d=.5,dist=200){el.style.transform=`translateY(${(1-eo(lin(t,a,a+d)))*dist}px)`}
+R.s1=t=>{sh('s1',t);
+  // Hook ab Frame 0 sichtbar, nur leichtes Pulsen
+  $('s1h').style.opacity=1; $('s1h').style.transform=`scale(${1+.02*Math.sin(t*6)})`; $('s1h').style.transformOrigin='0 50%';
+  popIn($('s1q'),t,1.4,.4); $('s1q').style.transformOrigin='0 50%';
+  const pr=t>.3&&t<.55; $('s1b').style.transform=pr?'scale(.92)':'none'; $('s1b').style.background=t>.55?C.salvia:C.pinho; $('s1b').textContent=t>.55?'Processando…':'Pagar com Pix';
+  const f=$('s1f'); f.style.opacity=t<.9?1:0; f.style.transform=`translate(${(1-eo(lin(t,0,.3)))*120}px,${(1-eo(lin(t,0,.3)))*160}px) scale(${pr?.8:1})`;
+  $('s1d').style.opacity=t>.6?.4+.6*Math.abs(Math.sin(t*4)):0;
+  $('s1p').style.transform=`rotate(${-3+Math.sin(t*1.5)*1}deg)`;
+  const F=FIG.s1; idle('s1',t,.4); mouth(F.id,t<.8?'flat':'o'); $('s1B').style.transform=`rotate(${t>.5?Math.sin(t*9)*2.5:0}deg)`; $('s1B').style.transformOrigin='50% 100%'; $(F.id+'pup').style.transform=`translateX(${Math.sin(t*5)*10}px)`;
+  arms('s1',8,t>.8?-150+Math.sin(t*8)*6:-20); // Hand am Kopf
+  [0,1,2].forEach(i=>{popIn($('s1m'+i),t,.8+i*.3,.3); const e=$('s1m'+i); if(t>1+i*.35)e.style.transform+=` rotate(${Math.sin(t*4+i)*12}deg)`});};
+R.s2=t=>{sh('s2',t); txtIn($('s2k'),t,.15,.3); txtIn($('s2h'),t,.25,.4);
+  const c=$('s2c'); const out=lin(t,2.6,2.9); c.style.opacity=(1-out)*eo(lin(t,0,.3)); c.style.transform=`scale(${1-.1*out})`;
+  const F=FIG.s2; idle('s2',t); mouth(F.id,'smile'); arms('s2',8,-20-30*Math.max(0,Math.sin(t*3))); rise($('s2B'),t,0,.5,240);};
+R.e1=t=>{sh('e1',t); txtIn($('e1h'),t,.3); txtIn($('e1s'),t,1.2); if(t<1.2)$('e1s').style.opacity=0;
+  rise($('e1p'),t,0,.5,300);
+  const n=$('e1n'); const p=eo(lin(t,.3,.7)); n.style.transform=`translateY(${(1-p)*-160}px)`; n.style.opacity=p;
+  const m=$('e1m'); const mp=lin(t,1.2,2.0); m.style.opacity=mp>0&&mp<1?1:0; m.style.transform=`translate(${mp*260}px,${-Math.sin(mp*Math.PI)*260}px) scale(${1-.5*mp}) rotate(${mp*20}deg)`;
+  popIn($('e1c'),t,3.2,.4); const ang=lin(t,3.4,4.6); $('e1hh').style.transform=`rotate(${-60+ang*180}deg)`; $('e1mh').style.transform=`rotate(${ang*720}deg)`;
+  popIn($('e1t'),t,4.7,.35); if(t>6.0)$('e1t').style.transform=`scale(${1+.12*Math.sin(lin(t,6.0,6.5)*Math.PI)})`; $('e1n').style.boxShadow=t>6&&t<6.6?`0 0 0 ${10*Math.sin(lin(t,6,6.6)*Math.PI)}px ${C.salvia}`:'none';
+};
+R.e2=t=>{sh('e2',t); txtIn($('e2h'),t,.5); txtIn($('e2s'),t,3.2); if(t<3.2)$('e2s').style.opacity=0;
+  for(let i=0;i<4;i++){const pg=$('e2p'+i); const a=i<3?.2+i*.15:3.0; const p=eo(lin(t,a,a+.45)); pg.style.opacity=p; pg.style.transform=`translateX(${(1-p)*500}px) rotate(${(i-1.5)*3}deg)`;
+    popIn($('e2n'+i),t,i<3?1.0+i*.6:3.3,.3);}
+  // Lupe wandert über die Seiten
+  const L=$('e2L'); const lx= t<3.0? 420+ (lin(t,.8,2.6))*170 : 590+eo(lin(t,3.0,3.4))*80; const ly=930+Math.sin(t*3)*30+(t>3.0?60:0);
+  L.style.transform=`translate(${lx-520}px,${ly-900}px)`;
+  popIn($('e2m'),t,4.6,.35); if(t>4.6)$('e2m').style.transform+=` rotate(${Math.sin((t-4.6)*10)*6*Math.max(0,1-(t-4.6))}deg)`;
+  const F=FIG.e2; idle('e2',t,.2); mouth(F.id,t>3.3&&t<4.3?'o':'smile'); arms('e2',8,-60-10*Math.sin(t*3)); rise($('e2T'),t,0,.5,240);
+  $(F.id+'head').style.transform=`rotate(${t>3.3&&t<4.3?-8:3*Math.sin(t*2)}deg)`;};
+R.e2b=t=>{sh('e2b',t); txtIn($('e2bh'),t,.1,.35); txtIn($('e2bs'),t,.2,.4);
+  popIn($('e2bA'),t,.3,.35); popIn($('e2bR'),t,.45,.35);
+  const sel=t>=2.0; $('e2bA').style.borderColor=sel?C.pinho:C.dark; $('e2bA').style.boxShadow=sel?`0 0 0 ${10+4*Math.sin(t*6)}px ${C.salvia}, 0 12px 0 rgba(31,59,53,.2)`:'0 12px 0 rgba(31,59,53,.2)';
+  $('e2bR').style.boxShadow='0 12px 0 rgba(31,59,53,.2)';
+  const hp=eo(lin(t,.8,1.8)); const tap=t>1.85&&t<2.1; $('e2bP').style.transform=`translate(${(1-hp)*300}px,${(1-hp)*300+(tap?-0:0)}px) scale(${tap?.9:1})`; $('e2bP').style.opacity=t<2.6?1:1-lin(t,2.6,2.9);
+  const sp=lin(t,2.6,2.85); $('e2bS').style.opacity=sp>0?1:0; $('e2bS').style.transform=`scale(${sp<=0?0:(2-1*eo(sp))}) rotate(-8deg)`;};
+R.e3=t=>{sh('e3',t); txtIn($('e3h'),t,.5); txtIn($('e3s'),t,3.6); if(t<3.6)$('e3s').style.opacity=0;
+  rise($('e3d'),t,0,.5,300);
+  for(let k=0;k<7;k++)$('e3l'+k).style.transform=`scaleX(${eo(lin(t,.6+k*.18,.8+k*.18))})`;
+  $('e3sig').setAttribute('stroke-dashoffset',900*(1-eio(lin(t,1.8,2.6))));
+  const qp=lin(t,2.6,3.4); document.querySelectorAll('#e3q .qp').forEach(r=>r.setAttribute('opacity',qp*23>=+r.dataset.k?1:0));
+  const pp=eo(lin(t,3.5,3.9)); $('e3p').style.transform=`translateX(${(1-pp)*400}px)`; $('e3mq').style.opacity=t>3.9?1:0;
+  const sc=lin(t,3.9,4.6); $('e3scan').style.top=(100+156*Math.abs(Math.sin(sc*Math.PI*1.5)))+'px'; $('e3scan').style.opacity=sc>0&&sc<1?1:0;
+  popIn($('e3v'),t,4.6,.35);};
+R.e4=t=>{sh('e4',t); txtIn($('e4h'),t,.5); txtIn($('e4s'),t,2.0); if(t<2)$('e4s').style.opacity=0;
+  rise($('e4p'),t,0,.5,300); const rp=eo(lin(t,1.0,1.4)); $('e4r').style.transform=`translateY(${(1-rp)*80}px)`; $('e4r').style.opacity=rp;
+  const F=FIG.e4; idle('e4',t,.6); const j=t>1.5; mouth(F.id,j?'grin':'smile'); arms('e4',j?140:8,j?-140:-20);
+  $('e4B').style.transform=`translateY(${j?-Math.abs(Math.sin((t-1.5)*5))*30*Math.max(0,1-(t-1.5)/2):(1-eo(lin(t,0,.5)))*240}px)`;
+  confAt('e4',t,1.5);
+  const cp=eo(lin(t,3.2,3.6)); $('e4cal').style.opacity=cp; $('e4cal').style.transform=`translateY(${(1-cp)*60}px)`;
+  for(let i=1;i<4;i++)popIn($('e4k'+i),t,3.45+i*.45,.3);
+  $('e4d4').style.transform=`scale(${1+.08*Math.max(0,Math.sin((t-5.2)*5))*(t>5.2&&t<6.0?1:0)})`;};
+R.bon=t=>{sh('bon',t); txtIn($('bk'),t,.1,.3); txtIn($('bh'),t,.2,.4);
+  popIn($('bF'),t,.2,.35); popIn($('bT'),t,1.2,.35); popIn($('bC'),t,1.6,.35);
+  const d=lin(t,2.4,3.2); if(t>=2.4){$('bF').style.transform=`translate(${-20*d}px,${eio(d)*420}px) scale(${1-.55*eio(d)}) rotate(${d*14}deg)`; $('bF').style.opacity=1-lin(t,3.0,3.25);}
+  $('bLid').setAttribute('transform',`rotate(${-25*Math.sin(lin(t,2.2,3.4)*Math.PI)} 30 40)`);};
+R.rec=t=>{txtIn($('rb'),t,1.8,.35); if(t<1.8)$('rb').style.opacity=0; txtIn($('rh'),t,.2,.4);
+  const F=FIG.rec; idle('rec',t,.3); mouth(F.id,'grin'); arms('rec',8,-150+Math.sin(t*3)*8); rise($('rB'),t,.2,.5,260);
+  confAt('rec',t,2.4);};
+R.end=t=>{sh('end',t);
+  document.querySelectorAll('#end .e7').forEach((e,i)=>{const a=.3+i*.2;const p=eo(lin(t,a,a+.4));e.style.opacity=p;e.style.transform=`translateY(${(1-p)*24}px)`});
+  {const p=eo(lin(t,.4,.9));$('endg').style.opacity=p;$('endg').style.transform=`translateY(${(1-p)*40}px)`}
+  const F=FIG.end; blink(F.id,t,.5); mouth(F.id,'grin');
+  const w=(t%2)<.8?Math.sin((t%2)/.8*Math.PI*2)*25:0; arms('end',30,-150+w);};
+
+function sceneAt(t){let c=0;for(let i=0;i<S.length;i++)if(t>=S[i][1])c=i;return c}
+function render(t){const i=sceneAt(t); const [id,st]=S[i];
+  document.querySelectorAll('.scene').forEach(s=>{s.style.display='none';s.style.clipPath='none';s.style.zIndex=1});
+  const cur=$(id); cur.style.display='block'; R[id](t-st);
+  const tr=TR[id]; const d=t-st;
+  if(tr&&d<TD&&i>0){const [pid,pst]=S[i-1]; const prev=$(pid); prev.style.display='block'; prev.style.zIndex=1; cur.style.zIndex=2; R[pid](t-pst);
+    const p=eio(d/TD);
+    if(tr.k==='circle')cur.style.clipPath=`circle(${p*2300}px at ${tr.x}px ${tr.y}px)`;
+    if(tr.k==='top')cur.style.clipPath=`inset(0 0 ${(1-p)*100}% 0)`;
+    if(tr.k==='left')cur.style.clipPath=`inset(0 ${(1-p)*100}% 0 0)`;}
+  trackerAt(t);
+  // Ausblenden ganz am Ende
+  stage.style.opacity=1-lin(t,END-1.0,END);
+}
+</script></body></html>

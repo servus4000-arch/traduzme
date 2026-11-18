@@ -49,9 +49,10 @@ def T(t):
     return t - sum(b - a for a, b in SKIP if t >= b)
 
 G = float(os.environ.get('SFXG', '1.0'))
-# Gain-Korrektur je SFX (Ausgabezeit → Faktor) nach Stem-Messung (Ziel: max(RMS 400 ms, Spitze 0,2 s) ≈ +2,2…+3,5 dB über Musik, nie > +4 dB; Lehre 40-4)
-GJ_MAIN = {2.5: 0.708, 3.0: 0.881, 5.5: 1.398, 6.5: 1.095, 7.0: 1.909, 8.5: 1.331, 10.0: 0.82, 13.5: 1.208, 15.5: 1.247, 17.0: 0.939, 17.5: 1.233, 22.5: 1.091, 24.0: 0.847, 26.5: 1.297, 27.5: 0.708, 28.5: 0.942}
-GJ_GMB = {2.5: 0.708, 3.0: 0.881, 5.5: 1.512, 6.5: 1.095, 7.0: 2.146, 8.5: 1.331, 10.0: 0.82, 13.5: 1.208, 15.5: 1.247, 17.0: 1.216, 18.0: 1.241, 19.0: 1.238, 20.5: 0.702, 23.0: 1.923, 24.0: 0.468, 25.0: 1.573}
+# Gain-Korrektur je SFX (Ausgabezeit → Faktor) nach Stem-Messung (Ziel: max(RMS 400 ms, Spitze 0,2 s) ≈ +2…+4 dB über Musik, nie > +4 dB; Lehre 40-4;
+# Abnahme 43-3: Whooshes/Clicks Spitze ≈ +1,8…+3,7 dB statt ±0 – Whooshes 6,5/13,5/20,5 kürzer (d=.25), damit die Spitze vor dem Schlagzeug-Schlag liegt)
+GJ_MAIN = {2.5: 0.708, 3.0: 0.881, 3.5: 1.12, 5.5: 1.398, 6.5: 1.8, 7.0: 1.909, 8.5: 1.331, 10.0: 0.77, 11.5: 0.95, 13.5: 1.85, 14.0: 1.4, 15.5: 1.247, 17.0: 0.939, 17.5: 1.233, 20.5: 1.65, 22.5: 1.091, 24.0: 0.95, 26.5: 1.297, 27.5: 0.708, 28.5: 0.942}
+GJ_GMB = {2.5: 0.708, 3.0: 0.881, 3.5: 1.12, 5.5: 1.512, 6.5: 1.86, 7.0: 2.146, 8.5: 1.331, 10.0: 0.74, 11.5: 0.95, 13.5: 1.9, 14.0: 1.4, 15.5: 1.247, 17.0: 1.216, 18.0: 1.241, 19.0: 1.238, 20.5: 0.9, 22.0: 1.1, 23.0: 1.923, 24.0: 0.468, 25.0: 1.45}
 GJ = GJ_GMB if GMB else GJ_MAIN
 if os.environ.get('GJ'):   # nur zum Nachmessen/Feinjustieren
     import json; GJ = {float(k): v for k, v in json.loads(os.environ['GJ']).items()}
@@ -67,28 +68,28 @@ def hit(t):
 
 tr.section(0, 'main')
 sfx('pop', 0.03, 1.27, f=760)        # Fragezeichen pulsiert
-sfx('impact', 2.5, 0.47)              # Blatt gleitet heraus, Pfeile, Haken + Punch (Payoff)
+sfx('impact', 2.5, 0.47)              # Karte richtet sich gerade, EIN Rahmen, Haken + Punch (Payoff)
 sfx('whoosh', 3.0, 1.16, d=.4)       # Brett steigt + Masken-Wisch
-sfx('click', 3.5, 2.14)              # Zone Latein leuchtet
+sfx('click', 3.5, 2.14)              # Zone oben leuchtet
 sfx('pop', 5.5, 1.66, f=700)         # Haken
-sfx('whoosh', 6.5, 0.98, d=.4)       # Wisch
+sfx('whoosh', 6.5, 0.98, d=.25)       # Wisch
 sfx('stamp', 7.0, 0.57)               # Sperre am Gebäude
 sfx('impact', 7.5, 0.45)              # Blatt heftet sich an + Punch
 sfx('pop', 8.5, 1.92, f=760)         # Haken
 sfx('whoosh', 10.0, 1.71, d=.4)      # Wisch
 sfx('stamp', 11.5, 0.57)              # Siegel
 sfx('pop', 12.5, 1.92, f=700)        # Haken
-sfx('whoosh', 13.5, 1.00, d=.4)      # Wisch
+sfx('whoosh', 13.5, 1.00, d=.25)      # Wisch
 sfx('click', 14.0, 1.79)             # Klammer
 sfx('impact', 14.5, 0.40)             # Ring bündelt Karte + Blatt + Punch
 sfx('pop', 15.5, 1.56, f=760)        # Haken
 sfx('whoosh', 17.0, 1.74, d=.4)      # Wisch (GMB: weg)
 sfx('pop', 17.5, 1.44, f=700)        # Nadel landet
 sfx('pop', 19.0, 2.64, f=760)        # Haken
-sfx('whoosh', 20.5, 1.10, d=.4)      # Wisch
+sfx('whoosh', 20.5, 1.10, d=.25)      # Wisch
 sfx('impact', 21.5, 0.36)             # Preisschild + Punch
 sfx('pop', 22.5, 2.13, f=760)        # Haken
-sfx('whoosh', 24.0, 1.97, d=.4)      # Wisch
+sfx('whoosh', 24.0, 1.97, d=.25 if GMB else .4)   # Wisch (GMB kürzer: Spitze vor dem Schlag, Abnahme 43-3)
 sfx('stamp', 25.5, 0.70)              # Siegel landet
 sfx('pop', 26.5, 2.00, f=700)        # Haken
 hit(27.5); sfx('stamp', 27.5, 1.36)   # Endcard

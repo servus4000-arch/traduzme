@@ -1,12 +1,12 @@
 <!doctype html>
 <html><head><meta charset="utf-8">
-<!-- Reel 43 · „CNH em árabe e inglês: traduz tudo?“ · CNH estrangeira árabe → português R$ 299 na tabela · Post Do 26.11.2026
+<!-- Reel 43 · „CNH em árabe e inglês: conta como dois?“ · CNH estrangeira árabe → português R$ 299 na tabela · Post Do 26.11.2026
      Format „Cartão bilíngue na mesa“ (Held-Objekt: Schreibtisch-Brett 760 × 1080 mit zweisprachiger Karte – Zone Latein-Balken + Zone Schwung-Zeilen, ohne Schrift;
      Übersetzungsblatt, Órgão-Gebäude, Siegel, Preisschild, Kartennadel, PDF). Szenenwechsel = Masken-Wisch mit harter Kante über das Brett (0,14 s, Start 0,07 s vor der Caption, Lehre 38-4).
      Grund Pinho #376259 · pop 120 BPM (R42 Visor/Dark/funk · R41 Balança/Areia/lofi)
-     Etikett Dokument + Richtung + Preis in Frame 0 = Standard seit R35; Hook-Frage ist ein Kauf-Zweifel (Umfang der Übersetzung), NICHT die Preisfrage. Szenen 3,5 s, Endcard „Envie a foto: preço na hora.“ (Standard).
+     Etikett Dokument + Richtung + Preis in Frame 0 = Standard seit R35; Hook-Frage ist ein Kauf-Zweifel (zählt die zweisprachige Karte als ein oder zwei Dokumente), NICHT die Preisfrage; keine Aussage, welche Sprachteile übersetzt werden (Abnahme 43-A). Szenen 3,5 s, Endcard „Envie a foto: preço na hora.“ (Standard).
      Neue Variable (nicht im Bild): YT-Titel kurz mit Suchbegriff vorn (siehe reel43-texte.md).
-     Quellen je Aussage: STORYBOARD.md (Q1 precos ar/to_pt cnh · Q2 analisar v40 · Q3 FAQ a1/a7 · Q4 Detran-GO · Q5 analisar/FAQ a4 · Q6 Detran-GO/PR/SC · Q7 fl1/fl2/fl4). -->
+     Quellen je Aussage: STORYBOARD.md (Q1 precos ar/to_pt cnh · Q2 analisar v40 · Q3 FAQ a1 · Q4 Detran-GO · Q5 analisar/FAQ a4 · Q6 Detran-GO/PR/SC · Q7 fl1/fl2/fl4). -->
 <link rel="stylesheet" href="../fonts/os.css">
 <style>
 :root{--dark:#1F3B35;--pinho:#376259;--sal:#97B9A8;--areia:#EEDECE;--nevoa:#BDCBCB;--paper:#FBFAF6}
@@ -29,7 +29,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
 </style>
 <!-- qa: Brett, Karte, Blatt, Gebäude, Siegel, Nadel, Preisschild und PDF tragen nur Formen (keine Schrift, keine Daten, keine Schriftzeichen einer Sprache);
      einzige Schrift auf Objekten ist das Etikett #TAG (Dokument + Richtung + Preis, Standard seit R35). ignoreText nur „traduzme“. -->
-<!-- qa-Ausnahme maxNewWords 22 (Grund): Frame 0 trägt mit dem Pflicht-Etikett bis zu 18 Wörter (Hook 6 + Mitmach 5 + Etikett 7).
+<!-- qa-Ausnahme maxNewWords 22 (Grund): Frame 0 trägt mit dem Pflicht-Etikett bis zu 18 Wörter (Hook 7 + Mitmach 3 + Etikett 7).
      An der Loop-Naht (34,2 s, harter Schnitt auf Frame 0, Raster D6) misst qa_frames sie als „neu“ mit nur 0,3 s Standzeit, weil das Video dort endet;
      im echten Loop stehen sie 2,97 s wie in Frame 0 (gleiche Ausnahme wie R35–R42, Abnahme 35-1 „vertretbar“). -->
 <script type="application/json" id="qa-config">{"ignoreText":"^(traduzme)$","maxNewWords":22}</script>
@@ -52,21 +52,21 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
   </div>
 
   <!-- ===== Text-Ebene ===== -->
-  <div class="hook" id="hook">CNH em árabe<br>e inglês:<br><span class="mk" id="mk1">traduz tudo?</span></div>
-  <div class="chip" id="mit" style="top:704px;background:#FBFAF6;color:#1F3B35">TUDO ou SÓ O ÁRABE?</div>
+  <div class="hook" id="hook">CNH em árabe<br>e inglês:<br><span class="mk" id="mk1" style="font-size:90px">conta como dois?</span></div>
+  <div class="chip" id="mit" style="top:704px;background:#FBFAF6;color:#1F3B35">UM ou DOIS?</div>
 
-  <div class="cap" id="c1"><div class="ln">Traduz tudo:</div><div class="ln"><span class="mk">árabe e inglês.</span></div></div>
+  <div class="cap" id="c1"><div class="ln">Um documento só,</div><div class="ln"><span class="mk">não dois.</span></div></div>
   <div class="cap" id="c2"><div class="ln">Em geral, o inglês</div><div class="ln"><span class="mk">não dispensa.</span></div></div>
   <div class="cap" id="c3"><div class="ln">Tradutor juramentado</div><div class="ln"><span class="mk">de árabe.</span></div></div>
-  <div class="cap" id="c4"><div class="ln">Árabe e inglês:</div><div class="ln"><span class="mk">um documento só.</span></div></div>
+  <div class="cap" id="c4"><div class="ln">Leve ao Detran:</div><div class="ln"><span class="mk">CNH + tradução.</span></div></div>
   <div class="cap" id="c5"><div class="ln">Confirme no Detran</div><div class="ln"><span class="mk">do seu estado.</span></div></div>
   <div class="cap" id="c6"><div class="ln">CNH em árabe:</div><div class="ln"><span class="mk">R$ 299 na tabela.</span></div></div>
   <div class="cap" id="c7"><div class="ln">Chega em PDF com</div><div class="ln"><span class="mk">assinatura digital.</span></div></div>
 
-  <div class="src" id="s1" data-qa="beleg">Tradução fiel ao original</div>
+  <div class="src" id="s1" data-qa="beleg">CNH: preço fixo por documento</div>
   <div class="src" id="s2" data-qa="beleg">Exceção: CNH em português</div>
   <div class="src" id="s3" data-qa="beleg">Registrado na Junta Comercial</div>
-  <div class="src" id="s4" data-qa="beleg">Um cartão, uma tradução</div>
+  <div class="src" id="s4" data-qa="beleg">Exemplo: lista do Detran-GO</div>
   <div class="src" id="s5" data-qa="beleg">A lista muda por estado</div>
   <div class="src" id="s6" data-qa="beleg">Para português · tabela</div>
   <div class="src" id="s7" data-qa="beleg">Valor e data na hora</div>
@@ -94,7 +94,7 @@ const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
 const lin=(t,a,b)=>cl((t-a)/(b-a));
 const eo=x=>1-Math.pow(1-x,3);
 const back=x=>{const c=1.6;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
-// 120 BPM: Schlag 0,5 s. Szenen je 3,5 s: 0 Hook · 3,0 tudo · 6,5 inglês não dispensa · 10,0 juramentado · 13,5 um documento · 17,0 Detran/estado · 20,5 preço · 24,0 PDF · 27,5 Endcard · 34,2 Loop
+// 120 BPM: Schlag 0,5 s. Szenen je 3,5 s: 0 Hook · 3,0 um documento · 6,5 inglês não dispensa · 10,0 juramentado · 13,5 CNH + tradução · 17,0 Detran/estado · 20,5 preço · 24,0 PDF · 27,5 Endcard · 34,2 Loop
 const SC=[3.0,6.5,10.0,13.5,17.0,20.5,24.0];
 const ENDC=27.5;
 const PUNCH=[2.5,7.5,14.5,21.5];
@@ -193,7 +193,7 @@ function arrow(id,x1,y1,x2,y2,p){const mx=(x1+x2)/2, my=Math.min(y1,y2)-60; $(id
 
 function paneAnim(n,t,tb,loop,endc){
   const P=1;
-  show('cardW',n<=6||endc); show('shW',n===0||n===1||n===2||n===3||n===4); show('bld',n===2||n===3||n===5); show('pinW',n===5); show('tagW',n===6); show('pdfW',n===7);
+  show('cardW',n<=6||endc); show('shW',n===2||n===3||n===4); show('bld',n===2||n===3||n===5); show('pinW',n===5); show('tagW',n===6); show('pdfW',n===7);
   show('clip',n===4);
   g('q0',0); g('ok',0); g('no',0); $('hlL').setAttribute('opacity',0); $('hlA').setAttribute('opacity',0); $('ring').setAttribute('opacity',0);
   arrow('arL',0,0,0,0,0); arrow('arA',0,0,0,0,0); brSet(CC[0],CC[1],0,0,0);
@@ -201,23 +201,21 @@ function paneAnim(n,t,tb,loop,endc){
   const okAt=a=>{g('ok',t>=a?pk(t,a,.4):0);};
   if(endc){   // Endcard: Karte gerade, Foto-Ecken rasten ein, Haken (passt zu „Envie a foto“)
     const w=loop?0:Math.sin(Math.PI*2*tb/1.0);
-    cardSet(0,30,0,1.06+.01*w); show('shW',false); show('bld',false);
-    const f=eo(lin(t,ENDC+.5,ENDC+.8)); brSet(CC[0],CC[1]+30,300+40*(1-f),190+40*(1-f),f); g('ok',t>=ENDC+1.0?pk(t,ENDC+1.0,.4)*(1+.06*Math.sin(Math.PI*2*lin(t,ENDC+2,ENDC+3))):0);
+    cardSet(0,-70,0,1.0+.01*w); show('shW',false); show('bld',false);
+    const f=eo(lin(t,ENDC+.5,ENDC+.8)); brSet(CC[0],CC[1]-70,300+40*(1-f),195+40*(1-f),f); g('ok',t>=ENDC+1.0?pk(t,ENDC+1.0,.4)*(1+.06*Math.sin(Math.PI*2*lin(t,ENDC+2,ENDC+3))):0);
     return;}
-  if(n===0){   // Hook: Karte schief, beide Zonen leuchten abwechselnd, „?“; 2,5 Blatt gleitet heraus, Pfeile aus beiden Zonen, Haken (Payoff)
-    const w=loop?0:Math.sin(Math.PI*2*tb/1.0), sw=loop?0:eo(lin(t,2.5,2.8));
-    cardSet(-10*sw+(loop?0:8*w),-40*sw,(-8+3*w)*(1-sw),1.0-.1*sw);
+  if(n===0){   // Hook: Karte schief, beide Zonen leuchten abwechselnd, „?“; 2,5 Karte richtet sich gerade, EIN Rahmen (Foto-Ecken) um die ganze Karte, Haken (Payoff „ein Dokument“)
+    const w=loop?0:Math.sin(Math.PI*2*tb/1.0), sw=loop?0:eo(lin(t,2.5,2.75));
+    cardSet((-10+(loop?0:8*w))*(1-sw),-50,(-8+3*w)*(1-sw),.9);
     const blink=loop?.5:.5+.5*Math.sin(Math.PI*2*tb/1.0);
-    $('hlL').setAttribute('opacity',(t<2.5||loop?blink:1).toFixed(3)); $('hlA').setAttribute('opacity',(t<2.5||loop?1-blink:1).toFixed(3));
-    at('sh',480+210*sw,330+330*sw,4*(1-sw),.62*sw+.001); $('sh').setAttribute('opacity',sw>0?1:0);
-    if(!loop&&t>=2.6){arrow('arL',580,240,640,560,lin(t,2.6,2.85)); arrow('arA',600,350,620,560,lin(t,2.65,2.9));}
+    $('hlL').setAttribute('opacity',(t<2.5||loop?blink:0).toFixed(3)); $('hlA').setAttribute('opacity',(t<2.5||loop?1-blink:0).toFixed(3));
+    if(!loop&&t>=2.5) brSet(CC[0],CC[1]-50,270+40*(1-sw),175+40*(1-sw),sw);
     g('q0',t<2.5||loop?1+.06*w:0); if(!loop&&t>=2.5) g('ok',pk(t,2.5,.5)); }
-  if(n===1){   // tudo: Karte oben, Blatt unten; 3,5 Zone Latein leuchtet + Pfeil, 4,0 Zone Schwung + Pfeil, 4,5 Blatt-Zeilen füllen sich, 5,5 Haken, 6,0 Blatt wippt
-    cardSet(-140,-60,-2,.66); at('sh',640,560,0,.8); $('sh').setAttribute('opacity',1);
-    const pl=lin(t,3.5,3.8), pa=lin(t,4.0,4.3);
-    $('hlL').setAttribute('opacity',t>=3.5?1:0); $('hlA').setAttribute('opacity',t>=4.0?1:0);
-    arrow('arL',440,230,600,420,pl); arrow('arA',460,310,640,470,pa);
-    if(t>=6.0) at('sh',640,560-8*Math.sin(Math.PI*lin(t,6.0,6.3)),0,.8);
+  if(n===1){   // um documento só: Karte mittig; 3,5 Zone oben leuchtet, 4,0 Zone unten leuchtet (beide auf DERSELBEN Karte), 4,5 EIN Rahmen um die ganze Karte, 5,5 Haken, 6,0 Karte wippt
+    const wb=t>=6.0?3*Math.sin(Math.PI*2*lin(t,6.0,6.4))*(1-lin(t,6.0,6.4)):0;
+    cardSet(0,0,wb,.9);
+    $('hlL').setAttribute('opacity',t>=3.5&&t<4.5?1:0); $('hlA').setAttribute('opacity',t>=4.0&&t<4.5?1:0);
+    const f=eo(lin(t,4.5,4.8)); if(t>=4.5) brSet(CC[0],CC[1],270+40*(1-f),175+40*(1-f),f);
     okAt(5.5);}
   if(n===2){   // inglês não dispensa: Karte gleitet zum Gebäude, 7,0 Sperre „—“, 7,5 Blatt heftet sich an (Punch), 8,5 Haken, 9,0 Gebäude wippt
     const f=eo(lin(t,6.5,7.0)); cardSet(-90,-20+40*f,0,.78); $('hlL').setAttribute('opacity',t<7.5?1:0);
@@ -231,9 +229,8 @@ function paneAnim(n,t,tb,loop,endc){
     const f=eo(lin(t,11.5,11.75)); $('shSeal').setAttribute('opacity',t>=11.5?1:0); $('shSeal').setAttribute('transform',`translate(${(90*(1-f)).toFixed(1)} ${(-140*(1-f)).toFixed(1)})`);
     g('bld',.62*(1+(t>=13.0?.06*Math.sin(Math.PI*lin(t,13.0,13.3)):0))); $('bld').setAttribute('transform',$('bld').getAttribute('transform')+' translate(0 120)');
     okAt(12.5);}
-  if(n===4){   // ein Dokument: Karte + Blatt rücken zusammen, 14,0 Klammer, 14,5 Ring bündelt beides (Punch), 15,5 Haken, 16,0 Ring-Puls
+  if(n===4){   // CNH + tradução: Karte + Blatt rücken zusammen, 14,0 Klammer, 14,5 Ring bündelt beides (Punch), 15,5 Haken, 16,0 Ring-Puls
     const f=eo(lin(t,13.5,14.0)); cardSet(-60,-30,-3*(1-f),.78); at('sh',560,560-40*f,3,.6); $('sh').setAttribute('opacity',1);
-    $('hlL').setAttribute('opacity',t<14.5?1:0); $('hlA').setAttribute('opacity',t<14.5?1:0);
     at('clip',300,420,0,t>=14.0?pk(t,14.0,.5):.001); $('clip').setAttribute('opacity',t>=14.0?1:0);
     const rk=t>=14.5?pk(t,14.5,.6)*(1+(t>=16.0?.04*Math.sin(Math.PI*lin(t,16.0,16.3)):0)):0; at('ring',440,420,0,Math.max(.001,rk)); $('ring').setAttribute('opacity',rk>0?1:0);
     okAt(15.5);}
@@ -259,11 +256,11 @@ function render(tn){
   const tb=loop?0:tn;
   $('bg1').style.transform=`translate(${Math.sin(tb*.4)*24}px,${-tb*3}px)`; $('bg2').style.transform=`translate(${-tb*3}px,${Math.cos(tb*.5)*18}px)`;
 
-  // Brett: unten (Hook + Endcard, Oberkante 1236), steigt 3,0–3,5 nach oben (Oberkante 784)
+  // Brett: unten (Hook + Endcard, Oberkante 1176 – Karte ganz im 3:4-Ausschnitt y ≤ 1680, Abnahme 43-1), steigt 3,0–3,5 nach oben (Oberkante 784)
   const bob=loop?0:10*Math.sin(Math.PI*2*tb/1.0);
   let top;
-  if(t>=ENDC) top=1236+bob;
-  else {const r=eo(lin(t,3.0,3.5)); top=1236+(784-1236)*r+bob*(1-r)+(t>=3.5?5*Math.sin((tb-3.5)*1.6):0);}
+  if(t>=ENDC) top=1176+bob;
+  else {const r=eo(lin(t,3.0,3.5)); top=1176+(784-1176)*r+bob*(1-r)+(t>=3.5?5*Math.sin((tb-3.5)*1.6):0);}
   const tilt=(t<3.0||t>=ENDC)?(loop?0:1.2*Math.sin(Math.PI*2*tb/2.0)):0;
   put('STG',540,top+540,tilt);
   const endc=t>=ENDC;

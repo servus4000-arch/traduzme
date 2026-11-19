@@ -6,7 +6,7 @@
  "from": 0,
  "to": 29.3,
  "frames": 294,
- "scanSec": 1,
+ "scanSec": 0.9,
  "pageErrors": [],
  "summary": {
   "block": 0,

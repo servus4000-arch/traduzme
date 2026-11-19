@@ -7,7 +7,7 @@
      Grund Sálvia #97B9A8 (Text nur Dark; Marker Pinho/Weiß) · bossa 120 BPM (R43 Cartão/Pinho/pop · R42 Visor/Dark/funk)
      Etikett Dokument + Richtung + Preis in Frame 0 = Standard seit R35; Hook-Frage ist ein Kauf-Zweifel (reicht die juramentada allein?), NICHT die Preisfrage.
      Szenen 3,5 s, Endcard „Envie a foto: preço na hora.“ (Standard). Neue Variable (nicht im Bild): TikTok-Caption kurz (siehe reel44-texte.md).
-     Quellen je Aussage: STORYBOARD.md (Q1 precos en/from_pt diploma · Q2 Rechner Info „Certificado do tradutor“ · Q3 8 CFR 103.2(b)(3) · Q4 IRCC Help Centre 018 + Glossar · Q5 Rechner opt-cert · Q6 fl2/fl4). -->
+     Quellen je Aussage: STORYBOARD.md (Q1 precos en/from_pt diploma · Q2 Rechner Info „Certificado do tradutor“ · Q3 8 CFR 103.2(b)(3) · Q4 IRCC „Translation of supporting documents“ + Help Centre 018 · Q5 Rechner opt-cert · Q6 fl2/fl4). -->
 <link rel="stylesheet" href="fonts/os.css">
 <style>
 :root{--dark:#1F3B35;--pinho:#376259;--sal:#97B9A8;--areia:#EEDECE;--nevoa:#BDCBCB;--paper:#FBFAF6}
@@ -58,17 +58,17 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
 
   <div class="cap" id="c1"><div class="ln">Depende do órgão:</div><div class="ln"><span class="mk">alguns pedem mais.</span></div></div>
   <div class="cap" id="c2"><div class="ln">Nos EUA, o USCIS</div><div class="ln"><span class="mk">pede declaração.</span></div></div>
-  <div class="cap" id="c3"><div class="ln">No Canadá, o IRCC</div><div class="ln"><span class="mk">pede affidavit.</span></div></div>
-  <div class="cap" id="c4"><div class="ln">No orçamento:</div><div class="ln"><span class="mk">escolha o país.</span></div></div>
-  <div class="cap" id="c5"><div class="ln">Declaração anexa,</div><div class="ln"><span class="mk">sem custo extra.</span></div></div>
+  <div class="cap" id="c3"><div class="ln">Canadá: affidavit</div><div class="ln"><span class="mk">depende do tradutor.</span></div></div>
+  <div class="cap" id="c4"><div class="ln">Opção no pedido:</div><div class="ln" style="font-size:62px"><span class="mk">certificado do tradutor.</span></div></div>
+  <div class="cap" id="c5"><div class="ln">Declaração em inglês,</div><div class="ln"><span class="mk">sem custo extra.</span></div></div>
   <div class="cap" id="c6"><div class="ln">Diploma em inglês:</div><div class="ln"><span class="mk">R$ 139 na tabela.</span></div></div>
   <div class="cap" id="c7"><div class="ln">Chega em PDF com</div><div class="ln"><span class="mk">assinatura digital.</span></div></div>
 
   <div class="src" id="s1" data-qa="beleg">Uma declaração do tradutor</div>
   <div class="src" id="s2" data-qa="beleg">Certificate of Translation</div>
-  <div class="src" id="s3" data-qa="beleg">Em geral · confirme no IRCC</div>
-  <div class="src" id="s4" data-qa="beleg">Certificado do tradutor</div>
-  <div class="src" id="s5" data-qa="beleg">Em inglês, junto da tradução</div>
+  <div class="src" id="s3" data-qa="beleg">Regra do IRCC · confirme lá</div>
+  <div class="src" id="s4" data-qa="beleg">Só português para inglês</div>
+  <div class="src" id="s5" data-qa="beleg">Confirme o que o órgão pede</div>
   <div class="src" id="s6" data-qa="beleg">Para inglês · tabela</div>
   <div class="src" id="s7" data-qa="beleg">Valor e data na hora</div>
 
@@ -83,7 +83,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
   </div>
 </div>
 <script>
-// GMB-Fassung (≤ 30 s, ohne 17,0–20,5 „Declaração anexa, sem custo extra“, Endcard 5,0 s statt 6,7 s): gmb/reel.html setzt GMB=1, oder URL ?cut=gmb
+// GMB-Fassung (≤ 30 s, ohne 17,0–20,5 „Declaração em inglês, sem custo extra“, Endcard 5,0 s statt 6,7 s): gmb/reel.html setzt GMB=1, oder URL ?cut=gmb
 let GMB=0;
 if(new URLSearchParams(location.search).get('cut')==='gmb') GMB=1;
 const END=GMB?29.3:34.5;
@@ -96,7 +96,7 @@ const lin=(t,a,b)=>cl((t-a)/(b-a));
 const eo=x=>1-Math.pow(1-x,3);
 const ei=x=>x*x*x;
 const back=x=>{const c=1.6;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
-// 120 BPM: Schlag 0,5 s. Szenen je 3,5 s: 0 Hook · 3,0 depende · 6,5 USCIS · 10,0 IRCC · 13,5 escolha o país · 17,0 sem custo extra · 20,5 preço · 24,0 PDF · 27,5 Endcard · 34,2 Loop
+// 120 BPM: Schlag 0,5 s. Szenen je 3,5 s: 0 Hook · 3,0 depende · 6,5 USCIS · 10,0 IRCC pode pedir · 13,5 opção no pedido · 17,0 sem custo extra · 20,5 preço · 24,0 PDF · 27,5 Endcard · 34,2 Loop
 const SC=[3.0,6.5,10.0,13.5,17.0,20.5,24.0];
 const ENDC=27.5;
 const PUNCH=[2.5,7.5,14.5,21.5];
@@ -157,7 +157,7 @@ const BD={x:130,y:70,w:700,h:980}, CC=[480,330];
     <g id="br">${[[0,0,1,1],[1,0,-1,1],[0,1,1,-1],[1,1,-1,-1]].map((c,i)=>`<path id="br${i}" d="M0 0h${c[2]*70}M0 0v${c[3]*70}" stroke="#FBFAF6" stroke-width="10" stroke-linecap="round"/>`).join('')}</g>
     <circle id="ring" cx="0" cy="0" r="300" fill="none" stroke="#EEDECE" stroke-width="12" opacity="0"/>
     <g id="clip" style="display:none"><rect x="-18" y="-60" width="36" height="120" rx="14" fill="#EEDECE" stroke="#1F3B35" stroke-width="5"/></g>
-    ${QM(760,130,46,'q0')}${OK(760,130,46,'ok')}
+    ${QM(760,130,46,'q0')}${QM(700,250,40,'q3')}${OK(760,130,46,'ok')}
     </g>
   </g>`;
   $('PH').innerHTML=s;}
@@ -192,7 +192,7 @@ function brSet(cx,cy,hw,hh,o){[[-1,-1],[1,-1],[-1,1],[1,1]].forEach((c,i)=>$('br
 function paneAnim(n,t,tb,loop,endc){
   show('dipW',n===0||n===1||n===6||endc); show('shW',n===0||n===1||n===2||n===5); show('slot',n===0||n===1); show('dcW',n===1||n===2||n===3||n===5);
   show('bld',n===2||n===3); show('glW',n===4); show('tagW',n===6); show('pdfW',n===7); show('clip',n===5);
-  g('q0',0); g('ok',0); $('ring').setAttribute('opacity',0); brSet(CC[0],CC[1],0,0,0);
+  g('q0',0); g('q3',0); g('ok',0); $('ring').setAttribute('opacity',0); brSet(CC[0],CC[1],0,0,0);
   $('dcSeal').setAttribute('opacity',0); $('dcSig').setAttribute('stroke-dashoffset',160); at('dc',0,0,0,1); at('slot',0,0,0,.001); $('slot').setAttribute('opacity',0);
   const okAt=a=>{g('ok',t>=a?pk(t,a,.4):0);};
   if(endc){   // Endcard: Diploma gerade, Foto-Ecken rasten ein, Haken (passt zu „Envie a foto“)
@@ -218,13 +218,13 @@ function paneAnim(n,t,tb,loop,endc){
     $('dcSig').setAttribute('stroke-dashoffset',(160*(1-lin(t,7.0,7.5))).toFixed(1));
     const s=eo(lin(t,7.5,7.8)); at('dc',640-60*s,660-20*s,6*(1-s),.8); $('dc').setAttribute('opacity',1);
     okAt(8.5);}
-  if(n===3){   // IRCC: Erklärung groß, Unterschrift 10,5–11,3, Siegel 11,5 (nur Bild-Akzent, keine Aussage über Form des Affidavits), Haken 12,5, Gebäude klein unten, Puls 13,0
+  if(n===3){   // IRCC: Erklärung groß, Unterschrift 10,5–11,3, „?“ an der Erklärung 11,5 (kein Siegel: keine Andeutung einer Beurkundung, 44-A), Haken 12,5, Gebäude klein unten, Puls 13,0
     at('dc',540,400,0,1.2); $('dc').setAttribute('opacity',1);
     $('dcSig').setAttribute('stroke-dashoffset',(160*(1-lin(t,10.5,11.3))).toFixed(1));
-    const f=eo(lin(t,11.5,11.75)); $('dcSeal').setAttribute('opacity',t>=11.5?1:0); $('dcSeal').setAttribute('transform',`translate(${(90*(1-f)).toFixed(1)} ${(-140*(1-f)).toFixed(1)})`);
+    if(t>=11.5) g('q3',pk(t,11.5,.4)*(1+.05*Math.sin(Math.PI*2*lin(t,11.9,12.5))));
     g('bld',.55*(1+(t>=13.0?.06*Math.sin(Math.PI*lin(t,13.0,13.3)):0))); $('bld').setAttribute('transform',$('bld').getAttribute('transform')+' translate(-380 600)');
     okAt(12.5);}
-  if(n===4){   // escolha o país: Globus, Nadel fällt 14,0, Ring 14,5 (Punch), Haken 15,5, Globus-Puls 16,0
+  if(n===4){   // opção no pedido: Globus, Nadel fällt 14,0, Ring 14,5 (Punch), Haken 15,5, Globus-Puls 16,0
     g('globe',.9*(1+(t>=16.0?.04*Math.sin(Math.PI*lin(t,16.0,16.3)):0)));
     const f=eo(lin(t,14.0,14.3)); at('pinT',540,470-300*(1-f),0,1); $('pinT').setAttribute('opacity',t>=14.0?1:0);
     const rk=t>=14.5?pk(t,14.5,.6):0; at('ring',540,470,0,Math.max(.001,rk*.3)); $('ring').setAttribute('opacity',rk>0?1:0);

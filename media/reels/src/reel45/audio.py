@@ -1,0 +1,102 @@
+"""Reel 45 – Ton: lib/music.py 'lofi' (Bloco-calendário mit Certidão da PF, Erklär-Tisch/Dokumente, Raster E2; R44 bossa, R43 pop) auf 120 BPM (Schlag = 0,5 s), Tonart A, seed 45, Master v2.
+Aufruf: python3 audio.py audio.wav [gmb]
+Lib (Lehre 38-7): gebraucht wird music.py aus origin/reels-pipeline-v2 a9df053 (kennt master='v2'). Reihenfolge:
+  1. Env R45LIB (optional), 2. ../../lib neben diesem Ordner, falls deren music.py master= kennt,
+  3. automatisch per `git show a9df053:media/reels/lib/{music,sound}.py` in einen Temp-Ordner (braucht nur das Repo mit Commit a9df053).
+  Klappt nichts davon, bricht das Skript mit einer klaren Meldung ab (was fehlt und wie man es holt).
+SFX-Grammatik (Design-Regeln v3): impact = Payoff/Punch 2,5 · 7,5 · 14,5 · 21,5 · stamp = Siegel 25,5 · Endcard 27,5 ·
+whoosh = Blattwechsel 3,0 · 6,5 · 10,0 · 13,5 · 17,0 · 20,5 · 24,0 · pop = Fragezeichen 0,03 / Haken 5,5 · 8,5 · 12,5 · 15,5 · 19,0 · 22,5 · 26,5 · 28,5 ·
+click = Monate 3,5 / Sand 7,0 / Übersetzungsblatt 11,5 / Nadel 14,0 / Auslöser 17,5.
+27 SFX auf 34,5 s = 0,78/s (≤ 0,8). Höchstens 1 SFX je Bildereignis, gleiche SFX nie innerhalb 1 s. Zeiten = Designzeit wie reel.html; GMB lässt 17,0–20,5 weg (Endcard 5,0 s).
+"""
+import os, sys, subprocess, tempfile, inspect
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+PIN = 'a9df053'
+
+def _has_master(d):
+    try:
+        return 'master=None' in open(os.path.join(d, 'music.py'), encoding='utf-8').read() and os.path.exists(os.path.join(d, 'sound.py'))
+    except OSError:
+        return False
+
+def _from_git():
+    try:
+        top = subprocess.check_output(['git', '-C', HERE, 'rev-parse', '--show-toplevel'], text=True, stderr=subprocess.DEVNULL).strip()
+        d = tempfile.mkdtemp(prefix='r45lib_')
+        for f in ('music.py', 'sound.py'):
+            src = subprocess.check_output(['git', '-C', top, 'show', f'{PIN}:media/reels/lib/{f}'], stderr=subprocess.DEVNULL)
+            open(os.path.join(d, f), 'wb').write(src)
+        return d if _has_master(d) else None
+    except (subprocess.CalledProcessError, FileNotFoundError, OSError):
+        return None
+
+LIB = next((d for d in (os.environ.get('R45LIB', ''), os.path.join(HERE, '../../lib')) if d and _has_master(d)), None) or _from_git()
+if not LIB:
+    sys.exit('audio.py: music.py mit master="v2" fehlt. ../../lib auf diesem Branch ist die alte Fassung, und '
+             f'`git show {PIN}:media/reels/lib/music.py` ging nicht (Commit {PIN} nicht im Repo? → git fetch origin reels-pipeline-v2). '
+             'Alternativ R45LIB=<Ordner mit music.py + sound.py aus a9df053> setzen.')
+sys.path.insert(0, LIB)
+from music import Track
+assert 'master' in inspect.signature(Track.__init__).parameters, f'music.py in {LIB} kennt master= nicht'
+
+OUT = sys.argv[1]; GMB = len(sys.argv) > 2 and sys.argv[2] == 'gmb'
+END = 29.3 if GMB else 34.5
+SKIP = [(17.0, 20.5)] if GMB else []
+def T(t):
+    for a, b in SKIP:
+        if a <= t < b: return None
+    return t - sum(b - a for a, b in SKIP if t >= b)
+
+G = float(os.environ.get('SFXG', '1.0'))
+# Gain-Korrektur je SFX (Ausgabezeit → Faktor) nach Stem-Messung (Ziel: max(RMS 400 ms, Spitze 0,2 s) ≈ +2…+4 dB über Musik, nie > +4 dB; Lehre 40-4/43-3)
+GJ_MAIN = {3.0: 0.265, 3.5: 0.61, 6.5: 1.34, 7.0: 0.212, 7.5: 0.794, 8.5: 1.683, 10.0: 1.929, 12.5: 1.204, 14.0: 1.584, 14.5: 0.911, 15.5: 1.335, 17.0: 0.671, 17.5: 1.667, 19.0: 0.423, 20.5: 1.314, 21.5: 0.8, 24.0: 1.736, 25.5: 0.908, 27.5: 1.3, 28.5: 1.214}
+GJ_GMB = {0.03: 1.244, 3.0: 0.268, 3.5: 0.611, 6.5: 1.345, 7.0: 0.213, 7.5: 0.785, 8.5: 1.445, 10.0: 1.946, 11.5: 1.225, 12.5: 1.287, 14.0: 1.592, 14.5: 0.899, 15.5: 1.361, 17.0: 0.693, 19.0: 0.437, 20.5: 1.307, 23.0: 0.333, 25.0: 0.416}
+GJ = GJ_GMB if GMB else GJ_MAIN
+if os.environ.get('GJ'):   # nur zum Nachmessen/Feinjustieren
+    import json; GJ = {float(k): v for k, v in json.loads(os.environ['GJ']).items()}
+tr = Track(style='lofi', dur=END, key='A', seed=45, bpm=120, master='v2')
+tr.keep_stems = True
+tr.v2['ceiling'] = -3.0 if GMB else -2.0   # AAC-Überschwinger (Lehre R26; GMB: AAC über WAV)
+EVENTS = []
+def sfx(kind, t, g, **kw):
+    if T(t) is not None:
+        tr.sfx(kind, T(t), g * G * GJ.get(round(T(t), 2), 1.0), **kw); EVENTS.append((kind, T(t)))
+def hit(t):
+    if T(t) is not None: tr.hit(T(t))
+
+tr.section(0, 'main')
+sfx('pop', 0.03, 1.2, f=760)         # Fragezeichen pulsiert
+sfx('impact', 2.5, 0.6)               # Sanduhr kippt + Ring + Punch (Payoff: es geht um Zeit)
+sfx('whoosh', 3.0, 1.2, d=.3)         # Kalender steigt + Blattwechsel
+sfx('click', 3.5, 1.8)                # drei Monate springen auf
+sfx('pop', 5.5, 1.6, f=700)           # Haken
+sfx('whoosh', 6.5, 1.2, d=.25)        # Blattwechsel
+sfx('click', 7.0, 1.8)                # Sand rieselt
+sfx('impact', 7.5, 0.6)               # Sanduhr kippt + Punch
+sfx('pop', 8.5, 1.6, f=760)           # Haken
+sfx('whoosh', 10.0, 1.2, d=.25)       # Blattwechsel
+sfx('click', 11.5, 1.8)               # Übersetzungsblatt gleitet heraus
+sfx('pop', 12.5, 1.6, f=700)          # Haken
+sfx('whoosh', 13.5, 1.2, d=.25)       # Blattwechsel
+sfx('click', 14.0, 1.8)               # Nadel landet
+sfx('impact', 14.5, 0.6)              # Apostila-Siegel springt auf + Punch
+sfx('pop', 15.5, 1.6, f=760)          # Haken
+sfx('whoosh', 17.0, 1.2, d=.25)       # Blattwechsel (GMB: weg)
+sfx('click', 17.5, 1.8)               # Auslöser-Blitz (GMB: weg)
+sfx('pop', 19.0, 1.6, f=760)          # Haken (GMB: weg)
+sfx('whoosh', 20.5, 1.2, d=.25)       # Blattwechsel
+sfx('impact', 21.5, 0.6)              # Preisschild + Punch
+sfx('pop', 22.5, 1.6, f=760)          # Haken
+sfx('whoosh', 24.0, 1.2, d=.25)       # Blattwechsel
+sfx('stamp', 25.5, 0.8)               # Siegel landet
+sfx('pop', 26.5, 1.6, f=700)          # Haken
+hit(27.5); sfx('stamp', 27.5, 1.2)    # Endcard
+sfx('pop', 28.5, 1.6, f=760)          # Endcard: Foto-Haken
+print('LUFS', tr.write(OUT, lufs=-14.0, fade=(END - .15, END)))
+import wave, numpy as np                 # 15-ms-Einblendung am Dateianfang (AAC-Überschwinger, Lehre R22)
+with wave.open(OUT, 'rb') as w: prm = w.getparams(); x = np.frombuffer(w.readframes(prm.nframes), dtype=np.int16).reshape(-1, prm.nchannels).astype(np.float64)
+n = int(.015 * prm.framerate); x[:n] *= (np.sin(np.linspace(0, np.pi / 2, n)) ** 2)[:, None]
+with wave.open(OUT, 'wb') as w: w.setparams(prm); w.writeframes(np.round(x).astype(np.int16).tobytes())
+if os.environ.get('STEMS'):
+    np.savez(os.environ['STEMS'], music=tr.stems['music'], sfx=tr.stems['sfx'], ev=np.array([e[1] for e in EVENTS]), kinds=np.array([e[0] for e in EVENTS]))

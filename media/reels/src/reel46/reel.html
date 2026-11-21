@@ -62,7 +62,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
   <div class="cap" id="c2"><div class="ln">Em geral, entra a</div><div class="ln"><span class="mk">legalização.</span></div></div>
   <div class="cap" id="c3"><div class="ln">Legalização é feita</div><div class="ln"><span class="mk">no país de origem.</span></div></div>
   <div class="cap" id="c4"><div class="ln">No Brasil: tradução</div><div class="ln"><span class="mk">juramentada.</span></div></div>
-  <div class="cap" id="c5"><div class="ln">Legalização junto:</div><div class="ln"><span class="mk">sem custo extra.</span></div></div>
+  <div class="cap" id="c5"><div class="ln">Folha da legalização:</div><div class="ln"><span class="mk">traduzida junto.</span></div></div>
   <div class="cap" id="c6"><div class="ln">Do espanhol:</div><div class="ln"><span class="mk">R$ 149 na tabela.</span></div></div>
   <div class="cap" id="c7"><div class="ln">Cada órgão tem</div><div class="ln"><span class="mk">a sua lista.</span></div></div>
 
@@ -70,7 +70,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
   <div class="src" id="s2" data-qa="beleg">Ministério + consulado · PF</div>
   <div class="src" id="s3" data-qa="beleg">Consulado brasileiro · PF</div>
   <div class="src" id="s4" data-qa="beleg">Em geral · Polícia Federal</div>
-  <div class="src" id="s5" data-qa="beleg">Parte da certidão</div>
+  <div class="src" id="s5" data-qa="beleg">Parte da certidão · tabela</div>
   <div class="src" id="s6" data-qa="beleg">Certidão · tabela</div>
   <div class="src" id="s7" data-qa="beleg">Confirme no órgão</div>
 
@@ -98,7 +98,7 @@ const lin=(t,a,b)=>cl((t-a)/(b-a));
 const eo=x=>1-Math.pow(1-x,3);
 const ei=x=>x*x*x;
 const back=x=>{const c=1.6;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
-// 120 BPM: Schlag 0,5 s. Szenen je 3,5 s: 0 Hook · 3,0 fora da Convenção · 6,5 legalização · 10,0 no país de origem · 13,5 tradução no Brasil · 17,0 sem custo extra · 20,5 preço · 24,0 lista do órgão · 27,5 Endcard · 34,2 Loop
+// 120 BPM: Schlag 0,5 s. Szenen je 3,5 s: 0 Hook · 3,0 fora da Convenção · 6,5 legalização · 10,0 no país de origem · 13,5 tradução no Brasil · 17,0 folha da legalização traduzida junto · 20,5 preço · 24,0 lista do órgão · 27,5 Endcard · 34,2 Loop
 const SC=[3.0,6.5,10.0,13.5,17.0,20.5,24.0];
 const ENDC=27.5;
 const PUNCH=[2.5,7.5,14.5,21.5];

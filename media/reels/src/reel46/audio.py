@@ -4,8 +4,8 @@ Lib (Lehre 38-7): gebraucht wird music.py aus origin/reels-pipeline-v2 a9df053 (
   1. Env R46LIB (optional), 2. ../../lib neben diesem Ordner, falls deren music.py master= kennt,
   3. automatisch per `git show a9df053:media/reels/lib/{music,sound}.py` in einen Temp-Ordner (braucht nur das Repo mit Commit a9df053).
   Klappt nichts davon, bricht das Skript mit einer klaren Meldung ab (was fehlt und wie man es holt).
-SFX-Grammatik (Design-Regeln v3): impact = Payoff/Punch 2,5 · 7,5 · 14,5 · 21,5 · stamp = Stempelabdruck 25,5 · Endcard 27,5 ·
-whoosh = Stempel fällt / Szenenwechsel 3,0 · 6,5 · 10,0 · 13,5 · 17,0 · 20,5 · 24,0 · pop = Fragezeichen 0,03 / Haken 5,5 · 8,5 · 12,5 · 15,5 · 19,0 · 22,5 · 26,5 · 28,5 ·
+SFX-Grammatik (Design-Regeln v3): stamp = Payoff/Punch 2,5 · 7,5 · 14,5 · 21,5 (Fix 46-3, vorher impact) · Stempelabdruck 25,5 · Endcard 27,5 ·
+whoosh (0,14 s) = Stempel fällt / Szenenwechsel 3,0 · 6,5 · 10,0 · 13,5 · 17,0 · 20,5 · 24,0 · pop = Fragezeichen 0,03 / Haken 5,5 · 8,5 · 12,5 · 15,5 · 19,0 · 22,5 · 26,5 · 28,5 ·
 click = Punkte 3,5 / Siegel 7,0 / Flugzeug 11,0 / Übersetzungsblatt 14,0 / Büroklammer 17,5.
 27 SFX auf 34,5 s = 0,78/s (≤ 0,8). Höchstens 1 SFX je Bildereignis, gleiche SFX nie innerhalb 1 s. Zeiten = Designzeit wie reel.html; GMB lässt 10,0–13,5 weg (Endcard 5,0 s).
 """
@@ -49,9 +49,11 @@ def T(t):
     return t - sum(b - a for a, b in SKIP if t >= b)
 
 G = float(os.environ.get('SFXG', '1.0'))
-# Gain-Korrektur je SFX (Ausgabezeit → Faktor) nach Stem-Messung (Ziel: max(RMS 400 ms, Spitze 0,2 s) ≈ +2…+4 dB über Musik, nie > +4 dB; Lehre 40-4/43-3)
-GJ_MAIN = {0.03: 1.744, 2.5: 0.148, 3.0: 0.255, 3.5: 1.521, 5.5: 0.835, 6.5: 0.138, 7.0: 1.312, 7.5: 0.117, 8.5: 0.792, 10.0: 0.403, 11.0: 1.685, 12.5: 0.741, 13.5: 0.224, 14.0: 2.037, 14.5: 0.204, 15.5: 0.68, 17.0: 0.297, 17.5: 1.236, 19.0: 0.795, 20.5: 0.166, 21.5: 0.125, 22.5: 0.881, 24.0: 0.585, 25.5: 0.504, 26.5: 1.12, 27.5: 0.551, 28.5: 0.786}
-GJ_GMB = {0.03: 1.665, 2.5: 0.196, 3.0: 0.246, 3.5: 1.519, 5.5: 0.895, 6.5: 0.14, 7.0: 1.268, 7.5: 0.137, 8.5: 0.753, 10.0: 0.416, 10.5: 1.711, 11.0: 0.391, 12.0: 1.308, 13.5: 0.222, 14.0: 1.838, 15.5: 0.66, 17.0: 0.306, 18.0: 0.267, 19.0: 0.744, 20.5: 0.172, 22.0: 0.54, 23.0: 0.815, 24.0: 0.676, 25.0: 0.592}
+# Gain-Korrektur je SFX (Ausgabezeit → Faktor) nach Stem-Messung (Fix 46-3). Messung: Stems mit keep_stems, Mix = Musik + SFX;
+# je Ereignis t: Spitze = max über alle 20-ms-Fenster (Schritt 5 ms) in [t, t+0,45 s] von L(Mix) − L(Musik) im selben Fenster (schließt den Ausklang ein);
+# RMS = L(Mix) − L(Musik) über [t, t+0,4 s]. Ziel: Spitze +3,5 dB (nie > +4 dB), iterativ (Sidechain-Ducking ist nicht linear).
+GJ_MAIN = {0.03: 1.887, 2.5: 0.529, 3.0: 0.957, 3.5: 1.614, 5.5: 0.881, 6.5: 0.239, 7.0: 1.339, 7.5: 0.264, 8.5: 0.872, 10.0: 0.758, 11.0: 1.508, 12.5: 0.786, 13.5: 0.28, 14.0: 2.016, 14.5: 0.439, 15.5: 0.757, 17.0: 0.927, 17.5: 1.518, 19.0: 0.855, 20.5: 0.206, 21.5: 0.311, 22.5: 0.963, 24.0: 1.203, 25.5: 0.496, 26.5: 1.466, 27.5: 0.559, 28.5: 0.865}
+GJ_GMB = {0.03: 1.838, 2.5: 0.525, 3.0: 0.952, 3.5: 1.562, 5.5: 0.871, 6.5: 0.238, 7.0: 1.428, 7.5: 0.314, 8.5: 0.844, 10.0: 0.772, 10.5: 1.857, 11.0: 1.28, 12.0: 1.498, 13.5: 0.286, 14.0: 2.069, 15.5: 0.736, 17.0: 0.916, 18.0: 0.809, 19.0: 0.85, 20.5: 0.204, 22.0: 0.631, 23.0: 0.913, 24.0: 0.731, 25.0: 0.649}
 GJ = GJ_GMB if GMB else GJ_MAIN
 if os.environ.get('GJ'):   # nur zum Nachmessen/Feinjustieren
     import json; GJ = {float(k): v for k, v in json.loads(os.environ['GJ']).items()}
@@ -59,6 +61,8 @@ tr = Track(style='funk', dur=END, key='D', seed=46, bpm=120, master='v2')
 tr.keep_stems = True
 tr.v2['ceiling'] = -3.0 if GMB else -2.0   # AAC-Überschwinger (Lehre R26; GMB: AAC über WAV)
 EVENTS = []
+PUNCH = 'stamp'   # Punch = Stempel-Aufschlag (Fix 46-3: der 1,2-s-Sub-Impact klang im Ausklang bis +5,5 dB über der Musik und war in 400 ms RMS kaum über ihr)
+WD = .14          # kurzer Whoosh auf dem Schlag: Energie liegt auf dem Musik-Anschlag, nicht in der Achtel-Lücke danach (Fix 46-3)
 def sfx(kind, t, g, **kw):
     if T(t) is not None:
         tr.sfx(kind, T(t), g * G * GJ.get(round(T(t), 2), 1.0), **kw); EVENTS.append((kind, T(t)))
@@ -67,22 +71,22 @@ def hit(t):
 
 tr.section(0, 'main')
 sfx('pop', 0.03, 1.2, f=760)         # Fragezeichen pulsiert
-sfx('impact', 2.5, 0.6)               # Ring um das leere Siegelfeld + Punch (Payoff: da fehlt etwas)
+sfx(PUNCH, 2.5, 0.6)               # Ring um das leere Siegelfeld + Punch (Payoff: da fehlt etwas)
 for t0 in (3.0, 6.5, 10.0, 13.5, 17.0, 20.5, 24.0):
-    sfx('whoosh', t0, 1.2, d=.25)         # Stempel-Aufschlag + Abheben (Schnitt auf dem Schlag)
+    sfx('whoosh', t0, 1.2, d=WD)         # Stempel-Aufschlag + Abheben (Schnitt auf dem Schlag)
 sfx('click', 3.5, 1.8)                # Ring aus Punkten erscheint
 sfx('pop', 5.5, 1.6, f=700)           # Haken
 sfx('click', 7.0, 1.8)                # erstes Siegel (Ministério)
-sfx('impact', 7.5, 0.6)               # zweites Siegel (Konsulat) + Punch
+sfx(PUNCH, 7.5, 0.6)               # zweites Siegel (Konsulat) + Punch
 sfx('pop', 8.5, 1.6, f=760)           # Haken
 sfx('click', 11.0, 1.8)               # Flugzeug startet (GMB: weg)
 sfx('pop', 12.5, 1.6, f=700)          # Haken (GMB: weg)
 sfx('click', 14.0, 1.8)               # Übersetzungsblatt gleitet heraus
-sfx('impact', 14.5, 0.6)              # Siegel auf der Übersetzung + Punch
+sfx(PUNCH, 14.5, 0.6)              # Siegel auf der Übersetzung + Punch
 sfx('pop', 15.5, 1.6, f=760)          # Haken
 sfx('click', 17.5, 1.8)               # Büroklammer
 sfx('pop', 19.0, 1.6, f=700)          # Haken
-sfx('impact', 21.5, 0.6)              # Preisschild + Punch
+sfx(PUNCH, 21.5, 0.6)              # Preisschild + Punch
 sfx('pop', 22.5, 1.6, f=760)          # Haken
 sfx('stamp', 25.5, 0.8)               # Stempelabdruck auf der Liste
 sfx('pop', 26.5, 1.6, f=700)          # Haken

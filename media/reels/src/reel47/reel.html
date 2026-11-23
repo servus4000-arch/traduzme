@@ -1,0 +1,339 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<!-- Reel 47 · „Divórcio na Alemanha: vai pro STJ?“ · Sentença de divórcio alemão → português R$ 159 por lauda na tabela (texto especial) · Post Di 01.12.2026
+     Format „Encruzilhada“ (Held-Objekt: Wegweiser-Tafel 760 × 1040 mit Dark-Rahmen; auf dem Papier nur Formen: Weggabelung, Haus mit Tür (Cartório),
+     Säulengebäude (Tribunal), Sentença mit Waagen-Symbol im Kopf, Übersetzungsblatt, Siegel, Unterschriftslinie, Blätterfächer, Preisschild ohne Zahl,
+     Handy mit Dokument, Papierblatt – keine Schrift, keine Zahlen, keine Daten, kein Wappen, keine Flaggen, keine Landkarte).
+     Szenenwechsel = „Wegweiser-Wisch“: ein Pfeil-Schild fährt 0,10 s vor dem Schlag von rechts über die Tafel, deckt die Mitte auf dem Schlag
+     (harter Schnitt des Inhalts darunter) und ist bei +0,18 s links hinaus; nie zwei Inhalte übereinander.
+     Grund Pinho #376259 (Text Weiß; Marker Areia/Dark; Caption-Pillen Papier/Dark, Marker Sálvia/Dark; Chips Dark/Weiß) · pop 120 BPM
+     (R46 Mesa de carimbos/Areia/funk · R45 Bloco-calendário/Névoa/lofi).
+     Etikett Dokument + Richtung + Preis in Frame 0 = Standard seit R35; Hook-Frage ist ein Kauf-Zweifel (vai pro STJ?), NICHT die Preisfrage.
+     Szenen 3,5 s, Endcard „Envie a foto: preço na hora.“ (Standard).
+     Neue Variable (genau eine): Mitmach-Element als zwei Antwort-Knöpfe „SIM“ | „NÃO“ (Umfrage-Optik mit leerem Auswahlkreis) statt einer Pille „SIM ou NÃO?“.
+     Quellen je Aussage: STORYBOARD.md (Q1 precos de/to_pt tecnica · Q1b analisar v40 „Sentença longa de divórcio = outro (técnico)“ · Q2 STJ „Sentença estrangeira“
+     · Q3 TJMG „Divórcio consensual no exterior pode ser averbado direto no cartório“ · Q4 Rechner FAQ a8 / fl1 / fl2). -->
+<link rel="stylesheet" href="fonts/os.css">
+<style>
+:root{--dark:#1F3B35;--pinho:#376259;--sal:#97B9A8;--areia:#EEDECE;--nevoa:#BDCBCB;--paper:#FBFAF6}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',sans-serif;background:var(--pinho)}
+.abs{position:absolute}
+#stage{position:absolute;inset:0;overflow:hidden;background:radial-gradient(1100px 1300px at 50% 36%,#3E6B61 0%,#376259 58%,#30574F 100%)}
+#world{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0}
+.obj{position:absolute;left:0;top:0;transform-origin:50% 50%}
+.hook{position:absolute;left:104px;top:320px;font-weight:800;font-size:104px;line-height:1.06;letter-spacing:-2.5px;color:#fff;white-space:nowrap}
+.hook .mk{display:inline-block;background:var(--areia);color:var(--dark);border-radius:16px;padding:0 14px 10px;margin:0 -8px;line-height:1.02}
+.cap{position:absolute;left:90px;top:320px}
+.cap .ln{display:table;margin-bottom:8px;padding:6px 24px 10px;border-radius:24px;background:var(--paper);color:var(--dark);font-weight:800;font-size:66px;line-height:1.12;letter-spacing:-1px;white-space:nowrap;transform-origin:0 50%;box-shadow:0 6px 16px rgba(20,40,36,.22)}
+.cap .ln .mk{display:inline-block;background:var(--sal);color:var(--dark);padding:0 8px 4px;border-radius:10px;line-height:1.08}
+.chip{position:absolute;left:90px;top:552px;height:88px;padding:0 32px;border-radius:44px;font-size:54px;letter-spacing:-1px;font-weight:800;display:flex;align-items:center;white-space:nowrap;background:var(--dark);color:#fff;transform-origin:0 50%}
+.vote{position:absolute;top:704px;height:88px;padding:0 32px 0 24px;border-radius:44px;font-size:54px;letter-spacing:-1px;font-weight:800;display:flex;align-items:center;gap:16px;white-space:nowrap;background:var(--paper);color:var(--dark);border:4px solid var(--dark);transform-origin:50% 50%}
+.src{position:absolute;left:90px;top:672px;height:64px;padding:0 24px;border-radius:32px;background:var(--paper);border:4px solid var(--dark);color:var(--dark);font-weight:700;font-size:44px;display:flex;align-items:center;gap:12px;white-space:nowrap}
+.big{position:absolute;font-weight:800;color:#fff;letter-spacing:-1px;white-space:nowrap}
+.hd{position:absolute;font-weight:800;color:var(--dark);letter-spacing:-.5px;line-height:1.18;white-space:nowrap}
+#STG{width:960px;height:1080px}
+</style>
+<!-- qa: Tafel, Weg, Haus, Säulengebäude, Sentença, Blatt, Siegel, Blätterfächer, Preisschild, Handy, Papier und Pfeil-Schild tragen nur Formen (keine Schrift, keine Zahlen,
+     keine Daten, kein Wappen, keine Flaggen); einzige Schrift auf Objekten ist das Etikett #TAG (Dokument + Richtung + Preis, Standard seit R35). ignoreText nur „traduzme“. -->
+<!-- qa-Ausnahme maxNewWords 24 (Grund): Frame 0 trägt mit dem Pflicht-Etikett 18 Wörter (Hook 6 + Mitmach 2 + Etikett 10).
+     An der Loop-Naht (34,2 s, harter Schnitt auf Frame 0, Raster D6) misst qa_frames sie als „neu“ mit nur 0,3 s Standzeit, weil das Video dort endet;
+     im echten Loop stehen sie 2,97 s wie in Frame 0 (gleiche Ausnahme wie R35–R46, Abnahme 35-1 „vertretbar“). -->
+<script type="application/json" id="qa-config">{"ignoreText":"^(traduzme)$","maxNewWords":24}</script>
+</head>
+<body><div id="stage">
+  <div class="abs" id="bg1" style="left:-260px;top:120px;width:620px;height:620px;border-radius:50%;background:rgba(238,222,206,.07)"></div>
+  <div class="abs" id="bg2" style="left:760px;top:560px;width:520px;height:520px;border-radius:50%;background:rgba(31,59,53,.18)"></div>
+
+  <div id="world">
+    <!-- Held-Objekt: Encruzilhada (960 × 1080 lokal, Tafel x 100–860 / y 40–1080, Kopfleiste y 40–150), Papierfläche x 130–830 / y 170–1050 (clipPath, keine Requisiten-Blitzer am Rand) -->
+    <div class="obj" id="STG" data-qa="object"><svg id="PH" width="960" height="1080" viewBox="0 0 960 1080"></svg></div>
+    <!-- Etikett (Standard): Dokument + Richtung + Preis ab Frame 0 → x 128–872 / y 840–1132 -->
+    <div class="obj" id="TAG" data-qa="object" style="width:744px;height:292px;border-radius:28px;background:var(--paper);border:8px solid #1F3B35;box-shadow:0 18px 36px rgba(20,40,36,.34)">
+      <div class="hd" style="left:36px;top:14px;font-size:48px">Sentença de divórcio</div>
+      <div class="hd" style="left:36px;top:72px;font-size:52px;display:flex;align-items:center;gap:16px">alemão<svg width="64" height="40" viewBox="0 0 140 90"><path d="M10 45H110" stroke="#1F3B35" stroke-width="16" stroke-linecap="round"/><path d="M80 12l40 33-40 33" fill="none" stroke="#1F3B35" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/></svg>português</div>
+      <div class="abs" style="left:36px;top:144px;width:656px;height:6px;border-radius:3px;background:#97B9A8"></div>
+      <div class="hd" style="left:32px;top:136px;font-size:104px;letter-spacing:-3px">R$ 159</div>
+      <div class="hd" style="left:400px;top:156px;font-size:46px;line-height:1.1">por lauda<br>na tabela</div>
+    </div>
+  </div>
+
+  <!-- ===== Text-Ebene ===== -->
+  <div class="hook" id="hook">Divórcio na<br>Alemanha: vai<br><span class="mk" id="mk1">pro STJ?</span></div>
+  <!-- Variable R47: Mitmach als zwei Antwort-Knöpfe (Umfrage-Optik) statt einer Pille „SIM ou NÃO?“ -->
+  <div class="vote" id="v1" style="left:104px"><svg width="44" height="44" viewBox="0 0 44 44"><circle cx="22" cy="22" r="17" fill="none" stroke="#1F3B35" stroke-width="6"/></svg>SIM</div>
+  <div class="vote" id="v2" style="left:360px"><svg width="44" height="44" viewBox="0 0 44 44"><circle cx="22" cy="22" r="17" fill="none" stroke="#1F3B35" stroke-width="6"/></svg>NÃO</div>
+
+  <div class="cap" id="c1"><div class="ln">Nem sempre:</div><div class="ln"><span class="mk">depende da sentença.</span></div></div>
+  <div class="cap" id="c2"><div class="ln">Consensual e simples?</div><div class="ln"><span class="mk">Direto no cartório.</span></div></div>
+  <div class="cap" id="c3"><div class="ln">Guarda, pensão, bens?</div><div class="ln"><span class="mk">Passa pelo STJ.</span></div></div>
+  <div class="cap" id="c4"><div class="ln">Nos dois: tradução</div><div class="ln"><span class="mk">juramentada.</span></div></div>
+  <div class="cap" id="c5"><div class="ln">Tradutor juramentado</div><div class="ln"><span class="mk">de Junta Comercial.</span></div></div>
+  <div class="cap" id="c6"><div class="ln">Do alemão, na tabela:</div><div class="ln"><span class="mk">R$ 159 por lauda.</span></div></div>
+  <div class="cap" id="c7"><div class="ln">PDF assinado serve?</div><div class="ln"><span class="mk">Confirme no órgão.</span></div></div>
+
+  <div class="src" id="s1" data-qa="beleg">Sentença estrangeira · STJ</div>
+  <div class="src" id="s2" data-qa="beleg">Em geral · averbação · STJ</div>
+  <div class="src" id="s3" data-qa="beleg">Homologação · STJ</div>
+  <div class="src" id="s4" data-qa="beleg">Em geral · STJ e TJMG</div>
+  <div class="src" id="s5" data-qa="beleg">Regra do STJ</div>
+  <div class="src" id="s6" data-qa="beleg">Sentença · texto especial</div>
+  <div class="src" id="s7" data-qa="beleg">Cartório ou STJ</div>
+
+  <div class="chip" id="chip"><span id="chipT">Preço na hora · link na bio</span></div>
+
+  <!-- Endcard (Absender traduzme; Kopf an der Hook-Position; Standard-Handlungsaufforderung; kein Preis) -->
+  <div class="abs" id="end" style="left:0;top:0;width:1080px;height:1920px;opacity:0">
+    <div class="hook" id="eHead" style="top:336px;font-size:96px;line-height:1.16">Divórcio<br>alemão?<br><span class="mk">Envie a foto:</span><br><span class="mk">preço na hora.</span></div>
+    <div class="chip" id="eBio" style="top:816px">link na bio</div>
+    <div class="big" id="eUrl" style="left:104px;top:944px;font-size:66px">traduzme.com.br</div>
+    <div class="big" id="eWa" style="left:104px;top:1040px;font-size:66px;display:flex;align-items:center;gap:24px"><svg width="72" height="72" viewBox="0 0 32 32"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3z" fill="#EEDECE"/><path d="M11.6 9.6c.3-.6.6-.6 1-.6h.8c.3 0 .6.1.8.6l1.1 2.6c.1.3.1.6-.1.9l-.7.9c-.2.2-.2.5 0 .8a10 10 0 0 0 4.3 3.8c.3.1.6.1.8-.1l.9-1.1c.2-.3.6-.3.9-.2l2.6 1.2c.3.2.5.4.4.8-.2 1.3-1.3 2.4-2.7 2.5-1.2.1-3.6-.5-6.4-3.1-2.6-2.4-3.7-5-3.8-6.2 0-.8.3-1.6.8-2.3z" fill="#1F3B35"/></svg>(61) 99803-8363</div>
+  </div>
+</div>
+<script>
+// GMB-Fassung (≤ 30 s, ohne 17,0–20,5 „Tradutor juramentado de Junta Comercial.“, Endcard 5,0 s statt 6,7 s): gmb/reel.html setzt GMB=1, oder URL ?cut=gmb
+let GMB=0;
+if(new URLSearchParams(location.search).get('cut')==='gmb') GMB=1;
+const END=GMB?29.3:34.5;
+const SKIP=GMB?[[17.0,3.5]]:[];   // Designzeit: 17,0–20,5
+function remap(tn){let t=tn;for(const [a,d] of SKIP){if(t>=a-1e-6)t+=d;}return t;}
+const LOOPD=GMB?32.5:34.2;   // GMB: Endcard 27,5–32,5 (5,0 s)
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const lin=(t,a,b)=>cl((t-a)/(b-a));
+const eo=x=>1-Math.pow(1-x,3);
+const eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const back=x=>{const c=1.6;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+// 120 BPM: Schlag 0,5 s. Szenen je 3,5 s: 0 Hook · 3,0 depende · 6,5 cartório · 10,0 STJ · 13,5 tradução · 17,0 Junta · 20,5 preço · 24,0 PDF/confirme · 27,5 Endcard · 34,2 Loop
+const SC=[3.0,6.5,10.0,13.5,17.0,20.5,24.0];
+const ENDC=27.5;
+const PUNCH=[2.5,7.5,14.5,21.5];
+const PANE={0:0,3.0:1,6.5:2,10.0:3,13.5:4,17.0:5,20.5:6,24.0:7};
+const WD=.10, WU=.18;   // Pfeil-Schild fährt 0,10 s vor dem Wechsel ein (3 Frames), deckt die Mitte auf dem Schlag (harter Schnitt), ist bei +0,18 s hinaus
+const CAPD=3.42;
+
+// ---- Requisiten (eigene SVG, nur Formen, keine Schrift, keine Zahlen, keine Daten, kein Wappen, keine Flaggen) ----
+function lines(x,y,w,n,step,fill='#D5DCD8'){let s='';const L=[.94,.72,.86,.6,.8,.68,.9,.56,.76,.82];
+  for(let i=0;i<n;i++){const yy=y+i*step; s+=`<rect x="${x}" y="${yy.toFixed(1)}" width="${(w*L[i%10]).toFixed(1)}" height="${Math.max(6,step*.32).toFixed(1)}" rx="${Math.max(3,step*.16).toFixed(1)}" fill="${fill}"/>`;}
+  return s;}
+const OK=(cx,cy,r,id)=>`<g id="${id}" data-c="${cx},${cy}"><circle cx="${cx}" cy="${cy}" r="${r}" fill="#97B9A8" stroke="#FBFAF6" stroke-width="${r*.1}"/><path d="M${cx-r*.45} ${cy+r*.03}l${r*.3} ${r*.3} ${r*.6}-${r*.62}" fill="none" stroke="#1F3B35" stroke-width="${r*.2}" stroke-linecap="round" stroke-linejoin="round"/></g>`;
+const QM=(cx,cy,r,id)=>`<g id="${id}" data-c="${cx},${cy}"><circle cx="${cx}" cy="${cy}" r="${r}" fill="#FBFAF6" stroke="#1F3B35" stroke-width="${r*.1}"/><path d="M${cx-r*.32} ${cy-r*.22}a${r*.34} ${r*.34} 0 1 1 ${r*.5} ${r*.3}c-${r*.14} ${r*.08}-${r*.18} ${r*.16}-${r*.18} ${r*.3}" fill="none" stroke="#1F3B35" stroke-width="${r*.2}" stroke-linecap="round"/><circle cx="${cx}" cy="${cy+r*.58}" r="${r*.12}" fill="#1F3B35"/></g>`;
+const SEAL=(cx,cy,r,id='',c1='#376259',c2='#97B9A8')=>`<g ${id?`id="${id}" data-c="${cx},${cy}"`:''}>${[...Array(12)].map((_,i)=>{const a=i*Math.PI/6;return `<circle cx="${(cx+Math.cos(a)*r*.92).toFixed(1)}" cy="${(cy+Math.sin(a)*r*.92).toFixed(1)}" r="${(r*.26).toFixed(1)}" fill="${c2}"/>`}).join('')}<circle cx="${cx}" cy="${cy}" r="${r}" fill="${c1}" stroke="${c2}" stroke-width="${Math.max(3,r*.08)}"/><circle cx="${cx}" cy="${cy}" r="${r*.45}" fill="none" stroke="#EEDECE" stroke-width="${Math.max(3,r*.08)}"/></g>`;
+// Waage (Gerichts-Symbol als Form, kein Wappen)
+const SCALE=(cx,cy,k=1,col='#EEDECE')=>`<g transform="translate(${cx} ${cy}) scale(${k})"><rect x="-4" y="-26" width="8" height="52" rx="4" fill="${col}"/><rect x="-34" y="-26" width="68" height="8" rx="4" fill="${col}"/>
+  <path d="M-30 -18l-12 22h24z M30 -18l-12 22h24z" fill="${col}"/><rect x="-18" y="22" width="36" height="8" rx="4" fill="${col}"/></g>`;
+// Sentença (Hochformat 300 × 400 um 0/0): Kopfband Dark mit Waage, Titel-Balken ohne Schrift, Zeilen (Fließtext), Siegel unten links, Unterschriftslinie
+const DOC=`<rect x="-150" y="-200" width="300" height="400" rx="16" fill="#FFFFFF" stroke="#1F3B35" stroke-width="6"/>
+  <rect x="-150" y="-200" width="300" height="70" rx="16" fill="#1F3B35"/><rect x="-150" y="-150" width="300" height="20" fill="#1F3B35"/>
+  ${SCALE(-100,-165,.62)}
+  <rect x="-110" y="-108" width="220" height="24" rx="12" fill="#376259"/>
+  ${lines(-118,-62,236,7,26)}
+  ${SEAL(-80,148,30,'','#376259','#97B9A8')}
+  <path d="M10 168h108" stroke="#A9B6B0" stroke-width="5" stroke-linecap="round"/>`;
+// Übersetzungsblatt (Hochformat 300 × 400 um 0/0) mit Unterschriftslinie (wird gezogen)
+const SHEET=`<rect x="-150" y="-200" width="300" height="400" rx="16" fill="#FFFFFF" stroke="#97B9A8" stroke-width="6"/>
+  <rect x="-114" y="-170" width="140" height="28" rx="14" fill="#97B9A8"/>${lines(-114,-118,228,7,30)}
+  <path id="sig" d="M-20 150c20-30 34 26 54-4s30 20 50-6 22 14 40 0" fill="none" stroke="#1F3B35" stroke-width="7" stroke-linecap="round" stroke-dasharray="300" stroke-dashoffset="300"/>
+  <path d="M-30 172h170" stroke="#A9B6B0" stroke-width="5" stroke-linecap="round"/>`;
+// Haus (Cartório: Haus mit Tür, keine Schrift)
+const HOUSE=(id,cx,cy,k=1)=>`<g id="${id}" data-c="${cx},${cy}"><g transform="translate(${cx} ${cy}) scale(${k})"><path d="M-110 -10L0 -100L110 -10z" fill="#1F3B35"/><rect x="-92" y="-14" width="184" height="124" rx="6" fill="#97B9A8"/>
+  <rect x="-70" y="10" width="40" height="40" rx="6" fill="#FBFAF6"/><rect x="34" y="10" width="40" height="40" rx="6" fill="#FBFAF6"/>
+  <rect x="-24" y="34" width="48" height="76" rx="6" fill="#1F3B35"/><g id="${id}d"><rect x="-24" y="34" width="48" height="76" rx="6" fill="#376259"/><circle cx="14" cy="74" r="5" fill="#EEDECE"/></g></g></g>`;
+// Säulengebäude (Tribunal, ohne Schrift, ohne Flagge)
+const COURT=(id,cx,cy,k=1)=>`<g id="${id}" data-c="${cx},${cy}"><g transform="translate(${cx} ${cy}) scale(${k})"><path d="M-130 -60L0 -130L130 -60z" fill="#1F3B35"/><rect x="-124" y="-60" width="248" height="18" fill="#1F3B35"/>
+  ${[-96,-48,0,48,96].map(x=>`<rect x="${x-12}" y="-34" width="24" height="120" rx="4" fill="#97B9A8"/>`).join('')}<rect x="-140" y="90" width="280" height="24" rx="6" fill="#1F3B35"/>${SCALE(0,-86,.7,'#EEDECE')}</g></g>`;
+// Marken auf der Sentença (Guarda = zwei Figuren-Kreise, Pensão = Münze, Bens = Häuschen) – Formen ohne Zahlen
+const TOK_G=(cx,cy)=>`<g id="tk0" data-c="${cx},${cy}"><circle cx="${cx}" cy="${cy}" r="44" fill="#EEDECE" stroke="#1F3B35" stroke-width="6"/><circle cx="${cx-12}" cy="${cy-12}" r="11" fill="#1F3B35"/><path d="M${cx-30} ${cy+24}a18 18 0 0 1 36 0z" fill="#1F3B35"/><circle cx="${cx+16}" cy="${cy-2}" r="8" fill="#376259"/><path d="M${cx+2} ${cy+24}a14 14 0 0 1 28 0z" fill="#376259"/></g>`;
+const TOK_C=(cx,cy)=>`<g id="tk1" data-c="${cx},${cy}"><circle cx="${cx}" cy="${cy}" r="44" fill="#EEDECE" stroke="#1F3B35" stroke-width="6"/><circle cx="${cx}" cy="${cy}" r="26" fill="#97B9A8" stroke="#1F3B35" stroke-width="5"/><circle cx="${cx}" cy="${cy}" r="12" fill="none" stroke="#1F3B35" stroke-width="4"/></g>`;
+const TOK_H=(cx,cy)=>`<g id="tk2" data-c="${cx},${cy}"><circle cx="${cx}" cy="${cy}" r="44" fill="#EEDECE" stroke="#1F3B35" stroke-width="6"/><path d="M${cx-26} ${cy-2}L${cx} ${cy-24}L${cx+26} ${cy-2}z" fill="#1F3B35"/><rect x="${cx-20}" y="${cy-4}" width="40" height="28" rx="3" fill="#376259"/></g>`;
+const TAGX=(x,y,id)=>`<g id="${id}" data-c="${x+110},${y+50}"><path d="M${x} ${y}h170l50 50-50 50h-170z" fill="#FBFAF6" stroke="#1F3B35" stroke-width="6"/><circle cx="${x+172}" cy="${y+50}" r="12" fill="#1F3B35"/><rect x="${x+26}" y="${y+32}" width="110" height="36" rx="10" fill="#376259"/></g>`;
+// Handy mit Dokument (Bildschirm ohne Schrift) und Papierblatt
+const PHONE=`<g id="ph" data-c="330,520"><rect x="230" y="340" width="200" height="370" rx="34" fill="#1F3B35"/><rect x="246" y="376" width="168" height="300" rx="14" fill="#FBFAF6"/>
+  <rect x="270" y="400" width="120" height="150" rx="8" fill="#FFFFFF" stroke="#97B9A8" stroke-width="4"/>${lines(284,420,92,4,24)}
+  ${SEAL(330,600,26,'','#376259','#97B9A8')}<rect x="300" y="352" width="60" height="10" rx="5" fill="#376259"/></g>`;
+const PAPER=`<g id="pp" data-c="630,520"><rect x="530" y="350" width="200" height="270" rx="12" fill="#FFFFFF" stroke="#1F3B35" stroke-width="6"/>${lines(554,380,152,6,30)}${SEAL(600,580,22,'','#376259','#97B9A8')}</g>`;
+// Pfeil-Schild für den Szenenwechsel (Wegweiser, ohne Schrift)
+const SIGN=`<g id="sgn"><rect x="-14" y="40" width="28" height="260" rx="10" fill="#1F3B35"/><path d="M-230 -70h360l100 110-100 110h-360z" fill="#1F3B35"/>
+  <path d="M-200 -46h318l78 86-78 86h-318z" fill="#97B9A8"/><path d="M-150 40h210M20 -10l50 50-50 50" fill="none" stroke="#1F3B35" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/></g>`;
+
+// ---- Encruzilhada ----
+const BD={x:130,y:170,w:700,h:880}, CC=[480,470];
+const FORK=[480,600], HP=[262,300], CP=[700,300];   // Gabel, Haus (Cartório), Tribunal
+// Bezier-Wege von der Gabel zu Haus bzw. Tribunal
+const PL=[FORK,[440,500],[300,470],[HP[0],HP[1]+130]], PR=[FORK,[520,500],[660,470],[CP[0],CP[1]+130]];
+const bz=(P,u)=>[0,1].map(k=>Math.pow(1-u,3)*P[0][k]+3*Math.pow(1-u,2)*u*P[1][k]+3*(1-u)*u*u*P[2][k]+u*u*u*P[3][k]);
+const pth=P=>`M${P[0][0]} ${P[0][1]}C${P[1][0]} ${P[1][1]} ${P[2][0]} ${P[2][1]} ${P[3][0]} ${P[3][1]}`;
+{let s=`<defs><clipPath id="bdc"><rect x="${BD.x}" y="${BD.y}" width="${BD.w}" height="${BD.h}" rx="20"/></clipPath></defs>
+  <rect x="112" y="60" width="760" height="1020" rx="44" fill="#284C44"/>
+  <rect x="100" y="40" width="760" height="1040" rx="44" fill="#1F3B35"/>
+  <path d="M100 210V84a44 44 0 0 1 44-44h126z" fill="#97B9A8"/><path d="M860 210V84a44 44 0 0 0-44-44H690z" fill="#97B9A8"/>
+  ${[300,440,580].map((x,i)=>`<rect x="${x}" y="78" width="${[80,80,80][i]}" height="40" rx="20" fill="${['#EEDECE','#97B9A8','#EEDECE'][i]}"/>`).join('')}
+  <g clip-path="url(#bdc)"><rect x="${BD.x}" y="${BD.y}" width="${BD.w}" height="${BD.h}" fill="#FBFAF6"/>
+    <g id="cont">
+    <g id="rdW">
+      <path d="M${FORK[0]} 1080V${FORK[1]}" stroke="#D5DCD8" stroke-width="64" stroke-linecap="round"/>
+      <path id="armL" d="${pth(PL)}" fill="none" stroke="#D5DCD8" stroke-width="56" stroke-linecap="round"/>
+      <path id="armR" d="${pth(PR)}" fill="none" stroke="#D5DCD8" stroke-width="56" stroke-linecap="round"/>
+      <path id="armLg" d="${pth(PL)}" fill="none" stroke="#376259" stroke-width="56" stroke-linecap="round" opacity="0"/>
+      <path id="armRg" d="${pth(PR)}" fill="none" stroke="#376259" stroke-width="56" stroke-linecap="round" opacity="0"/>
+      <path d="M${FORK[0]} 1080V${FORK[1]+20}" stroke="#FBFAF6" stroke-width="8" stroke-dasharray="26 22"/>
+      <path d="${pth(PL)}" fill="none" stroke="#FBFAF6" stroke-width="7" stroke-dasharray="22 22"/><path d="${pth(PR)}" fill="none" stroke="#FBFAF6" stroke-width="7" stroke-dasharray="22 22"/>
+      ${HOUSE('hs',HP[0],HP[1],.9)}${COURT('ct',CP[0],CP[1],.74)}
+    </g>
+    <g id="shW" style="display:none"><g id="sh">${SHEET}</g></g>
+    <g id="fanW" style="display:none">${[0,1,2].map(i=>`<g id="fn${i}"><rect x="-120" y="-160" width="240" height="320" rx="14" fill="#FFFFFF" stroke="#97B9A8" stroke-width="6"/>${lines(-92,-130,184,8,30)}</g>`).join('')}</g>
+    <g id="dcW"><g id="dc">${DOC}</g></g>
+    <g id="tagW" style="display:none"><g transform="translate(640 600) scale(1.5) translate(-670 -410)">${TAGX(560,360,'tg')}</g></g>
+    <g id="pdW" style="display:none">${PHONE}${PAPER}</g>
+    ${SEAL(560,560,46,'sT','#376259','#97B9A8')}
+    ${COURT('jt',660,300,.5)}
+    ${TOK_G(0,0)}${TOK_C(0,0)}${TOK_H(0,0)}
+    <g id="br">${[[0,0,1,1],[1,0,-1,1],[0,1,1,-1],[1,1,-1,-1]].map((c,i)=>`<path id="br${i}" d="M0 0h${c[2]*70}M0 0v${c[3]*70}" stroke="#1F3B35" stroke-width="10" stroke-linecap="round"/>`).join('')}</g>
+    <circle id="ring" cx="0" cy="0" r="300" fill="none" stroke="#1F3B35" stroke-width="12" opacity="0"/>
+    ${QM(0,0,40,'q0')}${QM(0,0,40,'q1')}${OK(0,0,46,'ok')}
+    </g>
+    <g id="sgW" style="display:none">${SIGN}</g>
+  </g>`;
+  $('PH').innerHTML=s;}
+
+const SIZE={STG:[960,1080],TAG:[744,292]};
+function put(id,x,y,r=0,k=1,o=1){const [w,h]=SIZE[id],el=$(id);
+  el.style.transform=`translate(${(x-w/2).toFixed(2)}px,${(y-h/2).toFixed(2)}px) rotate(${r.toFixed(2)}deg) scale(${k.toFixed(4)})`;
+  el.style.opacity=o; el.style.display=o>0.001?'':'none';}
+function pk(t,a,s0=.4){if(t<a)return 0; return s0+(1-s0)*back(lin(t,a,a+.25));}
+function g(id,k,o=1){const e=document.getElementById(id); if(!e)return; const [cx,cy]=(e.dataset.c||'0,0').split(',').map(Number);
+  e.setAttribute('transform',`translate(${cx} ${cy}) scale(${Math.max(.001,k).toFixed(4)}) translate(${-cx} ${-cy})`); e.setAttribute('opacity',(k>0?o:0).toFixed(3));}
+// g an Position (für Requisiten, die um 0/0 gezeichnet sind)
+function gp(id,x,y,k,o=1){const e=$(id); e.setAttribute('transform',`translate(${x.toFixed(1)} ${y.toFixed(1)}) scale(${Math.max(.001,k).toFixed(4)})`); e.setAttribute('opacity',(k>0?o:0).toFixed(3));}
+function gpc(id,x,y,k,o=1){const e=$(id); const [cx,cy]=(e.dataset.c||'0,0').split(',').map(Number);
+  e.setAttribute('transform',`translate(${(x-cx*k).toFixed(1)} ${(y-cy*k).toFixed(1)}) scale(${Math.max(.001,k).toFixed(4)})`); e.setAttribute('opacity',(k>0?o:0).toFixed(3));}
+function show(id,on){$(id).style.display=on?'':'none';}
+function at(id,x,y,r=0,k=1){$(id).setAttribute('transform',`translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${r.toFixed(2)}) scale(${k.toFixed(4)})`);}
+
+function lns(id,t,a,b,step=.14){const el=$(id); if(t<a||t>=b+.08){el.style.display='none';return;} el.style.display='';
+  const out=1-lin(t,b,b+.08);
+  el.querySelectorAll('.ln').forEach((l,i)=>{const a0=a+i*step, p=lin(t,a0,a0+.12); l.style.opacity=(Math.min(1,p*1.4+.6)*out).toFixed(3); if(t<a0)l.style.opacity=0; l.style.transform=`scale(${(.94+.06*eo(p)).toFixed(4)})`;});}
+function box(id,t,a,b,dIn=.15,dOut=.08,disp='flex'){const e=$(id); const o=t>=a&&t<b+dOut?Math.min(lin(t,a,a+dIn),1-lin(t,b,b+dOut)):0; e.style.opacity=o.toFixed(3); e.style.display=o>0?disp:'none'; return o;}
+
+const SEQ=[0,...SC].filter(a=>!(GMB&&a===17.0));
+function sceneOf(t){let i=0; for(let k=0;k<SEQ.length;k++) if(t>=SEQ[k]) i=k; return [PANE[SEQ[i]], SEQ[i]];}
+function signSet(t,loop){ // Pfeil-Schild: x 1180 (SEQ[k]-0,10) → Mitte 480 auf dem Schlag → -260 bei +0,18 (nur bei Szenenwechseln, nicht im Loop)
+  let x=null;
+  if(!loop) for(let k=1;k<SEQ.length;k++){const a=SEQ[k];
+    if(t>=a-WD&&t<a) x=1180-(1180-480)*eo(lin(t,a-WD,a));
+    else if(t>=a&&t<a+WU) x=480-(480+260)*Math.pow(lin(t,a,a+WU),1.6);}
+  if(x===null){show('sgW',false);return;}
+  show('sgW',true); at('sgn',x,CC[1]+20,0,1.05);}
+
+function brSet(cx,cy,hw,hh,o){[[-1,-1],[1,-1],[-1,1],[1,1]].forEach((c,i)=>$('br'+i).setAttribute('transform',`translate(${(cx+c[0]*hw).toFixed(1)} ${(cy+c[1]*hh).toFixed(1)})`)); $('br').setAttribute('opacity',o);}
+function door(id,f){ // Tür öffnet (scaleX 1 → 0,15 um die linke Kante)
+  const k=1-.85*f; $(id+'d').setAttribute('transform',`translate(-24 0) scale(${k.toFixed(3)} 1) translate(24 0)`);}
+
+function paneAnim(n,t,tb,loop,endc){
+  show('rdW',n<=3&&!endc); show('dcW',n<=4||n===5&&false||endc); show('shW',n===4||n===5); show('fanW',n===6); show('tagW',n===6); show('pdW',n===7);
+  ['q0','q1','ok','sT','jt','tk0','tk1','tk2'].forEach(i=>gp(i,0,0,0)); $('ring').setAttribute('opacity',0); brSet(0,0,0,0,0);
+  $('armLg').setAttribute('opacity',0); $('armRg').setAttribute('opacity',0); door('hs',0);
+  g('hs',1); g('ct',1);
+  const okAt=(a,x,y)=>{gp('ok',x,y,t>=a?pk(t,a,.4):0);};
+  if(endc){   // Endcard: Sentença gerade, Foto-Ecken rasten ein, Haken (passt zu „Envie a foto“)
+    const w=loop?0:Math.sin(Math.PI*2*tb/1.0);
+    at('dc',CC[0],330,0,.7+.01*w);
+    const f=eo(lin(t,ENDC+.5,ENDC+.8)); brSet(CC[0],330,124+40*(1-f),160+40*(1-f),f);
+    gp('ok',CC[0]+150,330-100,t>=ENDC+1.0?pk(t,ENDC+1.0,.4)*(1+.06*Math.sin(Math.PI*2*lin(t,ENDC+2,ENDC+3))):0);
+    return;}
+  if(n===0){   // Hook: Sentença schräg an der Gabel, „?“ über den beiden Wegen pulsiert; 2,5 Ring um die Gabel + Punch (Payoff: welcher Weg?)
+    const w=loop?0:Math.sin(Math.PI*2*tb/1.0);
+    at('dc',480+(loop?0:12*w),380+(loop?0:6*Math.sin(Math.PI*2*tb/2.0)),-6+3.5*w,.5);
+    gp('q0',480,236,.9*(1+.10*w));
+    if(!loop&&t>=2.5){ const rk=pk(t,2.5,.6); at('ring',480,360,0,Math.max(.001,rk*.5)); $('ring').setAttribute('opacity',(1-lin(t,2.75,2.97)*.6).toFixed(3)); } }
+  if(n===1){   // Depende: Sentença an der Gabel, 3,5 linker Weg leuchtet (Klick), 4,5 rechter Weg leuchtet, 5,5 Haken an der Gabel
+    at('dc',480,640,-2+(t>=5.0?2*Math.sin(Math.PI*2*lin(t,5.0,5.4))*(1-lin(t,5.0,5.4)):0),.5);
+    $('armLg').setAttribute('opacity',(t>=3.5?eo(lin(t,3.5,3.7)):0).toFixed(3));
+    $('armRg').setAttribute('opacity',(t>=4.5?eo(lin(t,4.5,4.7)):0).toFixed(3));
+    gp('q1',480,440,t>=3.0?1+.08*Math.sin(Math.PI*2*(tb-3.0)/1.0):0);
+    okAt(5.5,640,660);}
+  if(n===2){   // Cartório: linker Weg leuchtet, Sentença fährt 6,5–7,3 zum Haus (Klick 7,0), 7,5 Tür öffnet + Punch, 8,5 Haken, 9,0 Haus-Puls
+    $('armLg').setAttribute('opacity',1);
+    const u=eio(lin(t,6.5,7.3)), [x,y]=bz(PL,u*.96);
+    at('dc',x,y+(1-u)*40,-2-6*u,.5-.14*u);
+    door('hs',t>=7.5?eo(lin(t,7.5,7.75)):0);
+    g('hs',.9*(1+(t>=9.0?.05*Math.sin(Math.PI*lin(t,9.0,9.3)):0))/.9);
+    okAt(8.5,HP[0]+150,HP[1]-40);}
+  if(n===3){   // STJ: rechter Weg leuchtet, Sentença fährt 10,0–10,8 zum Tribunal; Marken Guarda 11,0 / Pensão 11,5 / Bens 12,0 auf der Sentença; 12,5 Haken; 13,0 Tribunal-Puls
+    $('armRg').setAttribute('opacity',1);
+    const u=eio(lin(t,10.0,10.8)), [x,y]=bz(PR,u*.9);
+    at('dc',x-40*u,y+(1-u)*40+60*u,3+3*u,.5-.06*u);
+    [11.0,11.5,12.0].forEach((a,i)=>gpc('tk'+i,x-40*u-130+i*96,y+60*u+170,t>=a?pk(t,a,.4)*.9:0));
+    g('ct',1+(t>=13.0?.05*Math.sin(Math.PI*lin(t,13.0,13.3)):0));
+    okAt(12.5,CP[0]-160,CP[1]-50);}
+  if(n===4){   // Tradução nos dois caminhos: Sentença links, 14,0 Übersetzungsblatt gleitet heraus (Klick), 14,5 Siegel auf dem Blatt + Punch, 15,5 Haken, 16,0 Puls
+    at('dc',350,460,-4,.86);
+    const f=eo(lin(t,14.0,14.4)); at('sh',350+270*f,480+10*f,5*f,.86); $('sh').setAttribute('opacity',t>=14.0?1:0);
+    gp('sT',0,0,0); gpc('sT',650,620,t>=14.5?pk(t,14.5,.4)*(1+(t>=16.0?.05*Math.sin(Math.PI*lin(t,16.0,16.3)):0)):0);
+    $('sig').setAttribute('stroke-dashoffset',300);
+    okAt(15.5,720,260);}
+  if(n===5){   // Junta: Übersetzungsblatt mittig, 17,5 Unterschrift wird gezogen (Klick), 18,0 kleines Gebäude (Junta) springt auf, 19,0 Haken, 19,5 Wippen
+    show('dcW',false);
+    const wb=t>=19.5?3*Math.sin(Math.PI*2*lin(t,19.5,19.9))*(1-lin(t,19.5,19.9)):0;
+    at('sh',440,500,-2+wb,1.0); $('sh').setAttribute('opacity',1);
+    $('sig').setAttribute('stroke-dashoffset',(300*(1-eo(lin(t,17.5,18.1)))).toFixed(1));
+    gpc('jt',680,330,t>=18.0?pk(t,18.0,.4)*1.1:0);
+    okAt(19.0,690,760);}
+  if(n===6){   // Preis: Blätter-Fächer (Laudas) 20,5–21,1, Preisschild ohne Zahl 21,5 + Punch, Haken 22,5, Schwung 23,0
+    show('dcW',false);
+    [0,1,2].forEach(i=>{const a=20.5+i*.2, f=eo(lin(t,a,a+.3)); at('fn'+i,330+i*40*f,500-i*10*f,-8+i*8*f,.8); $('fn'+i).setAttribute('opacity',t>=a?1:0);});
+    g('tg',t>=21.5?pk(t,21.5,.6):0.001);
+    if(t>=23.0) $('tg').setAttribute('transform',`rotate(${(8*Math.sin(Math.PI*2*lin(t,23.0,23.6))*(1-lin(t,23.0,23.6))).toFixed(2)} 560 410)`);
+    okAt(22.5,700,700);}
+  if(n===7){   // PDF ou papel: Handy (ab dem Schnitt sichtbar, 24,5 springt auf) und Papier (25,0), „?“ dazwischen 25,5 + Stempel, Haken 26,5, Puls 27,0
+    show('dcW',false);
+    gpc('ph',330,540,t>=24.5?pk(t,24.5,.85):.85); gpc('pp',650,520,t>=25.0?pk(t,25.0,.5):0);
+    gp('q1',490,330,t>=25.5?pk(t,25.5,.4)*(1+(t>=27.0?.06*Math.sin(Math.PI*lin(t,27.0,27.3)):0)):0);
+    okAt(26.5,490,700);}
+}
+
+function render(tn){
+  let t=tn>=END-1e-6?LOOPD+.01:remap(tn);
+  const loop=t>=LOOPD; if(loop)t=0;
+  const tb=loop?0:tn;
+  $('bg1').style.transform=`translate(${Math.sin(tb*.4)*24}px,${-tb*3}px)`; $('bg2').style.transform=`translate(${-tb*3}px,${Math.cos(tb*.5)*18}px)`;
+
+  // Tafel: unten (Hook + Endcard, Oberkante 1176 – Inhalt im 3:4-Ausschnitt y ≤ 1680), steigt 3,0–3,5 nach oben (Oberkante 784)
+  const bob=loop?0:10*Math.sin(Math.PI*2*tb/1.0);
+  let top;
+  if(t>=ENDC) top=1176+bob;
+  else {const r=eo(lin(t,3.0,3.5)); top=1176+(784-1176)*r+bob*(1-r)+(t>=3.5?5*Math.sin((tb-3.5)*1.6):0);}
+  const tilt=(t<3.0||t>=ENDC)?(loop?0:1.2*Math.sin(Math.PI*2*tb/2.0)):0;
+  put('STG',540,top+540,tilt);
+  const endc=t>=ENDC;
+  let n; if(endc){n=0;} else [n]=sceneOf(t);
+  paneAnim(n,t,tb,loop,endc); signSet(endc?-1:t,loop||endc);
+  // Etikett: Frame 0 bis 2,97 (danach steigt die Tafel)
+  if(t<2.97) put('TAG',500+(loop?0:6*Math.sin(Math.PI*2*tb/2.0)),986,-1.5+(loop?0:1.2*Math.sin(Math.PI*2*tb/1.0)),1,1); else put('TAG',500,986,0,1,0);
+
+  // Kamera: leichter Push je Szene + Zoom-Punch 1→1,05→1 in 0,22 s (um 540/1000); Schild-Durchfahrt = kleiner Seiten-Ruck
+  let push=1;
+  if(t<3.0) push=loop?1:1+.012*lin(t,0,2.6);
+  else if(t<ENDC){let s0=3.0; for(const a of SC) if(t>=a) s0=a; push=1+.014*lin(t,s0+.4,s0+3.5);}
+  const punch=PUNCH.reduce((m,p)=>m*(1+.05*Math.sin(Math.PI*lin(t,p,p+.22))),1);
+  const jolt=loop?0:SEQ.slice(1).reduce((m,a)=>m+(t>=a&&t<a+.12?-6*Math.sin(Math.PI*lin(t,a,a+.12)):0),0);
+  const s=(1+(loop?0:.004*Math.sin(tb*1.3)))*push*punch, dy=(loop?0:4*Math.sin(tb*.9));
+  $('world').style.transform=`translate(${(540-540*s+jolt).toFixed(2)}px,${(1000-1000*s+dy).toFixed(2)}px) scale(${s.toFixed(5)})`;
+
+  // ---- Hook + Mitmach-Knöpfe (Frame 0 fertig, voll bis 2,97 s, dann harter Schnitt) ----
+  {const on=t<2.97; $('hook').style.display=on?'':'none';
+   $('mk1').style.transformOrigin='0 50%'; $('mk1').style.transform=`scale(${1+(loop?0:.05*Math.sin(Math.PI*lin(t,1.0,1.3)))})`;
+   ['v1','v2'].forEach((id,i)=>{const M=$(id); M.style.display=on?'flex':'none';
+     M.style.transform=`scale(${(1+(loop?0:.03*Math.sin(Math.PI*lin(t,1.5+i*.5,1.72+i*.5)))).toFixed(4)})`;});}
+  // ---- Captions + Belege (gleichzeitig) ----
+  SC.forEach((a,i)=>{if(GMB&&a===17.0){$('c'+(i+1)).style.display='none';$('s'+(i+1)).style.display='none';return;} lns('c'+(i+1),t,a,a+CAPD); box('s'+(i+1),t,a,a+CAPD);});
+  // ---- CTA-Chip ----
+  {const Cp=$('chip'); $('chipT').textContent=GMB?'Preço na hora no site':'Preço na hora · link na bio';
+   const p=lin(t,3.0,3.2); const on=t>=3.0&&t<ENDC; Cp.style.display=on?'flex':'none'; Cp.style.opacity=(Math.min(1,.6+p*2)*(1-lin(t,ENDC-.08,ENDC))).toFixed(3); Cp.style.transform=`scale(${(.94+.06*eo(p)).toFixed(4)})`;}
+  // ---- Endcard ----
+  {const E=$('end'); const o=t>=ENDC&&!loop?1:0; E.style.opacity=o.toFixed(3); E.style.display=o>0?'':'none';
+   $('eBio').textContent=GMB?'no site':'link na bio';
+   const b=lin(t,ENDC,ENDC+.15); $('eBio').style.transform=`scale(${(.94+.06*eo(b)).toFixed(4)})`;}
+}
+render(0);
+</script></body></html>

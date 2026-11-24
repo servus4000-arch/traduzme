@@ -1,0 +1,320 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<!-- Reel 48 · „Certidão egípcia: tradução simples serve?“ · Certidão de nascimento árabe → português R$ 299 na tabela · Post Mi 02.12.2026
+     Format „Guichê“ (Held-Objekt: Schalter-Fenster 760 × 1040 mit Pinho-Rahmen und Markisen-Kopf; auf der Ablage nur Formen: Certidão mit Tabellen-Raster
+     und rechtsbündigen Zeilen, einfaches Blatt ohne Siegel, Übersetzungsblatt mit Siegel und Unterschrift, Pfeil, Ausweis-Karte mit drei Reitern,
+     Büroklammer, Preisschild ohne Zahl, Klemmbrett mit leeren Kästchen – keine Schrift, keine Zahlen, keine Daten, kein Wappen, keine Flaggen, keine Landkarte,
+     keine echte oder nachgemachte arabische Schrift).
+     Szenenwechsel = „Rollladen-Schnitt“: der Rollladen des Schalters fällt 0,10 s vor dem Schlag über die Ablage, deckt sie auf dem Schlag ganz
+     (harter Schnitt des Inhalts darunter) und ist bei +0,18 s wieder oben; nie zwei Inhalte übereinander.
+     Grund Dark #1F3B35 (Text Weiß; Marker Areia/Dark; Caption-Pillen Papier/Dark, Marker Sálvia/Dark; Chips Pinho/Weiß) · lofi 120 BPM
+     (R47 Encruzilhada/Pinho/pop · R46 Mesa de carimbos/Areia/funk).
+     Etikett Dokument + Richtung + Preis in Frame 0 = Standard seit R35; Hook-Frage ist ein Kauf-Zweifel (tradução simples serve?), NICHT die Preisfrage.
+     Szenen 3,5 s, Endcard „Envie a foto: preço na hora.“ (Standard), Mitmach als Pille „SIM ou NÃO?“ (Standard-Textform wie R46).
+     Neue Variable (nicht im Bild): TikTok-Postzeit 18:30 SP statt ~11:20 (siehe social/reels/reel48-texte.md).
+     Quellen je Aussage: STORYBOARD.md (Q1 precos ar/to_pt certidao de nascimento · Q1b analisar v40 / pix-cob v56 · Q2 Lei 14.195/2021 art. 26 I, 27, 23
+     · Q3 Código Civil art. 224 · Q4 Rechner FAQ a8 / fl1 / fl2). -->
+<link rel="stylesheet" href="fonts/os.css">
+<style>
+:root{--dark:#1F3B35;--pinho:#376259;--sal:#97B9A8;--areia:#EEDECE;--nevoa:#BDCBCB;--paper:#FBFAF6}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',sans-serif;background:var(--dark)}
+.abs{position:absolute}
+#stage{position:absolute;inset:0;overflow:hidden;background:radial-gradient(1100px 1300px at 50% 36%,#284A43 0%,#1F3B35 60%,#1A332E 100%)}
+#world{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0}
+.obj{position:absolute;left:0;top:0;transform-origin:50% 50%}
+.hook{position:absolute;left:104px;top:320px;font-weight:800;font-size:104px;line-height:1.06;letter-spacing:-2.5px;color:#fff;white-space:nowrap}
+.hook .mk{display:inline-block;background:var(--areia);color:var(--dark);border-radius:16px;padding:0 14px 10px;margin:0 -8px;line-height:1.02}
+.cap{position:absolute;left:90px;top:320px}
+.cap .ln{display:table;margin-bottom:8px;padding:6px 24px 10px;border-radius:24px;background:var(--paper);color:var(--dark);font-weight:800;font-size:66px;line-height:1.12;letter-spacing:-1px;white-space:nowrap;transform-origin:0 50%;box-shadow:0 6px 16px rgba(10,24,20,.30)}
+.cap .ln .mk{display:inline-block;background:var(--sal);color:var(--dark);padding:0 8px 4px;border-radius:10px;line-height:1.08}
+.chip{position:absolute;left:90px;top:552px;height:88px;padding:0 32px;border-radius:44px;font-size:54px;letter-spacing:-1px;font-weight:800;display:flex;align-items:center;white-space:nowrap;background:var(--pinho);color:#fff;transform-origin:0 50%}
+.src{position:absolute;left:90px;top:672px;height:64px;padding:0 24px;border-radius:32px;background:var(--paper);border:4px solid var(--sal);color:var(--dark);font-weight:700;font-size:44px;display:flex;align-items:center;gap:12px;white-space:nowrap}
+.big{position:absolute;font-weight:800;color:#fff;letter-spacing:-1px;white-space:nowrap}
+.hd{position:absolute;font-weight:800;color:var(--dark);letter-spacing:-.5px;line-height:1.18;white-space:nowrap}
+#STG{width:960px;height:1080px}
+</style>
+<!-- qa: Schalter, Certidão, Blätter, Siegel, Pfeil, Karte, Büroklammer, Preisschild, Klemmbrett und Rollladen tragen nur Formen (keine Schrift, keine Zahlen,
+     keine Daten, kein Wappen, keine Flaggen); einzige Schrift auf Objekten ist das Etikett #TAG (Dokument + Richtung + Preis, Standard seit R35). ignoreText nur „traduzme“. -->
+<!-- qa-Ausnahme maxNewWords 24 (Grund): Frame 0 trägt mit dem Pflicht-Etikett 18 Wörter (Hook 5 + Mitmach 3 + Etikett 10).
+     An der Loop-Naht (34,2 s, harter Schnitt auf Frame 0, Raster D6) misst qa_frames sie als „neu“ mit nur 0,3 s Standzeit, weil das Video dort endet;
+     im echten Loop stehen sie 2,97 s wie in Frame 0 (gleiche Ausnahme wie R35–R47, Abnahme 35-1 „vertretbar“). -->
+<script type="application/json" id="qa-config">{"ignoreText":"^(traduzme)$","maxNewWords":24}</script>
+</head>
+<body><div id="stage">
+  <div class="abs" id="bg1" style="left:-260px;top:120px;width:620px;height:620px;border-radius:50%;background:rgba(151,185,168,.07)"></div>
+  <div class="abs" id="bg2" style="left:760px;top:560px;width:520px;height:520px;border-radius:50%;background:rgba(55,98,89,.22)"></div>
+
+  <div id="world">
+    <!-- Held-Objekt: Guichê (960 × 1080 lokal, Rahmen x 100–860 / y 40–1080, Markise y 40–170), Ablage x 130–830 / y 190–1050 (clipPath, keine Requisiten-Blitzer am Rand) -->
+    <div class="obj" id="STG" data-qa="object"><svg id="PH" width="960" height="1080" viewBox="0 0 960 1080"></svg></div>
+    <!-- Etikett (Standard): Dokument + Richtung + Preis ab Frame 0 -->
+    <div class="obj" id="TAG" data-qa="object" style="width:744px;height:292px;border-radius:28px;background:var(--paper);border:8px solid #376259;box-shadow:0 18px 36px rgba(8,20,17,.40)">
+      <div class="hd" style="left:36px;top:14px;font-size:48px">Certidão de nascimento</div>
+      <div class="hd" style="left:36px;top:72px;font-size:52px;display:flex;align-items:center;gap:16px">árabe<svg width="64" height="40" viewBox="0 0 140 90"><path d="M10 45H110" stroke="#1F3B35" stroke-width="16" stroke-linecap="round"/><path d="M80 12l40 33-40 33" fill="none" stroke="#1F3B35" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/></svg>português</div>
+      <div class="abs" style="left:36px;top:144px;width:656px;height:6px;border-radius:3px;background:#97B9A8"></div>
+      <div class="hd" style="left:32px;top:136px;font-size:104px;letter-spacing:-3px">R$ 299</div>
+      <div class="hd" style="left:400px;top:182px;font-size:46px;line-height:1.1">na tabela</div>
+    </div>
+  </div>
+
+  <!-- ===== Text-Ebene ===== -->
+  <div class="hook" id="hook">Certidão<br>egípcia:<br>tradução<br><span class="mk" id="mk1">simples serve?</span></div>
+  <div class="chip" id="mit" style="top:816px;background:#FBFAF6;color:#1F3B35;border:4px solid #97B9A8">SIM ou NÃO?</div>
+
+  <div class="cap" id="c1"><div class="ln">Em geral, não:</div><div class="ln"><span class="mk">vale a juramentada.</span></div></div>
+  <div class="cap" id="c2"><div class="ln">Pra valer no Brasil:</div><div class="ln"><span class="mk">em português.</span></div></div>
+  <div class="cap" id="c3"><div class="ln">Fé pública? Só com</div><div class="ln"><span class="mk">tradutor público.</span></div></div>
+  <div class="cap" id="c4"><div class="ln">Registro por idioma:</div><div class="ln"><span class="mk">tradutor de árabe.</span></div></div>
+  <div class="cap" id="c5"><div class="ln">Órgão pode pedir</div><div class="ln"><span class="mk">o original junto.</span></div></div>
+  <div class="cap" id="c6"><div class="ln">Do árabe, na tabela:</div><div class="ln"><span class="mk">R$ 299 a certidão.</span></div></div>
+  <div class="cap" id="c7"><div class="ln">Lista de documentos?</div><div class="ln"><span class="mk">Confirme no órgão.</span></div></div>
+
+  <div class="src" id="s1" data-qa="beleg">Lei 14.195/2021 · art. 26</div>
+  <div class="src" id="s2" data-qa="beleg">Código Civil · art. 224</div>
+  <div class="src" id="s3" data-qa="beleg">Em geral · Lei 14.195, art. 27</div>
+  <div class="src" id="s4" data-qa="beleg">Lei 14.195/2021 · art. 23</div>
+  <div class="src" id="s5" data-qa="beleg">Lei 14.195 · art. 27, § 2º</div>
+  <div class="src" id="s6" data-qa="beleg">Preço fixo · até 4 páginas</div>
+  <div class="src" id="s7" data-qa="beleg">Cada órgão tem a sua</div>
+
+  <div class="chip" id="chip"><span id="chipT">Preço na hora · link na bio</span></div>
+
+  <!-- Endcard (Absender traduzme; Kopf an der Hook-Position; Standard-Handlungsaufforderung; kein Preis) -->
+  <div class="abs" id="end" style="left:0;top:0;width:1080px;height:1920px;opacity:0">
+    <div class="hook" id="eHead" style="top:336px;font-size:96px;line-height:1.16">Certidão<br>em árabe?<br><span class="mk">Envie a foto:</span><br><span class="mk">preço na hora.</span></div>
+    <div class="chip" id="eBio" style="top:816px">link na bio</div>
+    <div class="big" id="eUrl" style="left:104px;top:944px;font-size:66px">traduzme.com.br</div>
+    <div class="big" id="eWa" style="left:104px;top:1040px;font-size:66px;display:flex;align-items:center;gap:24px"><svg width="72" height="72" viewBox="0 0 32 32"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3z" fill="#EEDECE"/><path d="M11.6 9.6c.3-.6.6-.6 1-.6h.8c.3 0 .6.1.8.6l1.1 2.6c.1.3.1.6-.1.9l-.7.9c-.2.2-.2.5 0 .8a10 10 0 0 0 4.3 3.8c.3.1.6.1.8-.1l.9-1.1c.2-.3.6-.3.9-.2l2.6 1.2c.3.2.5.4.4.8-.2 1.3-1.3 2.4-2.7 2.5-1.2.1-3.6-.5-6.4-3.1-2.6-2.4-3.7-5-3.8-6.2 0-.8.3-1.6.8-2.3z" fill="#1F3B35"/></svg>(61) 99803-8363</div>
+  </div>
+</div>
+<script>
+// GMB-Fassung (≤ 30 s, ohne 17,0–20,5 „Órgão pode pedir o original junto.“, Endcard 5,0 s statt 6,7 s): gmb/reel.html setzt GMB=1, oder URL ?cut=gmb
+let GMB=0;
+if(new URLSearchParams(location.search).get('cut')==='gmb') GMB=1;
+const END=GMB?29.3:34.5;
+const SKIP=GMB?[[17.0,3.5]]:[];   // Designzeit: 17,0–20,5
+function remap(tn){let t=tn;for(const [a,d] of SKIP){if(t>=a-1e-6)t+=d;}return t;}
+const LOOPD=GMB?32.5:34.2;   // GMB: Endcard 27,5–32,5 (5,0 s)
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const lin=(t,a,b)=>cl((t-a)/(b-a));
+const eo=x=>1-Math.pow(1-x,3);
+const eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const back=x=>{const c=1.6;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+// 120 BPM: Schlag 0,5 s. Szenen je 3,5 s: 0 Hook · 3,0 não · 6,5 português · 10,0 fé pública · 13,5 idioma · 17,0 original · 20,5 preço · 24,0 lista/confirme · 27,5 Endcard · 34,2 Loop
+const SC=[3.0,6.5,10.0,13.5,17.0,20.5,24.0];
+const ENDC=27.5;
+const PUNCH=[2.5,7.5,11.0,14.5,21.5];
+const PANE={0:0,3.0:1,6.5:2,10.0:3,13.5:4,17.0:5,20.5:6,24.0:7};
+const WD=.10, WU=.18;   // Rollladen fällt 0,10 s vor dem Wechsel (3 Frames), deckt die Ablage auf dem Schlag (harter Schnitt), ist bei +0,18 s wieder oben
+const CAPD=3.42;
+
+// ---- Requisiten (eigene SVG, nur Formen, keine Schrift, keine Zahlen, keine Daten, kein Wappen, keine Flaggen) ----
+function lines(x,y,w,n,step,fill='#D5DCD8',rtl=false){let s='';const L=[.94,.72,.86,.6,.8,.68,.9,.56,.76,.82];
+  for(let i=0;i<n;i++){const yy=y+i*step, ww=w*L[i%10]; s+=`<rect x="${(rtl?x+w-ww:x).toFixed(1)}" y="${yy.toFixed(1)}" width="${ww.toFixed(1)}" height="${Math.max(6,step*.32).toFixed(1)}" rx="${Math.max(3,step*.16).toFixed(1)}" fill="${fill}"/>`;}
+  return s;}
+const OK=(cx,cy,r,id)=>`<g id="${id}" data-c="${cx},${cy}"><circle cx="${cx}" cy="${cy}" r="${r}" fill="#97B9A8" stroke="#FBFAF6" stroke-width="${r*.1}"/><path d="M${cx-r*.45} ${cy+r*.03}l${r*.3} ${r*.3} ${r*.6}-${r*.62}" fill="none" stroke="#1F3B35" stroke-width="${r*.2}" stroke-linecap="round" stroke-linejoin="round"/></g>`;
+const QM=(cx,cy,r,id)=>`<g id="${id}" data-c="${cx},${cy}"><circle cx="${cx}" cy="${cy}" r="${r}" fill="#FBFAF6" stroke="#1F3B35" stroke-width="${r*.1}"/><path d="M${cx-r*.32} ${cy-r*.22}a${r*.34} ${r*.34} 0 1 1 ${r*.5} ${r*.3}c-${r*.14} ${r*.08}-${r*.18} ${r*.16}-${r*.18} ${r*.3}" fill="none" stroke="#1F3B35" stroke-width="${r*.2}" stroke-linecap="round"/><circle cx="${cx}" cy="${cy+r*.58}" r="${r*.12}" fill="#1F3B35"/></g>`;
+const SEAL=(cx,cy,r,id='',c1='#376259',c2='#97B9A8')=>`<g ${id?`id="${id}" data-c="${cx},${cy}"`:''}>${[...Array(12)].map((_,i)=>{const a=i*Math.PI/6;return `<circle cx="${(cx+Math.cos(a)*r*.92).toFixed(1)}" cy="${(cy+Math.sin(a)*r*.92).toFixed(1)}" r="${(r*.26).toFixed(1)}" fill="${c2}"/>`}).join('')}<circle cx="${cx}" cy="${cy}" r="${r}" fill="${c1}" stroke="${c2}" stroke-width="${Math.max(3,r*.08)}"/><circle cx="${cx}" cy="${cy}" r="${r*.45}" fill="none" stroke="#EEDECE" stroke-width="${Math.max(3,r*.08)}"/></g>`;
+// Certidão (Hochformat 300 × 400 um 0/0): Kopfband Dark, Tabellen-Raster (Datenfelder ohne Inhalt), rechtsbündige Zeilen, runder Stempel unten (nur Ringe)
+const CERT=`<rect x="-150" y="-200" width="300" height="400" rx="16" fill="#FFFFFF" stroke="#1F3B35" stroke-width="6"/>
+  <rect x="-150" y="-200" width="300" height="64" rx="16" fill="#1F3B35"/><rect x="-150" y="-150" width="300" height="14" fill="#1F3B35"/>
+  <rect x="-40" y="-186" width="80" height="22" rx="11" fill="#EEDECE"/>
+  <g stroke="#97B9A8" stroke-width="4" fill="none"><rect x="-124" y="-112" width="248" height="168" rx="6"/><path d="M-124 -70H124M-124 -28H124M-124 14H124M10 -112V56"/></g>
+  ${[-91,-49,-7,35].map(y=>`<rect x="24" y="${y}" width="${[86,70,92,60][(y+91)/42]}" height="10" rx="5" fill="#D5DCD8"/><rect x="-108" y="${y}" width="${[96,80,104,72][(y+91)/42]}" height="10" rx="5" fill="#D5DCD8"/>`).join('')}
+  ${lines(-118,78,236,3,26,'#D5DCD8',true)}
+  <circle cx="-86" cy="158" r="28" fill="none" stroke="#376259" stroke-width="6"/><circle cx="-86" cy="158" r="14" fill="none" stroke="#376259" stroke-width="4"/>
+  <path d="M20 168h100" stroke="#A9B6B0" stroke-width="5" stroke-linecap="round"/>`;
+// Einfaches Blatt (ohne Siegel, ohne Unterschrift)
+const SIMP=`<rect x="-150" y="-200" width="300" height="400" rx="16" fill="#FFFFFF" stroke="#BDCBCB" stroke-width="6"/>${lines(-114,-160,228,11,30,'#DCE2DF')}`;
+// Übersetzungsblatt (Sálvia-Kopf, Zeilen, Siegel-Platz unten links, Unterschrift wird gezogen)
+const JUR=(sid)=>`<rect x="-150" y="-200" width="300" height="400" rx="16" fill="#FFFFFF" stroke="#97B9A8" stroke-width="6"/>
+  <rect x="-114" y="-170" width="140" height="28" rx="14" fill="#97B9A8"/>${lines(-114,-118,228,7,30)}
+  <path id="${sid}" d="M-10 150c20-30 34 26 54-4s30 20 50-6 22 14 30 0" fill="none" stroke="#1F3B35" stroke-width="7" stroke-linecap="round" stroke-dasharray="300" stroke-dashoffset="0"/>
+  <path d="M-20 172h150" stroke="#A9B6B0" stroke-width="5" stroke-linecap="round"/>`;
+// Pfeil (Form, keine Schrift)
+const ARROW=`<g id="ar" data-c="480,470"><path d="M410 470H530" stroke="#376259" stroke-width="30" stroke-linecap="round"/><path d="M500 424l56 46-56 46" fill="none" stroke="#376259" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/></g>`;
+// Ausweis-Karte (Registrierung) mit Foto-Kreis, Zeilen und drei Reitern (Sprachen als Farbflächen, ohne Buchstaben)
+const CARD=`<rect x="-230" y="-150" width="460" height="300" rx="28" fill="#FFFFFF" stroke="#1F3B35" stroke-width="6"/>
+  <rect x="-230" y="-150" width="460" height="60" rx="28" fill="#376259"/><rect x="-230" y="-110" width="460" height="20" fill="#376259"/>
+  <circle cx="-140" cy="0" r="56" fill="#BDCBCB"/><circle cx="-140" cy="-16" r="22" fill="#FBFAF6"/><path d="M-178 40a38 30 0 0 1 76 0z" fill="#FBFAF6"/>
+  ${lines(-56,-50,250,4,30)}`;
+const TABS=[0,1,2].map(i=>`<g id="tb${i}" data-c="${-120+i*120},190"><rect x="${-170+i*120}" y="160" width="100" height="60" rx="16" fill="${['#BDCBCB','#EEDECE','#BDCBCB'][i]}" stroke="#1F3B35" stroke-width="5"/></g>`).join('');
+// Büroklammer (Form)
+const CLIPX=`<g id="cx" data-c="480,250"><path d="M462 300V214a18 18 0 0 1 36 0v96a30 30 0 0 1-60 0V224" fill="none" stroke="#1F3B35" stroke-width="10" stroke-linecap="round"/></g>`;
+// Preisschild ohne Zahl
+const TAGX=(x,y,id)=>`<g id="${id}" data-c="${x+110},${y+50}"><path d="M${x} ${y}h170l50 50-50 50h-170z" fill="#FBFAF6" stroke="#1F3B35" stroke-width="6"/><circle cx="${x+172}" cy="${y+50}" r="12" fill="#1F3B35"/><rect x="${x+26}" y="${y+32}" width="110" height="36" rx="10" fill="#376259"/></g>`;
+// Klemmbrett mit drei leeren Kästchen-Zeilen
+const BOARD=`<g id="cb" data-c="480,520"><rect x="310" y="300" width="340" height="440" rx="24" fill="#376259"/><rect x="334" y="336" width="292" height="384" rx="12" fill="#FFFFFF"/>
+  <rect x="420" y="282" width="120" height="44" rx="14" fill="#1F3B35"/>
+  ${[0,1,2].map(i=>`<rect x="362" y="${392+i*100}" width="52" height="52" rx="10" fill="none" stroke="#1F3B35" stroke-width="6"/><rect x="436" y="${408+i*100}" width="${[150,120,160][i]}" height="20" rx="10" fill="#D5DCD8"/>`).join('')}</g>`;
+// Rollladen (Szenenwechsel): Lamellen ohne Schrift
+const SHUT=`<g id="shut"><rect x="120" y="0" width="720" height="900" fill="#376259"/>${[...Array(15)].map((_,i)=>`<rect x="120" y="${i*60+46}" width="720" height="10" fill="#2E544C"/>`).join('')}<rect x="120" y="880" width="720" height="40" rx="8" fill="#1F3B35"/><rect x="430" y="890" width="100" height="20" rx="10" fill="#97B9A8"/></g>`;
+
+// ---- Guichê ----
+const BD={x:130,y:190,w:700,h:860}, CC=[480,480];
+{let s=`<defs><clipPath id="bdc"><rect x="${BD.x}" y="${BD.y}" width="${BD.w}" height="${BD.h}" rx="20"/></clipPath></defs>
+  <rect x="112" y="60" width="760" height="1020" rx="44" fill="#16302A"/>
+  <rect x="100" y="40" width="760" height="1040" rx="44" fill="#376259"/>
+  <path d="M100 84a44 44 0 0 1 44-44h672a44 44 0 0 1 44 44v86H100z" fill="#2E544C"/>
+  ${[...Array(8)].map((_,i)=>`<path d="M${100+i*95} 170h95v18a47 22 0 0 1-95 0z" fill="${i%2?'#EEDECE':'#97B9A8'}"/>`).join('')}
+  ${[300,440,580].map((x,i)=>`<rect x="${x}" y="78" width="80" height="40" rx="20" fill="${['#EEDECE','#97B9A8','#EEDECE'][i]}"/>`).join('')}
+  <g clip-path="url(#bdc)"><rect x="${BD.x}" y="${BD.y}" width="${BD.w}" height="${BD.h}" fill="#EEDECE"/>
+    <rect x="${BD.x}" y="${BD.y+BD.h-120}" width="${BD.w}" height="120" fill="#E2CDB8"/>
+    <g id="cont">
+    <g id="smW"><g id="sm">${SIMP}</g></g>
+    <g id="jrW"><g id="jr">${JUR('sig')}</g></g>
+    <g id="ctW"><g id="ct">${CERT}</g></g>
+    <g id="arW">${ARROW}</g>
+    <g id="cdW"><g id="cd">${CARD}${TABS}</g></g>
+    ${CLIPX}
+    <g id="tagW"><g transform="translate(640 600) scale(1.5) translate(-670 -410)">${TAGX(560,360,'tg')}</g></g>
+    <g id="cbW">${BOARD}</g>
+    ${SEAL(0,0,46,'sT','#376259','#97B9A8')}
+    <g id="br">${[[0,0,1,1],[1,0,-1,1],[0,1,1,-1],[1,1,-1,-1]].map((c,i)=>`<path id="br${i}" d="M0 0h${c[2]*70}M0 0v${c[3]*70}" stroke="#1F3B35" stroke-width="10" stroke-linecap="round"/>`).join('')}</g>
+    <circle id="ring" cx="0" cy="0" r="300" fill="none" stroke="#1F3B35" stroke-width="12" opacity="0"/>
+    ${QM(0,0,40,'q0')}${QM(0,0,40,'q1')}${OK(0,0,46,'ok')}
+    </g>
+    <g id="shW" style="display:none">${SHUT}</g>
+  </g>`;
+  $('PH').innerHTML=s;}
+
+const SIZE={STG:[960,1080],TAG:[744,292]};
+function put(id,x,y,r=0,k=1,o=1){const [w,h]=SIZE[id],el=$(id);
+  el.style.transform=`translate(${(x-w/2).toFixed(2)}px,${(y-h/2).toFixed(2)}px) rotate(${r.toFixed(2)}deg) scale(${k.toFixed(4)})`;
+  el.style.opacity=o; el.style.display=o>0.001?'':'none';}
+function pk(t,a,s0=.4){if(t<a)return 0; return s0+(1-s0)*back(lin(t,a,a+.25));}
+function g(id,k,o=1){const e=document.getElementById(id); if(!e)return; const [cx,cy]=(e.dataset.c||'0,0').split(',').map(Number);
+  e.setAttribute('transform',`translate(${cx} ${cy}) scale(${Math.max(.001,k).toFixed(4)}) translate(${-cx} ${-cy})`); e.setAttribute('opacity',(k>0?o:0).toFixed(3));}
+function gp(id,x,y,k,o=1){const e=$(id); e.setAttribute('transform',`translate(${x.toFixed(1)} ${y.toFixed(1)}) scale(${Math.max(.001,k).toFixed(4)})`); e.setAttribute('opacity',(k>0?o:0).toFixed(3));}
+function gpc(id,x,y,k,o=1){const e=$(id); const [cx,cy]=(e.dataset.c||'0,0').split(',').map(Number);
+  e.setAttribute('transform',`translate(${(x-cx*k).toFixed(1)} ${(y-cy*k).toFixed(1)}) scale(${Math.max(.001,k).toFixed(4)})`); e.setAttribute('opacity',(k>0?o:0).toFixed(3));}
+function show(id,on){$(id).style.display=on?'':'none';}
+function at(id,x,y,r=0,k=1){$(id).setAttribute('transform',`translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${r.toFixed(2)}) scale(${k.toFixed(4)})`);}
+
+function lns(id,t,a,b,step=.14){const el=$(id); if(t<a||t>=b+.08){el.style.display='none';return;} el.style.display='';
+  const out=1-lin(t,b,b+.08);
+  el.querySelectorAll('.ln').forEach((l,i)=>{const a0=a+i*step, p=lin(t,a0,a0+.12); l.style.opacity=(Math.min(1,p*1.4+.6)*out).toFixed(3); if(t<a0)l.style.opacity=0; l.style.transform=`scale(${(.94+.06*eo(p)).toFixed(4)})`;});}
+function box(id,t,a,b,dIn=.15,dOut=.08,disp='flex'){const e=$(id); const o=t>=a&&t<b+dOut?Math.min(lin(t,a,a+dIn),1-lin(t,b,b+dOut)):0; e.style.opacity=o.toFixed(3); e.style.display=o>0?disp:'none'; return o;}
+
+const SEQ=[0,...SC].filter(a=>!(GMB&&a===17.0));
+function sceneOf(t){let i=0; for(let k=0;k<SEQ.length;k++) if(t>=SEQ[k]) i=k; return [PANE[SEQ[i]], SEQ[i]];}
+function shutSet(t,loop){ // Rollladen: Unterkante y 190 (a−0,10) → 1050 auf dem Schlag (deckt die Ablage ganz) → 190 bei +0,18 (nur bei Szenenwechseln, nicht im Loop)
+  let y=null;
+  if(!loop) for(let k=1;k<SEQ.length;k++){const a=SEQ[k];
+    if(t>=a-WD&&t<a) y=190+(1060-190)*eo(lin(t,a-WD,a));
+    else if(t>=a&&t<a+WU) y=1060-(1060-190)*Math.pow(lin(t,a,a+WU),1.6);}
+  if(y===null){show('shW',false);return;}
+  show('shW',true); $('shut').setAttribute('transform',`translate(0 ${(y-920).toFixed(1)})`);}
+
+function brSet(cx,cy,hw,hh,o){[[-1,-1],[1,-1],[-1,1],[1,1]].forEach((c,i)=>$('br'+i).setAttribute('transform',`translate(${(cx+c[0]*hw).toFixed(1)} ${(cy+c[1]*hh).toFixed(1)})`)); $('br').setAttribute('opacity',o);}
+
+function paneAnim(n,t,tb,loop,endc){
+  ['smW','jrW','ctW','arW','cdW','tagW','cbW'].forEach(i=>show(i,false));
+  ['q0','q1','ok','sT','cx'].forEach(i=>gp(i,0,0,0)); $('ring').setAttribute('opacity',0); brSet(0,0,0,0,0);
+  $('sm').setAttribute('opacity',1); $('jr').setAttribute('opacity',1); $('sig').setAttribute('stroke-dashoffset',0);
+  const okAt=(a,x,y)=>{gp('ok',x,y,t>=a?pk(t,a,.4):0);};
+  const w=loop?0:Math.sin(Math.PI*2*tb/1.0);
+  if(endc){   // Endcard: Certidão gerade, Foto-Ecken rasten ein, Haken (passt zu „Envie a foto“)
+    show('ctW',true); at('ct',CC[0],360,0,.7+.01*w);
+    const f=eo(lin(t,ENDC+.5,ENDC+.8)); brSet(CC[0],360,124+40*(1-f),160+40*(1-f),f);
+    gp('ok',CC[0]+150,360-100,t>=ENDC+1.0?pk(t,ENDC+1.0,.4)*(1+.06*Math.sin(Math.PI*2*lin(t,ENDC+2,ENDC+3))):0);
+    return;}
+  if(n===0){   // Hook: Certidão links schräg, einfaches Blatt rechts, „?“ über dem einfachen Blatt pulsiert; 2,5 Ring um das Blatt + Punch
+    show('ctW',true); show('smW',true);
+    at('ct',310+(loop?0:6*w),420+(loop?0:5*Math.sin(Math.PI*2*tb/2.0)),-7+2.5*w,.74);
+    at('sm',650,430,6-1.5*w,.68);
+    gp('q0',650,250,.95*(1+.10*w));
+    if(!loop&&t>=2.5){ const rk=pk(t,2.5,.6); at('ring',650,420,0,Math.max(.001,rk*.56)); $('ring').setAttribute('opacity',(1-lin(t,2.75,2.97)*.6).toFixed(3)); } }
+  if(n===1){   // Não: Certidão links; 3,5 einfaches Blatt rutscht rechts herein (Klick) und blasst 4,5 ab, Übersetzungsblatt mit Siegel davor; 5,5 Haken
+    show('ctW',true); show('smW',true); show('jrW',true);
+    at('ct',290,500,-3,.82);
+    const f=eo(lin(t,3.5,3.8)); at('sm',860-190*f,470,5,.8); $('sm').setAttribute('opacity',(t>=3.5?1-.55*lin(t,4.5,4.7):0).toFixed(3));
+    const j=t>=4.5?pk(t,4.5,.5):0; at('jr',670,520,-3,.84*Math.max(.001,j)); $('jr').setAttribute('opacity',t>=4.5?1:0);
+    gpc('sT',594,646,t>=4.5?pk(t,4.5,.5)*.62:0);
+    okAt(5.5,780,320);}
+  if(n===2){   // Português: Certidão links, 7,0 Pfeil wächst (Klick), 7,5 Übersetzungsblatt rechts + Punch, 8,5 Haken, 9,0 Puls
+    show('ctW',true); show('arW',true); show('jrW',true);
+    at('ct',270,480,-2,.78);
+    g('ar',t>=7.0?pk(t,7.0,.3):0.001);
+    const j=t>=7.5?pk(t,7.5,.5):0; at('jr',700,480,2+(t>=9.0?2*Math.sin(Math.PI*2*lin(t,9.0,9.4))*(1-lin(t,9.0,9.4)):0),.78*Math.max(.001,j)); $('jr').setAttribute('opacity',t>=7.5?1:0);
+    okAt(8.5,790,290);}
+  if(n===3){   // Fé pública: Übersetzungsblatt groß, 11,0 Siegel fällt + Punch, 11,5 Unterschrift wird gezogen (Klick), 12,5 Haken, 13,0 Wippen
+    show('jrW',true);
+    const wb=t>=13.0?3*Math.sin(Math.PI*2*lin(t,13.0,13.4))*(1-lin(t,13.0,13.4)):0;
+    at('jr',480,520,-2+wb,1.25);
+    $('sig').setAttribute('stroke-dashoffset',(300*(1-eo(lin(t,11.5,12.1)))).toFixed(1));
+    gpc('sT',368,708,t>=11.0?pk(t,11.0,1.6)*1.1:0);
+    okAt(12.5,700,250);}
+  if(n===4){   // Idioma: Karte, 14,0 Reiter springen auf (Klick), 14,5 mittlerer Reiter hebt sich + Punch, 15,5 Haken, 16,0 Puls
+    show('cdW',true);
+    at('cd',480,480,0,1.3);
+    [0,1,2].forEach(i=>{const s=t>=14.0?pk(t,14.0+i*.06,.4):0; const lift=(i===1&&t>=14.5)?-28*eo(lin(t,14.5,14.7))*(1+(t>=16.0?.15*Math.sin(Math.PI*lin(t,16.0,16.3)):0)):0;
+      $('tb'+i).setAttribute('transform',`translate(0 ${lift.toFixed(1)}) translate(${-120+i*120} 190) scale(${Math.max(.001,s*(i===1&&t>=14.5?1.12:1)).toFixed(4)}) translate(${120-i*120} -190)`); $('tb'+i).setAttribute('opacity',s>0?1:0);
+      if(i===1) $('tb1').querySelector('rect').setAttribute('fill',t>=14.5?'#97B9A8':'#EEDECE');});
+    okAt(15.5,720,250);}
+  if(n===5){   // Original junto: Certidão hinten links, Übersetzung vorn rechts; 17,5 Büroklammer (Klick), 18,0 beide rücken zusammen, 19,0 Haken, 19,5 Wippen
+    show('ctW',true); show('jrW',true);
+    const m=eio(lin(t,18.0,18.4)); const wb=t>=19.5?2.5*Math.sin(Math.PI*2*lin(t,19.5,19.9))*(1-lin(t,19.5,19.9)):0;
+    at('ct',350+40*m,480,-4+wb,.92); at('jr',610-40*m,540,4+wb,.92);
+    gpc('cx',480,292,t>=17.5?pk(t,17.5,.4)*1.3:0);
+    okAt(19.0,770,330);}
+  if(n===6){   // Preis: Certidão mittig, Preisschild ohne Zahl 21,5 + Punch, Haken 22,5, Schwung 23,0
+    show('ctW',true); show('tagW',true);
+    at('ct',380,500,-3,1.05);
+    g('tg',t>=21.5?pk(t,21.5,.6):0.001);
+    if(t>=23.0) $('tg').setAttribute('transform',`rotate(${(8*Math.sin(Math.PI*2*lin(t,23.0,23.6))*(1-lin(t,23.0,23.6))).toFixed(2)} 560 410)`);
+    okAt(22.5,780,320);}
+  if(n===7){   // Lista: Klemmbrett (ab dem Schnitt sichtbar, 24,5 springt auf), Kästchen, „?“ 25,5 + Stempel, Haken 26,5, Puls 27,0
+    show('cbW',true);
+    gpc('cb',480,540,t>=24.5?pk(t,24.5,.85)*1.15:.98);
+    gp('q1',720,300,t>=25.5?pk(t,25.5,.4)*(1+(t>=27.0?.06*Math.sin(Math.PI*lin(t,27.0,27.3)):0)):0);
+    okAt(26.5,250,330);}
+}
+
+function render(tn){
+  let t=tn>=END-1e-6?LOOPD+.01:remap(tn);
+  const loop=t>=LOOPD; if(loop)t=0;
+  const tb=loop?0:tn;
+  $('bg1').style.transform=`translate(${Math.sin(tb*.4)*24}px,${-tb*3}px)`; $('bg2').style.transform=`translate(${-tb*3}px,${Math.cos(tb*.5)*18}px)`;
+
+  // Guichê: unten (Hook + Endcard, Oberkante 1232), steigt 3,0–3,5 nach oben (Oberkante 784)
+  const bob=loop?0:10*Math.sin(Math.PI*2*tb/1.0);
+  let top;
+  if(t>=ENDC) top=1176+bob;
+  else {const r=eo(lin(t,3.0,3.5)); top=1232+(784-1232)*r+bob*(1-r)+(t>=3.5?5*Math.sin((tb-3.5)*1.6):0);}
+  const tilt=(t<3.0||t>=ENDC)?(loop?0:1.2*Math.sin(Math.PI*2*tb/2.0)):0;
+  put('STG',540,top+540,tilt);
+  const endc=t>=ENDC;
+  let n; if(endc){n=0;} else [n]=sceneOf(t);
+  paneAnim(n,t,tb,loop,endc); shutSet(endc?-1:t,loop||endc);
+  // Etikett: Frame 0 bis 2,97 (danach steigt der Schalter)
+  if(t<2.97) put('TAG',500+(loop?0:6*Math.sin(Math.PI*2*tb/2.0)),1088,-1.5+(loop?0:1.2*Math.sin(Math.PI*2*tb/1.0)),1,1); else put('TAG',500,1088,0,1,0);
+
+  // Kamera: leichter Push je Szene + Zoom-Punch 1→1,05→1 in 0,22 s (um 540/1000); Rollladen = kleiner Ruck nach unten
+  let push=1;
+  if(t<3.0) push=loop?1:1+.012*lin(t,0,2.6);
+  else if(t<ENDC){let s0=3.0; for(const a of SC) if(t>=a) s0=a; push=1+.014*lin(t,s0+.4,s0+3.5);}
+  const punch=PUNCH.reduce((m,p)=>m*(1+.05*Math.sin(Math.PI*lin(t,p,p+.22))),1);
+  const jolt=loop?0:SEQ.slice(1).reduce((m,a)=>m+(t>=a&&t<a+.12?6*Math.sin(Math.PI*lin(t,a,a+.12)):0),0);
+  const s=(1+(loop?0:.004*Math.sin(tb*1.3)))*push*punch, dy=(loop?0:4*Math.sin(tb*.9))+jolt;
+  $('world').style.transform=`translate(${(540-540*s).toFixed(2)}px,${(1000-1000*s+dy).toFixed(2)}px) scale(${s.toFixed(5)})`;
+
+  // ---- Hook + Mitmach-Pille (Frame 0 fertig, voll bis 2,97 s, dann harter Schnitt) ----
+  {const on=t<2.97; $('hook').style.display=on?'':'none';
+   $('mk1').style.transformOrigin='0 50%'; $('mk1').style.transform=`scale(${1+(loop?0:.03*Math.sin(Math.PI*lin(t,1.0,1.3)))})`;
+   const M=$('mit'); M.style.display=on?'flex':'none';
+   M.style.transform=`scale(${(1+(loop?0:.04*Math.sin(Math.PI*lin(t,1.5,1.72)))).toFixed(4)})`;}
+  // ---- Captions + Belege (gleichzeitig) ----
+  SC.forEach((a,i)=>{if(GMB&&a===17.0){$('c'+(i+1)).style.display='none';$('s'+(i+1)).style.display='none';return;} lns('c'+(i+1),t,a,a+CAPD); box('s'+(i+1),t,a,a+CAPD);});
+  // ---- CTA-Chip ----
+  {const Cp=$('chip'); $('chipT').textContent=GMB?'Preço na hora no site':'Preço na hora · link na bio';
+   const p=lin(t,3.0,3.2); const on=t>=3.0&&t<ENDC; Cp.style.display=on?'flex':'none'; Cp.style.opacity=(Math.min(1,.6+p*2)*(1-lin(t,ENDC-.08,ENDC))).toFixed(3); Cp.style.transform=`scale(${(.94+.06*eo(p)).toFixed(4)})`;}
+  // ---- Endcard ----
+  {const E=$('end'); const o=t>=ENDC&&!loop?1:0; E.style.opacity=o.toFixed(3); E.style.display=o>0?'':'none';
+   $('eBio').textContent=GMB?'no site':'link na bio';
+   const b=lin(t,ENDC,ENDC+.15); $('eBio').style.transform=`scale(${(.94+.06*eo(b)).toFixed(4)})`;}
+}
+render(0);
+</script></body></html>

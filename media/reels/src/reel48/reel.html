@@ -66,7 +66,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
   <div class="cap" id="c2"><div class="ln">Pra valer no Brasil:</div><div class="ln"><span class="mk">em português.</span></div></div>
   <div class="cap" id="c3"><div class="ln">Fé pública? Só com</div><div class="ln"><span class="mk">tradutor público.</span></div></div>
   <div class="cap" id="c4"><div class="ln">Registro por idioma:</div><div class="ln"><span class="mk">tradutor de árabe.</span></div></div>
-  <div class="cap" id="c5"><div class="ln">Órgão pode pedir</div><div class="ln"><span class="mk">o original junto.</span></div></div>
+  <div class="cap" id="c5"><div class="ln">O original vai</div><div class="ln"><span class="mk">junto com a tradução.</span></div></div>
   <div class="cap" id="c6"><div class="ln">Do árabe, na tabela:</div><div class="ln"><span class="mk">R$ 299 a certidão.</span></div></div>
   <div class="cap" id="c7"><div class="ln">Lista de documentos?</div><div class="ln"><span class="mk">Confirme no órgão.</span></div></div>
 
@@ -89,7 +89,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
   </div>
 </div>
 <script>
-// GMB-Fassung (≤ 30 s, ohne 17,0–20,5 „Órgão pode pedir o original junto.“, Endcard 5,0 s statt 6,7 s): gmb/reel.html setzt GMB=1, oder URL ?cut=gmb
+// GMB-Fassung (≤ 30 s, ohne 17,0–20,5 „O original vai junto com a tradução.“, Endcard 5,0 s statt 6,7 s): gmb/reel.html setzt GMB=1, oder URL ?cut=gmb
 let GMB=0;
 if(new URLSearchParams(location.search).get('cut')==='gmb') GMB=1;
 const END=GMB?29.3:34.5;
@@ -223,10 +223,10 @@ function paneAnim(n,t,tb,loop,endc){
     return;}
   if(n===0){   // Hook: Certidão links schräg, einfaches Blatt rechts, „?“ über dem einfachen Blatt pulsiert; 2,5 Ring um das Blatt + Punch
     show('ctW',true); show('smW',true);
-    at('ct',310+(loop?0:6*w),420+(loop?0:5*Math.sin(Math.PI*2*tb/2.0)),-7+2.5*w,.74);
-    at('sm',650,430,6-1.5*w,.68);
-    gp('q0',650,250,.95*(1+.10*w));
-    if(!loop&&t>=2.5){ const rk=pk(t,2.5,.6); at('ring',650,420,0,Math.max(.001,rk*.56)); $('ring').setAttribute('opacity',(1-lin(t,2.75,2.97)*.6).toFixed(3)); } }
+    at('ct',310+(loop?0:6*w),400+(loop?0:5*Math.sin(Math.PI*2*tb/2.0)),-7+2.5*w,.74);
+    at('sm',650,410,6-1.5*w,.68);
+    gp('q0',650,232,.95*(1+.10*w));
+    if(!loop&&t>=2.5){ const rk=pk(t,2.5,.6); at('ring',650,400,0,Math.max(.001,rk*.56)); $('ring').setAttribute('opacity',(1-lin(t,2.75,2.97)*.6).toFixed(3)); } }
   if(n===1){   // Não: Certidão links; 3,5 einfaches Blatt rutscht rechts herein (Klick) und blasst 4,5 ab, Übersetzungsblatt mit Siegel davor; 5,5 Haken
     show('ctW',true); show('smW',true); show('jrW',true);
     at('ct',290,500,-3,.82);
@@ -254,7 +254,7 @@ function paneAnim(n,t,tb,loop,endc){
       $('tb'+i).setAttribute('transform',`translate(0 ${lift.toFixed(1)}) translate(${-120+i*120} 190) scale(${Math.max(.001,s*(i===1&&t>=14.5?1.12:1)).toFixed(4)}) translate(${120-i*120} -190)`); $('tb'+i).setAttribute('opacity',s>0?1:0);
       if(i===1) $('tb1').querySelector('rect').setAttribute('fill',t>=14.5?'#97B9A8':'#EEDECE');});
     okAt(15.5,720,250);}
-  if(n===5){   // Original junto: Certidão hinten links, Übersetzung vorn rechts; 17,5 Büroklammer (Klick), 18,0 beide rücken zusammen, 19,0 Haken, 19,5 Wippen
+  if(n===5){   // Original vai junto (art. 27 § 2º: obrigação): Certidão hinten links, Übersetzung vorn rechts; 17,5 Büroklammer (Klick), 18,0 beide rücken zusammen, 19,0 Haken, 19,5 Wippen
     show('ctW',true); show('jrW',true);
     const m=eio(lin(t,18.0,18.4)); const wb=t>=19.5?2.5*Math.sin(Math.PI*2*lin(t,19.5,19.9))*(1-lin(t,19.5,19.9)):0;
     at('ct',350+40*m,480,-4+wb,.92); at('jr',610-40*m,540,4+wb,.92);
@@ -279,11 +279,11 @@ function render(tn){
   const tb=loop?0:tn;
   $('bg1').style.transform=`translate(${Math.sin(tb*.4)*24}px,${-tb*3}px)`; $('bg2').style.transform=`translate(${-tb*3}px,${Math.cos(tb*.5)*18}px)`;
 
-  // Guichê: unten (Hook + Endcard, Oberkante 1232), steigt 3,0–3,5 nach oben (Oberkante 784)
+  // Guichê: unten (Hook Oberkante 1100, Endcard 1176), steigt 3,0–3,5 nach oben (Oberkante 784)
   const bob=loop?0:10*Math.sin(Math.PI*2*tb/1.0);
   let top;
   if(t>=ENDC) top=1176+bob;
-  else {const r=eo(lin(t,3.0,3.5)); top=1232+(784-1232)*r+bob*(1-r)+(t>=3.5?5*Math.sin((tb-3.5)*1.6):0);}
+  else {const r=eo(lin(t,3.0,3.5)); top=1100+(784-1100)*r+bob*(1-r)+(t>=3.5?5*Math.sin((tb-3.5)*1.6):0);}
   const tilt=(t<3.0||t>=ENDC)?(loop?0:1.2*Math.sin(Math.PI*2*tb/2.0)):0;
   put('STG',540,top+540,tilt);
   const endc=t>=ENDC;

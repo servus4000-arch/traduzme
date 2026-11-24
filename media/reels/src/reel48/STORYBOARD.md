@@ -15,33 +15,34 @@ Certidão de nascimento **árabe → português**, Etikett „R$ 299 na tabela�
 | Q2 | Em geral, não: vale a juramentada · Lei 14.195/2021 · art. 26 (Bild 3,0) | Lei 14.195/2021 art. 26 I (Übersetzung von Dokumenten, die vor Behörden/Cartórios vorgelegt werden, ist Aufgabe des tradutor público) | WebFetch Câmara (www2.camara.leg.br, normaatualizada) 24.11.2026 |
 | Q3 | Pra valer no Brasil: em português · Código Civil · art. 224 (Bild 6,5) | CC art. 224 „Os documentos redigidos em língua estrangeira serão traduzidos para o português para ter efeitos legais no País.“ | Whitelist (R31-Beleg) |
 | Q4 | Fé pública? Só com tradutor público · Em geral · Lei 14.195, art. 27 (Bild 10,0) | art. 27 caput und § 1 (keine Übersetzung hat fé pública ohne tradutor público; Ausnahmen I–IV → „Em geral“) | WebFetch Câmara 24.11.2026 |
-| Q5 | Registro por idioma: tradutor de árabe · Lei 14.195/2021 · art. 23 (Bild 13,5) | art. 23: Habilitation und Registrierung je Sprache → Folgerung „tradutor de árabe“ | WebFetch Câmara 24.11.2026 |
-| Q6 | Órgão pode pedir o original junto · Lei 14.195 · art. 27, § 2º (Bild 17,0, nur Hauptfassung) | art. 27 § 2º: Vermutung schließt Vorlage des Originals mit der Übersetzung nicht aus | WebFetch Câmara 24.11.2026 |
+| Q5 | Registro por idioma: tradutor de árabe · Lei 14.195/2021 · art. 23 (Bild 13,5) | art. 23: Habilitation und Registrierung je Sprache; art. 26 p. ú. I: ad hoc nur bei Fehlen eines tradutor público „habilitado para o idioma“ → Habilitation je Sprache direkt im Gesetz | WebFetch planalto + Câmara 24.11.2026 |
+| Q6 | O original vai junto com a tradução · Lei 14.195 · art. 27, § 2º (Bild 17,0, nur Hauptfassung) | art. 27 § 2º: „A presunção (…) não afasta: I – **a obrigação de o documento na língua original acompanhar a sua respectiva tradução**; e II – a possibilidade de (…) impugnar (…)“ → Pflicht, kein Ermessen des Órgão | WebFetch planalto 24.11.2026 |
 | Q7 | Lista de documentos? Confirme no órgão · Cada órgão tem a sua (Bild 24,0) | Rechner FAQ a8 „Como as regras variam, confirme sempre com o órgão de destino.“ | Rechner-Quelltext 24.11.2026 |
 | Q8 | Envie a foto: preço na hora (Endcard) | Rechner fl1 „Foto ou PDF, quantos precisar.“, fl2 „Valor e data de entrega na hora.“ | Rechner-Quelltext 24.11.2026 |
 | – | Requisiten (Guichê, Certidão mit Raster ohne Schrift, einfaches Blatt, Übersetzungsblatt mit Siegel, Pfeil, Ausweis-Karte mit Reitern, Büroklammer, Preisschild ohne Zahl, Klemmbrett, Foto-Ecken) | eigene SVG ohne Schrift, ohne Zahlen, ohne Wappen/Flaggen/Landkarte, keine nachgemachte arabische Schrift, kein Kundenfall | – |
 
-planalto war nicht erreichbar (Proxy 403) → Lei 14.195 über die Câmara-Fassung gelesen.
+planalto per curl nicht erreichbar (Proxy 403), per WebFetch am 24.11. lesbar: Art. 22–27 ohne Redação-/Revogado-Vermerk (nur „Vide ADI 7196“ bei art. 22 p. ú.). Daneben Câmara-Fassung (normaatualizada).
 
 **Bewusst nicht verwendet:** Apostila/Legalisation; Wege ohne Übersetzung; Transliteration von Namen; Lieferfristen, Urgência, Via física (Regel 12); Empfehlungen (Lehre R45).
 
 ## Ablauf (Designzeit; GMB lässt 17,0–20,5 weg, Endcard 5,0 s)
 | Zeit | Text (Bild) | Beleg-Pille | Bild / Ereignis | SFX |
 |---|---|---|---|---|
-| 0–2,97 | Hook „Certidão / egípcia: / tradução / simples serve?“ + Pille „SIM ou NÃO?“ + Etikett „Certidão de nascimento · árabe → português · R$ 299 · na tabela“ | – | Guichê unten, Certidão + einfaches Blatt, „?“ über dem Blatt; 2,5 Ring um das einfache Blatt + Punch | pop 0,03 · stamp 2,5 |
+| 0–2,97 | Hook „Certidão / egípcia: / tradução / simples serve?“ + Pille „SIM ou NÃO?“ + Etikett „Certidão de nascimento · árabe → português · R$ 299 · na tabela“ | – | Guichê unten (Oberkante 1100), Certidão + einfaches Blatt, „?“ über dem Blatt; 2,5 Ring um das einfache Blatt + Punch | pop 0,03 · stamp 2,5 |
 | 3,0 | Em geral, não: / vale a juramentada. | Lei 14.195/2021 · art. 26 | Rollladen; Guichê steigt; einfaches Blatt wird Übersetzung mit Siegel; 5,5 Haken | whoosh · click 3,5 · pop 5,5 |
 | 6,5 | Pra valer no Brasil: / em português. | Código Civil · art. 224 | Certidão → Pfeil (7,5 Punch) → Blatt PT; 8,5 Haken | whoosh · click 7,0 · stamp 7,5 · pop 8,5 |
 | 10,0 | Fé pública? Só com / tradutor público. | Em geral · Lei 14.195, art. 27 | Übersetzungsblatt, Siegel 11,0 + Punch, Unterschrift; 12,5 Haken | whoosh · stamp 11,0 · pop 12,5 |
 | 13,5 | Registro por idioma: / tradutor de árabe. | Lei 14.195/2021 · art. 23 | Ausweis-Karte, Reiter 14,0, mittlerer Reiter leuchtet 14,5 + Punch; 15,5 Haken | whoosh · click 14,0 · stamp 14,5 · pop 15,5 |
-| 17,0 | Órgão pode pedir / o original junto. | Lei 14.195 · art. 27, § 2º | Original + Übersetzung mit Büroklammer 17,5; 19,0 Haken | whoosh · click 17,5 · pop 19,0 |
+| 17,0 | O original vai / junto com a tradução. | Lei 14.195 · art. 27, § 2º | Original + Übersetzung mit Büroklammer 17,5; 19,0 Haken | whoosh · click 17,5 · pop 19,0 |
 | 20,5 | Do árabe, na tabela: / R$ 299 a certidão. | Preço fixo · até 4 páginas | Certidão + Preisschild ohne Zahl 21,5 + Punch; 22,5 Haken | whoosh · stamp 21,5 · pop 22,5 |
 | 24,0 | Lista de documentos? / Confirme no órgão. | Cada órgão tem a sua | Klemmbrett mit leeren Kästchen, „?“ 25,5 + Stempel, Haken 26,5 | whoosh · stamp 25,5 · pop 26,5 |
 | 27,5–34,2 | Certidão / em árabe? / Envie a foto: / preço na hora. + link na bio + traduzme.com.br + (61) 99803-8363 | – | Certidão in Foto-Ecken + Haken 28,5 | stamp+hit 27,5 · pop 28,5 |
 | 34,2 | Loop = Frame 0 | | | |
 
-Lernpunkte (≥ 3 mit Warum): Dokument muss auf Português vorliegen, um in Brasilien zu wirken → vor Behörden übersetzt der tradutor público → nur seine Übersetzung hat in der Regel fé pública → Registrierung je Sprache (árabe) → Original kann zusätzlich verlangt werden → Festpreis je Certidão → Dokumentenliste beim Órgão prüfen.
+Lernpunkte (≥ 3 mit Warum): Dokument muss auf Português vorliegen, um in Brasilien zu wirken → vor Behörden übersetzt der tradutor público → nur seine Übersetzung hat in der Regel fé pública → Registrierung je Sprache (árabe) → das Original geht per Gesetz mit der Übersetzung mit → Festpreis je Certidão → Dokumentenliste beim Órgão prüfen.
 
 ## Kritiker-Runden
 - Runde 1 (Fakten/Design/Hook/Conversion): Lei 14.195 selbst über die Câmara-Fassung geöffnet; „Em geral“ bei fé pública, „Confirme no órgão“ als eigene Szene; Preis nur mit „na tabela“, Endcard ohne Preis; Hook = Kauf-Zweifel (günstigerer Weg), IG/TikTok verraten die Antwort nicht.
 - Runde 2: Marker-Puls des Hooks ragte über die Safe Zone (x 907) → Puls auf 0,03 begrenzt; Requisiten zu klein → vergrößert; Haken in den Szenen 17,0 / 20,5 / 24,0 lagen in der unteren UI-Zone → nach oben versetzt.
 - Runde 3: keine offenen Mängel (Kontaktbögen Haupt 0–34,4 s und GMB 0–29,2 s, qa_frames PASS).
+- Runde 4 (Abnahme 24.11. nicht freigegeben): 48-A art. 27 § 2º nennt eine Pflicht („obrigação … acompanhar“) → Szene 17,0 „Órgão pode pedir o original junto.“ → „O original vai / junto com a tradução.“, Alt-Text/YT/LinkedIn angepasst; 48-1 Hook-Requisiten ≈ 150 px höher (Guichê-Oberkante 1232 → 1100, Requisiten in der Ablage −20 px), Haupt + GMB neu gerendert; 48-5 Quellen planalto + art. 26 p. ú. I. Danach Kontaktbögen Haupt 0–34,4 s und GMB 0–29,2 s erneut ganz angesehen, qa_frames/qa_check Exit 0.

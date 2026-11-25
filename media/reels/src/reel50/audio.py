@@ -10,6 +10,7 @@ whoosh (0,14 s) = Reißverschluss-Bahn / Szenenwechsel 3,0 · 6,5 · 10,0 · 13,
 click = Übersetzung von dort 3,5 / Konsulats-Certidão 7,0 / Haus blasst ab 14,0 / Büroklammer 17,5 (Pfeil 10,5 ohne SFX: Gebäude 11,0 trägt das Ereignis).
 27 SFX auf 34,5 s = 0,78/s (≤ 0,8). Höchstens 1 SFX je Bildereignis, gleiche SFX nie innerhalb 1 s. Zeiten = Designzeit wie reel.html; GMB lässt 17,0–20,5 weg (Endcard 5,0 s).
 Lehre 49-1: stamp bekommt einen kurzen Präsenz-Anteil (Bandpass-Rauschen 1,8–4,2 kHz, Abklingzeit 15 ms) im selben Ereignis, damit er auf Handy-Lautsprechern hörbar ist.
+Fix 50-A/50-1 (Abnahme 25.11.): stamp-Körper per Hochpass 300 Hz (4. Ordnung) abgesenkt, Präsenz-Schicht ×4,0; Ziel je stamp 1,8–4,2 kHz ≥ +6 dB (besser ≥ +9), 0,3–8 kHz ≥ +3 dB, Breitband ≤ +4 dB.
 """
 import os, sys, subprocess, tempfile, inspect
 
@@ -54,8 +55,8 @@ G = float(os.environ.get('SFXG', '1.0'))
 # Gain-Korrektur je SFX (Ausgabezeit → Faktor) nach Stem-Messung (Methode wie Fix 46-3/R47/R49, Skript measure_sfx.py):
 # je Ereignis t: Spitze = max über alle 20-ms-Fenster (Schritt 5 ms) in [t, t+0,45 s] von L(Mix) − L(Musik) im selben Fenster (inkl. Ausklang).
 # Ziel: Spitze ≈ +3,5 dB (nie > +4 dB), iterativ (Sidechain-Ducking ist nicht linear).
-GJ_MAIN = {0.03: 1.501, 2.5: 0.287, 3.0: 0.765, 3.5: 1.242, 5.5: 0.74, 6.5: 0.158, 7.0: 1.441, 7.5: 0.513, 8.5: 0.387, 10.0: 1.202, 11.0: 0.848, 12.5: 0.411, 13.5: 0.417, 14.0: 1.191, 14.5: 0.305, 15.5: 0.697, 17.0: 0.813, 17.5: 1.259, 19.0: 0.717, 20.5: 0.126, 21.5: 0.508, 22.5: 0.445, 24.0: 1.24, 25.5: 0.511, 26.5: 0.439, 27.5: 0.484, 28.5: 0.377}
-GJ_GMB = {0.03: 1.566, 2.5: 0.276, 3.0: 0.782, 3.5: 1.255, 5.5: 0.753, 6.5: 0.164, 7.0: 1.374, 7.5: 0.481, 8.5: 0.403, 10.0: 1.258, 11.0: 0.82, 12.5: 0.418, 13.5: 0.427, 14.0: 1.295, 14.5: 0.304, 15.5: 0.721, 17.0: 0.824, 18.0: 0.363, 19.0: 0.759, 20.5: 0.13, 22.0: 0.384, 23.0: 0.818, 24.0: 0.44, 25.0: 1.167}
+GJ_MAIN = {0.03: 1.501, 2.5: 0.158, 3: 0.765, 3.5: 1.242, 5.5: 0.74, 6.5: 0.158, 7: 1.441, 7.5: 0.421, 8.5: 0.387, 10: 1.202, 11: 0.646, 12.5: 0.411, 13.5: 0.417, 14: 1.191, 14.5: 0.298, 15.5: 0.697, 17: 0.813, 17.5: 1.259, 19: 0.716, 20.5: 0.126, 21.5: 0.383, 22.5: 0.445, 24: 1.24, 25.5: 0.387, 26.5: 0.439, 27.5: 0.354, 28.5: 0.379}
+GJ_GMB = {0.03: 1.566, 2.5: 0.165, 3: 0.782, 3.5: 1.255, 5.5: 0.753, 6.5: 0.164, 7: 1.374, 7.5: 0.524, 8.5: 0.403, 10: 1.258, 11: 0.672, 12.5: 0.418, 13.5: 0.427, 14: 1.295, 14.5: 0.261, 15.5: 0.72, 17: 0.823, 18: 0.42, 19: 0.758, 20.5: 0.13, 22: 0.239, 23: 0.819, 24: 0.322, 25: 1.169}
 GJ = GJ_GMB if GMB else GJ_MAIN
 if os.environ.get('GJ'):   # nur zum Nachmessen/Feinjustieren
     import json; GJ = {float(k): v for k, v in json.loads(os.environ['GJ']).items()}
@@ -65,12 +66,22 @@ tr.keep_stems = True
 tr.v2['ceiling'] = -3.0   # AAC-Überschwinger (Lehre R26/R49)
 # Lehre 49-1: stamp mit Präsenz-Anteil (gleiches Ereignis, kein zweites SFX)
 _fx_sfx = tr.fx.sfx
+# Fix 50-A: Körper des stamp unter ≈ 300 Hz abgesenkt (Hochpass auf den stamp-Anteil; der Tiefbass schöpfte das
+# Breitband-Limit +4 dB aus, Handy-Lautsprecher geben ihn kaum wieder) und Präsenz-Schicht stärker (PRES) – damit
+# trägt der stamp im Band 1,8–4,2 kHz, die Breitband-20-ms-Spitze bleibt ≤ +4 dB (GJ neu iteriert).
+STAMP_HP = float(os.environ.get('STAMP_HP', '300')); PRES = float(os.environ.get('PRES', '4.0'))
+PRES_T = {2.5: float(os.environ.get('PRES25', '8.0'))}   # Hook-Payoff: eigene Präsenz-Stärke (Ausgabezeit)
 def _sfx_presence(kind, t, g=1.0, pan=0.0, **kw):
-    _fx_sfx(kind, t, g, pan, **kw)
-    if kind == 'stamp':
-        fx = tr.fx; m = int(.06 * 44100)
-        nz = fx.bp(fx.rng.standard_normal(m), 1800, 4200) * np.exp(-np.arange(m) / (44100 * .015)) * 1.4
-        fx.put('sfx', nz, t, g, pan)
+    if kind != 'stamp':
+        return _fx_sfx(kind, t, g, pan, **kw)
+    fx = tr.fx; SR = 44100; m = int(.35 * SR); tt = np.arange(m) / SR
+    x = np.sin(2 * np.pi * np.cumsum(70 + 120 * np.exp(-tt * 40)) / SR) * np.exp(-tt * 14) * .9 \
+        + fx.lp(fx.rng.standard_normal(m), 2500) * np.exp(-tt * 30) * .6          # = sound.py stamp
+    x = fx.hp(x, STAMP_HP, order=4)
+    k = int(.06 * SR)
+    nz = fx.bp(fx.rng.standard_normal(k), 1800, 4200) * np.exp(-np.arange(k) / (SR * .015)) * PRES_T.get(round(t, 2), PRES)
+    x[:k] += nz
+    fx.put('sfx', x, t, g, pan)
 tr.fx.sfx = _sfx_presence
 EVENTS = []
 PUNCH = 'stamp'   # kurzer Punch statt 1,2-s-Sub-Impact (Lehre 46-3)

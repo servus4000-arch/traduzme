@@ -54,3 +54,9 @@ Lernpunkte (≥ 3 mit Warum): Übersetzung für den Traslado nur durch tradutor 
 - **Runde 1 Conversion:** IG/TikTok ohne Antwort (Regel 14), Zeile 2 „Resposta no vídeo 👀“; Endcard ohne Preis; CTA-Chip ab 3,0 s; YT/LinkedIn antworten mit Quelle; UTM reel50.
 - **Runde 2:** „Junto: certidão de / nascimento sua.“ (holprig) → „Junto: sua certidão / de nascimento.“; Kontaktbogen: Gebäude überdeckte die Pfeilspitze (10,0–13,5) → Haus/Pfeil/Gebäude enger gestellt (Gebäude 0,68); Endcard-Certidão höher (lokal y 270).
 - **Runde 3:** keine offenen Mängel am Storyboard.
+
+## Fix nach Abnahme 25.11. (50-A, 50-1, nur Ton)
+- 50-A: Hook-Payoff-stamp 2,5 s lag im Präsenzband 1,8–4,2 kHz nur +1,9 dB (GMB +1,6) über der Musik, weil der Tiefbass-Körper das Breitband-Limit +4 dB ausschöpfte. Fix in audio.py: stamp-Körper Hochpass 300 Hz (4. Ordnung), Präsenz-Schicht ×4,0 (2,5 s ×8,0), GJ_MAIN/GJ_GMB neu iteriert (Ziel Breitband-20-ms-Spitze ≈ +3,45 dB).
+- Ergebnis Haupt (20-ms-Spitze, [t, t+0,45 s], Mix − Musik): stamp 2,5 Präsenz +7,0 / 0,3–8 kHz +4,1; 7,5 +21,7 / +4,3; 11,0 +20,7 / +6,8; 14,5 +12,2 / +6,4; 21,5 +10,1 / +4,6; 25,5 +15,3 / +6,4; 27,5 +10,9 / +4,7; Breitband alle 27 SFX +3,44 … +3,49 dB. GMB: 2,5 +6,9 / +4,1; 14,5 +12,1; 18,0 (= 21,5) +13,4; 24,0 (= Endcard) +13,8; Breitband +3,42 … +3,49 dB.
+- 2,5 s erreicht ≥ +6, nicht ≥ +9: stärkere Präsenz (×14) hob das Band nur auf +7,6, weil die Präsenz-Schicht dann selbst das Breitband-Limit setzt (Musik an der Stelle präsenzreich).
+- 50-5: Video nicht neu gerendert; Ton per Remux (`-c:v copy`, AAC 256k 48 kHz, faststart) in Haupt und GMB eingesetzt, Video-Stream bit-gleich (md5 des Videostreams vorher = nachher).

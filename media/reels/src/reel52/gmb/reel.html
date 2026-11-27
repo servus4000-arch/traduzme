@@ -1,20 +1,20 @@
 <!doctype html>
 <html><head><meta charset="utf-8">
-<!-- Reel 52 · „Certidão em espanhol: só a tradução basta?“ · Certidão de nascimento espanhol → português R$ 149 na tabela · Post Fr 04.12.2026
+<!-- Reel 52 · „Seu extrait francês mostra os pais?“ · Acte de naissance francês → português R$ 119 na tabela · Post Fr 04.12.2026
      Format „Mural“ (Held-Objekt: Pinnwand – Korkfläche in Pinho-Rahmen als Bühne, Pinnnadeln in den Ecken, unten Ablageleiste; Requisiten nur Formen:
-     Certidão estrangeira (Zierrahmen, Siegel), Tradução (Pinho-Kopfband, Stempelkasten, Unterschrift), großer Büroklammer-Clip, Waage, Gebäude mit Säulen
-     (cartório), Pfeil, Lupe, Preisschild ohne Zahl, Checkliste mit Kästchen, Handy-Umriss, Haken, Fragezeichen –
-     keine Schrift, keine Zahlen, keine Daten, kein Wappen, keine Flaggen, keine Landkarte, kein Firmenlogo).
+     Extrait-Karte (Kopfband, Namenszeile, Datum/Ort-Zeilen, Eltern-Feld mit zwei Personen-Symbolen oder leerem gestricheltem Feld, schmale Randspalte),
+     Copie intégrale (hohes Blatt mit vielen Zeilen + Randspalte), Personen-Symbole, Vorhängeschloss, Preisschild ohne Zahl, Handy-Umriss, Haken,
+     Fragezeichen – keine Schrift, keine Zahlen, keine Daten, kein Wappen, keine Flaggen, keine Landkarte, kein Firmenlogo).
      Szenenwechsel = „Folha-Schnitt“: ein neues Blatt Papier gleitet 0,10 s vor dem Schlag von rechts über die Korkfläche, deckt sie auf dem Schlag ganz
      (harter Schnitt des Inhalts darunter) und ist bei +0,18 s links draußen; nie zwei Inhalte übereinander.
      Grund Areia #EEDECE (Hook/Endcard Dark-Schrift, Marker Sálvia/Dark; Caption-Pillen Dark/Weiß, Marker Sálvia/Dark; Belege Papier/Dark mit Pinho-Rand;
      Chips Pinho/Weiß; nie Weiß auf Areia) · funk 120 BPM (R51 Fichário/Sálvia/lofi · R50 Mala/Dark/bossa · R49 Envelope/Névoa/calm).
-     Etikett Dokument + Richtung + Preis in Frame 0 = Standard seit R35; Hook-Frage ist ein Kauf-Zweifel (reicht die Übersetzung allein?), NICHT die Preisfrage;
-     das Etikett sagt nichts über das Original → verrät die Antwort nicht.
-     Szenen 3,5 s, Endcard „Envie a foto: preço na hora.“ (Standard), Mitmach als Pille „SIM ou NÃO?“ (Standard-Form, keine Knöpfe).
-     Neue Variable (nicht im Bild): TikTok-Caption Zeile 1 nennt drei Herkunftsländer (siehe social/reels/reel52-texte.md).
-     Quellen je Aussage: STORYBOARD.md (Q1 precos es/to_pt certidao de nascimento · Q1b analisar v48 / pix-cob v62 · Q2–Q4 Lei 14.195/2021 art. 26 I,
-     art. 27 caput, § 2º I e II · Q5 Código Civil art. 224 · Q7 Rechner fl1–fl4). -->
+     Etikett Dokument + Richtung + Preis in Frame 0 = Standard seit R35; Hook-Frage ist ein Kauf-Zweifel (welche Fassung habe ich / reicht sie?), NICHT die
+     Preisfrage; das Etikett nennt nur Dokument/Richtung/Preis → verrät die Antwort nicht.
+     Szenen 3,5 s, Endcard „Envie a foto: preço na hora.“ (Standard), Mitmach als Pille „SIM, NÃO ou DEPENDE?“ (Standard-Form wie R51, keine Knöpfe).
+     Neue Variable (nicht im Bild): TikTok-Caption Zeile 1 mit den Originalbegriffen „copie intégrale“ / „extrait“ (siehe social/reels/reel52-texte.md).
+     Quellen je Aussage: STORYBOARD.md (Q1 precos fr/to_pt certidao de nascimento · Q1b analisar v48 / pix-cob v62 · Q2–Q6 service-public.gouv.fr F1427
+     „Acte de naissance : demande de copie intégrale ou d'extrait“, vérifié 14.08.2026 · Q7 Rechner fl1–fl4). -->
 <link rel="stylesheet" href="../fonts/os.css">
 <style>
 :root{--dark:#1F3B35;--pinho:#376259;--sal:#97B9A8;--areia:#EEDECE;--nevoa:#BDCBCB;--paper:#FBFAF6}
@@ -35,10 +35,10 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
 .hd{position:absolute;font-weight:800;color:var(--dark);letter-spacing:-.5px;line-height:1.18;white-space:nowrap}
 #STG{width:960px;height:1080px}
 </style>
-<!-- qa: Pinnwand, Blätter, Clip, Waage, Gebäude, Pfeil, Lupe, Preisschild, Checkliste, Handy und Blatt-Schnitt tragen nur Formen
+<!-- qa: Pinnwand, Extrait-Karten, Copie intégrale, Personen-Symbole, Schloss, Menge, Preisschild, Handy und Blatt-Schnitt tragen nur Formen
      (keine Schrift, keine Zahlen, keine Daten, kein Wappen, keine Flaggen); einzige Schrift auf Objekten ist das Etikett #TAG (Dokument + Richtung + Preis,
      Standard seit R35). ignoreText nur „traduzme“. -->
-<!-- qa-Ausnahme maxNewWords 24 (Grund): Frame 0 trägt mit dem Pflicht-Etikett 15 Wörter (Hook 6 + Mitmach 3 + Etikett 6).
+<!-- qa-Ausnahme maxNewWords 24 (Grund): Frame 0 trägt mit dem Pflicht-Etikett 19 Wörter (Hook 6 + Mitmach 4 + Etikett 9).
      An der Loop-Naht (34,2 s, harter Schnitt auf Frame 0, Raster D6) misst qa_frames sie als „neu“ mit nur 0,3 s Standzeit, weil das Video dort endet;
      im echten Loop stehen sie 2,97 s wie in Frame 0 (gleiche Ausnahme wie R35–R51, Abnahme 35-1 „vertretbar“). -->
 <script type="application/json" id="qa-config">{"ignoreText":"^(traduzme)$","maxNewWords":24}</script>
@@ -53,46 +53,46 @@ html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',san
     <div class="obj" id="STG" data-qa="object"><svg id="PH" width="960" height="1080" viewBox="0 0 960 1080"></svg></div>
     <!-- Etikett (Standard): Dokument + Richtung + Preis ab Frame 0 (kompakt, Lehre 48-1) -->
     <div class="obj" id="TAG" data-qa="object" style="width:744px;height:248px;border-radius:28px;background:var(--paper);border:8px solid #376259;box-shadow:0 14px 28px rgba(31,59,53,.30)">
-      <div class="hd" style="left:36px;top:10px;font-size:48px">Certidão de nascimento</div>
-      <div class="hd" style="left:36px;top:66px;font-size:48px;display:flex;align-items:center;gap:16px">espanhol<svg width="60" height="38" viewBox="0 0 140 90"><path d="M10 45H110" stroke="#1F3B35" stroke-width="16" stroke-linecap="round"/><path d="M80 12l40 33-40 33" fill="none" stroke="#1F3B35" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/></svg>português</div>
+      <div class="hd" style="left:36px;top:10px;font-size:48px">Acte de naissance</div>
+      <div class="hd" style="left:36px;top:66px;font-size:48px;display:flex;align-items:center;gap:16px">francês<svg width="60" height="38" viewBox="0 0 140 90"><path d="M10 45H110" stroke="#1F3B35" stroke-width="16" stroke-linecap="round"/><path d="M80 12l40 33-40 33" fill="none" stroke="#1F3B35" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/></svg>português</div>
       <div class="abs" style="left:36px;top:132px;width:656px;height:6px;border-radius:3px;background:#97B9A8"></div>
-      <div class="hd" style="left:32px;top:126px;font-size:96px;letter-spacing:-3px">R$ 149</div>
+      <div class="hd" style="left:32px;top:126px;font-size:96px;letter-spacing:-3px">R$ 119</div>
       <div class="hd" style="left:370px;top:166px;font-size:46px;line-height:1.1">na tabela</div>
     </div>
   </div>
 
   <!-- ===== Text-Ebene ===== -->
-  <div class="hook" id="hook">Certidão em<br>espanhol: só a<br><span class="mk" id="mk1">tradução basta?</span></div>
-  <div class="chip" id="mit" style="top:688px;background:#FBFAF6;color:#1F3B35;border:4px solid #376259">SIM ou NÃO?</div>
+  <div class="hook" id="hook">Seu extrait<br>francês mostra<br><span class="mk" id="mk1">os pais?</span></div>
+  <div class="chip" id="mit" style="top:688px;background:#FBFAF6;color:#1F3B35;border:4px solid #376259">SIM, NÃO ou DEPENDE?</div>
 
-  <div class="cap" id="c1"><div class="ln">Não: o original</div><div class="ln"><span class="mk">vai junto.</span></div></div>
-  <div class="cap" id="c2"><div class="ln">Juramentada:</div><div class="ln"><span class="mk">presume-se fiel.</span></div></div>
-  <div class="cap" id="c3"><div class="ln">Cartório, em geral:</div><div class="ln"><span class="mk">tradutor público.</span></div></div>
-  <div class="cap" id="c4"><div class="ln">Pra valer no Brasil:</div><div class="ln"><span class="mk">em português.</span></div></div>
-  <div class="cap" id="c5"><div class="ln">A fidelidade pode</div><div class="ln"><span class="mk">ser impugnada.</span></div></div>
-  <div class="cap" id="c6"><div class="ln">Espanhol, na tabela:</div><div class="ln"><span class="mk">R$ 149 a certidão.</span></div></div>
-  <div class="cap" id="c7"><div class="ln">Lista do cartório:</div><div class="ln"><span class="mk">confirme antes.</span></div></div>
+  <div class="cap" id="c1"><div class="ln">Avec filiation:</div><div class="ln"><span class="mk">com os pais.</span></div></div>
+  <div class="cap" id="c2"><div class="ln">Sans filiation:</div><div class="ln"><span class="mk">sem os pais.</span></div></div>
+  <div class="cap" id="c3"><div class="ln">Copie intégrale:</div><div class="ln"><span class="mk">todo o registro.</span></div></div>
+  <div class="cap" id="c4"><div class="ln">Menções à margem:</div><div class="ln"><span class="mk">nos três tipos.</span></div></div>
+  <div class="cap" id="c5"><div class="ln">Com os pais:</div><div class="ln"><span class="mk">pedido restrito.</span></div></div>
+  <div class="cap" id="c6"><div class="ln">Sans filiation:</div><div class="ln"><span class="mk">qualquer um pede.</span></div></div>
+  <div class="cap" id="c7"><div class="ln">Francês, na tabela:</div><div class="ln"><span class="mk">R$ 119 a certidão.</span></div></div>
 
-  <div class="src" id="s1" data-qa="beleg">Lei 14.195 · art. 27, § 2º, I</div>
-  <div class="src" id="s2" data-qa="beleg">Lei 14.195 · art. 27, caput</div>
-  <div class="src" id="s3" data-qa="beleg">Lei 14.195 · art. 26, I</div>
-  <div class="src" id="s4" data-qa="beleg">Código Civil · art. 224</div>
-  <div class="src" id="s5" data-qa="beleg">Lei 14.195 · art. 27, § 2º, II</div>
-  <div class="src" id="s6" data-qa="beleg">Preço fixo · até 4 páginas</div>
-  <div class="src" id="s7" data-qa="beleg">Em geral · confirme no órgão</div>
+  <div class="src" id="s1" data-qa="beleg">Pais no extrait · França</div>
+  <div class="src" id="s2" data-qa="beleg">Só nome, data e local</div>
+  <div class="src" id="s3" data-qa="beleg">Reproduz todo o assento</div>
+  <div class="src" id="s4" data-qa="beleg">Quando existem · França</div>
+  <div class="src" id="s5" data-qa="beleg">Ex.: titular, cônjuge, pais</div>
+  <div class="src" id="s6" data-qa="beleg">Sem justificar o pedido</div>
+  <div class="src" id="s7" data-qa="beleg">Preço fixo · até 4 páginas</div>
 
   <div class="chip" id="chip"><span id="chipT">Preço na hora · link na bio</span></div>
 
   <!-- Endcard (Absender traduzme; Kopf an der Hook-Position; Standard-Handlungsaufforderung; kein Preis) -->
   <div class="abs" id="end" style="left:0;top:0;width:1080px;height:1920px;opacity:0">
-    <div class="hook" id="eHead" style="top:336px;font-size:96px;line-height:1.16">Certidão em<br>espanhol?<br><span class="mk">Envie a foto:</span><br><span class="mk">preço na hora.</span></div>
+    <div class="hook" id="eHead" style="top:336px;font-size:96px;line-height:1.16">Certidão<br>francesa?<br><span class="mk">Envie a foto:</span><br><span class="mk">preço na hora.</span></div>
     <div class="chip" id="eBio" style="top:816px">link na bio</div>
     <div class="big" id="eUrl" style="left:104px;top:944px;font-size:66px">traduzme.com.br</div>
     <div class="big" id="eWa" style="left:104px;top:1040px;font-size:66px;display:flex;align-items:center;gap:24px"><svg width="72" height="72" viewBox="0 0 32 32"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3z" fill="#376259"/><path d="M11.6 9.6c.3-.6.6-.6 1-.6h.8c.3 0 .6.1.8.6l1.1 2.6c.1.3.1.6-.1.9l-.7.9c-.2.2-.2.5 0 .8a10 10 0 0 0 4.3 3.8c.3.1.6.1.8-.1l.9-1.1c.2-.3.6-.3.9-.2l2.6 1.2c.3.2.5.4.4.8-.2 1.3-1.3 2.4-2.7 2.5-1.2.1-3.6-.5-6.4-3.1-2.6-2.4-3.7-5-3.8-6.2 0-.8.3-1.6.8-2.3z" fill="#FBFAF6"/></svg>(61) 99803-8363</div>
   </div>
 </div>
 <script>
-// GMB-Fassung (≤ 30 s, ohne 17,0–20,5 „A fidelidade pode ser impugnada.“, Endcard 5,0 s statt 6,7 s): gmb/reel.html setzt GMB=1, oder URL ?cut=gmb
+// GMB-Fassung (≤ 30 s, ohne 17,0–20,5 „Com os pais: pedido restrito.“, Endcard 5,0 s statt 6,7 s): gmb/reel.html setzt GMB=1, oder URL ?cut=gmb
 let GMB=1;
 if(new URLSearchParams(location.search).get('cut')==='gmb') GMB=1;
 const END=GMB?29.3:34.5;
@@ -105,10 +105,10 @@ const lin=(t,a,b)=>cl((t-a)/(b-a));
 const eo=x=>1-Math.pow(1-x,3);
 const eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
 const back=x=>{const c=1.6;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
-// 120 BPM: Schlag 0,5 s. Szenen je 3,5 s: 0 Hook · 3,0 original vai junto · 6,5 presume-se fiel · 10,0 cartório · 13,5 português · 17,0 impugnar · 20,5 preço · 24,0 confirme · 27,5 Endcard · 34,2 Loop
+// 120 BPM: Schlag 0,5 s. Szenen je 3,5 s: 0 Hook · 3,0 avec filiation · 6,5 sans filiation · 10,0 copie intégrale · 13,5 menções à margem · 17,0 pedido restrito · 20,5 qualquer um · 24,0 preço · 27,5 Endcard · 34,2 Loop
 const SC=[3.0,6.5,10.0,13.5,17.0,20.5,24.0];
 const ENDC=27.5;
-const PUNCH=[2.5,7.5,11.0,14.5,21.5];
+const PUNCH=[2.5,7.5,11.0,14.5,21.5,25.5];
 const PANE={0:0,3.0:1,6.5:2,10.0:3,13.5:4,17.0:5,20.5:6,24.0:7};
 const WD=.10, WU=.18;   // Blatt kommt 0,10 s vor dem Wechsel (3 Frames), deckt die Korkfläche auf dem Schlag (harter Schnitt), ist bei +0,18 s links draußen
 const CAPD=3.42;
@@ -117,47 +117,42 @@ const CAPD=3.42;
 const OK=(cx,cy,r,id)=>`<g id="${id}" data-c="${cx},${cy}"><circle cx="${cx}" cy="${cy}" r="${r}" fill="#376259" stroke="#FBFAF6" stroke-width="${r*.1}"/><path d="M${cx-r*.45} ${cy+r*.03}l${r*.3} ${r*.3} ${r*.6}-${r*.62}" fill="none" stroke="#FBFAF6" stroke-width="${r*.2}" stroke-linecap="round" stroke-linejoin="round"/></g>`;
 const QM=(cx,cy,r,id)=>`<g id="${id}" data-c="${cx},${cy}"><circle cx="${cx}" cy="${cy}" r="${r}" fill="#FBFAF6" stroke="#1F3B35" stroke-width="${r*.1}"/><path d="M${cx-r*.32} ${cy-r*.22}a${r*.34} ${r*.34} 0 1 1 ${r*.5} ${r*.3}c-${r*.14} ${r*.08}-${r*.18} ${r*.16}-${r*.18} ${r*.3}" fill="none" stroke="#1F3B35" stroke-width="${r*.2}" stroke-linecap="round"/><circle cx="${cx}" cy="${cy+r*.58}" r="${r*.12}" fill="#1F3B35"/></g>`;
 const LINES=(ys,ws,c)=>ys.map((y,i)=>`<rect x="-112" y="${y}" width="${ws[i]}" height="12" rx="6" fill="${c}"/>`).join('');
-// Certidão estrangeira (Original, 300 × 380 um 0/0): Zierrahmen, Kopfbalken, Feldzeilen, rundes Siegel (nur Ringe), keine Schrift
-function ORIG(){return `<rect x="-150" y="-190" width="300" height="380" rx="10" fill="#FFFDF5" stroke="#1F3B35" stroke-width="6"/>
-  <rect x="-134" y="-174" width="268" height="348" rx="6" fill="none" stroke="#B9895E" stroke-width="5" stroke-dasharray="14 8"/>
-  <rect x="-80" y="-150" width="160" height="16" rx="8" fill="#1F3B35"/><rect x="-56" y="-124" width="112" height="10" rx="5" fill="#A9B6B0"/>
-  ${LINES([-86,-56,-26,4,34],[200,150,210,170,120],'#6E7F78')}
-  <circle cx="74" cy="112" r="40" fill="none" stroke="#B9895E" stroke-width="7"/><circle cx="74" cy="112" r="24" fill="none" stroke="#B9895E" stroke-width="5"/>
-  <path d="M-110 120c14-20 26 16 40-2s22 12 36-4" fill="none" stroke="#1F3B35" stroke-width="5" stroke-linecap="round"/>`;}
-// Tradução (300 × 380): Pinho-Kopfband, Feldzeilen, Stempelkasten (gestrichelt), Unterschrift – keine Schrift
-function TRAD(){return `<rect x="-150" y="-190" width="300" height="380" rx="16" fill="#FFFFFF" stroke="#1F3B35" stroke-width="6"/>
-  <rect x="-150" y="-190" width="300" height="64" rx="16" fill="#376259"/><rect x="-150" y="-142" width="300" height="16" fill="#376259"/>
-  <circle cx="-104" cy="-158" r="16" fill="#EEDECE"/><rect x="-74" y="-166" width="120" height="14" rx="7" fill="#97B9A8"/>
-  ${LINES([-96,-66,-36,-6,24],[210,170,200,150,190],'#1F3B35')}
-  <rect x="10" y="62" width="112" height="96" rx="10" fill="#EAF1ED" stroke="#376259" stroke-width="5" stroke-dasharray="10 7"/>
-  <circle cx="66" cy="110" r="26" fill="none" stroke="#376259" stroke-width="6"/>
-  <path d="M-116 132c14-22 26 18 40-2s22 14 36-4" fill="none" stroke="#1F3B35" stroke-width="6" stroke-linecap="round"/>`;}
-// großer Büroklammer-Clip (oben an den Blättern)
-const CLIP=`<path d="M-26 70V-70a34 34 0 0 1 68 0V90a52 52 0 0 1-104 0V-40" fill="none" stroke="#1F3B35" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M-26 70V-70a34 34 0 0 1 68 0V90a52 52 0 0 1-104 0V-40" fill="none" stroke="#8FA59C" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>`;
-// Waage (presume-se fiel e exata)
-const BAL=`<circle cx="0" cy="0" r="150" fill="#FBFAF6" stroke="#1F3B35" stroke-width="8"/>
-  <path d="M0 -92V92M-54 100H54" stroke="#1F3B35" stroke-width="14" stroke-linecap="round"/><path d="M-96 -62H96" stroke="#376259" stroke-width="12" stroke-linecap="round"/>
-  <circle cx="0" cy="-92" r="14" fill="#376259"/>
-  <path d="M-96 -62L-128 6M-96 -62L-64 6M96 -62L64 6M96 -62L128 6" stroke="#1F3B35" stroke-width="5"/>
-  <path d="M-136 6h80a40 24 0 0 1-80 0z" fill="#97B9A8" stroke="#1F3B35" stroke-width="6"/><path d="M56 6h80a40 24 0 0 1-80 0z" fill="#97B9A8" stroke="#1F3B35" stroke-width="6"/>`;
-// Gebäude mit Säulen (cartório) – nur Formen
-const BLDG=`<path d="M-190 -60L0 -170L190 -60Z" fill="#376259" stroke="#1F3B35" stroke-width="8" stroke-linejoin="round"/>
-  <rect x="-180" y="-60" width="360" height="30" fill="#1F3B35"/>
-  ${[0,1,2,3].map(i=>`<rect x="${-150+i*90}" y="-26" width="40" height="160" rx="6" fill="#FBFAF6" stroke="#1F3B35" stroke-width="6"/>`).join('')}
-  <rect x="-200" y="134" width="400" height="36" rx="8" fill="#1F3B35"/><circle cx="0" cy="-102" r="20" fill="#EEDECE"/>`;
-// Pfeil (Original → Tradução)
-const ARR=`<path d="M-120 0H90" stroke="#376259" stroke-width="30" stroke-linecap="round"/><path d="M50 -52L118 0L50 52" fill="none" stroke="#376259" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>`;
+// Extrait-Karte (320 × 400 um 0/0): Kopfband, Namenszeile, Datum/Ort-Zeilen, Eltern-Feld (avec: zwei Personen-Symbole + Zeilen; sans: leeres
+// gestricheltes Feld), schmale Randspalte rechts (Menções à margem) – keine Schrift
+const PERS=(x,y,k,c)=>`<g transform="translate(${x} ${y}) scale(${k})"><circle cx="0" cy="-16" r="13" fill="${c}"/><path d="M-22 22a22 22 0 0 1 44 0z" fill="${c}"/></g>`;
+function CARD(avec){return `<rect x="-160" y="-200" width="320" height="400" rx="14" fill="#FFFFFF" stroke="#1F3B35" stroke-width="6"/>
+  <rect x="-160" y="-200" width="320" height="56" rx="14" fill="#1F3B35"/><rect x="-160" y="-160" width="320" height="16" fill="#1F3B35"/>
+  <rect x="-120" y="-182" width="150" height="14" rx="7" fill="#97B9A8"/>
+  <rect x="-130" y="-118" width="200" height="22" rx="8" fill="#1F3B35"/>
+  ${LINES([-80,-56],[170,140],'#6E7F78').replace(/x="-112"/g,'x="-130"')}
+  <g class="par">${avec?`<rect x="-138" y="-22" width="232" height="128" rx="12" fill="#EAF1ED" stroke="#376259" stroke-width="5"/>
+    ${PERS(-104,22,1,'#376259')}${PERS(-104,78,1,'#376259')}<rect x="-72" y="10" width="140" height="12" rx="6" fill="#1F3B35"/><rect x="-72" y="66" width="120" height="12" rx="6" fill="#1F3B35"/>`
+   :`<rect x="-138" y="-22" width="232" height="128" rx="12" fill="none" stroke="#B4BDB8" stroke-width="5" stroke-dasharray="14 10"/>`}</g>
+  <rect x="110" y="-130" width="4" height="300" fill="#C9C2B3"/>
+  <g class="mg"><rect x="122" y="-112" width="26" height="9" rx="4" fill="#376259"/><rect x="122" y="-92" width="22" height="9" rx="4" fill="#376259"/><rect x="122" y="-72" width="26" height="9" rx="4" fill="#376259"/></g>
+  <path d="M-120 160c14-20 26 16 40-2s22 12 36-4" fill="none" stroke="#1F3B35" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="90" cy="150" r="30" fill="none" stroke="#376259" stroke-width="6"/>`;}
+// Copie intégrale (340 × 460): hohes Blatt, viele Zeilen (Assento), Randspalte rechts – keine Schrift
+function ACTE(){let l=''; for(let i=0;i<11;i++) l+=`<rect x="-140" y="${-150+i*26}" width="${[230,200,220,180,230,210,190,225,170,215,150][i]}" height="11" rx="5" fill="#1F3B35"/>`;
+  return `<rect x="-170" y="-230" width="340" height="460" rx="12" fill="#FFFFFF" stroke="#1F3B35" stroke-width="6"/>
+  <rect x="-120" y="-206" width="200" height="18" rx="9" fill="#1F3B35"/><rect x="-90" y="-180" width="140" height="10" rx="5" fill="#A9B6B0"/>
+  <g class="ln2">${l}</g>
+  <rect x="112" y="-160" width="4" height="330" fill="#C9C2B3"/>
+  <g class="mg"><rect x="124" y="-140" width="30" height="9" rx="4" fill="#376259"/><rect x="124" y="-120" width="24" height="9" rx="4" fill="#376259"/><rect x="124" y="-100" width="30" height="9" rx="4" fill="#376259"/><rect x="124" y="-80" width="20" height="9" rx="4" fill="#376259"/></g>
+  <path d="M-130 192c14-20 26 16 40-2s22 12 36-4" fill="none" stroke="#1F3B35" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="100" cy="182" r="30" fill="none" stroke="#376259" stroke-width="6"/>`;}
+// Markierungsbalken (Sálvia, halbtransparent) – wird per Breite animiert
+const MKB=(id)=>`<rect id="${id}" x="0" y="0" width="0" height="10" rx="12" fill="#97B9A8" opacity=".55"/>`;
+// Personen-Gruppe (Familie: drei Personen, Pinho) / Menge (fünf Personen, gemischt)
+const FAM=`${PERS(-90,0,2.0,'#376259')}${PERS(0,-10,2.3,'#1F3B35')}${PERS(90,0,2.0,'#376259')}`;
+const CROWD=`${PERS(-160,10,1.7,'#97B9A8')}${PERS(-80,0,1.9,'#376259')}${PERS(0,-8,2.1,'#1F3B35')}${PERS(80,0,1.9,'#B9895E')}${PERS(160,10,1.7,'#6E7F78')}`;
+// Vorhängeschloss (pedido restrito)
+const LOCK=`<path d="M-44 -10V-50a44 44 0 0 1 88 0V-10" fill="none" stroke="#1F3B35" stroke-width="18"/><rect x="-70" y="-14" width="140" height="110" rx="18" fill="#376259" stroke="#1F3B35" stroke-width="7"/><circle cx="0" cy="30" r="14" fill="#FBFAF6"/><rect x="-6" y="34" width="12" height="32" rx="5" fill="#FBFAF6"/>`;
 // Preisschild ohne Zahl
 const TAGX=(x,y,id)=>`<g id="${id}" data-c="${x+110},${y+50}"><path d="M${x} ${y}h170l50 50-50 50h-170z" fill="#FBFAF6" stroke="#1F3B35" stroke-width="6"/><circle cx="${x+172}" cy="${y+50}" r="12" fill="#1F3B35"/><rect x="${x+26}" y="${y+32}" width="110" height="36" rx="10" fill="#376259"/></g>`;
-// Lupe
-const LUPE=`<path d="M58 58L130 130" stroke="#1F3B35" stroke-width="30" stroke-linecap="round"/><circle cx="0" cy="0" r="86" fill="rgba(251,250,246,.35)" stroke="#1F3B35" stroke-width="18"/><path d="M-46 -30a56 56 0 0 1 40-26" fill="none" stroke="#FBFAF6" stroke-width="10" stroke-linecap="round"/>`;
-// Checkliste (Lista do cartório): Blatt mit drei Kästchen-Zeilen
-const LIST=`<rect x="-140" y="-180" width="280" height="360" rx="16" fill="#FFFFFF" stroke="#1F3B35" stroke-width="6"/><rect x="-60" y="-200" width="120" height="40" rx="12" fill="#376259"/>
-  ${[-100,-20,60].map(y=>`<rect x="-104" y="${y}" width="44" height="44" rx="8" fill="#FBFAF6" stroke="#1F3B35" stroke-width="6"/><rect x="-40" y="${y+16}" width="140" height="12" rx="6" fill="#6E7F78"/>`).join('')}`;
-// Handy-Umriss (Endcard: „Envie a foto“), Bildschirm mit Mini-Certidão, Auslöser-Kreis
+// Handy-Umriss (Endcard: „Envie a foto“), Bildschirm mit Mini-Copie, Auslöser-Kreis
 const PHONE=`<rect x="-150" y="-260" width="300" height="520" rx="44" fill="#1F3B35"/><rect x="-128" y="-222" width="256" height="400" rx="16" fill="#FBFAF6"/>
-  <g transform="translate(0 -24) scale(.62)">${ORIG()}</g>
+  <g transform="translate(0 -24) scale(.62)">${CARD(true)}</g>
   <circle cx="0" cy="220" r="26" fill="#FBFAF6" stroke="#97B9A8" stroke-width="6"/><rect x="-36" y="-246" width="72" height="12" rx="6" fill="#376259"/>`;
 
 // ---- Pinnwand ----
@@ -169,16 +164,15 @@ const BD={x:130,y:150,w:700,h:710}, CC=[480,480];
   <rect x="100" y="110" width="760" height="800" rx="30" fill="#376259" stroke="#1F3B35" stroke-width="6"/>
   <g clip-path="url(#bdc)"><rect x="${BD.x}" y="${BD.y}" width="${BD.w}" height="${BD.h}" fill="#D9B98C"/>${sp}
     <g id="cont">
-    <g id="orAW"><g id="orA">${ORIG()}</g></g>
-    <g id="trAW"><g id="trA">${TRAD()}</g></g>
-    <g id="clW"><g id="cl">${CLIP}</g></g>
-    <g id="baW"><g id="ba">${BAL}</g></g>
-    <g id="bgW"><g id="bgd">${BLDG}</g></g>
-    <g id="arW"><g id="ar">${ARR}</g></g>
-    <g id="liW"><g id="li">${LIST}</g></g>
+    <g id="cAW"><g id="cA">${CARD(true)}</g></g>
+    <g id="cSW"><g id="cS">${CARD(false)}</g></g>
+    <g id="acW"><g id="ac">${ACTE()}</g></g>
+    <g id="faW"><g id="fa">${FAM}</g></g>
+    <g id="crW"><g id="cr">${CROWD}</g></g>
+    <g id="loW"><g id="lo">${LOCK}</g></g>
     <g id="tagW"><g transform="translate(660 640) scale(1.4) translate(-670 -410)">${TAGX(560,360,'tg')}</g></g>
-    <g id="luW"><g id="lu">${LUPE}</g></g>
     <g id="phW"><g id="ph">${PHONE}</g></g>
+    <g id="mkW">${MKB('mkA')}${MKB('mkB')}${MKB('mkC')}</g>
     <circle id="ring" cx="0" cy="0" r="300" fill="none" stroke="#1F3B35" stroke-width="12" opacity="0"/>
     ${QM(0,0,40,'q0')}${QM(0,0,40,'q1')}${OK(0,0,46,'ok')}
     </g>
@@ -218,64 +212,69 @@ function zipSet(t,loop){ // Blatt: linke Kante fährt von rechts (x 830, a−0,1
   $('zn').setAttribute('transform',`translate(${(L>x0+.5?L+40:R-40).toFixed(1)} 0)`);}
 
 function paneAnim(n,t,tb,loop,endc){
-  ['orAW','trAW','clW','baW','bgW','arW','liW','tagW','luW','phW'].forEach(i=>show(i,false));
+  ['cAW','cSW','acW','faW','crW','loW','tagW','phW'].forEach(i=>show(i,false));
   ['q0','q1','ok'].forEach(i=>gp(i,0,0,0)); $('ring').setAttribute('opacity',0);
+  ['mkA','mkB','mkC'].forEach(i=>$(i).setAttribute('width',0));
   const okAt=(a,x,y)=>{gp('ok',x,y,t>=a?pk(t,a,.4):0);};
   const w=loop?0:Math.sin(Math.PI*2*tb/1.0);
-  const pair=(x,y,k,r=0,clipK=1)=>{ show('orAW',true); show('trAW',true); show('clW',true);
-    at('orA',x-40*k,y-30*k,r-6,k); at('trA',x+30*k,y+20*k,r+3,k); at('cl',x-10*k,y-190*k,r,.9*k*clipK,clipK>0.001?1:0);};
-  if(endc){   // Endcard: Handy mit Certidão auf dem Bildschirm (passt zu „Envie a foto“), Haken 28,5
+  // Markierung (Weltkoordinaten der Pinnwand): Balken über Rechteck x,y,w,h, wächst von links in [a, a+d]
+  const mk=(id,a,x,y,wd,h,d=.35)=>{const e=$(id); const p=loop?0:eo(lin(t,a,a+d)); e.setAttribute('x',x); e.setAttribute('y',y); e.setAttribute('height',h); e.setAttribute('width',(wd*p).toFixed(1));};
+  if(endc){   // Endcard: Handy mit Extrait auf dem Bildschirm (passt zu „Envie a foto“), Haken 28,5
     show('phW',true); at('ph',CC[0],330,0,.62+.01*w);
     gp('ok',CC[0]+120,330-130,t>=ENDC+1.0?pk(t,ENDC+1.0,.4)*(1+.06*Math.sin(Math.PI*2*lin(t,ENDC+2,ENDC+3))):0);
     return;}
-  if(n===0){   // Hook: Tradução allein auf dem Kork, „?“ daneben pulsiert; 2,5 Original gleitet von links dahinter, Clip schnappt + Ring + Punch
-    show('trAW',true);
+  if(n===0){   // Hook: ein Extrait auf dem Kork, „?“ am Eltern-Feld pulsiert; 2,5 zweites Extrait (sans) gleitet daneben, Ring um beide Eltern-Felder + Punch
+    show('cAW',true);
     const s=loop||t<2.5?0:eo(lin(t,2.5,2.75));
-    if(s>0){ show('orAW',true); show('clW',true);
-      at('orA',140+(300-140)*s,300,-6,.5,1); at('cl',470,205,0,.45*pk(t,2.55,.3),1); }
-    at('trA',500+(loop?0:4*w),320+(loop?0:3*Math.sin(Math.PI*2*tb/2.0)),3-1.5*w,.5);
-    gp('q0',720,250,(s>0?1-s:1)*.9*(1+.10*w));
-    if(!loop&&t>=2.5){ const rk=pk(t,2.5,.6); at('ring',430,330,0,Math.max(.001,rk*.62),1); $('ring').setAttribute('opacity',(1-lin(t,2.75,2.97)*.6).toFixed(3)); } }
-  if(n===1){   // Original vai junto: Paar mit Clip groß in der Mitte; 3,5 Clip zieht nach (Klick), 5,5 Haken, 6,0 Wippen
+    at('cA',480-170*s+(loop?0:4*w),330+(loop?0:3*Math.sin(Math.PI*2*tb/2.0)),-3+1.5*w*(1-s),.5);
+    if(s>0){ show('cSW',true); at('cS',830-180*s,330,4,.5); }
+    gp('q0',700-60*s,250,(1-s)*.9*(1+.10*w));
+    if(!loop&&t>=2.5){ const rk=pk(t,2.5,.6); at('ring',639,351,0,Math.max(.001,rk*.34),1); $('ring').setAttribute('opacity',(1-lin(t,2.75,2.97)*.6).toFixed(3)); } }
+  if(n===1){   // Avec filiation: Extrait groß; 3,5 Markierung wischt über das Eltern-Feld (Klick), 5,5 Haken, 6,0 Wippen
+    show('cAW',true);
     const wb=t>=6.0?2*Math.sin(Math.PI*2*lin(t,6.0,6.4))*(1-lin(t,6.0,6.4)):0;
-    const c=t>=3.5?1+.08*Math.sin(Math.PI*lin(t,3.5,3.75)):1;
-    pair(470,500,.95,wb,c);
-    okAt(5.5,770,250);}
-  if(n===2){   // Presume-se fiel: Tradução links, Waage rechts springt auf 7,5 + Punch, Haken 8,5, Wippen 9,0
-    show('trAW',true); show('baW',true);
-    at('trA',290,480,-4,.82);
-    const wb=t>=9.0?4*Math.sin(Math.PI*2*lin(t,9.0,9.5))*(1-lin(t,9.0,9.5)):0;
-    const b=t>=7.5?pk(t,7.5,.4):(t>=6.6?.001:0); at('ba',650,450,wb,.95*Math.max(.001,b),t>=7.5?1:0);
-    okAt(8.5,770,250);}
-  if(n===3){   // Cartório: Gebäude oben, Tradução gleitet 10,5 hin (Klick), 11,0 Gebäude Punch, Haken 12,5
-    show('bgW',true); show('trAW',true);
+    at('cA',460,505,wb,1.25);
+    mk('mkA',3.5,460-1.25*138,505+1.25*-22,1.25*232,1.25*128);
+    okAt(5.5,750,250);}
+  if(n===2){   // Sans filiation: Extrait ohne Eltern-Feld; 7,5 „?“ springt im leeren Feld auf + Punch, 8,5 Haken
+    show('cSW',true);
+    const wb=t>=9.0?2*Math.sin(Math.PI*2*lin(t,9.0,9.4))*(1-lin(t,9.0,9.4)):0;
+    at('cS',460,505,wb,1.25);
+    gp('q1',460-1.25*22,505+1.25*42,t>=7.5?pk(t,7.5,.4)*1.1:0);
+    okAt(8.5,750,250);}
+  if(n===3){   // Copie intégrale: hohes Blatt; 10,5 Markierung wischt über alle Zeilen (Klick), 11,0 Punch, 12,5 Haken
+    show('acW',true);
     const b=t>=11.0?eo(lin(t,11.0,11.25)):0;
-    at('bgd',480,350,0,.62+.1*b);
-    const m=eio(lin(t,10.5,11.0)); at('trA',290+170*m,660-30*m,-6+6*m,.56);
-    okAt(12.5,760,560);}
-  if(n===4){   // Em português: Original links, Pfeil zeichnet sich 14,0 (Klick), Tradução rechts 14,5 + Punch, Haken 15,5
-    show('orAW',true); show('arW',true); show('trAW',true);
-    at('orA',260,480,-4,.6);
-    const a=eo(lin(t,14.0,14.4)); at('ar',480,480,0,.8*Math.max(.001,a),a>0?1:0);
-    const p=t>=14.5?pk(t,14.5,.4):0; at('trA',700,480,4,.6*Math.max(.001,p),p>0?1:0);
+    at('ac',470,505,-2+2*b,1.18+.04*b);
+    mk('mkA',10.5,470-1.2*146,505+1.2*-158,1.2*240,1.2*292,.5);
+    okAt(12.5,760,250);}
+  if(n===4){   // Menções à margem: drei Blätter klein (intégrale, avec, sans); 14,0 Randspalten markiert (Klick), 14,5 Punch, 15,5 Haken
+    show('acW',true); show('cAW',true); show('cSW',true);
+    at('ac',250,520,-3,.62); at('cA',480,520,0,.62); at('cS',705,520,3,.62);
+    const p=t>=14.5?pk(t,14.5,.5):(t>=14.0?.5:0);
+    mk('mkA',14.0,250+.62*120,520+.62*-150,.62*40,.62*80,.3);
+    mk('mkB',14.0,480+.62*116,520+.62*-120,.62*38,.62*62,.3);
+    mk('mkC',14.0,705+.62*116,520+.62*-120,.62*38,.62*62,.3);
+    const s=1+.12*(p>0?Math.sin(Math.PI*lin(t,14.5,14.8)):0);
+    if(s>1){at('cA',480,520,0,.62*s);}
     okAt(15.5,760,250);}
-  if(n===5){   // Impugnar: Original + Tradução nebeneinander, Lupe fährt 17,5 vom Original zur Tradução (Klick), „?“ 18,5 + Stempel, Puls 19,5
-    show('orAW',true); show('trAW',true); show('luW',true);
-    at('orA',300,470,-4,.56); at('trA',650,430,4,.56);
-    const m=eio(lin(t,17.5,18.3)); const hv=t>=18.3?1:0; at('lu',300+340*m+hv*14*Math.sin(Math.PI*2*(tb-18.3)/1.5),500-40*m+hv*10*Math.sin(Math.PI*2*(tb-18.3)/1.0),hv*4*Math.sin(Math.PI*2*(tb-18.3)/2.0),.9);
-    gp('q1',480,240,t>=18.5?pk(t,18.5,.4)*(1+(t>=19.5?.06*Math.sin(Math.PI*lin(t,19.5,19.8)):0)):0);}
-  if(n===6){   // Preis: Paar mit Clip, Preisschild ohne Zahl 21,5 + Punch, Haken 22,5, Schwung 23,0
-    pair(390,480,.9,-2,1);
-    show('tagW',true);
-    g('tg',t>=21.5?pk(t,21.5,.6):0.001);
-    if(t>=23.0) $('tg').setAttribute('transform',`rotate(${(8*Math.sin(Math.PI*2*lin(t,23.0,23.6))*(1-lin(t,23.0,23.6))).toFixed(2)} 560 410)`);
-    okAt(22.5,780,250);}
-  if(n===7){   // Confirme antes: Gebäude klein oben, Checkliste darunter, Lupe fährt 24,5 über die Liste (Klick), „?“ 25,5 + Stempel, Haken 26,5
-    show('bgW',true); show('liW',true); show('luW',true);
-    at('bgd',480,290,0,.48); at('li',480,610,-2,.62);
-    const m=eio(lin(t,24.5,25.3)); at('lu',380+200*m,560+60*m,0,.7);
-    gp('q1',700,330,t>=25.5?pk(t,25.5,.4)*(1+(t>=27.0?.06*Math.sin(Math.PI*lin(t,27.0,27.3)):0)):0);
-    okAt(26.5,250,330);}
+  if(n===5){   // Pedido restrito: Familie (drei Personen) + Extrait avec; 17,5 Familie gleitet heran (Klick), 18,5 Schloss + Stempel, Puls 19,5
+    show('cAW',true); show('faW',true); show('loW',true);
+    at('cA',300,500,-4,.8);
+    const m=eio(lin(t,17.5,18.0)); at('fa',860-220*m,640,0,1.35,m>0?1:0);
+    const L=t>=18.5?pk(t,18.5,.4)*(1+(t>=19.5?.06*Math.sin(Math.PI*lin(t,19.5,19.8)):0)):0; at('lo',640,330,0,1.2*Math.max(.001,L),L>0?1:0);}
+  if(n===6){   // Qualquer um pede: Extrait sans + Menge; 21,5 Menge springt auf + Punch, 22,5 Haken
+    show('cSW',true); show('crW',true);
+    at('cS',480,370,-2,.72);
+    const c=t>=21.5?pk(t,21.5,.4):0; at('cr',480,700+(t>=21.5&&t<22.0?-14*Math.sin(Math.PI*lin(t,21.5,22.0)):0),0,1.3*Math.max(.001,c),c>0?1:0);
+    okAt(22.5,760,250);}
+  if(n===7){   // Preis: Copie + Extrait, Preisschild ohne Zahl gleitet 24,5 heran (Klick), 25,5 Punch, 26,5 Haken
+    show('acW',true); show('cAW',true); show('tagW',true);
+    at('ac',330,470,-4,.72); at('cA',520,520,4,.6);
+    const m=eio(lin(t,24.5,24.9));
+    g('tg',m>0?(t>=25.5?pk(t,25.5,.6):m*.6):0.001);
+    if(t>=26.0) $('tg').setAttribute('transform',`rotate(${(8*Math.sin(Math.PI*2*lin(t,26.0,26.6))*(1-lin(t,26.0,26.6))).toFixed(2)} 560 410)`);
+    okAt(26.5,780,250);}
 }
 
 function render(tn){

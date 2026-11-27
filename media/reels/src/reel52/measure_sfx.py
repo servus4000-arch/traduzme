@@ -1,7 +1,7 @@
 """Reel 52 – SFX-Pegel aus den Stems messen und GJ iterieren (Methode Fix 46-3 / R47–R50).
 Aufruf: python3 measure_sfx.py [gmb] [--iter N]
 Je Ereignis t: Spitze = max über alle 20-ms-Fenster (Schritt 5 ms) in [t, t+0,45 s] von L(Mix) − L(Musik) im selben Fenster.
-Zusätzlich für stamps dieselbe Größe im Präsenzband 1,8–4,2 kHz und 0,3–8 kHz. Ziel Breitband ≈ +3,5 dB (≤ +4), stamp-Präsenz ≥ +6 dB.
+Zusätzlich dieselbe Größe im Präsenzband 1,8–4,2 kHz, 1–3 kHz (Lehre 52-2) und 0,3–8 kHz. Ziel Breitband ≈ +3,5 dB (≤ +4), stamp-Präsenz ≥ +6 dB.
 Mit --iter N wird GJ N-mal nachgeführt und am Ende als JSON ausgegeben (zum Eintragen in audio.py).
 """
 import os, sys, json, subprocess, tempfile
@@ -52,7 +52,7 @@ for it in range(N_IT + 1):
     if it == N_IT: break
     for t, v in zip(ev, p):
         k = round(float(t), 2); gj[k] = round(gj.get(k, 1.0) * 10 ** ((TARGET - v) / 20 * .9), 3)
-pp = peaks(m, s, ev, kinds, 1800, 4200); pw = peaks(m, s, ev, kinds, 300, 8000)
-for t, k, a, b, c in zip(ev, kinds, p, pp, pw):
-    print(f'{t:6.2f} {k:7s} Breitband {a:+6.2f}  1,8–4,2 kHz {b:+6.2f}  0,3–8 kHz {c:+6.2f}')
+pp = peaks(m, s, ev, kinds, 1800, 4200); pw = peaks(m, s, ev, kinds, 300, 8000); p13 = peaks(m, s, ev, kinds, 1000, 3000)
+for t, k, a, b, c, d in zip(ev, kinds, p, pp, pw, p13):
+    print(f'{t:6.2f} {k:7s} Breitband {a:+6.2f}  1,8–4,2 kHz {b:+6.2f}  1–3 kHz {d:+6.2f}  0,3–8 kHz {c:+6.2f}')
 print('GJ =', json.dumps({float(k): v for k, v in sorted(gj.items())}))

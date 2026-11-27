@@ -1,0 +1,59 @@
+{
+ "html": "/dev/shm/repo/media/reels/src/reel52/reel.html",
+ "query": "cut=gmb",
+ "END": 29.3,
+ "fps": 10,
+ "from": 0,
+ "to": 29.3,
+ "frames": 294,
+ "scanSec": 1.9,
+ "pageErrors": [],
+ "summary": {
+  "block": 0,
+  "warn": 0,
+  "blockBy": {},
+  "warnBy": {}
+ },
+ "befunde": [],
+ "config": {
+  "fps": 10,
+  "safe": {
+   "x0": 90,
+   "x1": 900,
+   "y0": 300,
+   "y1": 1500,
+   "tol": 2
+  },
+  "uiSides": [
+   "left",
+   "right",
+   "top"
+  ],
+  "minFont": 44,
+  "minFontSmall": 36,
+  "minReadable": 40,
+  "maxNewWords": 24,
+  "secPerWord": 0.4,
+  "secPerWordBlock": 0.2,
+  "semi": [
+   0.05,
+   0.95
+  ],
+  "except": [],
+  "noTextOk": [],
+  "ignore": [],
+  "ignoreText": "^(traduzme)$",
+  "uiSoftPx": 100,
+  "block": {
+   "safe": 0.3,
+   "ui": 0.3,
+   "cut": 0.3,
+   "double": 0.1,
+   "empty": 0.1,
+   "notext": 0.3,
+   "font": 0.5,
+   "emoji": 0,
+   "words": 0
+  }
+ }
+}

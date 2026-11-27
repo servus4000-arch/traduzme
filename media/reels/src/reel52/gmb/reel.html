@@ -1,0 +1,325 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<!-- Reel 52 · „Certidão em espanhol: só a tradução basta?“ · Certidão de nascimento espanhol → português R$ 149 na tabela · Post Fr 04.12.2026
+     Format „Mural“ (Held-Objekt: Pinnwand – Korkfläche in Pinho-Rahmen als Bühne, Pinnnadeln in den Ecken, unten Ablageleiste; Requisiten nur Formen:
+     Certidão estrangeira (Zierrahmen, Siegel), Tradução (Pinho-Kopfband, Stempelkasten, Unterschrift), großer Büroklammer-Clip, Waage, Gebäude mit Säulen
+     (cartório), Pfeil, Lupe, Preisschild ohne Zahl, Checkliste mit Kästchen, Handy-Umriss, Haken, Fragezeichen –
+     keine Schrift, keine Zahlen, keine Daten, kein Wappen, keine Flaggen, keine Landkarte, kein Firmenlogo).
+     Szenenwechsel = „Folha-Schnitt“: ein neues Blatt Papier gleitet 0,10 s vor dem Schlag von rechts über die Korkfläche, deckt sie auf dem Schlag ganz
+     (harter Schnitt des Inhalts darunter) und ist bei +0,18 s links draußen; nie zwei Inhalte übereinander.
+     Grund Areia #EEDECE (Hook/Endcard Dark-Schrift, Marker Sálvia/Dark; Caption-Pillen Dark/Weiß, Marker Sálvia/Dark; Belege Papier/Dark mit Pinho-Rand;
+     Chips Pinho/Weiß; nie Weiß auf Areia) · funk 120 BPM (R51 Fichário/Sálvia/lofi · R50 Mala/Dark/bossa · R49 Envelope/Névoa/calm).
+     Etikett Dokument + Richtung + Preis in Frame 0 = Standard seit R35; Hook-Frage ist ein Kauf-Zweifel (reicht die Übersetzung allein?), NICHT die Preisfrage;
+     das Etikett sagt nichts über das Original → verrät die Antwort nicht.
+     Szenen 3,5 s, Endcard „Envie a foto: preço na hora.“ (Standard), Mitmach als Pille „SIM ou NÃO?“ (Standard-Form, keine Knöpfe).
+     Neue Variable (nicht im Bild): TikTok-Caption Zeile 1 nennt drei Herkunftsländer (siehe social/reels/reel52-texte.md).
+     Quellen je Aussage: STORYBOARD.md (Q1 precos es/to_pt certidao de nascimento · Q1b analisar v48 / pix-cob v62 · Q2–Q4 Lei 14.195/2021 art. 26 I,
+     art. 27 caput, § 2º I e II · Q5 Código Civil art. 224 · Q7 Rechner fl1–fl4). -->
+<link rel="stylesheet" href="../fonts/os.css">
+<style>
+:root{--dark:#1F3B35;--pinho:#376259;--sal:#97B9A8;--areia:#EEDECE;--nevoa:#BDCBCB;--paper:#FBFAF6}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:'Open Sans',sans-serif;background:var(--areia)}
+.abs{position:absolute}
+#stage{position:absolute;inset:0;overflow:hidden;background:radial-gradient(1100px 1300px at 50% 36%,#F4E8DB 0%,#EEDECE 58%,#E6D2BE 100%)}
+#world{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0}
+.obj{position:absolute;left:0;top:0;transform-origin:50% 50%}
+.hook{position:absolute;left:104px;top:320px;font-weight:800;font-size:92px;line-height:1.08;letter-spacing:-3px;color:var(--dark);white-space:nowrap}
+.hook .mk{display:inline-block;background:var(--sal);color:var(--dark);border-radius:16px;padding:0 14px 10px;margin:0 -8px;line-height:1.02}
+.cap{position:absolute;left:90px;top:320px}
+.cap .ln{display:table;margin-bottom:8px;padding:6px 24px 10px;border-radius:24px;background:var(--dark);color:#fff;font-weight:800;font-size:66px;line-height:1.12;letter-spacing:-1px;white-space:nowrap;transform-origin:0 50%;box-shadow:0 6px 16px rgba(31,59,53,.22)}
+.cap .ln .mk{display:inline-block;background:var(--sal);color:var(--dark);padding:0 8px 4px;border-radius:10px;line-height:1.08}
+.chip{position:absolute;left:90px;top:552px;height:88px;padding:0 32px;border-radius:44px;font-size:54px;letter-spacing:-1px;font-weight:800;display:flex;align-items:center;white-space:nowrap;background:var(--pinho);color:#fff;transform-origin:0 50%}
+.src{position:absolute;left:90px;top:672px;height:64px;padding:0 24px;border-radius:32px;background:var(--paper);border:4px solid var(--pinho);color:var(--dark);font-weight:700;font-size:44px;display:flex;align-items:center;gap:12px;white-space:nowrap}
+.big{position:absolute;font-weight:800;color:var(--dark);letter-spacing:-1px;white-space:nowrap}
+.hd{position:absolute;font-weight:800;color:var(--dark);letter-spacing:-.5px;line-height:1.18;white-space:nowrap}
+#STG{width:960px;height:1080px}
+</style>
+<!-- qa: Pinnwand, Blätter, Clip, Waage, Gebäude, Pfeil, Lupe, Preisschild, Checkliste, Handy und Blatt-Schnitt tragen nur Formen
+     (keine Schrift, keine Zahlen, keine Daten, kein Wappen, keine Flaggen); einzige Schrift auf Objekten ist das Etikett #TAG (Dokument + Richtung + Preis,
+     Standard seit R35). ignoreText nur „traduzme“. -->
+<!-- qa-Ausnahme maxNewWords 24 (Grund): Frame 0 trägt mit dem Pflicht-Etikett 15 Wörter (Hook 6 + Mitmach 3 + Etikett 6).
+     An der Loop-Naht (34,2 s, harter Schnitt auf Frame 0, Raster D6) misst qa_frames sie als „neu“ mit nur 0,3 s Standzeit, weil das Video dort endet;
+     im echten Loop stehen sie 2,97 s wie in Frame 0 (gleiche Ausnahme wie R35–R51, Abnahme 35-1 „vertretbar“). -->
+<script type="application/json" id="qa-config">{"ignoreText":"^(traduzme)$","maxNewWords":24}</script>
+</head>
+<body><div id="stage">
+  <div class="abs" id="bg1" style="left:-260px;top:120px;width:620px;height:620px;border-radius:50%;background:rgba(251,250,246,.22)"></div>
+  <div class="abs" id="bg2" style="left:760px;top:560px;width:520px;height:520px;border-radius:50%;background:rgba(55,98,89,.07)"></div>
+
+  <div id="world">
+    <!-- Held-Objekt: Pinnwand (960 × 1080 lokal): Rahmen Pinho x 100–860 / y 110–910, Korkfläche (Bühne) x 130–830 / y 150–860, Ablageleiste y 880–960;
+         Inhalt per clipPath auf die Korkfläche (keine Requisiten-Blitzer am Rand) -->
+    <div class="obj" id="STG" data-qa="object"><svg id="PH" width="960" height="1080" viewBox="0 0 960 1080"></svg></div>
+    <!-- Etikett (Standard): Dokument + Richtung + Preis ab Frame 0 (kompakt, Lehre 48-1) -->
+    <div class="obj" id="TAG" data-qa="object" style="width:744px;height:248px;border-radius:28px;background:var(--paper);border:8px solid #376259;box-shadow:0 14px 28px rgba(31,59,53,.30)">
+      <div class="hd" style="left:36px;top:10px;font-size:48px">Certidão de nascimento</div>
+      <div class="hd" style="left:36px;top:66px;font-size:48px;display:flex;align-items:center;gap:16px">espanhol<svg width="60" height="38" viewBox="0 0 140 90"><path d="M10 45H110" stroke="#1F3B35" stroke-width="16" stroke-linecap="round"/><path d="M80 12l40 33-40 33" fill="none" stroke="#1F3B35" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/></svg>português</div>
+      <div class="abs" style="left:36px;top:132px;width:656px;height:6px;border-radius:3px;background:#97B9A8"></div>
+      <div class="hd" style="left:32px;top:126px;font-size:96px;letter-spacing:-3px">R$ 149</div>
+      <div class="hd" style="left:370px;top:166px;font-size:46px;line-height:1.1">na tabela</div>
+    </div>
+  </div>
+
+  <!-- ===== Text-Ebene ===== -->
+  <div class="hook" id="hook">Certidão em<br>espanhol: só a<br><span class="mk" id="mk1">tradução basta?</span></div>
+  <div class="chip" id="mit" style="top:688px;background:#FBFAF6;color:#1F3B35;border:4px solid #376259">SIM ou NÃO?</div>
+
+  <div class="cap" id="c1"><div class="ln">Não: o original</div><div class="ln"><span class="mk">vai junto.</span></div></div>
+  <div class="cap" id="c2"><div class="ln">Juramentada:</div><div class="ln"><span class="mk">presume-se fiel.</span></div></div>
+  <div class="cap" id="c3"><div class="ln">Cartório, em geral:</div><div class="ln"><span class="mk">tradutor público.</span></div></div>
+  <div class="cap" id="c4"><div class="ln">Pra valer no Brasil:</div><div class="ln"><span class="mk">em português.</span></div></div>
+  <div class="cap" id="c5"><div class="ln">A fidelidade pode</div><div class="ln"><span class="mk">ser impugnada.</span></div></div>
+  <div class="cap" id="c6"><div class="ln">Espanhol, na tabela:</div><div class="ln"><span class="mk">R$ 149 a certidão.</span></div></div>
+  <div class="cap" id="c7"><div class="ln">Lista do cartório:</div><div class="ln"><span class="mk">confirme antes.</span></div></div>
+
+  <div class="src" id="s1" data-qa="beleg">Lei 14.195 · art. 27, § 2º, I</div>
+  <div class="src" id="s2" data-qa="beleg">Lei 14.195 · art. 27, caput</div>
+  <div class="src" id="s3" data-qa="beleg">Lei 14.195 · art. 26, I</div>
+  <div class="src" id="s4" data-qa="beleg">Código Civil · art. 224</div>
+  <div class="src" id="s5" data-qa="beleg">Lei 14.195 · art. 27, § 2º, II</div>
+  <div class="src" id="s6" data-qa="beleg">Preço fixo · até 4 páginas</div>
+  <div class="src" id="s7" data-qa="beleg">Em geral · confirme no órgão</div>
+
+  <div class="chip" id="chip"><span id="chipT">Preço na hora · link na bio</span></div>
+
+  <!-- Endcard (Absender traduzme; Kopf an der Hook-Position; Standard-Handlungsaufforderung; kein Preis) -->
+  <div class="abs" id="end" style="left:0;top:0;width:1080px;height:1920px;opacity:0">
+    <div class="hook" id="eHead" style="top:336px;font-size:96px;line-height:1.16">Certidão em<br>espanhol?<br><span class="mk">Envie a foto:</span><br><span class="mk">preço na hora.</span></div>
+    <div class="chip" id="eBio" style="top:816px">link na bio</div>
+    <div class="big" id="eUrl" style="left:104px;top:944px;font-size:66px">traduzme.com.br</div>
+    <div class="big" id="eWa" style="left:104px;top:1040px;font-size:66px;display:flex;align-items:center;gap:24px"><svg width="72" height="72" viewBox="0 0 32 32"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3z" fill="#376259"/><path d="M11.6 9.6c.3-.6.6-.6 1-.6h.8c.3 0 .6.1.8.6l1.1 2.6c.1.3.1.6-.1.9l-.7.9c-.2.2-.2.5 0 .8a10 10 0 0 0 4.3 3.8c.3.1.6.1.8-.1l.9-1.1c.2-.3.6-.3.9-.2l2.6 1.2c.3.2.5.4.4.8-.2 1.3-1.3 2.4-2.7 2.5-1.2.1-3.6-.5-6.4-3.1-2.6-2.4-3.7-5-3.8-6.2 0-.8.3-1.6.8-2.3z" fill="#FBFAF6"/></svg>(61) 99803-8363</div>
+  </div>
+</div>
+<script>
+// GMB-Fassung (≤ 30 s, ohne 17,0–20,5 „A fidelidade pode ser impugnada.“, Endcard 5,0 s statt 6,7 s): gmb/reel.html setzt GMB=1, oder URL ?cut=gmb
+let GMB=1;
+if(new URLSearchParams(location.search).get('cut')==='gmb') GMB=1;
+const END=GMB?29.3:34.5;
+const SKIP=GMB?[[17.0,3.5]]:[];   // Designzeit: 17,0–20,5
+function remap(tn){let t=tn;for(const [a,d] of SKIP){if(t>=a-1e-6)t+=d;}return t;}
+const LOOPD=GMB?32.5:34.2;   // GMB: Endcard 27,5–32,5 (5,0 s)
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const lin=(t,a,b)=>cl((t-a)/(b-a));
+const eo=x=>1-Math.pow(1-x,3);
+const eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const back=x=>{const c=1.6;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+// 120 BPM: Schlag 0,5 s. Szenen je 3,5 s: 0 Hook · 3,0 original vai junto · 6,5 presume-se fiel · 10,0 cartório · 13,5 português · 17,0 impugnar · 20,5 preço · 24,0 confirme · 27,5 Endcard · 34,2 Loop
+const SC=[3.0,6.5,10.0,13.5,17.0,20.5,24.0];
+const ENDC=27.5;
+const PUNCH=[2.5,7.5,11.0,14.5,21.5];
+const PANE={0:0,3.0:1,6.5:2,10.0:3,13.5:4,17.0:5,20.5:6,24.0:7};
+const WD=.10, WU=.18;   // Blatt kommt 0,10 s vor dem Wechsel (3 Frames), deckt die Korkfläche auf dem Schlag (harter Schnitt), ist bei +0,18 s links draußen
+const CAPD=3.42;
+
+// ---- Requisiten (eigene SVG, nur Formen, keine Schrift, keine Zahlen, keine Daten, kein Wappen, keine Flaggen) ----
+const OK=(cx,cy,r,id)=>`<g id="${id}" data-c="${cx},${cy}"><circle cx="${cx}" cy="${cy}" r="${r}" fill="#376259" stroke="#FBFAF6" stroke-width="${r*.1}"/><path d="M${cx-r*.45} ${cy+r*.03}l${r*.3} ${r*.3} ${r*.6}-${r*.62}" fill="none" stroke="#FBFAF6" stroke-width="${r*.2}" stroke-linecap="round" stroke-linejoin="round"/></g>`;
+const QM=(cx,cy,r,id)=>`<g id="${id}" data-c="${cx},${cy}"><circle cx="${cx}" cy="${cy}" r="${r}" fill="#FBFAF6" stroke="#1F3B35" stroke-width="${r*.1}"/><path d="M${cx-r*.32} ${cy-r*.22}a${r*.34} ${r*.34} 0 1 1 ${r*.5} ${r*.3}c-${r*.14} ${r*.08}-${r*.18} ${r*.16}-${r*.18} ${r*.3}" fill="none" stroke="#1F3B35" stroke-width="${r*.2}" stroke-linecap="round"/><circle cx="${cx}" cy="${cy+r*.58}" r="${r*.12}" fill="#1F3B35"/></g>`;
+const LINES=(ys,ws,c)=>ys.map((y,i)=>`<rect x="-112" y="${y}" width="${ws[i]}" height="12" rx="6" fill="${c}"/>`).join('');
+// Certidão estrangeira (Original, 300 × 380 um 0/0): Zierrahmen, Kopfbalken, Feldzeilen, rundes Siegel (nur Ringe), keine Schrift
+function ORIG(){return `<rect x="-150" y="-190" width="300" height="380" rx="10" fill="#FFFDF5" stroke="#1F3B35" stroke-width="6"/>
+  <rect x="-134" y="-174" width="268" height="348" rx="6" fill="none" stroke="#B9895E" stroke-width="5" stroke-dasharray="14 8"/>
+  <rect x="-80" y="-150" width="160" height="16" rx="8" fill="#1F3B35"/><rect x="-56" y="-124" width="112" height="10" rx="5" fill="#A9B6B0"/>
+  ${LINES([-86,-56,-26,4,34],[200,150,210,170,120],'#6E7F78')}
+  <circle cx="74" cy="112" r="40" fill="none" stroke="#B9895E" stroke-width="7"/><circle cx="74" cy="112" r="24" fill="none" stroke="#B9895E" stroke-width="5"/>
+  <path d="M-110 120c14-20 26 16 40-2s22 12 36-4" fill="none" stroke="#1F3B35" stroke-width="5" stroke-linecap="round"/>`;}
+// Tradução (300 × 380): Pinho-Kopfband, Feldzeilen, Stempelkasten (gestrichelt), Unterschrift – keine Schrift
+function TRAD(){return `<rect x="-150" y="-190" width="300" height="380" rx="16" fill="#FFFFFF" stroke="#1F3B35" stroke-width="6"/>
+  <rect x="-150" y="-190" width="300" height="64" rx="16" fill="#376259"/><rect x="-150" y="-142" width="300" height="16" fill="#376259"/>
+  <circle cx="-104" cy="-158" r="16" fill="#EEDECE"/><rect x="-74" y="-166" width="120" height="14" rx="7" fill="#97B9A8"/>
+  ${LINES([-96,-66,-36,-6,24],[210,170,200,150,190],'#1F3B35')}
+  <rect x="10" y="62" width="112" height="96" rx="10" fill="#EAF1ED" stroke="#376259" stroke-width="5" stroke-dasharray="10 7"/>
+  <circle cx="66" cy="110" r="26" fill="none" stroke="#376259" stroke-width="6"/>
+  <path d="M-116 132c14-22 26 18 40-2s22 14 36-4" fill="none" stroke="#1F3B35" stroke-width="6" stroke-linecap="round"/>`;}
+// großer Büroklammer-Clip (oben an den Blättern)
+const CLIP=`<path d="M-26 70V-70a34 34 0 0 1 68 0V90a52 52 0 0 1-104 0V-40" fill="none" stroke="#1F3B35" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M-26 70V-70a34 34 0 0 1 68 0V90a52 52 0 0 1-104 0V-40" fill="none" stroke="#8FA59C" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>`;
+// Waage (presume-se fiel e exata)
+const BAL=`<circle cx="0" cy="0" r="150" fill="#FBFAF6" stroke="#1F3B35" stroke-width="8"/>
+  <path d="M0 -92V92M-54 100H54" stroke="#1F3B35" stroke-width="14" stroke-linecap="round"/><path d="M-96 -62H96" stroke="#376259" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="0" cy="-92" r="14" fill="#376259"/>
+  <path d="M-96 -62L-128 6M-96 -62L-64 6M96 -62L64 6M96 -62L128 6" stroke="#1F3B35" stroke-width="5"/>
+  <path d="M-136 6h80a40 24 0 0 1-80 0z" fill="#97B9A8" stroke="#1F3B35" stroke-width="6"/><path d="M56 6h80a40 24 0 0 1-80 0z" fill="#97B9A8" stroke="#1F3B35" stroke-width="6"/>`;
+// Gebäude mit Säulen (cartório) – nur Formen
+const BLDG=`<path d="M-190 -60L0 -170L190 -60Z" fill="#376259" stroke="#1F3B35" stroke-width="8" stroke-linejoin="round"/>
+  <rect x="-180" y="-60" width="360" height="30" fill="#1F3B35"/>
+  ${[0,1,2,3].map(i=>`<rect x="${-150+i*90}" y="-26" width="40" height="160" rx="6" fill="#FBFAF6" stroke="#1F3B35" stroke-width="6"/>`).join('')}
+  <rect x="-200" y="134" width="400" height="36" rx="8" fill="#1F3B35"/><circle cx="0" cy="-102" r="20" fill="#EEDECE"/>`;
+// Pfeil (Original → Tradução)
+const ARR=`<path d="M-120 0H90" stroke="#376259" stroke-width="30" stroke-linecap="round"/><path d="M50 -52L118 0L50 52" fill="none" stroke="#376259" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>`;
+// Preisschild ohne Zahl
+const TAGX=(x,y,id)=>`<g id="${id}" data-c="${x+110},${y+50}"><path d="M${x} ${y}h170l50 50-50 50h-170z" fill="#FBFAF6" stroke="#1F3B35" stroke-width="6"/><circle cx="${x+172}" cy="${y+50}" r="12" fill="#1F3B35"/><rect x="${x+26}" y="${y+32}" width="110" height="36" rx="10" fill="#376259"/></g>`;
+// Lupe
+const LUPE=`<path d="M58 58L130 130" stroke="#1F3B35" stroke-width="30" stroke-linecap="round"/><circle cx="0" cy="0" r="86" fill="rgba(251,250,246,.35)" stroke="#1F3B35" stroke-width="18"/><path d="M-46 -30a56 56 0 0 1 40-26" fill="none" stroke="#FBFAF6" stroke-width="10" stroke-linecap="round"/>`;
+// Checkliste (Lista do cartório): Blatt mit drei Kästchen-Zeilen
+const LIST=`<rect x="-140" y="-180" width="280" height="360" rx="16" fill="#FFFFFF" stroke="#1F3B35" stroke-width="6"/><rect x="-60" y="-200" width="120" height="40" rx="12" fill="#376259"/>
+  ${[-100,-20,60].map(y=>`<rect x="-104" y="${y}" width="44" height="44" rx="8" fill="#FBFAF6" stroke="#1F3B35" stroke-width="6"/><rect x="-40" y="${y+16}" width="140" height="12" rx="6" fill="#6E7F78"/>`).join('')}`;
+// Handy-Umriss (Endcard: „Envie a foto“), Bildschirm mit Mini-Certidão, Auslöser-Kreis
+const PHONE=`<rect x="-150" y="-260" width="300" height="520" rx="44" fill="#1F3B35"/><rect x="-128" y="-222" width="256" height="400" rx="16" fill="#FBFAF6"/>
+  <g transform="translate(0 -24) scale(.62)">${ORIG()}</g>
+  <circle cx="0" cy="220" r="26" fill="#FBFAF6" stroke="#97B9A8" stroke-width="6"/><rect x="-36" y="-246" width="72" height="12" rx="6" fill="#376259"/>`;
+
+// ---- Pinnwand ----
+const BD={x:130,y:150,w:700,h:710}, CC=[480,480];
+{const pin=(x,y)=>`<circle cx="${x}" cy="${y+4}" r="17" fill="rgba(31,59,53,.25)"/><circle cx="${x}" cy="${y}" r="16" fill="#376259" stroke="#1F3B35" stroke-width="4"/><circle cx="${x-5}" cy="${y-5}" r="5" fill="#97B9A8"/>`;
+  let sp=''; for(let i=0;i<70;i++){const x=BD.x+((i*137)%BD.w), y=BD.y+((i*251)%BD.h); sp+=`<circle cx="${x}" cy="${y}" r="${3+(i%3)}" fill="${i%2?'#C9A577':'#E3C79E'}"/>`;}
+  let s=`<defs><clipPath id="bdc"><rect x="${BD.x}" y="${BD.y}" width="${BD.w}" height="${BD.h}" rx="14"/></clipPath></defs>
+  <rect x="116" y="130" width="760" height="820" rx="30" fill="rgba(31,59,53,.18)"/>
+  <rect x="100" y="110" width="760" height="800" rx="30" fill="#376259" stroke="#1F3B35" stroke-width="6"/>
+  <g clip-path="url(#bdc)"><rect x="${BD.x}" y="${BD.y}" width="${BD.w}" height="${BD.h}" fill="#D9B98C"/>${sp}
+    <g id="cont">
+    <g id="orAW"><g id="orA">${ORIG()}</g></g>
+    <g id="trAW"><g id="trA">${TRAD()}</g></g>
+    <g id="clW"><g id="cl">${CLIP}</g></g>
+    <g id="baW"><g id="ba">${BAL}</g></g>
+    <g id="bgW"><g id="bgd">${BLDG}</g></g>
+    <g id="arW"><g id="ar">${ARR}</g></g>
+    <g id="liW"><g id="li">${LIST}</g></g>
+    <g id="tagW"><g transform="translate(660 640) scale(1.4) translate(-670 -410)">${TAGX(560,360,'tg')}</g></g>
+    <g id="luW"><g id="lu">${LUPE}</g></g>
+    <g id="phW"><g id="ph">${PHONE}</g></g>
+    <circle id="ring" cx="0" cy="0" r="300" fill="none" stroke="#1F3B35" stroke-width="12" opacity="0"/>
+    ${QM(0,0,40,'q0')}${QM(0,0,40,'q1')}${OK(0,0,46,'ok')}
+    </g>
+    <g id="zpW" style="display:none"><rect id="zp" x="0" y="${BD.y}" width="0" height="${BD.h}" fill="#FBFAF6"/><path id="zl" d="" stroke="#C9C2B3" stroke-width="6"/><g id="zn">${pin(0,BD.y+60)}</g></g>
+  </g>
+  ${pin(150,132)}${pin(810,132)}${pin(150,888)}${pin(810,888)}
+  <rect x="84" y="900" width="792" height="60" rx="18" fill="#2E544C" stroke="#1F3B35" stroke-width="6"/>
+  <rect x="300" y="916" width="140" height="22" rx="8" fill="#97B9A8"/><rect x="560" y="912" width="70" height="28" rx="8" fill="#EEDECE"/>`;
+  $('PH').innerHTML=s;}
+
+const SIZE={STG:[960,1080],TAG:[744,248]};
+function put(id,x,y,r=0,k=1,o=1){const [w,h]=SIZE[id],el=$(id);
+  el.style.transform=`translate(${(x-w/2).toFixed(2)}px,${(y-h/2).toFixed(2)}px) rotate(${r.toFixed(2)}deg) scale(${k.toFixed(4)})`;
+  el.style.opacity=o; el.style.display=o>0.001?'':'none';}
+function pk(t,a,s0=.4){if(t<a)return 0; return s0+(1-s0)*back(lin(t,a,a+.25));}
+function gp(id,x,y,k,o=1){const e=$(id); e.setAttribute('transform',`translate(${x.toFixed(1)} ${y.toFixed(1)}) scale(${Math.max(.001,k).toFixed(4)})`); e.setAttribute('opacity',(k>0?o:0).toFixed(3));}
+function g(id,k,o=1){const e=document.getElementById(id); if(!e)return; const [cx,cy]=(e.dataset.c||'0,0').split(',').map(Number);
+  e.setAttribute('transform',`translate(${cx} ${cy}) scale(${Math.max(.001,k).toFixed(4)}) translate(${-cx} ${-cy})`); e.setAttribute('opacity',(k>0?o:0).toFixed(3));}
+function show(id,on){$(id).style.display=on?'':'none';}
+function at(id,x,y,r=0,k=1,o=1){const e=$(id); e.setAttribute('transform',`translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${r.toFixed(2)}) scale(${Math.max(.001,k).toFixed(4)})`); e.setAttribute('opacity',o.toFixed(3));}
+
+function lns(id,t,a,b,step=.14){const el=$(id); if(t<a||t>=b+.08){el.style.display='none';return;} el.style.display='';
+  const out=1-lin(t,b,b+.08);
+  el.querySelectorAll('.ln').forEach((l,i)=>{const a0=a+i*step, p=lin(t,a0,a0+.12); l.style.opacity=(Math.min(1,p*1.4+.6)*out).toFixed(3); if(t<a0)l.style.opacity=0; l.style.transform=`scale(${(.94+.06*eo(p)).toFixed(4)})`;});}
+function box(id,t,a,b,dIn=.15,dOut=.08,disp='flex'){const e=$(id); const o=t>=a&&t<b+dOut?Math.min(lin(t,a,a+dIn),1-lin(t,b,b+dOut)):0; e.style.opacity=o.toFixed(3); e.style.display=o>0?disp:'none'; return o;}
+
+const SEQ=[0,...SC].filter(a=>!(GMB&&a===17.0));
+function sceneOf(t){let i=0; for(let k=0;k<SEQ.length;k++) if(t>=SEQ[k]) i=k; return [PANE[SEQ[i]], SEQ[i]];}
+function zipSet(t,loop){ // Blatt: linke Kante fährt von rechts (x 830, a−0,10) bis x 130 (a) → deckt die Korkfläche ganz; dann rechte Kante 830 → 130 bis a+0,18 (links hinaus)
+  let L=null,R=null; const x0=BD.x, x1=BD.x+BD.w;
+  if(!loop) for(let k=1;k<SEQ.length;k++){const a=SEQ[k];
+    if(t>=a-WD&&t<a){R=x1; L=x1-BD.w*eo(lin(t,a-WD,a));}
+    else if(t>=a&&t<a+WU){L=x0; R=x1-BD.w*Math.pow(lin(t,a,a+WU),1.6);}}
+  if(L===null||R-L<1){show('zpW',false);return;}
+  show('zpW',true); $('zp').setAttribute('x',L.toFixed(1)); $('zp').setAttribute('width',(R-L).toFixed(1));
+  const ex=(L>x0+.5?L+6:R-6); $('zl').setAttribute('d',`M${ex.toFixed(1)} ${BD.y}V${BD.y+BD.h}`);
+  $('zn').setAttribute('transform',`translate(${(L>x0+.5?L+40:R-40).toFixed(1)} 0)`);}
+
+function paneAnim(n,t,tb,loop,endc){
+  ['orAW','trAW','clW','baW','bgW','arW','liW','tagW','luW','phW'].forEach(i=>show(i,false));
+  ['q0','q1','ok'].forEach(i=>gp(i,0,0,0)); $('ring').setAttribute('opacity',0);
+  const okAt=(a,x,y)=>{gp('ok',x,y,t>=a?pk(t,a,.4):0);};
+  const w=loop?0:Math.sin(Math.PI*2*tb/1.0);
+  const pair=(x,y,k,r=0,clipK=1)=>{ show('orAW',true); show('trAW',true); show('clW',true);
+    at('orA',x-40*k,y-30*k,r-6,k); at('trA',x+30*k,y+20*k,r+3,k); at('cl',x-10*k,y-190*k,r,.9*k*clipK,clipK>0.001?1:0);};
+  if(endc){   // Endcard: Handy mit Certidão auf dem Bildschirm (passt zu „Envie a foto“), Haken 28,5
+    show('phW',true); at('ph',CC[0],330,0,.62+.01*w);
+    gp('ok',CC[0]+120,330-130,t>=ENDC+1.0?pk(t,ENDC+1.0,.4)*(1+.06*Math.sin(Math.PI*2*lin(t,ENDC+2,ENDC+3))):0);
+    return;}
+  if(n===0){   // Hook: Tradução allein auf dem Kork, „?“ daneben pulsiert; 2,5 Original gleitet von links dahinter, Clip schnappt + Ring + Punch
+    show('trAW',true);
+    const s=loop||t<2.5?0:eo(lin(t,2.5,2.75));
+    if(s>0){ show('orAW',true); show('clW',true);
+      at('orA',140+(300-140)*s,300,-6,.5,1); at('cl',470,205,0,.45*pk(t,2.55,.3),1); }
+    at('trA',500+(loop?0:4*w),320+(loop?0:3*Math.sin(Math.PI*2*tb/2.0)),3-1.5*w,.5);
+    gp('q0',720,250,(s>0?1-s:1)*.9*(1+.10*w));
+    if(!loop&&t>=2.5){ const rk=pk(t,2.5,.6); at('ring',430,330,0,Math.max(.001,rk*.62),1); $('ring').setAttribute('opacity',(1-lin(t,2.75,2.97)*.6).toFixed(3)); } }
+  if(n===1){   // Original vai junto: Paar mit Clip groß in der Mitte; 3,5 Clip zieht nach (Klick), 5,5 Haken, 6,0 Wippen
+    const wb=t>=6.0?2*Math.sin(Math.PI*2*lin(t,6.0,6.4))*(1-lin(t,6.0,6.4)):0;
+    const c=t>=3.5?1+.08*Math.sin(Math.PI*lin(t,3.5,3.75)):1;
+    pair(470,500,.95,wb,c);
+    okAt(5.5,770,250);}
+  if(n===2){   // Presume-se fiel: Tradução links, Waage rechts springt auf 7,5 + Punch, Haken 8,5, Wippen 9,0
+    show('trAW',true); show('baW',true);
+    at('trA',290,480,-4,.82);
+    const wb=t>=9.0?4*Math.sin(Math.PI*2*lin(t,9.0,9.5))*(1-lin(t,9.0,9.5)):0;
+    const b=t>=7.5?pk(t,7.5,.4):(t>=6.6?.001:0); at('ba',650,450,wb,.95*Math.max(.001,b),t>=7.5?1:0);
+    okAt(8.5,770,250);}
+  if(n===3){   // Cartório: Gebäude oben, Tradução gleitet 10,5 hin (Klick), 11,0 Gebäude Punch, Haken 12,5
+    show('bgW',true); show('trAW',true);
+    const b=t>=11.0?eo(lin(t,11.0,11.25)):0;
+    at('bgd',480,350,0,.62+.1*b);
+    const m=eio(lin(t,10.5,11.0)); at('trA',290+170*m,660-30*m,-6+6*m,.56);
+    okAt(12.5,760,560);}
+  if(n===4){   // Em português: Original links, Pfeil zeichnet sich 14,0 (Klick), Tradução rechts 14,5 + Punch, Haken 15,5
+    show('orAW',true); show('arW',true); show('trAW',true);
+    at('orA',260,480,-4,.6);
+    const a=eo(lin(t,14.0,14.4)); at('ar',480,480,0,.8*Math.max(.001,a),a>0?1:0);
+    const p=t>=14.5?pk(t,14.5,.4):0; at('trA',700,480,4,.6*Math.max(.001,p),p>0?1:0);
+    okAt(15.5,760,250);}
+  if(n===5){   // Impugnar: Original + Tradução nebeneinander, Lupe fährt 17,5 vom Original zur Tradução (Klick), „?“ 18,5 + Stempel, Puls 19,5
+    show('orAW',true); show('trAW',true); show('luW',true);
+    at('orA',300,470,-4,.56); at('trA',650,430,4,.56);
+    const m=eio(lin(t,17.5,18.3)); const hv=t>=18.3?1:0; at('lu',300+340*m+hv*14*Math.sin(Math.PI*2*(tb-18.3)/1.5),500-40*m+hv*10*Math.sin(Math.PI*2*(tb-18.3)/1.0),hv*4*Math.sin(Math.PI*2*(tb-18.3)/2.0),.9);
+    gp('q1',480,240,t>=18.5?pk(t,18.5,.4)*(1+(t>=19.5?.06*Math.sin(Math.PI*lin(t,19.5,19.8)):0)):0);}
+  if(n===6){   // Preis: Paar mit Clip, Preisschild ohne Zahl 21,5 + Punch, Haken 22,5, Schwung 23,0
+    pair(390,480,.9,-2,1);
+    show('tagW',true);
+    g('tg',t>=21.5?pk(t,21.5,.6):0.001);
+    if(t>=23.0) $('tg').setAttribute('transform',`rotate(${(8*Math.sin(Math.PI*2*lin(t,23.0,23.6))*(1-lin(t,23.0,23.6))).toFixed(2)} 560 410)`);
+    okAt(22.5,780,250);}
+  if(n===7){   // Confirme antes: Gebäude klein oben, Checkliste darunter, Lupe fährt 24,5 über die Liste (Klick), „?“ 25,5 + Stempel, Haken 26,5
+    show('bgW',true); show('liW',true); show('luW',true);
+    at('bgd',480,290,0,.48); at('li',480,610,-2,.62);
+    const m=eio(lin(t,24.5,25.3)); at('lu',380+200*m,560+60*m,0,.7);
+    gp('q1',700,330,t>=25.5?pk(t,25.5,.4)*(1+(t>=27.0?.06*Math.sin(Math.PI*lin(t,27.0,27.3)):0)):0);
+    okAt(26.5,250,330);}
+}
+
+function render(tn){
+  let t=tn>=END-1e-6?LOOPD+.01:remap(tn);
+  const loop=t>=LOOPD; if(loop)t=0;
+  const tb=loop?0:tn;
+  $('bg1').style.transform=`translate(${Math.sin(tb*.4)*24}px,${-tb*3}px)`; $('bg2').style.transform=`translate(${-tb*3}px,${Math.cos(tb*.5)*18}px)`;
+
+  // Pinnwand: unten (Hook Oberkante 940, Endcard 1116), steigt 3,0–3,5 nach oben (Oberkante 724)
+  const bob=loop?0:10*Math.sin(Math.PI*2*tb/1.0);
+  let top;
+  if(t>=ENDC) top=1116+bob;
+  else {const r=eo(lin(t,3.0,3.5)); top=940+(724-940)*r+bob*(1-r)+(t>=3.5?5*Math.sin((tb-3.5)*1.6):0);}
+  const tilt=(t<3.0||t>=ENDC)?(loop?0:1.2*Math.sin(Math.PI*2*tb/2.0)):0;
+  put('STG',540,top+540,tilt);
+  const endc=t>=ENDC;
+  let n; if(endc){n=0;} else [n]=sceneOf(t);
+  paneAnim(n,t,tb,loop,endc); zipSet(endc?-1:t,loop||endc);
+  // Etikett: Frame 0 bis 2,97 (danach steigt die Pinnwand)
+  if(t<2.97) put('TAG',500+(loop?0:6*Math.sin(Math.PI*2*tb/2.0)),940,-1.5+(loop?0:1.2*Math.sin(Math.PI*2*tb/1.0)),1,1); else put('TAG',500,940,0,1,0);
+
+  // Kamera: leichter Push je Szene + Zoom-Punch 1→1,05→1 in 0,22 s (um 540/1000); Blatt-Schnitt = kleiner Ruck zur Seite
+  let push=1;
+  if(t<3.0) push=loop?1:1+.012*lin(t,0,2.6);
+  else if(t<ENDC){let s0=3.0; for(const a of SC) if(t>=a) s0=a; push=1+.014*lin(t,s0+.4,s0+3.5);}
+  const punch=PUNCH.reduce((m,p)=>m*(1+.05*Math.sin(Math.PI*lin(t,p,p+.22))),1);
+  const jolt=loop?0:SEQ.slice(1).reduce((m,a)=>m+(t>=a&&t<a+.12?-6*Math.sin(Math.PI*lin(t,a,a+.12)):0),0);
+  const s=(1+(loop?0:.004*Math.sin(tb*1.3)))*push*punch, dy=(loop?0:4*Math.sin(tb*.9));
+  $('world').style.transform=`translate(${(540-540*s+jolt).toFixed(2)}px,${(1000-1000*s+dy).toFixed(2)}px) scale(${s.toFixed(5)})`;
+
+  // ---- Hook + Mitmach-Pille (Frame 0 fertig, voll bis 2,97 s, dann harter Schnitt) ----
+  {const on=t<2.97; $('hook').style.display=on?'':'none';
+   $('mk1').style.transformOrigin='0 50%'; $('mk1').style.transform=`scale(${1+(loop?0:.03*Math.sin(Math.PI*lin(t,1.0,1.3)))})`;
+   const M=$('mit'); M.style.display=on?'flex':'none';
+   M.style.transform=`scale(${(1+(loop?0:.04*Math.sin(Math.PI*lin(t,1.5,1.72)))).toFixed(4)})`;}
+  // ---- Captions + Belege (gleichzeitig) ----
+  SC.forEach((a,i)=>{if(GMB&&a===17.0){$('c'+(i+1)).style.display='none';$('s'+(i+1)).style.display='none';return;} lns('c'+(i+1),t,a,a+CAPD); box('s'+(i+1),t,a,a+CAPD);});
+  // ---- CTA-Chip ----
+  {const Cp=$('chip'); $('chipT').textContent=GMB?'Preço na hora no site':'Preço na hora · link na bio';
+   const p=lin(t,3.0,3.2); const on=t>=3.0&&t<ENDC; Cp.style.display=on?'flex':'none'; Cp.style.opacity=(Math.min(1,.6+p*2)*(1-lin(t,ENDC-.08,ENDC))).toFixed(3); Cp.style.transform=`scale(${(.94+.06*eo(p)).toFixed(4)})`;}
+  // ---- Endcard ----
+  {const E=$('end'); const o=t>=ENDC&&!loop?1:0; E.style.opacity=o.toFixed(3); E.style.display=o>0?'':'none';
+   $('eBio').textContent=GMB?'no site':'link na bio';
+   const b=lin(t,ENDC,ENDC+.15); $('eBio').style.transform=`scale(${(.94+.06*eo(b)).toFixed(4)})`;}
+}
+render(0);
+</script></body></html>
